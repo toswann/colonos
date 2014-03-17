@@ -1,0 +1,29 @@
+<div class="row item item-<%= i.id%>">
+	<div class="col-md-9">
+    	<div class="row name">
+    		<div class="col-md-12"><h3><%= i.name %></h3></div>
+    	</div>
+    	<div class="row category">
+    		<div class="col-md-12">
+    			<div class="category-item"><div class="raty"></div></div>
+    			<div class="category-item text"><%= i.nbvoters %> ratings</div>
+    			<div class="category-item text">- Type....</div>
+    		</div>
+    	</div>
+    	<div class="row first-infos">
+    		<div class="col-md-12">
+    			<div class="pull-left address"><%= i.address %></div>
+    			<div class="pull-left phone"><a href="tel:<%= i.phone %>"><%= i.phone %></a></div>
+    			<div class="pull-left mail"><a href="mailto:<%= i.mail %>"><%= i.mail %></a></div>
+    			<div class="pull-left website"><a href="<%= i.website %>"><%= i.website %></a></div>
+    		</div>
+    	</div>
+    	<div class="row second-infos">
+    		<div class="col-md-12">
+			</div>		        	
+    	</div>
+	</div>
+	<div class="col-md-3 thumb">
+    	<img src="./public/storage/thumbs/<%= i.image %>" alt="<%= i.name %>" class="img-thumbnail">
+	</div>
+</div>

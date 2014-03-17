@@ -10,8 +10,9 @@
     <title>Ruta de los Colonos</title>
 
     <link href="./public/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+	<link href="./public/lib/font-awesome/css/font-awesome.min.css" rel="stylesheet">
     <link href="./public/lib/leaflet/leaflet.css" rel="stylesheet">
-
+	<link href="./public/lib/leaflet-awesome/leaflet.awesome-markers.css" rel="stylesheet">
 <!--     <link href="./public/css/style.css" rel="stylesheet"> -->
 	<link rel="stylesheet/less" type="text/css" href="./public/css/style.less" />
 

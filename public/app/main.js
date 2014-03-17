@@ -9,14 +9,22 @@ require.config({
 		'underscore'				: 	'../lib/underscore.min',
         'underscore.string'			: 	'../lib/underscore.string.min',
 		'jquery'					: 	'../lib/jquery.min',
+		'jquery.raty'				: 	'../lib/raty/jquery.raty',
 		'text'						: 	'../lib/text',
 		'bootstrap'					: 	'../lib/bootstrap/js/bootstrap.min',
-		'leaflet'					: 	'../lib/leaflet/leaflet'
+		'leaflet'					: 	'../lib/leaflet/leaflet',
+		'leaflet.awesome'			:	'../lib/leaflet-awesome/leaflet.awesome-markers.min'
 	},
 
 	shim: {
 		'jquery': {
 			exports: '$'
+		},
+		'leaflet.awesome': {
+			deps : ['leaflet']	
+		},
+		'jquery.raty': {
+			deps : ['jquery']	
 		},
 		'underscore': {
 			deps: ['underscore.string'],

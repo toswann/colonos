@@ -1,7 +1,8 @@
 define([
 	'core/BaseView',
 	'leaflet',
-	'text!templates/map.html'
+	'text!templates/map.html',
+	'leaflet.awesome'
 ], function(
 	BaseView,
 	Leaflet,
@@ -17,13 +18,14 @@ define([
 			this.mapConfig = {
 				container	: "mapView",
 				zoom 		: 10,
-				Lat 		: -41.327463,
-				Lng 		: -72.974466,
+				Lat 		: -41.243877,
+				Lng 		: -73.014291,
 				layerURL	: 'http://{s}.tile.osm.org/{z}/{x}/{y}.png',
 				copy		: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
 			}
+			this.markers = '';
 		},
-	
+
 		mapTemplate 		: _.template(mapTemplate),
 				
 		render: function(){
@@ -37,8 +39,22 @@ define([
 			return this;
 		},
 		
-		createMarkerGroup: function() {
-			
+		
+		displayItemsMarkers: function(items) {
+			var that = this;
+			var redMarker = Leaflet.AwesomeMarkers.icon({
+			    icon: 'camera',
+			    prefix : 'fa',
+			    spin : true,
+			    iconColor : "black",
+			    markerColor: 'blue'
+			});
+			items.each(function(item, idx) {
+//				cl(item);
+				cl("add markers to Lat:"+item.get("latitude")+" Lng:"+item.get("longitude"));
+				that.markers.addLayer(Leaflet.marker([item.get("latitude"), item.get("longitude")], {icon: redMarker}))
+			});
+			this.markers.addTo(this.map);
 		},
 		
 		renderMap: function() {
@@ -49,6 +65,8 @@ define([
 	        Leaflet.tileLayer(this.mapConfig.layerURL, {
 					attribution: this.mapConfig.copy
 			}).addTo(this.map);
+			
+			this.markers = Leaflet.layerGroup();
 			return this;
 		},
 		
