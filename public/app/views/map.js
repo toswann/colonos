@@ -50,7 +50,7 @@ define([
 					icon: that.types[item.get("type")][2],
 					title : item.get("name"),
 					alt : item.get("name"),
-					opacity : 0.7
+					opacity : 0.5
 				});
 				/*
 				**
@@ -61,7 +61,7 @@ define([
 					this.setOpacity(1);
 				}, marker);
 				marker.on('mouseout', function(e) {
-					this.setOpacity(0.7);
+					this.setOpacity(0.5);
 				}, marker);
 				that.markers[item.get("id")] = marker;
 				marker.addTo(that.map);

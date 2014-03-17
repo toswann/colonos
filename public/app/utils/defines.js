@@ -33,7 +33,7 @@ define([
 							[16 , "Flora"],
 							[17 , "Fauna"],
 							[18 , "Birds"],
-							[19 , "Geology"],
+							[19 , "Geology", Leaflet.AwesomeMarkers.icon({icon:'globe', prefix: 'fa', markerColor: 'green'})],
 							[20 , "Beaches"]
 						],
 						[

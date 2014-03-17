@@ -36,7 +36,7 @@ define([
 				this.setMarkerOpacity(id, 1);
 			})
 			mapView.listenTo(this.views.findByCustom("results"), "itemhoverout", function(id) {
-				this.setMarkerOpacity(id, 0.7);
+				this.setMarkerOpacity(id, 0.5);
 			})
 		},
 	
