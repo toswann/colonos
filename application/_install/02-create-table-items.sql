@@ -1,0 +1,22 @@
+CREATE TABLE `items` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `category` int(11) NOT NULL,
+  `type` int(11) NOT NULL,
+  `name` text NOT NULL,
+  `latitude` decimal(10,0) NOT NULL,
+  `longitude` decimal(10,0) NOT NULL,
+  `address` text NOT NULL,
+  `zone` text NOT NULL,
+  `phone` text NOT NULL,
+  `mail` text NOT NULL,
+  `image` text NOT NULL,
+  `galery` text NOT NULL,
+  `price` text NOT NULL,
+  `description` text NOT NULL,
+  `nb-voters` int(11) DEFAULT NULL,
+  `average-grade` decimal(10,0) DEFAULT NULL,
+  `certifications` text NOT NULL,
+  `species` text NOT NULL,
+  `difficulty` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;

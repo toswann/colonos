@@ -1,0 +1,71 @@
+body {
+  padding-top: 50px;
+}
+
+
+
+#mapView {
+	width: 100%;
+}
+
+.mapside {
+	padding-left: 0px;
+	padding-right: 0px;
+}
+
+.datasearch button {
+	width: 100%;
+}
+
+.search {
+	margin-top: 20px;
+	margin-bottom: 20px
+}
+
+.search .btn-group .btn {
+	padding-left: 6px;
+	padding-right: 6px;
+}
+
+.item {
+	padding-top: 15px;
+	padding-bottom: 10px;
+	margin-left: 5px;
+	margin-right: 5px;
+}
+
+.item:hover, .item:focus {
+	box-shadow: 0 0 4px rgba(0,0,0,0.2);
+	cursor: pointer;
+}
+
+.item .name h3 {
+	font-size: 20px;
+	vertical-align: top;
+	display: inline-block;
+	color: #333;
+	margin: 0;
+	padding: 0;
+	margin-bottom: 5px;
+}
+
+.item .category {
+	font-size: 14px;
+	color: #666;
+	margin-bottom: 5px;
+}
+
+.item .category-item {
+	float: left;
+	padding-right: 3px;
+}
+
+.item .category-item.text {
+	padding-top: 1px;
+}
+
+.item .address, .item .phone {
+	font-size: 12px;
+	color: #999;
+	margin-bottom: 3px;
+}
