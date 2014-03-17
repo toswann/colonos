@@ -1,11 +1,13 @@
 define([
 	'core/BaseView',
 	'leaflet',
+	'utils/defines',
 	'text!templates/map.html',
 	'leaflet.awesome'
 ], function(
 	BaseView,
 	Leaflet,
+	Defines,
 	mapTemplate
 ){
 	var MapView = BaseView.extend({
@@ -23,7 +25,8 @@ define([
 				layerURL	: 'http://{s}.tile.osm.org/{z}/{x}/{y}.png',
 				copy		: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
 			}
-			this.markers = '';
+			this.markers = [];
+			this.types = _.flatten(Defines.types, true);
 		},
 
 		mapTemplate 		: _.template(mapTemplate),
@@ -42,19 +45,27 @@ define([
 		
 		displayItemsMarkers: function(items) {
 			var that = this;
-			var redMarker = Leaflet.AwesomeMarkers.icon({
-			    icon: 'camera',
-			    prefix : 'fa',
-			    spin : true,
-			    iconColor : "black",
-			    markerColor: 'blue'
-			});
 			items.each(function(item, idx) {
-//				cl(item);
-				cl("add markers to Lat:"+item.get("latitude")+" Lng:"+item.get("longitude"));
-				that.markers.addLayer(Leaflet.marker([item.get("latitude"), item.get("longitude")], {icon: redMarker}))
+				var marker = Leaflet.marker([item.get("latitude"), item.get("longitude")], {
+					icon: that.types[item.get("type")][2],
+					title : item.get("name"),
+					alt : item.get("name"),
+					opacity : 0.7
+				});
+				/*
+				**
+				**  DON'T FORGET TO REMOVE THE EVENTS
+				**
+				*/
+				marker.on('mouseover', function(e) {
+					this.setOpacity(1);
+				}, marker);
+				marker.on('mouseout', function(e) {
+					this.setOpacity(0.7);
+				}, marker);
+				that.markers[item.get("id")] = marker;
+				marker.addTo(that.map);
 			});
-			this.markers.addTo(this.map);
 		},
 		
 		renderMap: function() {
@@ -66,7 +77,6 @@ define([
 					attribution: this.mapConfig.copy
 			}).addTo(this.map);
 			
-			this.markers = Leaflet.layerGroup();
 			return this;
 		},
 		
@@ -74,6 +84,11 @@ define([
 			var h = $(window).height();
 			var hsearch = ($(".search").height() + 40); // 40 for margin
 			$("#mapView").css("height", (h - hsearch - 50) + "px"); // 50 for header
+		},
+		
+		setMarkerOpacity: function(id, opacity) {
+			marker = this.markers[id];
+			marker.setOpacity(opacity);
 		}
 		
 	});

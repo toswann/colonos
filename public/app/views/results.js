@@ -42,9 +42,17 @@ define([
 		displayItemsList: function(items) {
 			var that = this;
 			items.each(function(item, idx) {
-				cl(item.toJSON());
 				that.$(".results-items-container").append(that.resultItemTemplate({i : item.toJSON()}));
 				$(".item-"+item.get("id")+" .raty").raty({readOnly: true, score : item.get("averagegrade")});
+				$(".item-"+item.get("id")).hover(
+					function() {
+						that.trigger("itemhoverin", $(this).attr("data-ref"));
+					},
+					function() {
+						that.trigger("itemhoverout", $(this).attr("data-ref"));
+					}
+				);
+				
 			});			
 		}
 			

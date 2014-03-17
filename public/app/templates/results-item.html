@@ -1,15 +1,17 @@
-<div class="row item item-<%= i.id%>">
+<div class="row item item-<%= i.id%>" data-ref="<%= i.id%>">
 	<div class="col-md-9">
     	<div class="row name">
     		<div class="col-md-12"><h3><%= i.name %></h3></div>
     	</div>
+		<% if (i.nbvoters) { %>
     	<div class="row category">
     		<div class="col-md-12">
     			<div class="category-item"><div class="raty"></div></div>
     			<div class="category-item text"><%= i.nbvoters %> ratings</div>
-    			<div class="category-item text">- Type....</div>
+    			<div class="category-item text"></div>
     		</div>
     	</div>
+		<% } %>
     	<div class="row first-infos">
     		<div class="col-md-12">
     			<div class="pull-left address"><%= i.address %></div>
