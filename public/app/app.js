@@ -31,13 +31,7 @@ define([
 			this.views.add(new MapView(), "map");
 			this.views.add(new ResultsView(), "results");
 
-			var mapView = this.views.findByCustom("map");
-			mapView.listenTo(this.views.findByCustom("results"), "itemhoverin", function(id) {
-				this.setMarkerOpacity(id, 1);
-			})
-			mapView.listenTo(this.views.findByCustom("results"), "itemhoverout", function(id) {
-				this.setMarkerOpacity(id, 0.5);
-			})
+			this.addMapListener();
 		},
 	
 		structureTemplate : _.template(structureTemplate),
@@ -62,6 +56,16 @@ define([
 				that.items.set(JSON.parse(response));
 				that.applySelection(that.items);
 			});
+		},
+		
+		addMapListener: function() {
+			var mapView = this.views.findByCustom("map");
+			mapView.listenTo(this.views.findByCustom("results"), "itemhoverin", function(id) {
+				this.setMarkerOpacity(id, 1);
+			});
+			mapView.listenTo(this.views.findByCustom("results"), "itemhoverout", function(id) {
+				this.setMarkerOpacity(id, 0.5);
+			});			
 		},
 		
 		applySelection: function(items) {
