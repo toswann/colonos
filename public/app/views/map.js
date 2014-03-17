@@ -37,6 +37,10 @@ define([
 			return this;
 		},
 		
+		createMarkerGroup: function() {
+			
+		},
+		
 		renderMap: function() {
 	        this.map = Leaflet.map(this.mapConfig.container, {
 		        center : [this.mapConfig.Lat, this.mapConfig.Lng],
