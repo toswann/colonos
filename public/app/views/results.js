@@ -18,6 +18,7 @@ define([
 		
 		initialize: function() {
 			cl(this.className+".initialize");
+			this.selectedItem = null;
 		},
 	
 		resultTemplate 			: _.template(resultTemplate),
@@ -44,6 +45,9 @@ define([
 			items.each(function(item, idx) {
 				that.$(".results-items-container").append(that.resultItemTemplate({i : item.toJSON()}));
 				$(".item-"+item.get("id")+" .raty").raty({readOnly: true, score : item.get("averagegrade")});
+				$(".item-"+item.get("id")).click(function() {
+					that.selectItem(this);
+				});
 				$(".item-"+item.get("id")).hover(
 					function() {
 						that.trigger("itemhoverin", $(this).attr("data-ref"));
@@ -52,8 +56,17 @@ define([
 						that.trigger("itemhoverout", $(this).attr("data-ref"));
 					}
 				);
-				
-			});			
+			});
+		},
+		
+		selectItem: function(item) {
+			if (this.selectedItem) {
+				$(this.selectedItem).removeClass("selected");
+				$(this.selectedItem).find(".second-infos").hide();
+			}
+			this.selectedItem = item;
+			$(item).find(".second-infos").show();
+			$(item).addClass("selected");
 		}
 			
 	});

@@ -1,5 +1,6 @@
 define([
 	'backbone',
+	'utils/defines',
 	'core/BaseView',
 	'collections/items',
 	'views/search',
@@ -9,6 +10,7 @@ define([
 	'backbone.babysitter'
 ], function(
 	Backbone,
+	Defines,
 	BaseView,
 	ItemsCollection,
 	SearchView,
@@ -45,6 +47,10 @@ define([
 		        '.mapside'		: this.views.findByCustom("map"),
 		        '.dataside'		: this.views.findByCustom("results")
 		    });
+		    
+		    this.resizeApp();
+			$(window).resize(this.resizeApp); // bind resize event
+
 		    this.loadItems();
 			
 		},
@@ -59,21 +65,27 @@ define([
 		},
 		
 		addMapListener: function() {
-			var mapView = this.views.findByCustom("map");
-			mapView.listenTo(this.views.findByCustom("results"), "itemhoverin", function(id) {
-				this.setMarkerOpacity(id, 1);
-			});
-			mapView.listenTo(this.views.findByCustom("results"), "itemhoverout", function(id) {
-				this.setMarkerOpacity(id, 0.5);
+			this.views.findByCustom("map")
+			.listenTo(this.views.findByCustom("results"), "itemhoverin", function(id) {
+				this.highlightMarker(id, Defines.opacity.high);
+			})
+			.listenTo(this.views.findByCustom("results"), "itemhoverout", function(id) {
+				this.highlightMarker(id, Defines.opacity.low);
 			});			
 		},
 		
 		applySelection: function(items) {
-			var mapView = this.views.findByCustom("map");
-			var resultView = this.views.findByCustom("results");
-			mapView.displayItemsMarkers(items);
-			resultView.displayItemsData(items);
+			this.views.findByCustom("map").displayItemsMarkers(items);
+			this.views.findByCustom("results").displayItemsData(items);
+		},
+		
+		resizeApp: function() {
+			var h = $(window).height(); // window height
+			var hsearch = ($(".search").height() + 40); // calculate height of the search div, +40 for padding
+			$("#mapView").css("height", (h - hsearch - 51) + "px"); // map = window - search - 51 (for header height)
+			$(".datalist").css("height", (h - hsearch - 51 - 41) + "px"); // map = window - search - 51 (for header height)
 		}
+
 
 	});
 	

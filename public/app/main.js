@@ -13,7 +13,8 @@ require.config({
 		'text'						: 	'../lib/text',
 		'bootstrap'					: 	'../lib/bootstrap/js/bootstrap.min',
 		'leaflet'					: 	'../lib/leaflet/leaflet',
-		'leaflet.awesome'			:	'../lib/leaflet-awesome/leaflet.awesome-markers.min'
+		'leaflet.awesome'			:	'../lib/leaflet-awesome/leaflet.awesome-markers.min',
+		'leaflet.label'				:	'../lib/leaflet.label/leaflet.label'
 	},
 
 	shim: {
@@ -21,6 +22,9 @@ require.config({
 			exports: '$'
 		},
 		'leaflet.awesome': {
+			deps : ['leaflet']	
+		},
+		'leaflet.label': {
 			deps : ['leaflet']	
 		},
 		'jquery.raty': {

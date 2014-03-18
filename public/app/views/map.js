@@ -3,7 +3,8 @@ define([
 	'leaflet',
 	'utils/defines',
 	'text!templates/map.html',
-	'leaflet.awesome'
+	'leaflet.awesome',
+	'leaflet.label'
 ], function(
 	BaseView,
 	Leaflet,
@@ -16,17 +17,9 @@ define([
 		
 		initialize: function() {
 			cl(this.className+".initialize");
-			this.map = '';
-			this.mapConfig = {
-				container	: "mapView",
-				zoom 		: 10,
-				Lat 		: -41.243877,
-				Lng 		: -73.014291,
-				layerURL	: 'http://{s}.tile.osm.org/{z}/{x}/{y}.png',
-				copy		: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-			}
+			this.map;
 			this.markers = [];
-			this.types = _.flatten(Defines.types, true);
+			this.types = _.flatten(Defines.types, true); //flatten Defines.types to use it as a one dimension Array
 		},
 
 		mapTemplate 		: _.template(mapTemplate),
@@ -34,10 +27,9 @@ define([
 		render: function(){
 			cl(this.className+".render");
 	        this.$el.html(this.mapTemplate());
-
-			this.resizeMap();
-			$(window).resize(this.resizeMap);
-				
+	        
+			this.setMapSize();
+	
 			this.renderMap();
 			return this;
 		},
@@ -48,20 +40,27 @@ define([
 			items.each(function(item, idx) {
 				var marker = Leaflet.marker([item.get("latitude"), item.get("longitude")], {
 					icon: that.types[item.get("type")][2],
-					title : item.get("name"),
 					alt : item.get("name"),
-					opacity : 0.5
-				});
+					opacity : Defines.opacity.low
+				}).bindLabel(item.get('name'), {
+					noHide: true,
+					className: "marker-label marker-label-"+item.get('id'),
+					direction: 'auto'
+				})
 				/*
 				**
 				**  DON'T FORGET TO REMOVE THE EVENTS
 				**
 				*/
 				marker.on('mouseover', function(e) {
-					this.setOpacity(1);
+					this.setOpacity(Defines.opacity.high);
+					this.setZIndexOffset(1000);
+					$(".marker-label-"+item.get("id")).css("display", "block");
 				}, marker);
 				marker.on('mouseout', function(e) {
-					this.setOpacity(0.5);
+					this.setOpacity(Defines.opacity.low);
+					this.setZIndexOffset(0);
+					$(".marker-label-"+item.get("id")).css("display", "none");
 				}, marker);
 				that.markers[item.get("id")] = marker;
 				marker.addTo(that.map);
@@ -69,27 +68,31 @@ define([
 		},
 		
 		renderMap: function() {
-	        this.map = Leaflet.map(this.mapConfig.container, {
-		        center : [this.mapConfig.Lat, this.mapConfig.Lng],
-		        zoom : this.mapConfig.zoom
-	        });	        
-	        Leaflet.tileLayer(this.mapConfig.layerURL, {
-					attribution: this.mapConfig.copy
-			}).addTo(this.map);
+	        this.map = Leaflet.map(Defines.map.container, {
+		        center : [Defines.map.Lat, Defines.map.Lng],
+		        zoom : Defines.map.zoom
+	        }); // initialize the map config
+	        Leaflet.tileLayer(Defines.map.layerURL, {
+					attribution: Defines.map.copy
+			}).addTo(this.map); // apply the layer to the map 
 			
 			return this;
 		},
-		
-		resizeMap: function() {
-			var h = $(window).height();
-			var hsearch = ($(".search").height() + 40); // 40 for margin
-			$("#mapView").css("height", (h - hsearch - 50) + "px"); // 50 for header
+				
+		highlightMarker: function(id, opacity) {
+			marker = this.markers[id]; // get the marker from markers array
+			marker.setOpacity(opacity); // set opacity
+			marker.setZIndexOffset((opacity == Defines.opacity.high) ? 1000 : 0); // set zIndex depending of opacity
+			$(".marker-label-"+id).css("display", (opacity == Defines.opacity.high) ? "block" : "none");
 		},
 		
-		setMarkerOpacity: function(id, opacity) {
-			marker = this.markers[id];
-			marker.setOpacity(opacity);
+		setMapSize: function() {
+			var h = $(window).height(); // window height
+			var hsearch = ($(".search").height() + 40); // calculate height of the search div, +40 for padding
+			$("#mapView").css("height", (h - hsearch - 51) + "px"); // map = window - search - 51 (for header height)
 		}
+
+		
 		
 	});
 	

@@ -1,10 +1,15 @@
 body {
-  padding-top: 50px;
 }
 
+.navbar {
+	margin-bottom: 0px;
+}
 
 #mapView {
 	width: 100%;
+	.marker-label {
+		display: none;
+	}
 }
 
 .mapside {
@@ -41,13 +46,13 @@ body {
 
 .dataresult {
 	border-bottom: 1px solid #E5E5E5;
+	margin-bottom: 10px;
 	.wrapper {
-		height: 24px;
-		margin-top: 8px;
-		margin-bottom: 8px;
+		height: 20px;
+		margin-top: 5px;
+		margin-bottom: 5px;
 		p {
 			color: #999;
-			line-height: 24px;
 			margin-top: 0px;
 			margin-bottom: 0px;
 			margin-left: 20px;
@@ -55,25 +60,23 @@ body {
 	}
 }
 .datalist {
-	.wrapper {
 		overflow-x: hidden;
 		overflow-y: auto;
-		position: fixed;
-		top:168px;
-		bottom: 0;
-		padding-top: 2px;
-	}
+		padding-top: 3px;
 }
 
 .item {
 	padding-top: 15px;
-	padding-bottom: 10px;
+	padding-bottom: 15px;
 	margin-left: 5px;
 	margin-right: 5px;
-
+	margin-bottom: 5px;
 	&:hover, &:focus {
 		box-shadow: 0 0 4px rgba(0,0,0,0.2);
 		cursor: pointer;
+	}
+	&.selected {
+		box-shadow: 0 0 4px rgba(0,0,0,0.4);		
 	}
 	.name h3 {
 		font-size: 20px;
@@ -107,6 +110,29 @@ body {
 			}
 		}
 	}
+	.second-infos {
+		display: none;
+		color: #666;
+		a {
+			color: #3a84df;
+		}
+		blockquote {
+			font-size: 13px;
+			color: #666;
+			margin-bottom: 0px;
+		}
+		.description {
+			padding-top: 5px;
+		}
+		.seemore {
+			margin-top: 10px;
+			text-align: center;
+			a {
+				color: white;
+				text-decoration: none;
+			}
+		}
+	}
 	.address {
 		margin-right: 10px;
 	}
@@ -115,5 +141,7 @@ body {
 	}
 	.mail {
 		margin-right: 10px;
+	}
+	.website {
 	}
 }

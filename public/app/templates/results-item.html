@@ -1,31 +1,54 @@
 <div class="row item item-<%= i.id%>" data-ref="<%= i.id%>">
-	<div class="col-md-9">
-    	<div class="row name">
-    		<div class="col-md-12"><h3><%= i.name %></h3></div>
-    	</div>
-		<% if (i.nbvoters) { %>
-    	<div class="row category">
-    		<div class="col-md-12">
-    			<div class="category-item"><div class="raty"></div></div>
-    			<div class="category-item text"><%= i.nbvoters %> ratings</div>
-    			<div class="category-item text"></div>
-    		</div>
-    	</div>
-		<% } %>
-    	<div class="row first-infos">
-    		<div class="col-md-12">
-    			<div class="pull-left address"><%= i.address %></div>
-    			<div class="pull-left phone"><a href="tel:<%= i.phone %>"><%= i.phone %></a></div>
-    			<div class="pull-left mail"><a href="mailto:<%= i.mail %>"><%= i.mail %></a></div>
-    			<div class="pull-left website"><a href="<%= i.website %>"><%= i.website %></a></div>
-    		</div>
-    	</div>
-    	<div class="row second-infos">
-    		<div class="col-md-12">
-			</div>		        	
-    	</div>
-	</div>
-	<div class="col-md-3 thumb">
-    	<img src="./public/storage/thumbs/<%= i.image %>" alt="<%= i.name %>" class="img-thumbnail">
+	<div class="col-md-12">
+		<div class="row">
+			<div class="col-md-9">
+		    	<div class="row name">
+		    		<div class="col-md-12"><h3><%= i.name %></h3></div>
+		    	</div>
+				<% if (i.nbvoters) { %>
+		    	<div class="row category">
+		    		<div class="col-md-12">
+		    			<div class="category-item"><div class="raty"></div></div>
+		    			<div class="category-item text"><%= i.nbvoters %> ratings</div>
+		    			<div class="category-item text"></div>
+		    		</div>
+		    	</div>
+				<% } %>
+		    	<div class="row first-infos">
+		    		<div class="col-md-12">
+		    			<div class="pull-left address"><%= i.address %></div>
+						<% if (i.phone) { %>
+		    			<div class="pull-left phone"><%= i.phone %></div>
+						<% } %>
+		    		</div>
+		    	</div>
+		    	<div class="row second-infos">
+		    		<div class="col-md-12">
+		    			<div class="clearfix">
+							<% if (i.mail) { %>
+			    			<div class="pull-left mail"><a href="mailto:<%= i.mail %>" target="_blank"><%= i.mail %></a></div>
+							<% } %>
+			    			<% if (i.website) { %>
+							<div class="pull-left website"><a href="<%= i.website %>"  target="_blank"><%= i.website %></a></div>	    			
+							<% } %>
+		    			</div>
+					</div>		        	
+		    	</div>
+			</div>
+			<div class="col-md-3 thumb">
+				<% if (i.image) { %>
+		    	<img src="./public/storage/thumbs/<%= i.image %>" alt="<%= i.name %>" class="img-thumbnail">
+				<% } %>
+			</div>
+			
+		</div>
+		<div class="row second-infos">
+			<div class="col-md-12">
+				<% if (i.description) { %>
+    			<div class="description"><blockquote><%= i.description %></blockquote></div>
+				<% } %>
+    			<div class="seemore"><a href="/place/<%= i.id %>/<%= i.flatname %>" class="btn btn-primary btn-xs" target="_blank">see all the informations</a></div>
+			</div>			
+		</div>
 	</div>
 </div>

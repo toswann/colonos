@@ -13,6 +13,7 @@
 	<link href="./public/lib/font-awesome/css/font-awesome.min.css" rel="stylesheet">
     <link href="./public/lib/leaflet/leaflet.css" rel="stylesheet">
 	<link href="./public/lib/leaflet-awesome/leaflet.awesome-markers.css" rel="stylesheet">
+	<link href="./public/lib/leaflet.label/leaflet.label.css" rel="stylesheet">
 <!--     <link href="./public/css/style.css" rel="stylesheet"> -->
 	<link rel="stylesheet/less" type="text/css" href="./public/css/style.less" />
 
@@ -39,7 +40,7 @@
 
   <body>
 
-    <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="navbar navbar-inverse navbar-static-top" role="navigation">
       <div class="container-fluid">
         <div class="navbar-header">
           <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
