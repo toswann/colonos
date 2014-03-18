@@ -20,6 +20,7 @@ define([
 			this.map;
 			this.markers = [];
 			this.types = _.flatten(Defines.types, true); //flatten Defines.types to use it as a one dimension Array
+			this.selectedMarker = null;
 		},
 
 		mapTemplate 		: _.template(mapTemplate),
@@ -39,7 +40,7 @@ define([
 			var that = this;
 			items.each(function(item, idx) {
 				var marker = Leaflet.marker([item.get("latitude"), item.get("longitude")], {
-					icon: that.types[item.get("type")][2],
+					icon: Leaflet.AwesomeMarkers.icon(that.types[item.get("type")][2]),
 					alt : item.get("name"),
 					opacity : Defines.opacity.low
 				}).bindLabel(item.get('name'), {
@@ -58,9 +59,11 @@ define([
 					$(".marker-label-"+item.get("id")).css("display", "block");
 				}, marker);
 				marker.on('mouseout', function(e) {
-					this.setOpacity(Defines.opacity.low);
-					this.setZIndexOffset(0);
-					$(".marker-label-"+item.get("id")).css("display", "none");
+					if (item.get("id") != that.selectedMarker) {
+						this.setOpacity(Defines.opacity.low);
+						this.setZIndexOffset(0);
+						$(".marker-label-"+item.get("id")).css("display", "none");
+					}
 				}, marker);
 				that.markers[item.get("id")] = marker;
 				marker.addTo(that.map);

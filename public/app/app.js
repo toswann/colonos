@@ -1,5 +1,6 @@
 define([
 	'backbone',
+	'underscore',
 	'utils/defines',
 	'core/BaseView',
 	'collections/items',
@@ -10,6 +11,7 @@ define([
 	'backbone.babysitter'
 ], function(
 	Backbone,
+	_,
 	Defines,
 	BaseView,
 	ItemsCollection,
@@ -70,8 +72,15 @@ define([
 				this.highlightMarker(id, Defines.opacity.high);
 			})
 			.listenTo(this.views.findByCustom("results"), "itemhoverout", function(id) {
-				this.highlightMarker(id, Defines.opacity.low);
-			});			
+				if (id != this.selectedMarker)
+					this.highlightMarker(id, Defines.opacity.low);
+			})		
+			.listenTo(this.views.findByCustom("results"), "itemselected", function(id) {
+				if (this.selectedMarker)
+					this.highlightMarker(this.selectedMarker, Defines.opacity.low);				
+				this.selectedMarker = id;
+				this.highlightMarker(id, Defines.opacity.high);
+			});
 		},
 		
 		applySelection: function(items) {

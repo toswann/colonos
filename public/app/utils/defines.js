@@ -1,7 +1,4 @@
-define([
-	'leaflet',
-	'leaflet.awesome'
-], function(Leaflet) {
+define(function() {
 		
 		var defines = {
 				map : {
@@ -21,57 +18,57 @@ define([
 							[0 , "All"]
 						],
 						[
-							[1  , "Hotel"		, Leaflet.AwesomeMarkers.icon({icon:'home', prefix: 'fa', markerColor: 'blue'})],
-							[2  , "Hostel"		, Leaflet.AwesomeMarkers.icon({icon:'home', prefix: 'fa', markerColor: 'blue'})],
-							[3  , "Cabins"		, Leaflet.AwesomeMarkers.icon({icon:'home', prefix: 'fa', markerColor: 'blue'})],
-							[4  , "B&B"			, Leaflet.AwesomeMarkers.icon({icon:'home', prefix: 'fa', markerColor: 'blue'})],
-							[5  , "Camping"		, Leaflet.AwesomeMarkers.icon({icon:'home', prefix: 'fa', markerColor: 'blue'})],
-							[6  , "Lodging"		, Leaflet.AwesomeMarkers.icon({icon:'home', prefix: 'fa', markerColor: 'blue'})],
-							[7  , "Inn"			, Leaflet.AwesomeMarkers.icon({icon:'home', prefix: 'fa', markerColor: 'blue'})],
-							[8  , "Motel"		, Leaflet.AwesomeMarkers.icon({icon:'home', prefix: 'fa', markerColor: 'blue'})]
+							[1  , "Hotel"			, {icon:'home', prefix: 'fa', markerColor: 'blue'}],
+							[2  , "Hostel"			, {icon:'home', prefix: 'fa', markerColor: 'blue'}],
+							[3  , "Cabins"			, {icon:'home', prefix: 'fa', markerColor: 'blue'}],
+							[4  , "B&B"				, {icon:'home', prefix: 'fa', markerColor: 'blue'}],
+							[5  , "Camping"			, {icon:'home', prefix: 'fa', markerColor: 'blue'}],
+							[6  , "Lodging"			, {icon:'home', prefix: 'fa', markerColor: 'blue'}],
+							[7  , "Inn"				, {icon:'home', prefix: 'fa', markerColor: 'blue'}],
+							[8  , "Motel"			, {icon:'home', prefix: 'fa', markerColor: 'blue'}]
 						],
 						[
-							[9  , "Restaurant", Leaflet.AwesomeMarkers.icon({icon:'cutlery', prefix: 'fa', markerColor: 'red'})],
-							[10 , "Café"],
-							[11 , "Sandwich Shop"]
+							[9  , "Restaurant"		, {icon:'cutlery', prefix: 'fa', markerColor: 'red'}],
+							[10 , "Café"			, {icon:'coffee', prefix: 'fa', markerColor: 'red'}],
+							[11 , "Sandwich Shop"	, {icon:'cutlery', prefix: 'fa', markerColor: 'red'}]
 						],
 						[
-							[12 , "Theatre"],
-							[13 , "Museum"],
-							[14 , "Cinema", Leaflet.AwesomeMarkers.icon({icon:'film', prefix: 'fa', markerColor: 'orange'})],
-							[15 , "Events"]
+							[12 , "Theatre"			, {icon:'film', prefix: 'fa', markerColor: 'orange'}],
+							[13 , "Museum"			, {icon:'film', prefix: 'fa', markerColor: 'orange'}],
+							[14 , "Cinema"			, {icon:'film', prefix: 'fa', markerColor: 'orange'}],
+							[15 , "Events"			, {icon:'film', prefix: 'fa', markerColor: 'orange'}]
 						],
 						[
-							[16 , "Flora"],
-							[17 , "Fauna"],
-							[18 , "Birds"],
-							[19 , "Geology", Leaflet.AwesomeMarkers.icon({icon:'leaf', prefix: 'fa', markerColor: 'green'})],
+							[16 , "Flora"			, {icon:'leaf', prefix: 'fa', markerColor: 'green'}],
+							[17 , "Fauna"			, {icon:'leaf', prefix: 'fa', markerColor: 'green'}],
+							[18 , "Birds"			, {icon:'leaf', prefix: 'fa', markerColor: 'green'}],
+							[19 , "Geology"			, {icon:'leaf', prefix: 'fa', markerColor: 'green'}],
 							[20 , "Beaches"]
 						],
 						[
-							[21 , "Rafting"],
-							[22 , "Canopy"],
-							[23 , "Horse Riding"],
-							[24 , "Lodge"],
-							[25 , "Guides"]
+							[21 , "Rafting"			, {icon:'globe', prefix: 'fa', markerColor: 'lightred'}],
+							[22 , "Canopy"			, {icon:'globe', prefix: 'fa', markerColor: 'lightred'}],
+							[23 , "Horse Riding"	, {icon:'globe', prefix: 'fa', markerColor: 'lightred'}],
+							[24 , "Lodge"			, {icon:'globe', prefix: 'fa', markerColor: 'lightred'}],
+							[25 , "Guides"			, {icon:'globe', prefix: 'fa', markerColor: 'lightred'}]
 						],
 						[
-							[26 , "Casino"],
-							[27 , "Night Club"],
-							[28 , "Rodeo"],
-							[29 , "Events Centre"],
-							[30 , "SPA"]
+							[26 , "Casino"			, {icon:'glass', prefix: 'fa', markerColor: 'gray'}],
+							[27 , "Night Club"		, {icon:'glass', prefix: 'fa', markerColor: 'gray'}],
+							[28 , "Rodeo"			, {icon:'glass', prefix: 'fa', markerColor: 'gray'}],
+							[29 , "Events Centre"	, {icon:'glass', prefix: 'fa', markerColor: 'gray'}],
+							[30 , "SPA"				, {icon:'glass', prefix: 'fa', markerColor: 'gray'}]
 						],
 						[
-							[31 , "Terrains"],
-							[32 , "Houses", Leaflet.AwesomeMarkers.icon({icon:'home', prefix: 'fa', markerColor: 'purple'})],
-							[33 , "Premises"]
+							[31 , "Terrains"		, {icon:'home', prefix: 'fa', markerColor: 'purple'}],
+							[32 , "Houses"			, {icon:'home', prefix: 'fa', markerColor: 'purple'}],
+							[33 , "Premises"		, {icon:'home', prefix: 'fa', markerColor: 'purple'}]
 						],
 						[
-							[34 , "Souvenirs"],
-							[35 , "Knitwear"],
-							[36 , "Food"],
-							[37 , "Beer"]
+							[34 , "Souvenirs"		, {icon:'picture-o', prefix: 'fa', markerColor: 'beige'}],
+							[35 , "Knitwear"		, {icon:'scissors', prefix: 'fa', markerColor: 'beige'}],
+							[36 , "Food"			, {icon:'cutlery', prefix: 'fa', markerColor: 'beige'}],
+							[37 , "Beer"			, {icon:'beer', prefix: 'fa', markerColor: 'beige'}]
 						]
 					]
 		};

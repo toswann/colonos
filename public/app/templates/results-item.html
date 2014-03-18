@@ -8,9 +8,9 @@
 				<% if (i.nbvoters) { %>
 		    	<div class="row category">
 		    		<div class="col-md-12">
+		    			<div class="category-item text grade"><%= _.numberFormat(_.toNumber(i.averagegrade, 1), 1, ',') %></div>
 		    			<div class="category-item"><div class="raty"></div></div>
-		    			<div class="category-item text"><%= i.nbvoters %> ratings</div>
-		    			<div class="category-item text"></div>
+		    			<div class="category-item text voters"><%= i.nbvoters %> ratings</div>
 		    		</div>
 		    	</div>
 				<% } %>

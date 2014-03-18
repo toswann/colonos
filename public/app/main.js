@@ -47,7 +47,6 @@ require.config({
 		'backbone.analytics': {
 			deps: ['backbone']
 		},
-		//leaflet: { deps: [ 'jquery' ], exports: 'Leaflet' },
 		'bootstrap': {
 			deps: [ 'jquery' ],
 			exports: 'Bootstrap'

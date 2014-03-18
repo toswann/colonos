@@ -1,4 +1,5 @@
 define([
+	'underscore',
 	'core/BaseView',
 	'bootstrap',
 	'text!templates/results.html',
@@ -6,6 +7,7 @@ define([
 	'text!templates/results-item.html',
 	'jquery.raty'
 ], function(
+	_,
 	BaseView,
 	Bootstrap,
 	resultTemplate,
@@ -47,6 +49,7 @@ define([
 				$(".item-"+item.get("id")+" .raty").raty({readOnly: true, score : item.get("averagegrade")});
 				$(".item-"+item.get("id")).click(function() {
 					that.selectItem(this);
+					that.trigger("itemselected", $(this).attr("data-ref"));
 				});
 				$(".item-"+item.get("id")).hover(
 					function() {
