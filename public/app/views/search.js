@@ -29,7 +29,10 @@ define([
 		searchTypeTemplate 	: _.template(searchTypeTemplate),
 	
 		events : {
-			"click .group-wrapper" :	"categoryChange"	
+			"change .categories-radio label" 	:		"categoryChange",
+			"change .city-select" 				:		"cityChange",	
+			"change .type-select" 				:		"typeChange",
+			"keyup 	.keywords"					:		"keywordsChange"
 		},
 			
 		render: function(){
@@ -38,12 +41,12 @@ define([
 	        this.$('.btn').button();
 	        // add active state to category 'All'
 	        this.$('.btn-group label').first().addClass("active");
-			this.$(".search-type-container").html(this.searchTypeTemplate({type : _.flatten(Defines.types, true)}));
+			this.$(".type-select").html(this.searchTypeTemplate({type : _.flatten(Defines.types, true)}));
 			return this;
 		},
 	
 		categoryChange: function(e) {
-			var cat = e.target.firstElementChild.id;
+			var cat = e.target.value;
 			cl("> category change to "+cat);
 			if (cat != this.searchParams.category) {
 				this.updateType(cat);
@@ -51,9 +54,31 @@ define([
 				this.trigger("newsearch", this.searchParams);
 			}
 		},
-	
+
+		cityChange: function() {
+			cl("> city change to "+$(".city-select").val());
+			this.searchParams.city = $(".city-select").val();
+			this.trigger("newsearch", this.searchParams);
+			
+		},
+		
+		typeChange: function(e) {
+			cl("> type change to "+$(".type-select").val());
+			this.searchParams.type = $(".type-select").val();
+			this.trigger("newsearch", this.searchParams);
+		},
+		
+		keywordsChange: function() {
+			cl("> keywords change to "+$("#keywords").val());
+			var text = _.trim($("#keywords").val());
+			if (text.length == 0 || text != "") {
+				this.searchParams.text = text;
+				this.trigger("newsearch", this.searchParams);
+			}
+		},
+		
 		updateType: function(cat) {
-			this.$(".search-type-container").html(this.searchTypeTemplate({
+			this.$(".type-select").html(this.searchTypeTemplate({
 					type : (cat > 0 ? _.union([[0, "All"]], Defines.types[cat]) : _.flatten(Defines.types, true))
 			}));
 		}

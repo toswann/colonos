@@ -71,8 +71,6 @@ define([
 		displayItemsMarkers: function(items) {
 			var that = this;
 			if (this.markers.length) {
-				cl("remove markers array");
-				cl(this.markers)
 				this.markers.forEach(function(marker) {
 					that.map.removeLayer(marker);
 				});

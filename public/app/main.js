@@ -34,7 +34,8 @@ require.config({
 			deps: ['underscore.string'],
 			exports: '_',
 			init: function(underscoreString) {
-				_.mixin(underscoreString.exports());
+				_.str = underscoreString;
+				_.mixin(_.str.exports());
 			}
 	    },
 		'backbone': {

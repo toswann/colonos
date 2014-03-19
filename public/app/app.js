@@ -93,7 +93,7 @@ define([
 		
 		applySearch: function(params) {
 			cl("> applysearch with params: ");
-			//cl(params);
+			cl(params);
 			var req = null;
 			req = {};
 			if (params.category != "0")
@@ -102,6 +102,8 @@ define([
 				req.city = params.city;
 			if (params.type != "0")
 				req.type = params.type;
+			if (params.text != "")
+				req.text = params.text;
 			
 			
 //			var items = (_.isEmpty(req)) ? this.items.toArray() : this.items.where(req);
@@ -112,6 +114,19 @@ define([
 					return false;
 				if (this.type && (this.type != item.get("type")))
 					return false;
+				if (this.text) {
+					var text = _.trim(this.text.toLowerCase());
+					var name = item.get("name") ;
+					var desc = _.trim(item.get("description").toLowerCase());
+					cl("text : '"+text+"'");
+					cl("name : '"+name+"'");
+					cl("desc : '"+desc+"'");
+					if (name && _.str.include(_.trim(name.toLowerCase()), text))
+						return true;
+					if (desc && _.str.include(desc, text))
+						return true;
+					return false;					
+				}
 				return true;
 			}, req);
 			this.displaySearchCollection(items);
