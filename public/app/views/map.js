@@ -35,10 +35,9 @@ define([
 			return this;
 		},
 		
-		
-		displayItemsMarkers: function(items) {
+		initializeMarkes: function(items) {
 			var that = this;
-			items.each(function(item, idx) {
+			items.forEach(function(item) {
 				var marker = Leaflet.marker([item.get("latitude"), item.get("longitude")], {
 					icon: Leaflet.AwesomeMarkers.icon(that.types[item.get("type")][2]),
 					alt : item.get("name"),
@@ -66,6 +65,20 @@ define([
 					}
 				}, marker);
 				that.markers[item.get("id")] = marker;
+			});			
+		},
+		
+		displayItemsMarkers: function(items) {
+			var that = this;
+			if (this.markers.length) {
+				cl("remove markers array");
+				cl(this.markers)
+				this.markers.forEach(function(marker) {
+					that.map.removeLayer(marker);
+				});
+			}
+			items.forEach(function(item) {
+				marker = that.markers[item.get("id")];
 				marker.addTo(that.map);
 			});
 		},

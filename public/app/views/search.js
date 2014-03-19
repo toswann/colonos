@@ -17,13 +17,19 @@ define([
 		
 		initialize: function() {
 			cl(this.className+".initialize");
+			this.searchParams = {
+				category	: "0",
+				type		: "0",
+				city		: "0",
+				text		: ""
+			}
 		},
 	
 		searchTemplate 		: _.template(searchTemplate),
 		searchTypeTemplate 	: _.template(searchTypeTemplate),
 	
 		events : {
-			"click .group-wrapper" :	"updateType"	
+			"click .group-wrapper" :	"categoryChange"	
 		},
 			
 		render: function(){
@@ -36,8 +42,17 @@ define([
 			return this;
 		},
 	
-		updateType: function(e) {
+		categoryChange: function(e) {
 			var cat = e.target.firstElementChild.id;
+			cl("> category change to "+cat);
+			if (cat != this.searchParams.category) {
+				this.updateType(cat);
+				this.searchParams.category = cat;
+				this.trigger("newsearch", this.searchParams);
+			}
+		},
+	
+		updateType: function(cat) {
 			this.$(".search-type-container").html(this.searchTypeTemplate({
 					type : (cat > 0 ? _.union([[0, "All"]], Defines.types[cat]) : _.flatten(Defines.types, true))
 			}));

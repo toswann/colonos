@@ -20,7 +20,7 @@ define([
 		
 		initialize: function() {
 			cl(this.className+".initialize");
-			this.selectedItem = null;
+			this.selectedItem = "none";
 		},
 	
 		resultTemplate 			: _.template(resultTemplate),
@@ -41,10 +41,13 @@ define([
 		displayItemsCount: function(count) {
 			this.$(".results-count-container").html(this.resultCountTemplate({count : count}));			
 		},
-		
+				
 		displayItemsList: function(items) {
 			var that = this;
-			items.each(function(item, idx) {
+			that.$(".results-items-container").html(""); // clean the result list content
+			this.selectItem("none"); // unselect item in the result list
+			that.trigger("itemselected", "none"); // trigger event to remove highlight of selected item marker
+			items.forEach(function(item) {
 				that.$(".results-items-container").append(that.resultItemTemplate({i : item.toJSON()}));
 				$(".item-"+item.get("id")+" .raty").raty({readOnly: true, score : item.get("averagegrade")});
 				$(".item-"+item.get("id")).click(function() {
@@ -63,7 +66,7 @@ define([
 		},
 		
 		selectItem: function(item) {
-			if (this.selectedItem) {
+			if (this.selectedItem != "none") {
 				$(this.selectedItem).removeClass("selected");
 				$(this.selectedItem).find(".second-infos").hide();
 			}

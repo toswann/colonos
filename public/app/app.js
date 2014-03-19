@@ -35,7 +35,7 @@ define([
 			this.views.add(new MapView(), "map");
 			this.views.add(new ResultsView(), "results");
 
-			this.addMapListener();
+			this.setListener();
 		},
 	
 		structureTemplate : _.template(structureTemplate),
@@ -62,11 +62,13 @@ define([
 			var that = this;
 			get.done(function(response) {
 				that.items.set(JSON.parse(response));
-				that.applySelection(that.items);
+				items = that.items.toArray();
+				that.views.findByCustom("map").initializeMarkes(items);
+				that.displaySearchCollection(items);
 			});
 		},
 		
-		addMapListener: function() {
+		setListener: function() {
 			this.views.findByCustom("map")
 			.listenTo(this.views.findByCustom("results"), "itemhoverin", function(id) {
 				this.highlightMarker(id, Defines.opacity.high);
@@ -77,13 +79,45 @@ define([
 			})		
 			.listenTo(this.views.findByCustom("results"), "itemselected", function(id) {
 				if (this.selectedMarker)
-					this.highlightMarker(this.selectedMarker, Defines.opacity.low);				
-				this.selectedMarker = id;
-				this.highlightMarker(id, Defines.opacity.high);
+					this.highlightMarker(this.selectedMarker, Defines.opacity.low);
+				if (id != "none") { //doesn't highlight marker when id == 'none' 
+					this.selectedMarker = id;
+					this.highlightMarker(id, Defines.opacity.high);
+				}
+			});
+			
+			this.listenTo(this.views.findByCustom("search"), "newsearch", function(params) {
+				this.applySearch(params);
 			});
 		},
 		
-		applySelection: function(items) {
+		applySearch: function(params) {
+			cl("> applysearch with params: ");
+			//cl(params);
+			var req = null;
+			req = {};
+			if (params.category != "0")
+				req.category = params.category;
+			if (params.city != "0")
+				req.city = params.city;
+			if (params.type != "0")
+				req.type = params.type;
+			
+			
+//			var items = (_.isEmpty(req)) ? this.items.toArray() : this.items.where(req);
+			var items = this.items.filter(function(item) {
+				if (this.category && (this.category != item.get("category")))
+					return false;
+				if (this.city && (this.city != item.get("city")))
+					return false;
+				if (this.type && (this.type != item.get("type")))
+					return false;
+				return true;
+			}, req);
+			this.displaySearchCollection(items);
+		},
+		
+		displaySearchCollection: function(items) {
 			this.views.findByCustom("map").displayItemsMarkers(items);
 			this.views.findByCustom("results").displayItemsData(items);
 		},
