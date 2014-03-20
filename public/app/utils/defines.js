@@ -15,60 +15,60 @@ define(function() {
 				},
 				types: [
 						[
-							[0 , "All"]
+							[0 , "all"]
 						],
 						[
-							[1  , "Hotel"			, {icon:'home', prefix: 'fa', markerColor: 'blue'}],
-							[2  , "Hostel"			, {icon:'home', prefix: 'fa', markerColor: 'blue'}],
-							[3  , "Cabins"			, {icon:'home', prefix: 'fa', markerColor: 'blue'}],
-							[4  , "B&B"				, {icon:'home', prefix: 'fa', markerColor: 'blue'}],
-							[5  , "Camping"			, {icon:'home', prefix: 'fa', markerColor: 'blue'}],
-							[6  , "Lodging"			, {icon:'home', prefix: 'fa', markerColor: 'blue'}],
-							[7  , "Inn"				, {icon:'home', prefix: 'fa', markerColor: 'blue'}],
-							[8  , "Motel"			, {icon:'home', prefix: 'fa', markerColor: 'blue'}]
+							[1  , "hotel"			, {icon:'home', prefix: 'fa', markerColor: 'blue'}],
+							[2  , "hostel"			, {icon:'home', prefix: 'fa', markerColor: 'blue'}],
+							[3  , "cabins"			, {icon:'home', prefix: 'fa', markerColor: 'blue'}],
+							[4  , "bb"				, {icon:'home', prefix: 'fa', markerColor: 'blue'}],
+							[5  , "camping"			, {icon:'home', prefix: 'fa', markerColor: 'blue'}],
+							[6  , "lodging"			, {icon:'home', prefix: 'fa', markerColor: 'blue'}],
+							[7  , "inn"				, {icon:'home', prefix: 'fa', markerColor: 'blue'}],
+							[8  , "motel"			, {icon:'home', prefix: 'fa', markerColor: 'blue'}]
 						],
 						[
-							[9  , "Restaurant"		, {icon:'cutlery', prefix: 'fa', markerColor: 'red'}],
-							[10 , "Café"			, {icon:'coffee', prefix: 'fa', markerColor: 'red'}],
-							[11 , "Sandwich Shop"	, {icon:'cutlery', prefix: 'fa', markerColor: 'red'}]
+							[9  , "restaurant"		, {icon:'cutlery', prefix: 'fa', markerColor: 'red'}],
+							[10 , "cafe"			, {icon:'coffee', prefix: 'fa', markerColor: 'red'}],
+							[11 , "sandwich"		, {icon:'cutlery', prefix: 'fa', markerColor: 'red'}]
 						],
 						[
-							[12 , "Theatre"			, {icon:'film', prefix: 'fa', markerColor: 'orange'}],
-							[13 , "Museum"			, {icon:'film', prefix: 'fa', markerColor: 'orange'}],
-							[14 , "Cinema"			, {icon:'film', prefix: 'fa', markerColor: 'orange'}],
-							[15 , "Events"			, {icon:'film', prefix: 'fa', markerColor: 'orange'}]
+							[12 , "theatre"			, {icon:'film', prefix: 'fa', markerColor: 'orange'}],
+							[13 , "museum"			, {icon:'film', prefix: 'fa', markerColor: 'orange'}],
+							[14 , "cinema"			, {icon:'film', prefix: 'fa', markerColor: 'orange'}],
+							[15 , "events"			, {icon:'film', prefix: 'fa', markerColor: 'orange'}]
 						],
 						[
-							[16 , "Flora"			, {icon:'leaf', prefix: 'fa', markerColor: 'green'}],
-							[17 , "Fauna"			, {icon:'leaf', prefix: 'fa', markerColor: 'green'}],
-							[18 , "Birds"			, {icon:'leaf', prefix: 'fa', markerColor: 'green'}],
-							[19 , "Geology"			, {icon:'leaf', prefix: 'fa', markerColor: 'green'}],
-							[20 , "Beaches"]
+							[16 , "flora"			, {icon:'leaf', prefix: 'fa', markerColor: 'green'}],
+							[17 , "fauna"			, {icon:'leaf', prefix: 'fa', markerColor: 'green'}],
+							[18 , "birds"			, {icon:'leaf', prefix: 'fa', markerColor: 'green'}],
+							[19 , "geology"			, {icon:'leaf', prefix: 'fa', markerColor: 'green'}],
+							[20 , "beaches"]
 						],
 						[
-							[21 , "Rafting"			, {icon:'globe', prefix: 'fa', markerColor: 'lightred'}],
-							[22 , "Canopy"			, {icon:'globe', prefix: 'fa', markerColor: 'lightred'}],
-							[23 , "Horse Riding"	, {icon:'globe', prefix: 'fa', markerColor: 'lightred'}],
-							[24 , "Lodge"			, {icon:'globe', prefix: 'fa', markerColor: 'lightred'}],
-							[25 , "Guides"			, {icon:'globe', prefix: 'fa', markerColor: 'lightred'}]
+							[21 , "rafting"			, {icon:'globe', prefix: 'fa', markerColor: 'lightred'}],
+							[22 , "canopy"			, {icon:'globe', prefix: 'fa', markerColor: 'lightred'}],
+							[23 , "horse"			, {icon:'globe', prefix: 'fa', markerColor: 'lightred'}],
+							[24 , "lodge"			, {icon:'globe', prefix: 'fa', markerColor: 'lightred'}],
+							[25 , "luides"			, {icon:'globe', prefix: 'fa', markerColor: 'lightred'}]
 						],
 						[
-							[26 , "Casino"			, {icon:'glass', prefix: 'fa', markerColor: 'gray'}],
-							[27 , "Night Club"		, {icon:'glass', prefix: 'fa', markerColor: 'gray'}],
-							[28 , "Rodeo"			, {icon:'glass', prefix: 'fa', markerColor: 'gray'}],
-							[29 , "Events Centre"	, {icon:'glass', prefix: 'fa', markerColor: 'gray'}],
-							[30 , "SPA"				, {icon:'glass', prefix: 'fa', markerColor: 'gray'}]
+							[26 , "casino"			, {icon:'glass', prefix: 'fa', markerColor: 'gray'}],
+							[27 , "nightclub"		, {icon:'glass', prefix: 'fa', markerColor: 'gray'}],
+							[28 , "rodeo"			, {icon:'glass', prefix: 'fa', markerColor: 'gray'}],
+							[29 , "eventscentre"	, {icon:'glass', prefix: 'fa', markerColor: 'gray'}],
+							[30 , "spa"				, {icon:'glass', prefix: 'fa', markerColor: 'gray'}]
 						],
 						[
-							[31 , "Terrains"		, {icon:'home', prefix: 'fa', markerColor: 'purple'}],
-							[32 , "Houses"			, {icon:'home', prefix: 'fa', markerColor: 'purple'}],
-							[33 , "Premises"		, {icon:'home', prefix: 'fa', markerColor: 'purple'}]
+							[31 , "terrains"		, {icon:'home', prefix: 'fa', markerColor: 'purple'}],
+							[32 , "houses"			, {icon:'home', prefix: 'fa', markerColor: 'purple'}],
+							[33 , "premises"		, {icon:'home', prefix: 'fa', markerColor: 'purple'}]
 						],
 						[
-							[34 , "Souvenirs"		, {icon:'picture-o', prefix: 'fa', markerColor: 'beige'}],
-							[35 , "Knitwear"		, {icon:'scissors', prefix: 'fa', markerColor: 'beige'}],
-							[36 , "Food"			, {icon:'cutlery', prefix: 'fa', markerColor: 'beige'}],
-							[37 , "Beer"			, {icon:'beer', prefix: 'fa', markerColor: 'beige'}]
+							[34 , "souvenirs"		, {icon:'picture-o', prefix: 'fa', markerColor: 'beige'}],
+							[35 , "knitwear"		, {icon:'scissors', prefix: 'fa', markerColor: 'beige'}],
+							[36 , "food"			, {icon:'cutlery', prefix: 'fa', markerColor: 'beige'}],
+							[37 , "beer"			, {icon:'beer', prefix: 'fa', markerColor: 'beige'}]
 						]
 					]
 		};

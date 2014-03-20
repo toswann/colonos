@@ -80,8 +80,9 @@ define([
 		
 		updateType: function(cat) {
 			this.$(".type-select").html(this.searchTypeTemplate({
-					type : (cat > 0 ? _.union([[0, "All"]], Defines.types[cat]) : _.flatten(Defines.types, true))
+					type : (cat > 0 ? _.union([[0, "all"]], Defines.types[cat]) : _.flatten(Defines.types, true))
 			}));
+			$(".type-select").i18n();
 		}
 	});
 	

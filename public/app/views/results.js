@@ -39,7 +39,8 @@ define([
 		},
 		
 		displayItemsCount: function(count) {
-			this.$(".results-count-container").html(this.resultCountTemplate({count : count}));			
+			this.$(".results-count-container").html(this.resultCountTemplate({count : count}));	
+			$(".results-count-container").i18n();
 		},
 				
 		displayItemsList: function(items) {
@@ -63,6 +64,7 @@ define([
 					}
 				);
 			});
+			$(".results-items-container").i18n();
 		},
 		
 		selectItem: function(item) {

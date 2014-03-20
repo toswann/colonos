@@ -2,12 +2,14 @@ define([
 	'core/BaseView',
 	'bootstrap',
 	'utils/defines',
-	'text!templates/header.html'
+	'text!templates/header.html',
+	'jquery.i18next'
 ], function(
 	BaseView,
 	Bootstrap,
 	Defines,
-	headerTemplate
+	headerTemplate,
+	i18n
 ){
 	var HeaderView = BaseView.extend({
 		
@@ -31,10 +33,12 @@ define([
 		},
 		
 		changeLanguage: function(e) {
-			cl($(e.currentTarget).attr("data-lang"));
 			var newlang = $(e.currentTarget).attr("data-lang");
-			// execute change
-			this.lang = newlang;
+			if (newlang != this.lang) {
+				cl(newlang)
+				i18n.setLng(newlang, function(t) { $("body").i18n() });
+				this.lang = newlang;
+			}
 		}
 	
 	});

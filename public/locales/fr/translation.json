@@ -1,0 +1,72 @@
+{
+	"header": {
+		"title" 			: "La route des Colons"
+	},
+	"results": {
+		"count"				: "resultat(s) trouvés.",
+		"ratings"			: "avis",
+		"seesheet"			: "Voir la fiche compléte"
+	},
+	"search": {
+		"all": {
+			"f"				: "Toutes",
+			"m"				: "Tous"
+		},
+		"category": {
+			"accomodation"	: "Logement",
+			"food"			: "Restauration",
+			"culture"		: "Culture",
+			"nature"		: "Nature",
+			"aventure"		: "Aventure",
+			"entertainment"	: "Divertissement",
+			"owner"			: "Propriété",
+			"products"		: "Produits"
+		},
+		"city": {
+			"all"			: "Ville..."	
+		},
+		"type": {
+			"all"			: "Type...",
+			"hotel"			: "Hotel",
+			"hostel"		: "Auberge de Jeunesse",
+			"cabins"		: "Cabane",
+			"bb"			: "B&B",
+			"camping"		: "Camping",
+			"lodging"		: "Pension",
+			"inn"			: "Auberge",
+			"motel"			: "Motel",
+			"restaurant"	: "Restaurant",
+			"cafe"			: "Café",
+			"sandwich"		: "Sandwich",
+			"theatre"		: "Theatre",
+			"museum"		: "Musée",
+			"cinema"		: "Cinema",
+			"events"		: "Evénement",
+			"flora"			: "Flore",
+			"fauna"			: "Faune",
+			"birds"			: "Oiseaux",
+			"geology"		: "Géologique",
+			"beaches"		: "Plages",
+			"rafting"		: "Rafting",
+			"canopy"		: "Accrobranche",
+			"horse"			: "Equitation",
+			"lodge"			: "Lodge",
+			"guides"		: "Guides",
+			"casino"		: "Casino",
+			"nightclub"		: "Boites de Nuits",
+			"rodeo"			: "Rodeo",
+			"eventscentre"	: "Centre d'événements",
+			"spa"			: "SPA",
+			"terrains"		: "Terrains",
+			"houses"		: "Maisons",
+			"premises"		: "Local",
+			"souvenirs"		: "Souvenirs",
+			"knitwear"		: "Tissus",
+			"food"			: "Nourriture",
+			"beer"			: "Bière"
+		},
+		"text": {
+			"keywords"		: "Mots clefs..."
+		}
+	}
+}

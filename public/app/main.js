@@ -8,8 +8,8 @@ require.config({
 		'backbone.analytics'		:	'../lib/backbone.analytics',
 		'underscore'				: 	'../lib/underscore.min',
         'underscore.string'			: 	'../lib/underscore.string.min',
-        'i18next'					: 	'../lib/i18next.amd-1.7.2.min',
 		'jquery'					: 	'../lib/jquery.min',
+        'jquery.i18next'			: 	'../lib/i18next.amd.withJQuery-1.7.2.min',
 		'jquery.raty'				: 	'../lib/raty/jquery.raty',
 		'text'						: 	'../lib/text',
 		'bootstrap'					: 	'../lib/bootstrap/js/bootstrap.min',
@@ -31,7 +31,7 @@ require.config({
 		'jquery.raty': {
 			deps : ['jquery']	
 		},
-		'i18next': {
+		'jquery.i18next': {
 			deps : ['jquery']	
 		},
 		'underscore': {

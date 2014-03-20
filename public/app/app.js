@@ -9,6 +9,7 @@ define([
 	'views/map',
 	'views/results',
 	'text!templates/structure.html',
+	'jquery.i18next',
 	'backbone.babysitter'
 ], function(
 	Backbone,
@@ -20,7 +21,8 @@ define([
 	SearchView,
 	MapView,
 	ResultsView,
-	structureTemplate
+	structureTemplate,
+	i18n
 ){
 
 	var App = BaseView.extend({
@@ -58,6 +60,15 @@ define([
 		    this.resizeApp();
 			$(window).resize(this.resizeApp); // bind window.resize event
 
+			i18n.init({
+				lng: "es",
+				resGetPath: 'public/locales/__lng__/__ns__.json',
+				fallbackLng: 'es'
+			 }, function() {
+				 $("body").i18n();			 
+			 });
+			 
+			 
 			// initial load of all datas
 		    this.loadItems();			
 		},

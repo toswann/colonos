@@ -1,0 +1,72 @@
+{
+	"header": {
+		"title"				: "Ruta de los Colonos"
+	},
+	"results": {
+		"count"				: "resultado(s) para tu búsqueda.",
+		"ratings"			: "opiníones",
+		"seesheet"			: "ESPSee the complete sheet"	
+	},
+	"search": {
+		"all": {
+			"f"				: "Todas",
+			"m"				: "Todos"
+		},
+		"category": {
+			"accomodation"	: "Alojamiento",
+			"food"			: "Comida",
+			"culture"		: "Cultura",
+			"nature"		: "Naturaleza",
+			"aventure"		: "Aventura",
+			"entertainment"	: "Entretencion",
+			"owner"			: "Propiedades",
+			"products"		: "Productos"
+		},
+		"city": {
+			"all"			: "Ciudad..."	
+		},
+		"type": {
+			"all"			: "Tipo...",
+			"hotel"			: "Hotel",
+			"hostel"		: "Hostal",
+			"cabins"		: "Cabañas",
+			"bb"			: "B&B",
+			"camping"		: "Camping",
+			"lodging"		: "Hospedaje",
+			"inn"			: "Hostería",
+			"motel"			: "Motel",
+			"restaurant"	: "Restaurante",
+			"cafe"			: "Café",
+			"sandwich"		: "Sandwicheria",
+			"theatre"		: "Teatro",
+			"museum"		: "Museo",
+			"cinema"		: "Cine",
+			"events"		: "Eventos",
+			"flora"			: "Flora",
+			"fauna"			: "Fauna",
+			"birds"			: "Aves",
+			"geology"		: "Geológico",
+			"beaches"		: "Playas",
+			"rafting"		: "Rafting",
+			"canopy"		: "Canopy",
+			"horse"			: "Cabalgatas",
+			"lodge"			: "Lodge",
+			"guides"		: "Guías",
+			"casino"		: "Casino",
+			"nightclub"		: "Discoteque",
+			"rodeo"			: "Rodeo",
+			"eventscentre"	: "Centro de eventos",
+			"spa"			: "SPA",
+			"terrains"		: "Terrenos",
+			"houses"		: "Casas",
+			"premises"		: "Locales",
+			"souvenirs"		: "Souvenirs",
+			"knitwear"		: "Tejidos",
+			"food"			: "Alimentos",
+			"beer"			: "Cerveza"
+		},
+		"text": {
+			"keywords"		: "Palabra(s) clave..."
+		}
+	}
+}
