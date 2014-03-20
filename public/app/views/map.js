@@ -29,52 +29,51 @@ define([
 			cl(this.className+".render");
 	        this.$el.html(this.mapTemplate());
 	        
+	        // setMapSize before renderMap otherwise the map is height = 0
 			this.setMapSize();
 	
 			this.renderMap();
 			return this;
 		},
 		
+		// create array of markers objects
 		initializeMarkes: function(items) {
 			var that = this;
-			items.forEach(function(item) {
+			items.forEach(function(item) { // for each item of items Array
 				var marker = Leaflet.marker([item.get("latitude"), item.get("longitude")], {
 					icon: Leaflet.AwesomeMarkers.icon(that.types[item.get("type")][2]),
 					alt : item.get("name"),
 					opacity : Defines.opacity.low
-				}).bindLabel(item.get('name'), {
+				}).bindLabel(item.get('name'), { // label with default 'dispaly:none;' property
 					noHide: true,
 					className: "marker-label marker-label-"+item.get('id'),
 					direction: 'auto'
-				})
-				/*
-				**
-				**  DON'T FORGET TO REMOVE THE EVENTS
-				**
-				*/
+				});
 				marker.on('mouseover', function(e) {
 					this.setOpacity(Defines.opacity.high);
 					this.setZIndexOffset(1000);
 					$(".marker-label-"+item.get("id")).css("display", "block");
 				}, marker);
 				marker.on('mouseout', function(e) {
-					if (item.get("id") != that.selectedMarker) {
+					if (item.get("id") != that.selectedMarker) { // don't change opacity if this marker is a selectedMarker
 						this.setOpacity(Defines.opacity.low);
 						this.setZIndexOffset(0);
 						$(".marker-label-"+item.get("id")).css("display", "none");
 					}
 				}, marker);
-				that.markers[item.get("id")] = marker;
+				that.markers[item.get("id")] = marker; // add marker to this.markers Array
 			});			
 		},
 		
 		displayItemsMarkers: function(items) {
 			var that = this;
 			if (this.markers.length) {
+				// remove all the markers from the map
 				this.markers.forEach(function(marker) {
 					that.map.removeLayer(marker);
 				});
 			}
+			// add the items corresponding markers to the map
 			items.forEach(function(item) {
 				marker = that.markers[item.get("id")];
 				marker.addTo(that.map);
@@ -97,6 +96,7 @@ define([
 			marker = this.markers[id]; // get the marker from markers array
 			marker.setOpacity(opacity); // set opacity
 			marker.setZIndexOffset((opacity == Defines.opacity.high) ? 1000 : 0); // set zIndex depending of opacity
+			// display marker label depending of opacity
 			$(".marker-label-"+id).css("display", (opacity == Defines.opacity.high) ? "block" : "none");
 		},
 		

@@ -45,14 +45,14 @@ define([
 		displayItemsList: function(items) {
 			var that = this;
 			that.$(".results-items-container").html(""); // clean the result list content
-			this.selectItem("none"); // unselect item in the result list
-			that.trigger("itemselected", "none"); // trigger event to remove highlight of selected item marker
+			that.trigger("itemselected", {id:"none"}); // trigger itemselected with id:none to unhighlight the selectedMarker
 			items.forEach(function(item) {
 				that.$(".results-items-container").append(that.resultItemTemplate({i : item.toJSON()}));
 				$(".item-"+item.get("id")+" .raty").raty({readOnly: true, score : item.get("averagegrade")});
 				$(".item-"+item.get("id")).click(function() {
 					that.selectItem(this);
-					that.trigger("itemselected", $(this).attr("data-ref"));
+					var data = { id:$(this).attr("data-ref"), latLng:[item.get("latitude"), item.get("longitude")] };
+					that.trigger("itemselected", data);
 				});
 				$(".item-"+item.get("id")).hover(
 					function() {

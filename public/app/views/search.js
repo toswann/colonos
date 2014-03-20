@@ -41,13 +41,14 @@ define([
 	        this.$('.btn').button();
 	        // add active state to category 'All'
 	        this.$('.btn-group label').first().addClass("active");
+	        // initialize type select with all the types of define.types (transform in a one dimension array by _.flatten
 			this.$(".type-select").html(this.searchTypeTemplate({type : _.flatten(Defines.types, true)}));
 			return this;
 		},
 	
 		categoryChange: function(e) {
-			var cat = e.target.value;
-			cl("> category change to "+cat);
+			var cat = $(e.currentTarget).find("input").val();
+			//cl("> category change to "+cat);
 			if (cat != this.searchParams.category) {
 				this.updateType(cat);
 				this.searchParams.category = cat;
@@ -56,23 +57,23 @@ define([
 		},
 
 		cityChange: function() {
-			cl("> city change to "+$(".city-select").val());
+			//cl("> city change to "+$(".city-select").val());
 			this.searchParams.city = $(".city-select").val();
 			this.trigger("newsearch", this.searchParams);
 			
 		},
 		
 		typeChange: function(e) {
-			cl("> type change to "+$(".type-select").val());
+			//cl("> type change to "+$(".type-select").val());
 			this.searchParams.type = $(".type-select").val();
 			this.trigger("newsearch", this.searchParams);
 		},
 		
 		keywordsChange: function() {
-			cl("> keywords change to "+$("#keywords").val());
-			var text = _.trim($("#keywords").val());
-			if (text.length == 0 || text != "") {
-				this.searchParams.text = text;
+			//cl("> keywords change to "+$("#keywords").val());
+			var text = $("#keywords").val();
+			if (text.length == 0 || _.trim(text) != "") {
+				this.searchParams.text = _.trim(text);
 				this.trigger("newsearch", this.searchParams);
 			}
 		},

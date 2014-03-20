@@ -4,6 +4,7 @@ define([
 	'utils/defines',
 	'core/BaseView',
 	'collections/items',
+	'views/header',
 	'views/search',
 	'views/map',
 	'views/results',
@@ -15,6 +16,7 @@ define([
 	Defines,
 	BaseView,
 	ItemsCollection,
+	HeaderView,
 	SearchView,
 	MapView,
 	ResultsView,
@@ -29,73 +31,86 @@ define([
 	
 		initialize: function() {
 			cl(this.className+".initialize");
-			this.items = new ItemsCollection();
-	 		this.views = new Backbone.ChildViewContainer();
-			this.views.add(new SearchView(), "search");
-			this.views.add(new MapView(), "map");
-			this.views.add(new ResultsView(), "results");
+			this.items = new ItemsCollection(); // create ItemsCollection
+	 		this.views = new Backbone.ChildViewContainer(); // ChildViewContainer with Backbone.babysitter
+			this.views.add(new HeaderView(), "header"); // create HeaderView
+			this.views.add(new SearchView(), "search"); // create SearchView
+			this.views.add(new MapView(), "map"); // create MapView
+			this.views.add(new ResultsView(), "results"); // create ResultsView
 
 			this.setListener();
 		},
 	
 		structureTemplate : _.template(structureTemplate),
-	
+			
 		render: function(){
 			cl(this.className+".render");		
 			this.$el.html(this.structureTemplate());
 			
+			// BaseView.assign method
 			this.assign({
-		        '.search'		: this.views.findByCustom("search"),
+		        '.header'		: this.views.findByCustom("header"), // render SearchView in $el '.search'
+		        '.search'		: this.views.findByCustom("search"), // render SearchView in $el '.search'
 		        '.mapside'		: this.views.findByCustom("map"),
 		        '.dataside'		: this.views.findByCustom("results")
 		    });
 		    
 		    this.resizeApp();
-			$(window).resize(this.resizeApp); // bind resize event
+			$(window).resize(this.resizeApp); // bind window.resize event
 
-		    this.loadItems();
-			
+			// initial load of all datas
+		    this.loadItems();			
 		},
 		
+		// initial load of all datas
 		loadItems: function() {
 			var get = this.items.fetchAll();
 			var that = this;
 			get.done(function(response) {
-				that.items.set(JSON.parse(response));
-				items = that.items.toArray();
-				that.views.findByCustom("map").initializeMarkes(items);
-				that.displaySearchCollection(items);
+				that.items.set(JSON.parse(response)); // set the data into items.collection
+				items = that.items.toArray(); // convert collection to array
+				that.views.findByCustom("map").initializeMarkes(items); // initialize tha array of markers
+				that.displayResults(items); // display initial results
 			});
 		},
 		
 		setListener: function() {
+			// set MapView listeners
 			this.views.findByCustom("map")
+			// when ResultView throw 'itemhoverin' event
 			.listenTo(this.views.findByCustom("results"), "itemhoverin", function(id) {
+				// highlight corresponding map marker
 				this.highlightMarker(id, Defines.opacity.high);
 			})
+			// when ResultView throw 'itemhoverin' event
 			.listenTo(this.views.findByCustom("results"), "itemhoverout", function(id) {
+				// unhighlight coresponding map marker
 				if (id != this.selectedMarker)
 					this.highlightMarker(id, Defines.opacity.low);
-			})		
-			.listenTo(this.views.findByCustom("results"), "itemselected", function(id) {
+			})
+			// when ResultView throw 'itemselected' event
+			.listenTo(this.views.findByCustom("results"), "itemselected", function(data) {
+				// unhighlight previous selected marker
 				if (this.selectedMarker)
 					this.highlightMarker(this.selectedMarker, Defines.opacity.low);
-				if (id != "none") { //doesn't highlight marker when id == 'none' 
-					this.selectedMarker = id;
-					this.highlightMarker(id, Defines.opacity.high);
+				if (data.id != "none") { //doesn't highlight marker when id == 'none' 
+					// define the new selected marker & highlight it
+					this.selectedMarker = data.id;
+					this.highlightMarker(data.id, Defines.opacity.high);
+					this.map.panTo(data.latLng);
 				}
 			});
 			
+			// when SearchView throw 'newsearch' event
 			this.listenTo(this.views.findByCustom("search"), "newsearch", function(params) {
+				// apply search with the 'params' object build in the search view
 				this.applySearch(params);
 			});
 		},
 		
 		applySearch: function(params) {
-			cl("> applysearch with params: ");
-			cl(params);
 			var req = null;
-			req = {};
+			req = {}; // format req object depending on the params object;
 			if (params.category != "0")
 				req.category = params.category;
 			if (params.city != "0")
@@ -105,8 +120,8 @@ define([
 			if (params.text != "")
 				req.text = params.text;
 			
-			
-//			var items = (_.isEmpty(req)) ? this.items.toArray() : this.items.where(req);
+			// basic Backbone.Collection.filter utilization with 'req' passed in context
+			// return an array of items
 			var items = this.items.filter(function(item) {
 				if (this.category && (this.category != item.get("category")))
 					return false;
@@ -116,23 +131,21 @@ define([
 					return false;
 				if (this.text) {
 					var text = _.trim(this.text.toLowerCase());
-					var name = item.get("name") ;
-					var desc = _.trim(item.get("description").toLowerCase());
-					cl("text : '"+text+"'");
-					cl("name : '"+name+"'");
-					cl("desc : '"+desc+"'");
-					if (name && _.str.include(_.trim(name.toLowerCase()), text))
-						return true;
-					if (desc && _.str.include(desc, text))
+					var name = item.get("name");
+					var desc = item.get("description");
+					// if text is include in the 'name' or the 'description'
+					if ((name && _.str.include(_.trim(name.toLowerCase()), text))
+						|| (desc && _.str.include(_.trim(desc.toLowerCase()), text)))
 						return true;
 					return false;					
 				}
 				return true;
 			}, req);
-			this.displaySearchCollection(items);
+			this.displayResults(items);
 		},
 		
-		displaySearchCollection: function(items) {
+		// call MapView & ResultView display methods with the filtered items Array
+		displayResults: function(items) {
 			this.views.findByCustom("map").displayItemsMarkers(items);
 			this.views.findByCustom("results").displayItemsData(items);
 		},

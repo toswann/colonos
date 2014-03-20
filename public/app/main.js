@@ -8,6 +8,7 @@ require.config({
 		'backbone.analytics'		:	'../lib/backbone.analytics',
 		'underscore'				: 	'../lib/underscore.min',
         'underscore.string'			: 	'../lib/underscore.string.min',
+        'i18next'					: 	'../lib/i18next.amd-1.7.2.min',
 		'jquery'					: 	'../lib/jquery.min',
 		'jquery.raty'				: 	'../lib/raty/jquery.raty',
 		'text'						: 	'../lib/text',
@@ -28,6 +29,9 @@ require.config({
 			deps : ['leaflet']	
 		},
 		'jquery.raty': {
+			deps : ['jquery']	
+		},
+		'i18next': {
 			deps : ['jquery']	
 		},
 		'underscore': {
