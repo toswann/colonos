@@ -3,9 +3,9 @@
 		"title"				: "Ruta de los Colonos"
 	},
 	"results": {
-		"count"				: "resultado(s) para tu búsqueda.",
+		"count"				: "resultados para tu búsqueda.",
 		"ratings"			: "opiníones",
-		"seesheet"			: "ESPSee the complete sheet"	
+		"seesheet"			: "Ver ficha completa"	
 	},
 	"search": {
 		"all": {
