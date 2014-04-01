@@ -18,6 +18,10 @@ if (file_exists('vendor/autoload.php')) {
 // load application config (error reporting etc.)
 require 'application/config/config.php';
 
+// load application constantes
+require 'application/config/constants.php';
+
+
 // load application class
 require 'application/libs/application.php';
 require 'application/libs/controller.php';
