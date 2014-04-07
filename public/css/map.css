@@ -1,0 +1,169 @@
+body {
+}
+
+.navbar {
+	margin-bottom: 0px;
+}
+
+.navbar	.navbar-right .flag {
+	padding-top: 10px;
+	padding-bottom: 5px;
+	padding-left: 0px;
+	padding-right: 5px;
+}
+
+
+#mapView {
+	width: 100%;
+}
+
+#mapView .marker-label {
+	display: none;
+}
+
+
+.mapside {
+	padding-left: 0px;
+	padding-right: 0px;
+	border-right: 1px solid #E5E5E5;	
+}
+
+
+
+
+.search {
+	padding-top: 20px;
+	padding-bottom: 20px;
+	background-color: #F5F5F5;
+	border-bottom: 1px solid #E5E5E5;
+}
+
+.search	.btn-group .btn {
+	padding-left: 6px;
+	padding-right: 6px;
+}
+
+@media (min-width: 1200px) { 
+	.search .btn-group .btn {
+		padding-left: 10px;
+		padding-right: 10px;
+	}	
+}
+
+.search	.group-wrapper {
+	text-align: center;
+}
+
+.search	.form-wrapper {
+	text-align: center;
+}
+
+
+.dataresult {
+	border-bottom: 1px solid #E5E5E5;
+	margin-bottom: 10px;
+}
+
+.dataresult	.wrapper {
+	height: 20px;
+	margin-top: 5px;
+	margin-bottom: 5px;
+}
+
+.dataresult	.wrapper p {
+	color: #999;
+	margin-top: 0px;
+	margin-bottom: 0px;
+	margin-left: 20px;
+}
+
+.datalist {
+		overflow-x: hidden;
+		overflow-y: auto;
+		padding-top: 3px;
+}
+
+.item {
+	padding-top: 15px;
+	padding-bottom: 15px;
+	margin-left: 5px;
+	margin-right: 5px;
+	margin-bottom: 5px;
+}
+.item:hover, .item:focus {
+	box-shadow: 0 0 4px rgba(0,0,0,0.2);
+	cursor: pointer;
+}
+.item.selected {
+	box-shadow: 0 0 4px rgba(0,0,0,0.4);		
+}
+.item .name h3 {
+	font-size: 20px;
+	vertical-align: top;
+	display: inline-block;
+	color: #333;
+	margin: 0;
+	padding: 0;
+	margin-bottom: 5px;
+}
+.item .category {
+	font-size: 14px;
+	color: #666;
+	margin-bottom: 5px;
+}
+.item .category-item {
+	float: left;
+	padding-right: 3px;
+}
+.item .category-item.text {
+	padding-top: 2px;
+}
+.item .category-item.text.grade {
+	color: red;
+	padding-right: 5px;
+}
+.item .first-infos, .item .second-infos {
+	font-size: 13px;
+	color: #999;
+}
+.item .first-infos a, .item .second-infos a {
+	text-decoration: none;
+	color: #999;
+}
+.item .first-infos a:hover, .item .second-infos a:hover {
+	text-decoration: underline;
+}
+.item .second-infos {
+	display: none;
+	color: #666;
+}
+.item .second-infos a {
+	color: #3a84df;
+}
+.item .second-infos blockquote {
+	font-size: 13px;
+	color: #666;
+	margin-bottom: 0px;
+}
+.item .second-infos .description {
+	padding-top: 5px;
+}
+.item .second-infos .seemore {
+	margin-top: 10px;
+	text-align: center;
+}
+.item .second-infos .seemore a {
+	color: white;
+	text-decoration: none;
+}
+.item .first-infos .address {
+	margin-right: 10px;
+}
+.item .first-infos .phone {
+	margin-right: 10px;
+}
+.item .second-infos .mail {
+	margin-right: 10px;
+}
+.item .second-infos .website {
+}
