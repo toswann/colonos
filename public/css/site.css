@@ -1,0 +1,38 @@
+.navbar {
+	margin-bottom: 0px;
+}
+
+.navbar	.navbar-right .flag {
+	padding-top: 10px;
+	padding-bottom: 5px;
+	padding-left: 0px;
+	padding-right: 5px;
+}
+
+#place-show h1 {
+	font-size: 32px;
+	margin-top: 70px;
+}
+
+#place-show blockquote {
+	font-size: 14px;
+}
+
+#place-show .thumbs {
+	padding-left: 30px;
+	margin-top: 15px;
+}
+
+#place-show .address {
+	padding-left: 30px;
+	margin-top: 15px;
+}
+
+#place-show address {
+	margin-bottom: 10px;
+}
+
+
+#place-show .flexslider {
+	width: 600px;
+}
