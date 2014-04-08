@@ -56,6 +56,38 @@ class Admin extends Controller {
         require APP_FOLDER_NAME.'/views/admin/editplace.php';
         require APP_FOLDER_NAME.'/views/admin/_footer_in.php';
     }
+    
+    public function saveeditplace() {
+    	$this->checkSession();
+    	$this->checkTypeAtLeast(C::D('TYPE_MODERATOR'));
+	    
+		$id = strip_tags($_POST["item-id"]);
+		$name = strip_tags($_POST["item-name"]);
+		$flatname = F::slugify($name);
+		$category = strip_tags($_POST["item-category"]);
+		$type = strip_tags($_POST["item-type"]);
+		$city = strip_tags($_POST["item-city"]);
+		$zone = strip_tags($_POST["item-zone"]);
+		$address = strip_tags($_POST["item-address"]);
+		$phone = strip_tags($_POST["item-phone"]);
+		$email = strip_tags($_POST["item-email"]);
+		$website = strip_tags($_POST["item-website"]);
+		$description = strip_tags($_POST["item-description"]);
+		$image = strip_tags($_POST["item-image"]);
+		$galery = strip_tags($_POST["item-galery"]);
+		$lat = strip_tags($_POST["item-lat"]);
+		$long = strip_tags($_POST["item-long"]);
+		$price = strip_tags($_POST["item-price"]);
+		//echo $id."<br>".$name."<br>".$flatname."<br>".$category."<br>".$type."<br>".$city."<br>".$zone."<br>".$address."<br>".$phone."<br>".$email."<br>".$website."<br>".$description."<br>".$image."<br>".$galery."<br>".$lat."<br>".$long."<br>".$price."<br>";
+		
+		$items_model = $this->loadModel('ItemsModel');
+		$item = $items_model->saveEditItem($id, $name, $flatname, $category, $type, $city, $zone, $address, $phone, $email, $website, $description, $image, $galery, $lat, $long, $price);
+		
+		
+		header('location: ' . URL . 'admin/places');
+		exit();
+		
+    }
 
 
     public function index() {

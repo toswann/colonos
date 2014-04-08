@@ -16,7 +16,12 @@
 				<% } %>
 		    	<div class="row first-infos">
 		    		<div class="col-md-12">
-		    			<div class="pull-left address"><%= i.address %></div>
+		    			<div class="pull-left"><span data-i18n="search.category.<%= CAT[i.category] %>"><%= CAT[i.category] %></span> - <span data-i18n="search.type.<%= T[i.type][1] %>"><%= T[i.type][1] %></span></div>
+		    		</div>
+		    	</div>
+		    	<div class="row first-infos">
+		    		<div class="col-md-12">
+		    			<div class="pull-left address"><%= i.address %>, <%= C[i.city] %></div>
 						<% if (i.phone) { %>
 		    			<div class="pull-left phone"><%= i.phone %></div>
 						<% } %>
@@ -36,8 +41,8 @@
 		    	</div>
 			</div>
 			<div class="col-md-3 thumb">
-				<% if (i.image) { %>
-		    	<img src="./public/storage/thumbs/<%= i.image %>" alt="<%= i.name %>" class="img-thumbnail">
+				<% if (i.image == 1) { %>
+		    	<img src="./public/storage/thumbs/<%= i.id %>.jpg" alt="<%= i.name %>" class="img-thumbnail">
 				<% } %>
 			</div>
 			

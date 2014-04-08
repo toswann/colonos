@@ -20,7 +20,7 @@ class Api extends Controller
         // load a model, perform an action, pass the returned data to a variable
         // NOTE: please write the name of the model "LikeThis"
         $items_model = $this->loadModel('ItemsModel');
-        $items = $items_model->getAllItems();
+        $items = $items_model->getAllActiveItems();
 
 		echo json_encode($items);
     }

@@ -17,8 +17,8 @@
 		</div>
 		<div class="col-xs-4">
 			<div class="thumbs">
-				<?php if (isset($item->image) && $item->image) { ?>
-				<img src="/public/storage/thumbs/<?=$item->image?>" class="img-thumbnail" />
+				<?php if (isset($item->image) && $item->image == 1) { ?>
+				<img src="/public/storage/thumbs/<?=$item->id?>.jpg" class="img-thumbnail" />
 				<?php } else { ?>
 				<img src="/public/storage/thumbs/na.jpg" class="img-rounded" />
 				<?php } ?>

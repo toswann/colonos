@@ -22,7 +22,7 @@ define('URL', 'http://rutadeloscolonos.cl/');
 
 define('APP_FOLDER_NAME', 'appserver');
 
-define('MAP_URL', "public/dist/main");
+define('MAP_URL', "appclient/main");
 
 /**
  * Configuration for: Database

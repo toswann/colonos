@@ -14,8 +14,8 @@ class ItemsModel
         }
     }
 
-    public function getAllItems() {
-        $sql = "SELECT * FROM items";
+    public function getAllActiveItems() {
+        $sql = "SELECT * FROM items WHERE state > '0'";
         $query = $this->db->prepare($sql);
         $query->execute();
 
@@ -37,7 +37,31 @@ class ItemsModel
         // $options = array(PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC ...
         return $query->fetchAll();
     }
+	
+	public function saveEditItem($id, $name, $flatname, $category, $type, $city, $zone, $address, $phone, $email, $website, $description, $image, $galery, $lat, $long, $price) {
+		$sql = "UPDATE items SET name=:name, flatname=:flatname, category=:category, type=:type, city=:city, zone=:zone, address=:address, phone=:phone, mail=:email, website=:website, description=:description, image=:image, galery=:galery, latitude=:lat, longitude=:long, price=:price WHERE id = :id";
+        $query = $this->db->prepare($sql);
+        $query->execute(array(
+        	':id' 			=> $id,
+        	':name' 		=> $name,
+        	':flatname' 	=> $flatname,
+        	':category' 	=> $category,
+        	':type' 		=> $type,
+        	':city' 		=> $city,
+        	':zone' 		=> $zone,
+        	':address' 		=> $address,
+        	':phone' 		=> $phone,
+        	':email' 		=> $email,
+        	':website' 		=> $website,
+        	':description' 	=> $description,
+        	':image' 		=> $image,
+        	':galery' 		=> $galery,
+        	':lat' 			=> $lat,
+        	':long' 		=> $long,
+        	':price' 		=> $price
+		));
 
+	}
 
     public function getItem($id) {
         $sql = "SELECT * FROM items WHERE id = :id";

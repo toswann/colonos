@@ -15,7 +15,7 @@
 				<td><?=$i+1?></td>
 				<td><?=$items[$i]->name?></td>
 				<td><?=$items[$i]->state?></td>
-				<td><a href="/admin/editplace/<?=$items[$i]->id?>">edit</a></td>
+				<td><a href="/admin/editplace/<?=$items[$i]->id?>" class="btn btn-default btn-xs">edit</a></td>
 			</tr>
 		
 		<?php } ?>

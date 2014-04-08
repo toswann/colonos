@@ -56,7 +56,7 @@ class C {
 	);
 
 	private static $types = array(
-			1	=>	[
+			1	=>	array(
 				1	=>	"Hotel",
 				2	=>	"Hostal",
 				3	=>	"Cabañas",
@@ -65,50 +65,50 @@ class C {
 				6	=>	"Hospedaje",
 				7	=>	"Hostería",
 				8	=>	"Motel"
-			],
-			2	=>	[
+			),
+			2	=>	array(
 				9	=>	"Restaurante",
 				10	=>	"Café",
 				11	=>	"Sandwicheria"
-			],
-			3	=>	[
+			),
+			3	=>	array(
 				12	=>	"Teatro",
 				13	=>	"Museo",
 				14	=>	"Cine",
 				15	=>	"Eventos"
-			],
-			4	=>	[
+			),
+			4	=>	array(
 				16	=>	"Flora",
 				17	=>	"Fauna",
 				18	=>	"Aves",
 				19	=>	"Geológico",
 				20	=>	"Playas"
-			],
-			5	=>	[
+			),
+			5	=>	array(
 				21	=>	"Rafting",
 				22	=>	"Canopy",
 				23	=>	"Cabalgatas",
 				24	=>	"Lodge",
 				25	=>	"Guías"
-			],
-			6	=>	[
+			),
+			6	=>	array(
 				26	=>	"Casino",
 				27	=>	"Discoteque",
 				28	=>	"Rodeo",
 				29	=>	"Centro de eventos",
 				30	=>	"SPA"
-			],
-			7	=>	[
+			),
+			7	=>	array(
 				31	=>	"Terrenos",
 				32	=>	"Casas",
 				33	=>	"Locales"
-			],
-			8	=>	[
+			),
+			8	=>	array(
 				34	=>	"Souvenirs",
 				35	=>	"Tejidos",
 				36	=>	"Alimentos",
 				37	=>	"Cerveza"
-			]
+			)
 	);
 
     public static function T($index) {

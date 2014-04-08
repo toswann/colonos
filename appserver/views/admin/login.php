@@ -5,7 +5,7 @@
 				<div class="form-group">
 					<label for="inputEmail3" class="col-sm-4 control-label">Email</label>
 					<div class="col-sm-8">
-						<input type="email" class="form-control" name="admin-form-mail" placeholder="Email" value="admg@colonos.com">
+						<input type="email" class="form-control" name="admin-form-mail" placeholder="Email" value="">
 					</div>
 				</div>
 				<div class="form-group">

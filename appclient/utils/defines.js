@@ -13,6 +13,25 @@ define(function() {
 					high	:	1,
 					low 	:	0.5
 				},
+				cities: [
+					"",
+					"Frutillar",
+					"Llanquihue",
+					"Puerto Varas",
+					"Puerto Octay",
+					"Puerto Montt"
+				],
+				categories: [
+					"",
+					"accomodation",
+					"food",
+					"culture",
+					"nature",
+					"aventure",
+					"entertainment",
+					"owner",
+					"products"
+				],
 				types: [
 						[
 							[0 , "all"]

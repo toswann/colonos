@@ -5,6 +5,7 @@ define([
 	'text!templates/results.html',
 	'text!templates/results-count.html',
 	'text!templates/results-item.html',
+	'utils/defines',
 	'jquery.raty'
 ], function(
 	_,
@@ -12,7 +13,8 @@ define([
 	Bootstrap,
 	resultTemplate,
 	resultCountTemplate,
-	resultItemTemplate
+	resultItemTemplate,
+	Defines
 ){
 	var ResultView = BaseView.extend({
 		
@@ -48,7 +50,12 @@ define([
 			that.$(".results-items-container").html(""); // clean the result list content
 			that.trigger("itemselected", {id:"none"}); // trigger itemselected with id:none to unhighlight the selectedMarker
 			items.forEach(function(item) {
-				that.$(".results-items-container").append(that.resultItemTemplate({i : item.toJSON()}));
+				that.$(".results-items-container").append(that.resultItemTemplate({
+					C : Defines.cities,
+					T : _.flatten(Defines.types, true),
+					CAT : Defines.categories,
+					i : item.toJSON()
+				}));
 				$(".item-"+item.get("id")+" .raty").raty({readOnly: true, score : item.get("averagegrade")});
 				$(".item-"+item.get("id")).click(function() {
 					that.selectItem(this);
