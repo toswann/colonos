@@ -14,11 +14,16 @@
     <!-- Custom styles for this template -->
     <link href="/public/css/site.css" rel="stylesheet">
     <link href="/public/css/admin.css" rel="stylesheet">
+    <link href="/public/lib/fileupload/css/jquery.fileupload.css" rel="stylesheet">
+    <link href="/public/lib/fileupload/css/jquery.fileupload-ui.css" rel="stylesheet">
+    <link href="/public/lib/fileupload/css/blueimp-gallery.min.css" rel="stylesheet">
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
       <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
+    <script src="/public/lib/jquery.min.js"></script>
+    <script src="/public/lib/bootstrap/js/bootstrap.min.js"></script>
   </head>
 
   <body>

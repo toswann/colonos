@@ -140,22 +140,6 @@
 </div>
 <div class="row">
 	<div class="form-group col-sm-6 col-md-4 col-lg-3">
-		<label for="item-galery">Galery</label>
-		<input type="text" id="item-galery" name="item-galery" class="form-control" value="<?php if (isset($item) && $item->galery) { echo $item->galery; } ?>">
-	</div>
-	<div class="form-group col-sm-6 col-md-4 col-lg-3">
-		<?php if (isset($item) && $item->id) { ?>
-		<p class="hint-id"><strong>hint:</strong> your id is <code><?php echo $item->id; ?></code></p>
-		<? } ?>
-	</div>
-	<div class="hidden-sm col-md-4  col-lg-6">
-		<div class="bs-callout bs-callout-warning help">
-			<p>Indicate the number of images you have in your galery ex: <code>6</code> if you have 6 images. Your images must be stored in your ftp at <code>/www/public/storage/galeries/</code>, renamed id-numimage.jpg ex: <code>'3-1.jpg' ... '3-6.jpg'</code> and the size 600x400 px.</p>
-		</div>
-	</div>
-</div>
-<div class="row">
-	<div class="form-group col-sm-6 col-md-4 col-lg-3">
 		<label for="item-lat">Latitude</label>
 		<input type="text" class="form-control" id="item-lat" name="item-lat" value="<?php if (isset($item) && $item->latitude) { echo $item->latitude; } ?>">					</div>
 	<div class="form-group col-sm-6 col-md-4 col-lg-3">

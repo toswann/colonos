@@ -22,7 +22,8 @@ define('URL', 'http://colonos:8888/');
 
 define('APP_FOLDER_NAME', 'appserver');
 
-define('MAP_URL', "appclient/main");
+define('MAP_JS_URL', 	"appclient/main");
+define('MAP_CSS_URL', 	"public/css");
 
 /**
  * Configuration for: Database

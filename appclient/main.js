@@ -5,7 +5,6 @@ require.config({
 	paths: {
 		'backbone'					: 	'../public/lib/backbone.min',
 		'backbone.babysitter'		:	'../public/lib/backbone.babysitter.min',
-		'backbone.analytics'		:	'../public/lib/backbone.analytics',
 		'underscore'				: 	'../public/lib/underscore.min',
         'underscore.string'			: 	'../public/lib/underscore.string.min',
 		'jquery'					: 	'../public/lib/jquery.min',
@@ -47,9 +46,6 @@ require.config({
 			exports : 'Backbone'
 		},
 		'backbone.babysitter': {
-			deps: ['backbone']
-		},
-		'backbone.analytics': {
 			deps: ['backbone']
 		},
 		'bootstrap': {

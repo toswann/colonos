@@ -74,14 +74,13 @@ class Admin extends Controller {
 		$website = strip_tags($_POST["item-website"]);
 		$description = strip_tags($_POST["item-description"]);
 		$image = strip_tags($_POST["item-image"]);
-		$galery = strip_tags($_POST["item-galery"]);
 		$lat = strip_tags($_POST["item-lat"]);
 		$long = strip_tags($_POST["item-long"]);
 		$price = strip_tags($_POST["item-price"]);
 		//echo $id."<br>".$name."<br>".$flatname."<br>".$category."<br>".$type."<br>".$city."<br>".$zone."<br>".$address."<br>".$phone."<br>".$email."<br>".$website."<br>".$description."<br>".$image."<br>".$galery."<br>".$lat."<br>".$long."<br>".$price."<br>";
 		
 		$items_model = $this->loadModel('ItemsModel');
-		$item = $items_model->saveEditItem($id, $name, $flatname, $category, $type, $city, $zone, $address, $phone, $email, $website, $description, $image, $galery, $lat, $long, $price);
+		$item = $items_model->saveEditItem($id, $name, $flatname, $category, $type, $city, $zone, $address, $phone, $email, $website, $description, $image, $lat, $long, $price);
 		
 		
 		header('location: ' . URL . 'admin/places');

@@ -1,0 +1,59 @@
+<div class="row item item-<%= i.id%>" data-ref="<%= i.id%>">
+	<div class="col-md-12">
+		<div class="row">
+			<div class="col-md-9">
+		    	<div class="row name">
+		    		<div class="col-md-12"><h3><%= i.name %></h3></div>
+		    	</div>
+				<% if (i.nbvoters) { %>
+		    	<div class="row category">
+		    		<div class="col-md-12">
+		    			<div class="category-item text grade"><%= _.numberFormat(_.toNumber(i.averagegrade, 1), 1, ',') %></div>
+		    			<div class="category-item"><div class="raty"></div></div>
+		    			<div class="category-item text voters"><%= i.nbvoters %> <span data-i18n="results.ratings">ratings</span></div>
+		    		</div>
+		    	</div>
+				<% } %>
+		    	<div class="row first-infos">
+		    		<div class="col-md-12">
+		    			<div class="pull-left"><span data-i18n="search.category.<%= CAT[i.category] %>"><%= CAT[i.category] %></span> - <span data-i18n="search.type.<%= T[i.type][1] %>"><%= T[i.type][1] %></span></div>
+		    		</div>
+		    	</div>
+		    	<div class="row first-infos">
+		    		<div class="col-md-12">
+		    			<div class="pull-left address"><%= i.address %>, <%= C[i.city] %></div>
+						<% if (i.phone) { %>
+		    			<div class="pull-left phone"><%= i.phone %></div>
+						<% } %>
+		    		</div>
+		    	</div>
+		    	<div class="row second-infos">
+		    		<div class="col-md-12">
+		    			<div class="clearfix">
+							<% if (i.mail) { %>
+			    			<div class="pull-left mail"><a href="mailto:<%= i.mail %>" target="_blank"><%= i.mail %></a></div>
+							<% } %>
+			    			<% if (i.website) { %>
+							<div class="pull-left website"><a href="<%= i.website %>"  target="_blank"><%= i.website %></a></div>	    			
+							<% } %>
+		    			</div>
+					</div>		        	
+		    	</div>
+			</div>
+			<div class="col-md-3 thumb">
+				<% if (i.image == 1) { %>
+		    	<img src="./public/storage/thumbs/<%= i.id %>.jpg" alt="<%= i.name %>" class="img-thumbnail">
+				<% } %>
+			</div>
+			
+		</div>
+		<div class="row second-infos">
+			<div class="col-md-12">
+				<% if (i.description) { %>
+    			<div class="description"><blockquote><%= i.description %></blockquote></div>
+				<% } %>
+    			<div class="seemore"><a href="/place/show/<%= i.id %>/<%= i.flatname %>" class="btn btn-primary btn-xs" target="_blank" data-i18n="results.seesheet">see all the informations</a></div>
+			</div>			
+		</div>
+	</div>
+</div>

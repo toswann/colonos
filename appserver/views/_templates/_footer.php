@@ -2,7 +2,7 @@
     <script src="/public/lib/bootstrap/js/bootstrap.min.js"></script>
     <script src="/public/lib/flexslider/jquery.flexslider.min.js"></script>
 	<?php if (isset($showjs)) {?>
-    	<script src="/public/js/show.js"></script>
+    	<script src="/public/js/place.show.js"></script>
 	<?php } ?>
 	<script>
 	  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){

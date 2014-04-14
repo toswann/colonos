@@ -9,12 +9,7 @@
 		
 		<title>Ruta de los Colonos</title>
 		
-		<link href="/public/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-		<link href="/public/lib/font-awesome/css/font-awesome.min.css" rel="stylesheet">
-		<link href="/public/lib/leaflet/leaflet.css" rel="stylesheet">
-		<link href="/public/lib/leaflet-awesome/leaflet.awesome-markers.css" rel="stylesheet">
-		<link href="/public/lib/leaflet.label/leaflet.label.css" rel="stylesheet">
-		<link href="/public/css/map.css" rel="stylesheet">		
+		<link href="<?php echo MAP_CSS_URL ?>/map.css" rel="stylesheet">		
 		<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
 		<!--[if lt IE 9]>
 		<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
@@ -24,7 +19,7 @@
 			var env = "development";
 			var cl = function(val) { (window.env == "development") ? console.log(val) : '';};	    
 		</script>
-		<script type="text/javascript" data-main="<?php echo MAP_URL ?>" src="/public/lib/require.js"></script>
+		<script type="text/javascript" data-main="<?php echo MAP_JS_URL ?>" src="/public/lib/require.js"></script>
 		<script type="text/javascript">
 			require.config({
 			urlArgs: "bust=" + (new Date()).getTime()

@@ -38,7 +38,7 @@ class ItemsModel
         return $query->fetchAll();
     }
 	
-	public function saveEditItem($id, $name, $flatname, $category, $type, $city, $zone, $address, $phone, $email, $website, $description, $image, $galery, $lat, $long, $price) {
+	public function saveEditItem($id, $name, $flatname, $category, $type, $city, $zone, $address, $phone, $email, $website, $description, $image, $lat, $long, $price) {
 		$sql = "UPDATE items SET name=:name, flatname=:flatname, category=:category, type=:type, city=:city, zone=:zone, address=:address, phone=:phone, mail=:email, website=:website, description=:description, image=:image, galery=:galery, latitude=:lat, longitude=:long, price=:price WHERE id = :id";
         $query = $this->db->prepare($sql);
         $query->execute(array(
@@ -55,7 +55,6 @@ class ItemsModel
         	':website' 		=> $website,
         	':description' 	=> $description,
         	':image' 		=> $image,
-        	':galery' 		=> $galery,
         	':lat' 			=> $lat,
         	':long' 		=> $long,
         	':price' 		=> $price
@@ -70,6 +69,19 @@ class ItemsModel
 
         return $query->fetch();
     }
+
+	public function getItemGalery($id) {
+        $sql = "SELECT galery FROM items WHERE id = :id";
+        $query = $this->db->prepare($sql);
+        $query->execute(array(':id' => $id));
+        return $query->fetch();		
+	}
+
+	public function updateItemGalery($id, $galery) {
+        $sql = "UPDATE items SET galery=:galery WHERE id = :id";
+        $query = $this->db->prepare($sql);
+        return $query->execute(array(':id' => $id, ':galery' => $galery));
+	}
 
 
 }

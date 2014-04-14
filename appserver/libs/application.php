@@ -72,7 +72,7 @@ class Application
 
             // split URL
             $url = rtrim($_GET['url'], '/');
-            $url = filter_var($url, FILTER_SANITIZE_URL);
+            //$url = filter_var($url, FILTER_SANITIZE_URL);
             $url = explode('/', $url);
 
             // Put URL parts into according properties

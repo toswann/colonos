@@ -27,7 +27,7 @@
 				<address>
 					<strong><?=$item->name?></strong><br>
 					<?=$item->address?><br>
-					<?=C::CITIES($item->city)?>, <?=C::ZONES($item->zone)?> zona
+					<?=C::CITIES($item->city)?>, zona <?=C::ZONES($item->zone)?>
 				</address>
 				<address>
 					<strong>Contacto</strong><br>
@@ -46,10 +46,19 @@
 	<div class="row">
 		<div class="col-xs-12 galery">
 			<p><strong>Galeria de fotos :</strong></p>				
-			<div class="flexslider">
+			<div class="flexslider" id="slider">
 				<ul class="slides">
 					<?php for ($i = 1; $i <= (integer)$item->galery; $i++) { ?>
-					<li data-thumb="/public/storage/galeries/<?=$item->id."-".$i.".jpg"?>">
+					<li>
+						<img src="/public/storage/galeries/<?=$item->id."-".$i.".jpg"?>" />
+					</li>
+					<?php } ?>
+				</ul>
+			</div>
+			<div class="flexslider" id="carousel">
+				<ul class="slides">
+					<?php for ($i = 1; $i <= (integer)$item->galery; $i++) { ?>
+					<li>
 						<img src="/public/storage/galeries/<?=$item->id."-".$i.".jpg"?>" />
 					</li>
 					<?php } ?>
