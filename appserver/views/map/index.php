@@ -12,11 +12,12 @@
 		<link href="<?php echo MAP_CSS_URL ?>/map.css" rel="stylesheet">		
 		<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
 		<!--[if lt IE 9]>
-		<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-		<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+		<script src="/public/js/ie.support.js"></script>
+		<script src="/public/lib/html5shiv.js"></script>
+		<script src="/public/lib/respond.min.js"></script>
 		<![endif]-->
 		<script type="text/javascript">
-			var env = "development";
+			var env = "<?php echo APP_ENV ?>";
 			var cl = function(val) { (window.env == "development") ? console.log(val) : '';};	    
 		</script>
 		<script type="text/javascript" data-main="<?php echo MAP_JS_URL ?>" src="/public/lib/require.js"></script>

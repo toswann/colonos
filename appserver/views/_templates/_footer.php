@@ -1,7 +1,11 @@
     <script src="/public/lib/jquery.min.js"></script>
     <script src="/public/lib/bootstrap/js/bootstrap.min.js"></script>
     <script src="/public/lib/flexslider/jquery.flexslider.min.js"></script>
-	<?php if (isset($showjs)) {?>
+	<?php if (isset($voteindex)) {?>
+    	<script src="/public/lib/jquery.validate.min.js"></script>
+    	<script src="/public/js/vote.index.js"></script>
+	<?php } ?>
+	<?php if (isset($placeshow)) {?>
     	<script src="/public/js/place.show.js"></script>
 	<?php } ?>
 	<script>

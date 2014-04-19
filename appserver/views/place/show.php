@@ -42,24 +42,26 @@
 			</div>
 		</div>
 	</div>
-	<?php if (isset($item->galery) && $item->galery) { ?>
+	<?php if (isset($item->galery)) {
+			$photos = unserialize($item->galery);
+			if ($photos && count($photos) > 0) { ?>
 	<div class="row">
 		<div class="col-xs-12 galery">
 			<p><strong>Galeria de fotos :</strong></p>				
 			<div class="flexslider" id="slider">
 				<ul class="slides">
-					<?php for ($i = 1; $i <= (integer)$item->galery; $i++) { ?>
+					<?php foreach ($photos as $photo) { ?>
 					<li>
-						<img src="/public/storage/galeries/<?=$item->id."-".$i.".jpg"?>" />
+						<img src="/public/storage/galeries/<?=$item->id."/".$photo?>" />
 					</li>
 					<?php } ?>
 				</ul>
 			</div>
 			<div class="flexslider" id="carousel">
 				<ul class="slides">
-					<?php for ($i = 1; $i <= (integer)$item->galery; $i++) { ?>
+					<?php foreach ($photos as $photo) { ?>
 					<li>
-						<img src="/public/storage/galeries/<?=$item->id."-".$i.".jpg"?>" />
+						<img src="/public/storage/galeries/<?=$item->id."/".$photo?>" />
 					</li>
 					<?php } ?>
 				</ul>
@@ -67,5 +69,5 @@
 
 		</div>
 	</div>
-	<?php } ?>
+	<?php } } ?>
 </div>

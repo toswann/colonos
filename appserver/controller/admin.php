@@ -2,6 +2,8 @@
 
 session_start();
 
+require APP_FOLDER_NAME.'/utils/GaleryUploadHandler.php';
+
 class Admin extends Controller {
 
 
@@ -33,7 +35,7 @@ class Admin extends Controller {
         require APP_FOLDER_NAME.'/views/admin/_footer_in.php';
     }
 
-    public function editplace($id) {
+    public function editinfos($id) {
     	$this->checkSession();
     	$this->checkState();
     	$this->checkTypeAtLeast(C::D('TYPE_MODERATOR'));
@@ -53,13 +55,87 @@ class Admin extends Controller {
 		}
 		require APP_FOLDER_NAME.'/views/admin/_header_in.php';
         require APP_FOLDER_NAME.'/views/admin/sidenav.php';
-        require APP_FOLDER_NAME.'/views/admin/editplace.php';
+        require APP_FOLDER_NAME.'/views/admin/place_edit_infos.php';
         require APP_FOLDER_NAME.'/views/admin/_footer_in.php';
+    }
+
+    public function editphotos($id) {
+    	$this->checkSession();
+    	$this->checkState();
+    	$this->checkTypeAtLeast(C::D('TYPE_MODERATOR'));
+
+	    $places = "active";
+
+		$items_model = $this->loadModel('ItemsModel');
+		$item = $items_model->getItem($id);
+
+		// if the user is the admin of the place		
+		if (isset($item) && $item && $_SESSION["user"]->id == $item->id_admin) {
+			echo "edit";
+		}
+		else {
+			header('location: ' . URL . 'admin/places');
+			exit();
+		}
+		require APP_FOLDER_NAME.'/views/admin/_header_in.php';
+        require APP_FOLDER_NAME.'/views/admin/sidenav.php';
+        require APP_FOLDER_NAME.'/views/admin/place_edit_photos.php';
+        require APP_FOLDER_NAME.'/views/admin/_footer_in.php';
+    }
+
+
+    public function editcodes($id) {
+    	$this->checkSession();
+    	$this->checkState();
+    	$this->checkTypeAtLeast(C::D('TYPE_MODERATOR'));
+
+	    $places = "active";
+
+		$items_model = $this->loadModel('ItemsModel');
+		$item = $items_model->getItem($id);
+
+		// if the user is the admin of the place		
+		if (isset($item) && $item && $_SESSION["user"]->id == $item->id_admin) {
+		    $codes_model = $this->loadModel('CodesModel');
+		    $codes = $codes_model->getItemCodes($item->id);
+		    $nb_new_code = $this->countCode($codes, C::D("CODE_STATUS_NEW"));
+		    $nb_print_code = $this->countCode($codes, C::D("CODE_STATUS_PRINT"));
+		    $nb_used_code = $this->countCode($codes, C::D("CODE_STATUS_USED"));
+		}
+		else {
+			header('location: ' . URL . 'admin/places');
+			exit();
+		}
+		require APP_FOLDER_NAME.'/views/admin/_header_in.php';
+        require APP_FOLDER_NAME.'/views/admin/sidenav.php';
+        require APP_FOLDER_NAME.'/views/admin/place_edit_codes.php';
+        require APP_FOLDER_NAME.'/views/admin/_footer_in.php';
+    }
+    
+    public function generatecode() {
+    	$this->checkSession();
+
+	    $id_item = $_POST["item-id"];
+	    $nb_code = $_POST["nb-code"];
+	    
+	    $codes_model = $this->loadModel('CodesModel');
+	    
+		for ($i = 0; $i < $nb_code; $i++) {
+			$code = F::generate_code();
+			if (!$codes_model->checkCodeExist($code)) {
+				if(!$codes_model->insertNewCode($id_item, $code)) {
+					$i--;
+				}
+			}
+			else
+				$i--;
+		}
+		header('location: ' . URL . 'admin/editcodes/'.$id_item);
+		exit();		
     }
     
     public function saveeditplace() {
     	$this->checkSession();
-    	$this->checkTypeAtLeast(C::D('TYPE_MODERATOR'));
 	    
 		$id = strip_tags($_POST["item-id"]);
 		$name = strip_tags($_POST["item-name"]);
@@ -86,6 +162,23 @@ class Admin extends Controller {
 		header('location: ' . URL . 'admin/places');
 		exit();
 		
+    }
+
+    public function galeryUpload($id = null, $name = null) {
+
+        $items_model = $this->loadModel('ItemsModel');
+
+		if ($id == null)
+			$id = $_POST["item-id"];
+		if ($name)
+			$name = F::utf8_urldecode($name);
+		$upload_handler = new GaleryUploadHandler(array(
+		    'user_dirs' 		=> 	true,
+		    'download_via_php' 	=> 	true,
+		    'items_model'		=>	$items_model,
+		    'item_id'			=> 	$id,
+		    'item_name'			=>	$name
+		));
     }
 
 
@@ -178,7 +271,15 @@ class Admin extends Controller {
     		exit();
     	}
     }
-
+    
+    private function countCode($codes, $status) {
+    	$count = 0;
+	    for ($i = 0; $i < count($codes); $i++) {
+		    if ($codes[$i]->status == $status)
+		    	$count++;
+	    }
+	    return $count;
+    }
 
 }
 

@@ -62,3 +62,35 @@
 
 #place-show .flexslider {
 }
+
+#vote-index .code-form {
+	padding-top: 50px;
+	text-align: center;
+}
+
+#vote-index .code-form div {
+	width: 200px;
+	margin: auto;
+}
+
+#vote-index .code-form button {
+	margin-top: 20px;
+}
+
+.code-form-container {
+	margin-top: 22px;
+	margin-bottom: 22px;
+}
+
+.vote-form {
+	display: none;
+	margin-bottom: 50px;
+}
+
+.vote-form div.error {
+	margin-top: 10px;
+}
+
+.vote-form .star {
+	color: red;
+}

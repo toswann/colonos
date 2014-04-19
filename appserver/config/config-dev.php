@@ -25,6 +25,8 @@ define('APP_FOLDER_NAME', 'appserver');
 define('MAP_JS_URL', 	"appclient/main");
 define('MAP_CSS_URL', 	"public/css");
 
+define('APP_ENV', 	"development");
+
 /**
  * Configuration for: Database
  * This is the place where you define your database credentials, database type etc.

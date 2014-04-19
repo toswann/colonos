@@ -62,6 +62,4 @@ require( [ 'app' ], function( App ){
 
 	window.app = new App();
 	window.app.render();
-	console.log('App started');
-
 });

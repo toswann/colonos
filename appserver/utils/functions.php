@@ -24,6 +24,9 @@ class F {
 		return html_entity_decode($str,null,'UTF-8');;
 	}
 
+	static public function generate_code($length = 10) {
+	    return substr(str_shuffle("123456789ABCDEFGHJKLMNOPQRSTUVWXYZ"), 0, $length);
+	}
 }
 
 

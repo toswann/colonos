@@ -8,7 +8,7 @@ class Place extends Controller {
 			$item = $items_model->getItem($id);
 		}
 		if (isset($item) && $item) {
-			$showjs = true;
+			$placeshow = true; // activate place.show.js in the view
 			require APP_FOLDER_NAME.'/views/_templates/_header.php';
 	        require APP_FOLDER_NAME.'/views/place/show.php';
 	        require APP_FOLDER_NAME.'/views/_templates/_footer.php';    	

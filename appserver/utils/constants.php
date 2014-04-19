@@ -12,7 +12,28 @@ class C {
     	'TYPE_USER'				=> 0,
     	'TYPE_MODERATOR'		=> 1,
     	'TYPE_ZONE_ADMIN'		=> 2,
-    	'TYPE_GENERAL_ADMIN'	=> 3    	
+    	'TYPE_GENERAL_ADMIN'	=> 3,
+    	
+    	'ITEM_STATE_OFFLINE'	=> 0,
+    	'ITEM_STATE_VALID'		=> 1,
+    	'ITEM_STATE_MODIFIED'	=> 2,
+
+    	'CODE_STATUS_NEW'		=> 0,
+    	'CODE_STATUS_PRINT'		=> 1,
+    	'CODE_STATUS_USED'		=> 2
+    );
+
+    private static $item_state = array(
+		array("OFFLINE"		, "default"),
+		array("VALID"		, "success"),
+		array("MODIFIED"	, "warning")
+    );
+
+    
+    private static $code_status = array(
+		array("NUEVO"	, "default"),
+		array("IMPRESO"	, "primary"),
+		array("USADO"	, "success")
     );
 
     private static $text = array(
@@ -117,6 +138,14 @@ class C {
 
     public static function D($index) {
         return self::$defines[$index];
+    }
+
+    public static function ITEM_STATE($index, $key = 0) {
+        return self::$item_state[$index][$key];
+    }
+
+    public static function CODE_STATUS($index, $key = 0) {
+        return self::$code_status[$index][$key];
     }
 
 	public static function CATEGORIES($id = null) {

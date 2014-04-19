@@ -94,3 +94,14 @@ body {
 .main .page-header {
   margin-top: 0;
 }
+
+#places .text {
+	font-size: 18px;
+	padding-top: 12px;
+}
+
+
+#place-code td, #place-code th {
+	text-align: center;
+}
+
