@@ -369,7 +369,6 @@
                     };
                 if (data.url) {
                     data.dataType = data.dataType || that.options.dataType;
-                    console.log(data);
                     $.ajax(data).done(removeNode).fail(function () {
                         that._trigger('destroyfailed', e, data);
                     });

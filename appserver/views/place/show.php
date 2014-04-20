@@ -50,13 +50,16 @@
 			<p><strong>Galeria de fotos :</strong></p>				
 			<div class="flexslider" id="slider">
 				<ul class="slides">
-					<?php foreach ($photos as $photo) { ?>
-					<li>
-						<img src="/public/storage/galeries/<?=$item->id."/".$photo?>" />
-					</li>
-					<?php } ?>
+					<?php for ($i = 0; $i < count($photos) ;$i++) { 
+						if ($i > 0) {
+					?>
+					<li><img class="lazy" src="/public/img/loading.gif" data-src="/public/storage/galeries/<?=$item->id."/".$photos[$i]?>" /></li>
+					<?php } else { ?>
+					<li><img class="first" src="/public/storage/galeries/<?=$item->id."/".$photos[$i]?>" /></li>
+					<?php } } ?>
 				</ul>
 			</div>
+<!--
 			<div class="flexslider" id="carousel">
 				<ul class="slides">
 					<?php foreach ($photos as $photo) { ?>
@@ -66,6 +69,7 @@
 					<?php } ?>
 				</ul>
 			</div>
+-->
 
 		</div>
 	</div>

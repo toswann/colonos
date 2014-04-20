@@ -164,7 +164,7 @@ class Admin extends Controller {
 		
     }
 
-    public function galeryUpload($id = null, $name = null) {
+    public function galeryUpload($id = null, $name = null, $delete = false) {
 
         $items_model = $this->loadModel('ItemsModel');
 
@@ -172,12 +172,16 @@ class Admin extends Controller {
 			$id = $_POST["item-id"];
 		if ($name)
 			$name = F::utf8_urldecode($name);
+		if ($delete == "delete")
+			$delete = true; 
+			
 		$upload_handler = new GaleryUploadHandler(array(
 		    'user_dirs' 		=> 	true,
 		    'download_via_php' 	=> 	true,
 		    'items_model'		=>	$items_model,
 		    'item_id'			=> 	$id,
-		    'item_name'			=>	$name
+		    'item_name'			=>	$name,
+		    'delete'			=>	$delete
 		));
     }
 

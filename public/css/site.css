@@ -94,3 +94,21 @@
 .vote-form .star {
 	color: red;
 }
+
+#slider.flexslider {
+    width: 600px;
+    height: 400px;
+}
+
+#slider.flexslider img.lazy {
+    width: 32px;
+    height: 32px;
+}
+
+/*
+#slider.flexslider .slides img {
+    width: 600px;
+    height: 400px;
+}
+
+*/
