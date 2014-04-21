@@ -35,13 +35,11 @@
 			<div class="form-wrapper">
 				<form class="form-inline" role="form">
 					<div class="form-group">
-						<select class="form-control city-select">
-							<option value="0" data-i18n="search.city.all">Ciudad...</option>
-							<option value="1">Frutillar</option>
-							<option value="2">Llanquihue</option>
-							<option value="3">Puerto Varas</option>
-							<option value="4">Puerto Octay</option>
-							<option value="5">Puerto Montt</option>
+						<select class="form-control zone-select">
+							<option value="0" data-i18n="search.zone.all">Zona...</option>
+							<% for(var i = 1; i < zones.length; i++) { %>
+							<option value="<%=i%>"><%=zones[i]%></option>
+							<% }; %>
 						</select>
 					</div>
 					<div class="form-group search-type-container">

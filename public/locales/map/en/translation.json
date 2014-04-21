@@ -22,8 +22,8 @@
 			"owner"			: "Owner",
 			"products"		: "Products"
 		},
-		"city": {
-			"all"			: "City..."	
+		"zone": {
+			"all"			: "Zone..."	
 		},
 		"type": {
 			"all"			: "Type...",

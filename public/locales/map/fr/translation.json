@@ -22,8 +22,8 @@
 			"owner"			: "Propriété",
 			"products"		: "Produits"
 		},
-		"city": {
-			"all"			: "Ville..."	
+		"zone": {
+			"all"			: "Zone..."	
 		},
 		"type": {
 			"all"			: "Type...",

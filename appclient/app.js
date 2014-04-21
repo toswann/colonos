@@ -124,8 +124,8 @@ define([
 			req = {}; // format req object depending on the params object;
 			if (params.category != "0")
 				req.category = params.category;
-			if (params.city != "0")
-				req.city = params.city;
+			if (params.zone != "0")
+				req.zone = params.zone;
 			if (params.type != "0")
 				req.type = params.type;
 			if (params.text != "")
@@ -136,7 +136,7 @@ define([
 			var items = this.items.filter(function(item) {
 				if (this.category && (this.category != item.get("category")))
 					return false;
-				if (this.city && (this.city != item.get("city")))
+				if (this.zone && (this.zone != item.get("zone")))
 					return false;
 				if (this.type && (this.type != item.get("type")))
 					return false;
