@@ -62,7 +62,7 @@ define([
 
 			i18n.init({
 				lng: "es",
-				resGetPath: 'public/locales/__lng__/__ns__.json',
+				resGetPath: 'public/locales/map/__lng__/__ns__.json',
 				fallbackLng: 'es'
 			 }, function() {
 				 $("body").i18n();			 
