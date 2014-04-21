@@ -10,7 +10,7 @@
 		<title>Ruta de los Colonos</title>
 		
 		<link href="/public/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-		<link href="/public/lib/flexslider/flexslider.css" rel="stylesheet">
+		<link href="/public/lib/rs.slideshow/rs.slideshow.css" rel="stylesheet">
 		<link href="/public/css/site.css" rel="stylesheet">		
 		<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
 		<!--[if lt IE 9]>

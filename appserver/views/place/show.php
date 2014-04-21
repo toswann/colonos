@@ -47,29 +47,32 @@
 			if ($photos && count($photos) > 0) { ?>
 	<div class="row">
 		<div class="col-xs-12 galery">
-			<p><strong>Galeria de fotos :</strong></p>				
-			<div class="flexslider" id="slider">
-				<ul class="slides">
-					<?php for ($i = 0; $i < count($photos) ;$i++) { 
-						if ($i > 0) {
-					?>
-					<li><img class="lazy" src="/public/img/loading.gif" data-src="/public/storage/galeries/<?=$item->id."/".$photos[$i]?>" /></li>
-					<?php } else { ?>
-					<li><img class="first" src="/public/storage/galeries/<?=$item->id."/".$photos[$i]?>" /></li>
-					<?php } } ?>
-				</ul>
-			</div>
-<!--
-			<div class="flexslider" id="carousel">
-				<ul class="slides">
-					<?php foreach ($photos as $photo) { ?>
-					<li>
-						<img src="/public/storage/galeries/<?=$item->id."/".$photo?>" />
-					</li>
+			<p><strong>Galeria de fotos :</strong></p>
+			<div class="rss-container">
+			
+				<div id="slideshow" class="rs-slideshow">
+					<div class="slide-container">
+						<img src="/public/storage/galeries/<?=$item->id."/".$photos[0]?>" alt="" />
+					</div>
+					<ol class="slides">
+					<?php for ($i = 1; $i < count($photos) ;$i++) { ?>
+						<li>
+							<a href="/public/storage/galeries/<?=$item->id."/".$photos[$i]?>"></a>
+						</li>
 					<?php } ?>
-				</ul>
+					</ol>
+				</div>
+				
+				
+				<!--<ul class="controls clearfix">
+					<li><a href="#" class="rs-play-pause" data-control-for="slideshow">Click to Pause</a></li>
+					<li><a href="#" class="rs-prev" data-control-for="slideshow">Previous Slide</a></li>
+					<li><a href="#" class="rs-next" data-control-for="slideshow">Next Slide</a></li>
+				</ul>-->
+				
+			
+			
 			</div>
--->
 
 		</div>
 	</div>
