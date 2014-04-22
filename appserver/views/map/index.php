@@ -22,9 +22,10 @@
 		</script>
 		<script type="text/javascript" data-main="<?php echo MAP_JS_URL ?>" src="/public/lib/require.js"></script>
 		<script type="text/javascript">
-			require.config({
+		/*	require.config({
 			urlArgs: "bust=" + (new Date()).getTime()
 			});
+		*/
 		</script>
 		<script>
 		  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
