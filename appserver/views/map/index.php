@@ -18,16 +18,16 @@
 		<![endif]-->
 		<script type="text/javascript">
 			var env = "<?php echo APP_ENV ?>";
-			var cl = function(val) { (window.env == "development") ? console.log(val) : '';};	    
+			var cl = function(val) { (window.env == "development") ? console.log(val) : '';};				    
 		</script>
 		<script type="text/javascript" data-main="<?php echo MAP_JS_URL ?>" src="/public/lib/require.js"></script>
-		<script type="text/javascript">
-		/*	require.config({
-			urlArgs: "bust=" + (new Date()).getTime()
-			});
-		*/
-		</script>
 		<script>
+			if (env == "development") {
+				require.config({
+				urlArgs: "bust=" + (new Date()).getTime()
+				});
+			}
+
 		  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
 		  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
 		  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
