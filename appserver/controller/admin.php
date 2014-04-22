@@ -83,7 +83,6 @@ class Admin extends Controller {
         require APP_FOLDER_NAME.'/views/admin/_footer_in.php';
     }
 
-
     public function editcodes($id) {
     	$this->checkSession();
     	$this->checkState();

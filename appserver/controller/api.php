@@ -28,11 +28,11 @@ class Api extends Controller
 					echo json_encode(array("state" => true, "infos" => $res));		
 	        	}
 	        	else {
-		        	echo json_encode(array("state" => false, "message" => "Código ya utilizado"));
+		        	echo json_encode(array("state" => false, "error" => "code_used"));
 	        	}
 	        }
 			else	        
-		    	echo json_encode(array("state" => false, "message" => "Este código no existe"));
+		    	echo json_encode(array("state" => false, "error" => "code_unknown"));
 	    }
 	    else
 	    	echo json_encode(false);

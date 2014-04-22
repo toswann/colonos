@@ -10,7 +10,7 @@
 			<?php } ?>
 			<?php if (isset($item->price) && $item->price) { ?>
 			<div class="other-infos">
-				<p><strong>Otras informaciones :</strong></p>
+				<p><strong data-i18n="place.show.other_infos">Otras informaciones :</strong></p>
 				<p>Precio desde : <?=$item->price?></p>			
 			</div>
 			<?php } ?>
@@ -30,7 +30,7 @@
 					<?=C::CITIES($item->city)?>, zona <?=C::ZONES($item->zone)?>
 				</address>
 				<address>
-					<strong>Contacto</strong><br>
+					<strong data-i18n="place.show.contact">Contacto</strong><br>
 					<?php if (isset($item->phone) && $item->phone) { ?>
 					<a href="tel:<?=$item->phone?>" target="_blank"><?=$item->phone?></a><br>
 					<?php } if (isset($item->mail) && $item->mail) { ?>
@@ -47,7 +47,7 @@
 			if ($photos && count($photos) > 0) { ?>
 	<div class="row">
 		<div class="col-xs-12 galery">
-			<p><strong>Galeria de fotos :</strong></p>
+			<p><strong data-i18n="place.show.galery">Galeria de fotos :</strong></p>
 			<div class="rss-container">
 			
 				<div id="slideshow" class="rs-slideshow">

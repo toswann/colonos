@@ -15,14 +15,13 @@ $(function(){
 					$(".vote-form").slideDown();
 				}
 				else {
-					console.log(response.message);
 					$(".code-form div").addClass("has-warning");
-					$(".code-error").html(response.message);
+					var error = $.i18n.t("vote.code_form."+response.error); // get the translated error message with i18n
+					$(".code-error").html(error);
 				}
 			});			
 		}
 	});
-	
 	
 	$('.vote-form form').validate({
 		errorClass: "text-danger",
@@ -59,15 +58,15 @@ $(function(){
 		},
   		messages: {
 			vote_email : {
-				required 			: "You have to put your email",
+				required 			: "Email is required",
 				email				: "Your email is not a valid email"
 			},
-			vote_grade_cleanliness 	: "Debe seleccionar una nota",
-			vote_grade_confort 		: "Debe seleccionar una nota",
-			vote_grade_location 	: "Debe seleccionar una nota",
-			vote_grade_services 	: "Debe seleccionar una nota",
-			vote_grade_personal 	: "Debe seleccionar una nota",
-			vote_grade_pqratio 		: "Debe seleccionar una nota"
+			vote_grade_cleanliness 	: "Please select a grade",
+			vote_grade_confort 		: "Please select a grade",
+			vote_grade_location 	: "Please select a grade",
+			vote_grade_services 	: "Please select a grade",
+			vote_grade_personal 	: "Please select a grade",
+			vote_grade_pqratio 		: "Please select a grade"
 		},
 		submitHandler: function(form) {
 			form.submit();

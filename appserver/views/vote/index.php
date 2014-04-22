@@ -2,21 +2,21 @@
 	<div class="row">
 		<div class="col-xs-12 code-form">
 			<div class="form-group">
-				<p class="lead">Enter the code :</p>
+				<p class="lead" data-i18n="vote.code_form.enter">Entra el Código :</p>
 				<p class="text-danger code-error"></p>
-				<input type="text" class="form-control input-lg" name="code" id="input-code" value="XRAKYMV4OQ">
-				<button type="submit" class="btn btn-primary btn-lg btn-block">Valider</button>
+				<input type="text" class="form-control input-lg" name="code" id="input-code" value="85Z3ELKRND">
+				<button type="submit" class="btn btn-primary btn-lg btn-block" data-i18n="vote.code_form.submit" >Enviar</button>
 				
 			</div>
 		</div>
 	</div>
 	<div class="row">
 		<div class="col-xs-12 vote-form">
-			<h1 class="page-header">Tu opinion de : <span id="vote-placename"></span></h1>
+			<h1 class="page-header"><span data-i18n="vote.vote_form.title">Tu opinion de :</span> <span id="vote-placename"></span></h1>
 			<form role="form" method="POST" action="">
 				<input type="hidden" name="vote_id_item" id="vote-id-item" value="">
 				<div class="form-group">
-					<label for="vote_code">Código</label>
+					<label for="vote_code" data-i18n="vote.vote_form.code">Código</label>
 					<div class="row">
 						<div class="col-sm-3">
 							<input type="email" class="form-control" id="vote-code" name="vote_code" value="" disabled>
@@ -24,160 +24,16 @@
 					</div>
 				</div>
 				<div class="form-group">
-					<label for="vote_email">Email <span class="star">*</span> </label><small> 	(nobody will see this)</small>
+					<label for="vote_email">Email <span class="star">*</span> </label><small data-i18n="vote.vote_form.not_show">(nobody will see this)</small>
 					<div class="row">
 						<div class="col-sm-10 col-md-9 col-lg-7">
-							<input type="email" class="form-control" id="vote-email" name="vote_email" placeholder="Email">
+							<input type="email" class="form-control" id="vote-email" name="vote_email">
 							<div class="error"></div>
 						</div>
 					</div>
 				</div>
 				<div class="form-group">
-					<label for="vote_grade_cleanliness">Limpieza <span class="star">*</span></label>
-					<div>
-						<label class="radio-inline">
-							<input type="radio" name="vote_grade_cleanliness" value="1"> 1
-						</label>
-						<label class="radio-inline">
-							<input type="radio" name="vote_grade_cleanliness" value="2"> 2
-						</label>
-						<label class="radio-inline">
-							<input type="radio" name="vote_grade_cleanliness" value="3"> 3
-						</label>
-						<label class="radio-inline">
-							<input type="radio" name="vote_grade_cleanliness" value="4"> 4
-						</label>
-						<label class="radio-inline">
-							<input type="radio" name="vote_grade_cleanliness" value="5"> 5
-						</label>
-						<label class="radio-inline">
-							<input type="radio" name="vote_grade_cleanliness" value="6"> 6
-						</label>
-						<label class="radio-inline">
-							<input type="radio" name="vote_grade_cleanliness" value="7"> 7
-						</label>
-						<label class="radio-inline">
-							<input type="radio" name="vote_grade_cleanliness" value="8"> 8
-						</label>
-						<label class="radio-inline">
-							<input type="radio" name="vote_grade_cleanliness" value="9"> 9
-						</label>
-						<label class="radio-inline">
-							<input type="radio" name="vote_grade_cleanliness" value="10"> 10
-						</label>
-					</div>
-					<div class="error"></div>
-				</div>
-				<div class="form-group">
-					<label for="vote_grade_confort">Confort <span class="star">*</span></label>
-					<div>
-						<label class="radio-inline">
-							<input type="radio" name="vote_grade_confort" value="1"> 1
-						</label>
-						<label class="radio-inline">
-							<input type="radio" name="vote_grade_confort" value="2"> 2
-						</label>
-						<label class="radio-inline">
-							<input type="radio" name="vote_grade_confort" value="3"> 3
-						</label>
-						<label class="radio-inline">
-							<input type="radio" name="vote_grade_confort" value="4"> 4
-						</label>
-						<label class="radio-inline">
-							<input type="radio" name="vote_grade_confort" value="5"> 5
-						</label>
-						<label class="radio-inline">
-							<input type="radio" name="vote_grade_confort" value="6"> 6
-						</label>
-						<label class="radio-inline">
-							<input type="radio" name="vote_grade_confort" value="7"> 7
-						</label>
-						<label class="radio-inline">
-							<input type="radio" name="vote_grade_confort" value="8"> 8
-						</label>
-						<label class="radio-inline">
-							<input type="radio" name="vote_grade_confort" value="9"> 9
-						</label>
-						<label class="radio-inline">
-							<input type="radio" name="vote_grade_confort" value="10"> 10
-						</label>
-					</div>
-					<div class="error"></div>
-				</div>
-				<div class="form-group">
-					<label for="vote_grade_location">Ubicación <span class="star">*</span></label>
-					<div>
-						<label class="radio-inline">
-							<input type="radio" name="vote_grade_location" value="1"> 1
-						</label>
-						<label class="radio-inline">
-							<input type="radio" name="vote_grade_location" value="2"> 2
-						</label>
-						<label class="radio-inline">
-							<input type="radio" name="vote_grade_location" value="3"> 3
-						</label>
-						<label class="radio-inline">
-							<input type="radio" name="vote_grade_location" value="4"> 4
-						</label>
-						<label class="radio-inline">
-							<input type="radio" name="vote_grade_location" value="5"> 5
-						</label>
-						<label class="radio-inline">
-							<input type="radio" name="vote_grade_location" value="6"> 6
-						</label>
-						<label class="radio-inline">
-							<input type="radio" name="vote_grade_location" value="7"> 7
-						</label>
-						<label class="radio-inline">
-							<input type="radio" name="vote_grade_location" value="8"> 8
-						</label>
-						<label class="radio-inline">
-							<input type="radio" name="vote_grade_location" value="9"> 9
-						</label>
-						<label class="radio-inline">
-							<input type="radio" name="vote_grade_location" value="10"> 10
-						</label>
-					</div>
-					<div class="error"></div>
-				</div>
-				<div class="form-group">
-					<label for="vote_grade_services">Instalaciones y servicios <span class="star">*</span></label>
-					<div>
-						<label class="radio-inline">
-							<input type="radio" name="vote_grade_services" value="1"> 1
-						</label>
-						<label class="radio-inline">
-							<input type="radio" name="vote_grade_services" value="2"> 2
-						</label>
-						<label class="radio-inline">
-							<input type="radio" name="vote_grade_services" value="3"> 3
-						</label>
-						<label class="radio-inline">
-							<input type="radio" name="vote_grade_services" value="4"> 4
-						</label>
-						<label class="radio-inline">
-							<input type="radio" name="vote_grade_services" value="5"> 5
-						</label>
-						<label class="radio-inline">
-							<input type="radio" name="vote_grade_services" value="6"> 6
-						</label>
-						<label class="radio-inline">
-							<input type="radio" name="vote_grade_services" value="7"> 7
-						</label>
-						<label class="radio-inline">
-							<input type="radio" name="vote_grade_services" value="8"> 8
-						</label>
-						<label class="radio-inline">
-							<input type="radio" name="vote_grade_services" value="9"> 9
-						</label>
-						<label class="radio-inline">
-							<input type="radio" name="vote_grade_services" value="10"> 10
-						</label>
-					</div>
-					<div class="error"></div>
-				</div>
-				<div class="form-group">
-					<label for="vote_grade_personal">Personal <span class="star">*</span></label>
+					<label for="vote_grade_personal"><span  data-i18n="vote.vote_form.personal">Personal</span> <span class="star">*</span></label>
 					<div>
 						<label class="radio-inline">
 							<input type="radio" name="vote_grade_personal" value="1"> 1
@@ -213,7 +69,151 @@
 					<div class="error"></div>
 				</div>
 				<div class="form-group">
-					<label for="vote_grade_pqratio">Relación calidad - precio <span class="star">*</span></label>
+					<label for="vote_grade_cleanliness"><span data-i18n="vote.vote_form.cleanliness">Limpieza</span> <span class="star">*</span></label>
+					<div>
+						<label class="radio-inline">
+							<input type="radio" name="vote_grade_cleanliness" value="1"> 1
+						</label>
+						<label class="radio-inline">
+							<input type="radio" name="vote_grade_cleanliness" value="2"> 2
+						</label>
+						<label class="radio-inline">
+							<input type="radio" name="vote_grade_cleanliness" value="3"> 3
+						</label>
+						<label class="radio-inline">
+							<input type="radio" name="vote_grade_cleanliness" value="4"> 4
+						</label>
+						<label class="radio-inline">
+							<input type="radio" name="vote_grade_cleanliness" value="5"> 5
+						</label>
+						<label class="radio-inline">
+							<input type="radio" name="vote_grade_cleanliness" value="6"> 6
+						</label>
+						<label class="radio-inline">
+							<input type="radio" name="vote_grade_cleanliness" value="7"> 7
+						</label>
+						<label class="radio-inline">
+							<input type="radio" name="vote_grade_cleanliness" value="8"> 8
+						</label>
+						<label class="radio-inline">
+							<input type="radio" name="vote_grade_cleanliness" value="9"> 9
+						</label>
+						<label class="radio-inline">
+							<input type="radio" name="vote_grade_cleanliness" value="10"> 10
+						</label>
+					</div>
+					<div class="error"></div>
+				</div>
+				<div class="form-group">
+					<label for="vote_grade_confort"><span data-i18n="vote.vote_form.confort">Confort</span> <span class="star">*</span></label>
+					<div>
+						<label class="radio-inline">
+							<input type="radio" name="vote_grade_confort" value="1"> 1
+						</label>
+						<label class="radio-inline">
+							<input type="radio" name="vote_grade_confort" value="2"> 2
+						</label>
+						<label class="radio-inline">
+							<input type="radio" name="vote_grade_confort" value="3"> 3
+						</label>
+						<label class="radio-inline">
+							<input type="radio" name="vote_grade_confort" value="4"> 4
+						</label>
+						<label class="radio-inline">
+							<input type="radio" name="vote_grade_confort" value="5"> 5
+						</label>
+						<label class="radio-inline">
+							<input type="radio" name="vote_grade_confort" value="6"> 6
+						</label>
+						<label class="radio-inline">
+							<input type="radio" name="vote_grade_confort" value="7"> 7
+						</label>
+						<label class="radio-inline">
+							<input type="radio" name="vote_grade_confort" value="8"> 8
+						</label>
+						<label class="radio-inline">
+							<input type="radio" name="vote_grade_confort" value="9"> 9
+						</label>
+						<label class="radio-inline">
+							<input type="radio" name="vote_grade_confort" value="10"> 10
+						</label>
+					</div>
+					<div class="error"></div>
+				</div>
+				<div class="form-group">
+					<label for="vote_grade_location"><span data-i18n="vote.vote_form.location">Ubicación</span> <span class="star">*</span></label>
+					<div>
+						<label class="radio-inline">
+							<input type="radio" name="vote_grade_location" value="1"> 1
+						</label>
+						<label class="radio-inline">
+							<input type="radio" name="vote_grade_location" value="2"> 2
+						</label>
+						<label class="radio-inline">
+							<input type="radio" name="vote_grade_location" value="3"> 3
+						</label>
+						<label class="radio-inline">
+							<input type="radio" name="vote_grade_location" value="4"> 4
+						</label>
+						<label class="radio-inline">
+							<input type="radio" name="vote_grade_location" value="5"> 5
+						</label>
+						<label class="radio-inline">
+							<input type="radio" name="vote_grade_location" value="6"> 6
+						</label>
+						<label class="radio-inline">
+							<input type="radio" name="vote_grade_location" value="7"> 7
+						</label>
+						<label class="radio-inline">
+							<input type="radio" name="vote_grade_location" value="8"> 8
+						</label>
+						<label class="radio-inline">
+							<input type="radio" name="vote_grade_location" value="9"> 9
+						</label>
+						<label class="radio-inline">
+							<input type="radio" name="vote_grade_location" value="10"> 10
+						</label>
+					</div>
+					<div class="error"></div>
+				</div>
+				<div class="form-group">
+					<label for="vote_grade_services"><span data-i18n="vote.vote_form.services">Instalaciones y servicios</span> <span class="star">*</span></label>
+					<div>
+						<label class="radio-inline">
+							<input type="radio" name="vote_grade_services" value="1"> 1
+						</label>
+						<label class="radio-inline">
+							<input type="radio" name="vote_grade_services" value="2"> 2
+						</label>
+						<label class="radio-inline">
+							<input type="radio" name="vote_grade_services" value="3"> 3
+						</label>
+						<label class="radio-inline">
+							<input type="radio" name="vote_grade_services" value="4"> 4
+						</label>
+						<label class="radio-inline">
+							<input type="radio" name="vote_grade_services" value="5"> 5
+						</label>
+						<label class="radio-inline">
+							<input type="radio" name="vote_grade_services" value="6"> 6
+						</label>
+						<label class="radio-inline">
+							<input type="radio" name="vote_grade_services" value="7"> 7
+						</label>
+						<label class="radio-inline">
+							<input type="radio" name="vote_grade_services" value="8"> 8
+						</label>
+						<label class="radio-inline">
+							<input type="radio" name="vote_grade_services" value="9"> 9
+						</label>
+						<label class="radio-inline">
+							<input type="radio" name="vote_grade_services" value="10"> 10
+						</label>
+					</div>
+					<div class="error"></div>
+				</div>
+				<div class="form-group">
+					<label for="vote_grade_pqratio"><span data-i18n="vote.vote_form.pqratio">Relación calidad - precio</span> <span class="star">*</span></label>
 					<div>
 						<label class="radio-inline">
 							<input type="radio" name="vote_grade_pqratio" value="1"> 1
@@ -249,15 +249,15 @@
 					<div class="error"></div>
 				</div>
 				<div class="form-group">
-					<label for="vote-name">Name</label>
+					<label for="vote-name" data-i18n="vote.vote_form.nombre">Nombre</label>
 					<div class="row">
 						<div class="col-sm-10 col-md-9 col-lg-7">
-							<input type="text" class="form-control" id="vote-name" name="vote-text" placeholder="Tu nombre">
+							<input type="text" class="form-control" id="vote-name" name="vote-text">
 						</div>
 					</div>
 				</div>
 				<div class="form-group">
-					<label for="vote-text">Commentario</label>
+					<label for="vote-text" data-i18n="vote.vote_form.comment">Commentario</label>
 					<div class="row">
 						<div class="col-sm-10 col-md-9 col-lg-7">
 							<textarea id="vote-text" name="vote-text" class="form-control" rows="6"></textarea>				
@@ -266,10 +266,10 @@
 				</div>
 				<div class="checkbox">
 					<label>
-					  <input type="checkbox" name="vote-newsletter"> I want to receive news from rutadeloscolonos (not more than 1 email / month)
+					  <input type="checkbox" name="vote-newsletter" > <span data-i18n="vote.vote_form.newsletter">Quiero recibir el boletín mensual de rutadeloscolonos.cl</span>
 					</label>
 				</div>
-				<button type="submit" class="btn btn-default">Submit</button>
+				<button type="submit" class="btn btn-default"  data-i18n="vote.vote_form.submit">Enviar</button>
 			</form>
 		</div>
 	</div>

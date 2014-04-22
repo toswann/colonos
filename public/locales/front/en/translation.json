@@ -1,3 +1,33 @@
 {
-	"test" : "TEST EN"
+	"vote" : {
+		"code_form" : {
+			"enter" 			:	"Enter the code :",
+			"submit"			:	"Submit",
+			"code_used"			:	"Code already used.",
+			"code_unknown"		:	"Code doesn't exist."		
+		},
+		
+		"vote_form" : {
+			"title"				:	"Please rate",
+			"code"				:	"Code",
+			"not_show"			:	"(nobody will be able to see this)",
+			"cleanliness"		:	"Cleanliness",
+			"confort"			:	"Confort",
+			"location"			:	"Location",
+			"services"			:	"Services",
+			"personal"			:	"Personal",
+			"pqratio"			:	"Price - Quality ratio",
+			"nombre"			:	"Name",
+			"comment"			:	"Comment",
+			"newsletter"		:	"I want to receive the rutadeloscolonos.cl monthly newsletter",
+			"submit"			:	"Submit"
+		}
+	},
+	"place" : {
+		"show" : {
+			"contact"			:	"Contact",
+			"other_infos"		:	"Others informations :",
+			"galery"			:	"Galery of photos :"
+		}
+	}
 }
