@@ -8,7 +8,7 @@ require.config({
 		'underscore'				: 	'../public/lib/underscore.min',
         'underscore.string'			: 	'../public/lib/underscore.string.min',
 		'jquery'					: 	'../public/lib/jquery.min',
-        'jquery.i18next'			: 	'../public/lib/i18next.amd.withJQuery-1.7.2.min',
+        'jquery.i18next'			: 	'../public/lib/i18next.amd.withJQuery-1.7.3.min',
 		'jquery.raty'				: 	'../public/lib/raty/jquery.raty',
 		'text'						: 	'../public/lib/text',
 		'bootstrap'					: 	'../public/lib/bootstrap/js/bootstrap.min',

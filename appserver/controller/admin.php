@@ -185,7 +185,6 @@ class Admin extends Controller {
 		));
     }
 
-
     public function index() {
     	if (!isset($_SESSION['user'])) {
 	        if (isset($_POST["admin-form-mail"])) {

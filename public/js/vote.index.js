@@ -70,11 +70,7 @@ $(function(){
 			vote_grade_pqratio 		: "Debe seleccionar una nota"
 		},
 		submitHandler: function(form) {
-			console.log("submit OK");
 			form.submit();
-		},
-		invalidHandler : function() {
-			console.log("submit KO");
 		}
 	});		
 });
