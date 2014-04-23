@@ -4,6 +4,9 @@ session_start();
 
 require APP_FOLDER_NAME.'/utils/GaleryUploadHandler.php';
 
+// Init of PHP RBAC engine
+require APP_FOLDER_NAME.'/utils/phprbac/Rbac.php';
+
 class Admin extends Controller {
 
 
