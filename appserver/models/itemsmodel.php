@@ -1,7 +1,7 @@
 <?php
 
-class ItemsModel
-{
+class ItemsModel {
+
     /**
      * Every model needs a database connection, passed to the model
      * @param object $db A PDO database connection
@@ -37,30 +37,58 @@ class ItemsModel
         // $options = array(PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC ...
         return $query->fetchAll();
     }
-	
-	public function saveEditItem($id, $name, $flatname, $category, $type, $city, $zone, $address, $phone, $email, $website, $description, $image, $lat, $long, $price) {
-		$sql = "UPDATE items SET name=:name, flatname=:flatname, category=:category, type=:type, city=:city, zone=:zone, address=:address, phone=:phone, mail=:email, website=:website, description=:description, image=:image, galery=:galery, latitude=:lat, longitude=:long, price=:price WHERE id = :id";
+
+    public function saveEditItem($id, $name, $flatname, $category, $type, $city, $zone, $address, $phone, $email, $website, $description, $image, $lat, $long, $price) {
+        $sql = "UPDATE items SET name=:name, flatname=:flatname, category=:category, type=:type, city=:city, zone=:zone, address=:address, phone=:phone, mail=:email, website=:website, description=:description, image=:image, galery=:galery, latitude=:lat, longitude=:long, price=:price WHERE id = :id";
         $query = $this->db->prepare($sql);
         $query->execute(array(
-        	':id' 			=> $id,
-        	':name' 		=> $name,
-        	':flatname' 	=> $flatname,
-        	':category' 	=> $category,
-        	':type' 		=> $type,
-        	':city' 		=> $city,
-        	':zone' 		=> $zone,
-        	':address' 		=> $address,
-        	':phone' 		=> $phone,
-        	':email' 		=> $email,
-        	':website' 		=> $website,
-        	':description' 	=> $description,
-        	':image' 		=> $image,
-        	':lat' 			=> $lat,
-        	':long' 		=> $long,
-        	':price' 		=> $price
-		));
+            ':id' => $id,
+            ':name' => $name,
+            ':flatname' => $flatname,
+            ':category' => $category,
+            ':type' => $type,
+            ':city' => $city,
+            ':zone' => $zone,
+            ':address' => $address,
+            ':phone' => $phone,
+            ':email' => $email,
+            ':website' => $website,
+            ':description' => $description,
+            ':image' => $image,
+            ':lat' => $lat,
+            ':long' => $long,
+            ':price' => $price
+        ));
+    }
+    
+     public function saveNewItem($id, $name, $flatname, $category, $type, $city, $zone, $address, $phone, $email, $website, $description, $image, $lat, $long, $price) {
+        $sql = "INSERT INTO items (name, flatname, category, type, city, zone, address, phone, mail, website, description, image, latitude, longitude, price) "
+                . "                 VALUES (:name, :flatname, :category, :type, :city, :zone, :address, :phone, :email, :website, :description, :image, :lat, :long, :price);";
 
-	}
+        try {
+            $query = $this->db->prepare($sql);
+            $query->execute(array(
+                ':name' => $name,
+                ':flatname' => $flatname,
+                ':category' => $category,
+                ':type' => $type,
+                ':city' => $city,
+                ':zone' => $zone,
+                ':address' => $address,
+                ':phone' => $phone,
+                ':email' => $email,
+                ':website' => $website,
+                ':description' => $description,
+                ':image' => $image,
+                ':lat' => $lat,
+                ':long' => $long,
+                ':price' => $price
+            ));
+        } catch (PDOException $pdoE) {
+            echo $pdoE->getMessage() . '<br/>';
+            var_dump($pdoE);
+        }
+    }
 
     public function getItem($id) {
         $sql = "SELECT * FROM items WHERE id = :id";
@@ -70,18 +98,17 @@ class ItemsModel
         return $query->fetch();
     }
 
-	public function getItemGalery($id) {
+    public function getItemGalery($id) {
         $sql = "SELECT galery FROM items WHERE id = :id";
         $query = $this->db->prepare($sql);
         $query->execute(array(':id' => $id));
-        return $query->fetch();		
-	}
+        return $query->fetch();
+    }
 
-	public function updateItemGalery($id, $galery) {
+    public function updateItemGalery($id, $galery) {
         $sql = "UPDATE items SET galery=:galery WHERE id = :id";
         $query = $this->db->prepare($sql);
         return $query->execute(array(':id' => $id, ':galery' => $galery));
-	}
-
+    }
 
 }

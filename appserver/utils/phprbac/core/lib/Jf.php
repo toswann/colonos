@@ -202,6 +202,7 @@ class Jf
 	}
 }
 
-Jf::setTablePrefix($tablePrefix);
+Jf::setTablePrefix(C::D('RBAC_TABLE_PREFIX'));
 Jf::$Rbac=new RbacManager();
-require_once __DIR__."/../setup.php";
+// Hack to integrate App with RBAC engine. We will use already established data connection
+//require_once __DIR__."/../setup.php";

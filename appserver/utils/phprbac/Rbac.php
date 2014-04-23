@@ -13,16 +13,22 @@ use \Jf;
  */
 class Rbac
 {
-    public function __construct($unit_test = '')
+    public function __construct($db = '')
     {
-        if ((string) $unit_test === 'unit_test') {
+        // Establishing PDO connection to already opened one, shared with Application.
+        /*if ((string) $unit_test === 'unit_test') {
             require_once dirname(dirname(__DIR__)) . '/tests/database/database.config';
         } else {
             require_once dirname(dirname(__DIR__)) . '/database/database.config';
         }
-
+        */
+        
         require_once 'core/lib/Jf.php';
 
+        // Establishing PDO connection to already opened one, shared with Application.
+        //Jf::$Db=new PDO("mysql:host={$host};dbname={$dbname}",$user,$pass);
+        Jf::$Db = $db;
+        
         $this->Permissions = Jf::$Rbac->Permissions;
         $this->Roles = Jf::$Rbac->Roles;
         $this->Users = Jf::$Rbac->Users;
