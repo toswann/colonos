@@ -39,68 +39,7 @@ class Admin extends Controller {
         require APP_FOLDER_NAME . '/views/admin/dashboard.php';
         require APP_FOLDER_NAME . '/views/admin/_footer_in.php';
     }
-  
-    /**
-     * Renders view for adding new Place in DB.
-     * @return void; Simple HTML generation for Client App
-     * @author Patryk
-     */      
-    public function newplace() {
-        $this->verfifyAccess("manage_owner_and_place");   
-
-        $newplace = "active";
-
-        //$items_model = $this->loadModel('ItemsModel');
-        //$item = $items_model->getItem($id);
-
-        // if the user is the admin of the place		
-        /*if (isset($item) && $item && $_SESSION["user"]->id == $item->id_admin) {
-            echo "edit";
-        } else {
-            header('location: ' . URL . 'admin/places');
-            exit();
-        }*/
-        require APP_FOLDER_NAME . '/views/admin/_header_in.php';
-        require APP_FOLDER_NAME . '/views/admin/sidenav.php';
-        require APP_FOLDER_NAME . '/views/admin/place_new.php';
-        require APP_FOLDER_NAME . '/views/admin/_footer_in.php';
-    }
-    
-    /**
-     * The purpose of this method is to insert new Place in DB. Called after user submits filled form
-     * @return void; Redirects user to Places view
-     * @todo Server-side validation of data, Security (Access possible only after calling newplace()) 
-     * @author Patryk
-     */    
-     public function savenewplace() {
-        $this->verfifyAccess("manage_owner_and_place", "session_only");   
-
-        $id = '';
-        $name = strip_tags($_POST["item-name"]);
-        $flatname = F::slugify($name);
-        $category = strip_tags($_POST["item-category"]);
-        $type = strip_tags($_POST["item-type"]);
-        $city = strip_tags($_POST["item-city"]);
-        $zone = strip_tags($_POST["item-zone"]);
-        $address = strip_tags($_POST["item-address"]);
-        $phone = strip_tags($_POST["item-phone"]);
-        $email = strip_tags($_POST["item-email"]);
-        $website = strip_tags($_POST["item-website"]);
-        $description = strip_tags($_POST["item-description"]);
-        $image = strip_tags($_POST["item-image"]);
-        $lat = strip_tags($_POST["item-lat"]);
-        $long = strip_tags($_POST["item-long"]);
-        $price = strip_tags($_POST["item-price"]);
-        //echo $id."<br>".$name."<br>".$flatname."<br>".$category."<br>".$type."<br>".$city."<br>".$zone."<br>".$address."<br>".$phone."<br>".$email."<br>".$website."<br>".$description."<br>".$image."<br>".$galery."<br>".$lat."<br>".$long."<br>".$price."<br>";
-
-        $items_model = $this->loadModel('ItemsModel');
-        $item = $items_model->saveNewItem($id, $name, $flatname, $category, $type, $city, $zone, $address, $phone, $email, $website, $description, $image, $lat, $long, $price);
-
-
-        header('location: ' . URL . 'admin/places');
-        exit();
-    }   
-
+     
     /**
      * ......... 
      * @return ......... 
@@ -120,7 +59,7 @@ class Admin extends Controller {
         require APP_FOLDER_NAME . '/views/admin/places.php';
         require APP_FOLDER_NAME . '/views/admin/_footer_in.php';
     }
-
+      
     /**
      * ......... 
      * @param type $name Description
@@ -299,6 +238,311 @@ class Admin extends Controller {
         ));
     }
 
+    /**
+     * Renders view for adding new Place in DB.
+     * @return void; Simple HTML generation for Client App
+     * @author Patryk
+     */      
+    public function newplace() {
+        $this->verfifyAccess("manage_owner_and_place");   
+
+        $newplace = "active";
+
+        //$items_model = $this->loadModel('ItemsModel');
+        //$item = $items_model->getItem($id);
+
+        // if the user is the admin of the place		
+        /*if (isset($item) && $item && $_SESSION["user"]->id == $item->id_admin) {
+            echo "edit";
+        } else {
+            header('location: ' . URL . 'admin/places');
+            exit();
+        }*/
+        require APP_FOLDER_NAME . '/views/admin/_header_in.php';
+        require APP_FOLDER_NAME . '/views/admin/sidenav.php';
+        require APP_FOLDER_NAME . '/views/admin/place_new.php';
+        require APP_FOLDER_NAME . '/views/admin/_footer_in.php';
+    }
+    
+    /**
+     * The purpose of this method is to insert new Place in DB. Called after user submits filled form
+     * @return void; Redirects user to Places view
+     * @todo Server-side validation of data, Security (Access possible only after calling newplace()) 
+     * @author Patryk
+     */    
+     public function savenewplace() {
+        $this->verfifyAccess("manage_owner_and_place", "session_only");   
+
+        $id = '';
+        $name = strip_tags($_POST["item-name"]);
+        $flatname = F::slugify($name);
+        $category = strip_tags($_POST["item-category"]);
+        $type = strip_tags($_POST["item-type"]);
+        $city = strip_tags($_POST["item-city"]);
+        $zone = strip_tags($_POST["item-zone"]);
+        $address = strip_tags($_POST["item-address"]);
+        $phone = strip_tags($_POST["item-phone"]);
+        $email = strip_tags($_POST["item-email"]);
+        $website = strip_tags($_POST["item-website"]);
+        $description = strip_tags($_POST["item-description"]);
+        $image = strip_tags($_POST["item-image"]);
+        $lat = strip_tags($_POST["item-lat"]);
+        $long = strip_tags($_POST["item-long"]);
+        $price = strip_tags($_POST["item-price"]);
+        //echo $id."<br>".$name."<br>".$flatname."<br>".$category."<br>".$type."<br>".$city."<br>".$zone."<br>".$address."<br>".$phone."<br>".$email."<br>".$website."<br>".$description."<br>".$image."<br>".$galery."<br>".$lat."<br>".$long."<br>".$price."<br>";
+
+        $items_model = $this->loadModel('ItemsModel');
+        $item = $items_model->saveNewItem($id, $name, $flatname, $category, $type, $city, $zone, $address, $phone, $email, $website, $description, $image, $lat, $long, $price);
+
+
+        header('location: ' . URL . 'admin/places');
+        exit();
+    }   
+    
+    /**
+     * Renders view for adding new Place in DB.
+     * @return void; Simple HTML generation for Client App
+     * @author Patryk
+     */      
+    public function owners() {
+        $this->verfifyAccess("manage_owner_and_place");   
+
+        $placeowners = "active";
+
+        require APP_FOLDER_NAME . '/views/admin/_header_in.php';
+        require APP_FOLDER_NAME . '/views/admin/sidenav.php';
+        require APP_FOLDER_NAME . '/views/admin/place_new.php';
+        require APP_FOLDER_NAME . '/views/admin/_footer_in.php';
+    }    
+    
+    /**
+     * Renders view for adding new Place in DB.
+     * @return void; Simple HTML generation for Client App
+     * @author Patryk
+     */      
+    public function newOwner() {
+        $this->verfifyAccess("manage_owner_and_place");   
+
+        $newowner = "active";
+
+        require APP_FOLDER_NAME . '/views/admin/_header_in.php';
+        require APP_FOLDER_NAME . '/views/admin/sidenav.php';
+        require APP_FOLDER_NAME . '/views/admin/place_new.php';
+        require APP_FOLDER_NAME . '/views/admin/_footer_in.php';
+    }
+    
+    /**
+     * The purpose of this method is to insert new Place in DB. Called after user submits filled form
+     * @return void; Redirects user to Places view
+     * @todo Server-side validation of data, Security (Access possible only after calling newplace()) 
+     * @author Patryk
+     */    
+     public function saveNewOwner() {
+        $this->verfifyAccess("manage_owner_and_place", "session_only");   
+
+        $id = '';
+        $name = strip_tags($_POST["item-name"]);
+        $flatname = F::slugify($name);
+        $category = strip_tags($_POST["item-category"]);
+        $type = strip_tags($_POST["item-type"]);
+        $city = strip_tags($_POST["item-city"]);
+        $zone = strip_tags($_POST["item-zone"]);
+        $address = strip_tags($_POST["item-address"]);
+        $phone = strip_tags($_POST["item-phone"]);
+        $email = strip_tags($_POST["item-email"]);
+        $website = strip_tags($_POST["item-website"]);
+        $description = strip_tags($_POST["item-description"]);
+        $image = strip_tags($_POST["item-image"]);
+        $lat = strip_tags($_POST["item-lat"]);
+        $long = strip_tags($_POST["item-long"]);
+        $price = strip_tags($_POST["item-price"]);
+        //echo $id."<br>".$name."<br>".$flatname."<br>".$category."<br>".$type."<br>".$city."<br>".$zone."<br>".$address."<br>".$phone."<br>".$email."<br>".$website."<br>".$description."<br>".$image."<br>".$galery."<br>".$lat."<br>".$long."<br>".$price."<br>";
+
+        //$items_model = $this->loadModel('ItemsModel');
+        //$item = $items_model->saveNewItem($id, $name, $flatname, $category, $type, $city, $zone, $address, $phone, $email, $website, $description, $image, $lat, $long, $price);
+
+
+        header('location: ' . URL . 'admin/places');
+        exit();
+    }    
+    
+    /**
+     * ........
+     * @return void; Redirects user to Places view
+     * @todo Server-side validation of data, Security (Access possible only after calling newplace()) 
+     * @author Patryk
+     */    
+     public function editOwner($id) {
+        $this->verfifyAccess("manage_owner_and_place");      
+        
+        require APP_FOLDER_NAME . '/views/admin/_header_in.php';
+        require APP_FOLDER_NAME . '/views/admin/sidenav.php';
+        require APP_FOLDER_NAME . '/views/admin/dashboard.php';
+        require APP_FOLDER_NAME . '/views/admin/_footer_in.php';        
+        
+     }
+     
+   /**
+     * ........
+     * @return void; Redirects user to Places view
+     * @todo Server-side validation of data, Security (Access possible only after calling newplace()) 
+     * @author Patryk
+     */    
+     public function assignOwnerToPlace() {
+        $this->verfifyAccess("manage_owner_and_place");          
+     }        
+        
+     
+   /**
+     * ........
+     * @return void; Redirects user to Places view
+     * @todo Server-side validation of data, Security (Access possible only after calling newplace()) 
+     * @author Patryk
+     */    
+     public function votes() {
+        $this->verfifyAccess("manage_votes");            
+        $votes = "active";
+        require APP_FOLDER_NAME . '/views/admin/_header_in.php';
+        require APP_FOLDER_NAME . '/views/admin/sidenav.php';
+        require APP_FOLDER_NAME . '/views/admin/dashboard.php';
+        require APP_FOLDER_NAME . '/views/admin/_footer_in.php';           
+     }      
+     
+   /**
+     * ........
+     * @return void; Redirects user to Places view
+     * @todo Server-side validation of data, Security (Access possible only after calling newplace()) 
+     * @author Patryk
+     */    
+     public function editVote($id) {
+        $this->verfifyAccess("manage_votes");  
+        $votes = "active";
+        require APP_FOLDER_NAME . '/views/admin/_header_in.php';
+        require APP_FOLDER_NAME . '/views/admin/sidenav.php';
+        require APP_FOLDER_NAME . '/views/admin/dashboard.php';
+        require APP_FOLDER_NAME . '/views/admin/_footer_in.php';           
+     }  
+     
+   /**
+     * ........
+     * @return void; Redirects user to Places view
+     * @todo Server-side validation of data, Security (Access possible only after calling newplace()) 
+     * @author Patryk
+     */    
+     public function saveEditVote() {
+        $this->verfifyAccess("manage_votes", "session_only");                  
+     }          
+     
+     
+   /**
+     * ........
+     * @return void; Redirects user to Places view
+     * @todo Server-side validation of data, Security (Access possible only after calling newplace()) 
+     * @author Patryk
+     */    
+     public function zoneAdmins() {
+        $this->verfifyAccess("manage_zone_admins");        
+        $zoneadmins = "active";
+        require APP_FOLDER_NAME . '/views/admin/_header_in.php';
+        require APP_FOLDER_NAME . '/views/admin/sidenav.php';
+        require APP_FOLDER_NAME . '/views/admin/dashboard.php';
+        require APP_FOLDER_NAME . '/views/admin/_footer_in.php';        
+        
+     }      
+     
+   /**
+     * ........
+     * @return void; Redirects user to Places view
+     * @todo Server-side validation of data, Security (Access possible only after calling newplace()) 
+     * @author Patryk
+     */    
+     public function newZoneAdmin() {
+        $this->verfifyAccess("manage_zone_admins");                  
+        
+        require APP_FOLDER_NAME . '/views/admin/_header_in.php';
+        require APP_FOLDER_NAME . '/views/admin/sidenav.php';
+        require APP_FOLDER_NAME . '/views/admin/dashboard.php';
+        require APP_FOLDER_NAME . '/views/admin/_footer_in.php';        
+        
+     }        
+     
+   /**
+     * ........
+     * @return void; Redirects user to Places view
+     * @todo Server-side validation of data, Security (Access possible only after calling newplace()) 
+     * @author Patryk
+     */    
+     public function saveNewZoneAdmin() {
+        $this->verfifyAccess("manage_zone_admins", "session_only");            
+        
+     }             
+          
+     
+   /**
+     * ........
+     * @return void; Redirects user to Places view
+     * @todo Server-side validation of data, Security (Access possible only after calling newplace()) 
+     * @author Patryk
+     */    
+     public function editZoneAdmin($id) {
+        $this->verfifyAccess("manage_zone_admins");   
+        $zoneadmins = "active";
+        
+        require APP_FOLDER_NAME . '/views/admin/_header_in.php';
+        require APP_FOLDER_NAME . '/views/admin/sidenav.php';
+        require APP_FOLDER_NAME . '/views/admin/dashboard.php';
+        require APP_FOLDER_NAME . '/views/admin/_footer_in.php';        
+        
+     }  
+     
+   /**
+     * ........
+     * @return void; Redirects user to Places view
+     * @todo Server-side validation of data, Security (Access possible only after calling newplace()) 
+     * @author Patryk
+     */    
+     public function saveEditZoneAdmin() {
+        $this->verfifyAccess("manage_zone_admins");                  
+     }              
+    
+   /**
+     * ........
+     * @return void; Redirects user to Places view
+     * @todo Server-side validation of data, Security (Access possible only after calling newplace()) 
+     * @author Patryk
+     */    
+     public function approve() {
+        $this->verfifyAccess("approve_place_and_user");       
+        
+        require APP_FOLDER_NAME . '/views/admin/_header_in.php';
+        require APP_FOLDER_NAME . '/views/admin/sidenav.php';
+        require APP_FOLDER_NAME . '/views/admin/dashboard.php';
+        require APP_FOLDER_NAME . '/views/admin/_footer_in.php';        
+        
+     }       
+
+   /**
+     * ........
+     * @return void; Redirects user to Places view
+     * @todo Server-side validation of data, Security (Access possible only after calling newplace()) 
+     * @author Patryk
+     */    
+     public function approvePlace($id) {
+        $this->verfifyAccess("approve_owner_and_place", "session_only");       
+        
+     }   
+     
+   /**
+     * ........
+     * @return void; Redirects user to Places view
+     * @todo Server-side validation of data, Security (Access possible only after calling newplace()) 
+     * @author Patryk
+     */    
+     public function approveOwner($id) {
+        $this->verfifyAccess("approve_owner_and_place", "session_only");       
+        
+     }            
+     
     /**
      * ......... 
      * @return ......... 
