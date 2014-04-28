@@ -23,7 +23,7 @@ define('URL', 'http://colonos:8888/');
 define('APP_FOLDER_NAME', 'appserver');
 
 define('MAP_JS_URL', 	"appclient/main");
-define('MAP_CSS_URL', 	"public/css");
+define('MAP_CSS_URL', "public/css");
 
 define('APP_ENV', 	"development");
 

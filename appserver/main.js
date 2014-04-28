@@ -1,18 +1,18 @@
 require.config({
-    baseUrl: 'appclient',
+    baseUrl: 'http://colonos.sample/appserver/',
     paths: {
-        'backbone': '../public/lib/backbone.min',
-        'backbone.babysitter': '../public/lib/backbone.babysitter.min',
-        'underscore': '../public/lib/underscore.min',
-        'underscore.string': '../public/lib/underscore.string.min',
-        'jquery': '../public/lib/jquery.min',
-        'jquery.i18next': '../public/lib/i18next.amd.withJQuery-1.7.3.min',
-        'jquery.raty': '../public/lib/raty/jquery.raty',
-        'text': '../public/lib/text',
-        'bootstrap': '../public/lib/bootstrap/js/bootstrap.min',
-        'leaflet': '../public/lib/leaflet/leaflet',
-        'leaflet.awesome': '../public/lib/leaflet-awesome/leaflet.awesome-markers.min',
-        'leaflet.label': '../public/lib/leaflet.label/leaflet.label'
+        'backbone': '../../public/lib/backbone.min',
+        'backbone.babysitter': '../../public/lib/backbone.babysitter.min',
+        'underscore': '../../public/lib/underscore.min',
+        'underscore.string': '../../public/lib/underscore.string.min',
+        'jquery': '../../public/lib/jquery.min',
+        'jquery.i18next': '../../public/lib/i18next.amd.withJQuery-1.7.3.min',
+        'jquery.raty': '../../public/lib/raty/jquery.raty',
+        'text': '../../public/lib/text',
+        'bootstrap': '../../public/lib/bootstrap/js/bootstrap.min',
+        'leaflet': '../../public/lib/leaflet/leaflet',
+        'leaflet.awesome': '../../public/lib/leaflet-awesome/leaflet.awesome-markers.min',
+        'leaflet.label': '../../public/lib/leaflet.label/leaflet.label'
     },
     shim: {
         'jquery': {
@@ -53,10 +53,7 @@ require.config({
 
 });
 
-
-
-require(['app'], function(App) {
-
-    window.app = new App();
+require(['appadmin'], function(AppAdmin) {
+    window.app = new AppAdmin();
     window.app.render();
 });

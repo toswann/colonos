@@ -9,7 +9,7 @@
 
     <title>Administración - La Ruta de los Colonos</title>
 
-	<link href="/public/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/public/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom styles for this template -->
     <link href="/public/css/site.css" rel="stylesheet">
@@ -22,10 +22,17 @@
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
       <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
-    <script src="/public/lib/jquery.min.js"></script>
-    <script src="/public/lib/bootstrap/js/bootstrap.min.js"></script>
+    <script type="text/javascript">
+            var env = "<?php echo APP_ENV ?>";
+            var cl = function(val) { (window.env == "development") ? console.log(val) : '';};				    
+    </script>
+    <script type="text/javascript" src="<?php echo URL ?>public/lib/jquery.min.js"></script>
+    <script type="text/javascript" src="<?php echo URL ?>public/lib/bootstrap/js/bootstrap.min.js"></script>
+    
+    <!--<script type="text/javascript" data-main="<?php echo URL.APP_FOLDER_NAME.'/main' ?>" src="<?php echo URL ?>public/lib/require.js"></script>-->
   </head>
 
+  <!--<body id="colonosAppAdmin"> -->
   <body>
 
     <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
@@ -41,8 +48,9 @@
         </div>
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav navbar-right">
-            <li><a href="/">Inicio</a></li>
-            <li><a href="/admin/logout">Cerrar Sesión</a></li>
+              <li><a href="/"><span class="glyphicon glyphicon-user"></span> (<?php echo $_SESSION['user']->name ?>)</a></li>  
+            <li><a href="/admin" class="glyphicon glyphicon-home"></a></li>
+            <li><a href="/admin/logout" class="glyphicon glyphicon-off"></a></li>
           </ul>
         </div>
       </div>
