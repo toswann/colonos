@@ -11,7 +11,7 @@
 
 /* global $, window */
 
-$(function () {
+$(function() {
     'use strict';
 
     // Initialize the jQuery File Upload widget:
@@ -22,19 +22,19 @@ $(function () {
     });
 
     // Load existing files:
-	$('#fileupload-galery').addClass('fileupload-processing');
+    $('#fileupload-galery').addClass('fileupload-processing');
     $.ajax({
         disableImageResize: /Android(?!.*Chrome)|Opera/.test(window.navigator.userAgent),
         maxFileSize: 5000000,
         acceptFileTypes: /(\.|\/)(jpe?g|png)$/i,
-        url: $('#fileupload-galery').fileupload('option', 'url')+$("#item-id-input").val(),
+        url: $('#fileupload-galery').fileupload('option', 'url') + $("#item-id-input").val(),
         dataType: 'json',
         context: $('#fileupload-galery')[0]
-    }).always(function () {
+    }).always(function() {
         $(this).removeClass('fileupload-processing');
-    }).done(function (result) {
+    }).done(function(result) {
         $(this).fileupload('option', 'done')
-            .call(this, $.Event('done'), {result: result});
+                .call(this, $.Event('done'), {result: result});
     });
 
 });

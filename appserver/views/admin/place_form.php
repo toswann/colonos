@@ -35,7 +35,7 @@
 		<select class="form-control" id="item-city" name="item-city">
 			<option>Ciudades...</option>
 			<?php foreach (C::CITIES() as $k => $v) { ?>
-				<option value="<?=$k?>" <?php if (isset($item) && $item->city == $k) { echo "selected"; } ?>><?=$v?></option>
+				<option value="<?=$k?>" <?php if (isset($item) && $item->city_id == $k) { echo "selected"; } ?>><?=$v?></option>
 			<?php } ?>
 		</select>				
 	</div>
@@ -43,8 +43,8 @@
 		<label for="item-zone">Zona</label>
 		<select class="form-control" id="item-zone" name="item-zone">
 			<option>Zonas...</option>
-			<?php foreach (C::ZONES() as $k => $v) { ?>
-				<option value="<?=$k?>" <?php if (isset($item) && $item->zone == $k) { echo "selected"; } ?>><?=$v?></option>
+			<?php foreach (C::ZONES_LIST() as $k => $v) { ?>
+				<option value="<?=$k?>" <?php if (isset($item) && $item->zone_id == $k) { echo "selected"; } ?>><?=$v?></option>
 			<?php } ?>
 		</select>
 	</div>

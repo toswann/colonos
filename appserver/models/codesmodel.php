@@ -1,7 +1,7 @@
 <?php
 
-class CodesModel
-{
+class CodesModel {
+
     /**
      * Every model needs a database connection, passed to the model
      * @param object $db A PDO database connection
@@ -14,25 +14,25 @@ class CodesModel
         }
     }
 
-	public function checkCodeExist($code) {
+    public function checkCodeExist($code) {
         $sql = "SELECT code FROM codes WHERE code = :code";
         $query = $this->db->prepare($sql);
         $query->execute(array(':code' => $code));
-        return $query->fetch();		
-	}
+        return $query->fetch();
+    }
 
-	public function insertNewCode($id_item, $code) {
-        $sql = "INSERT INTO codes (id_item, status, code) VALUES (:id_item, :status, :code)";
+    public function insertNewCode($item_id, $code) {
+        $sql = "INSERT INTO codes (item_id, status, code) VALUES (:item_id, :status, :code)";
         $query = $this->db->prepare($sql);
-        return $query->execute(array(':id_item' => $id_item, ':status' => C::D("CODE_STATUS_NEW"), ':code' => $code));
-	}
+        return $query->execute(array(':item_id' => $item_id, ':status' => C::D("CODE_STATUS_NEW"), ':code' => $code));
+    }
 
-	public function getItemCodes($id_item) {
-		$sql = "SELECT * FROM codes WHERE id_item = :id_item ORDER BY id ASC";
+    public function getItemCodes($item_id) {
+        $sql = "SELECT * FROM codes WHERE item_id = :item_id ORDER BY id ASC";
         $query = $this->db->prepare($sql);
-        $query->execute(array(':id_item' => $id_item));
+        $query->execute(array(':item_id' => $item_id));
         return $query->fetchAll();
-	}
+    }
 
     public function getCode($code) {
         $sql = "SELECT * FROM codes WHERE code = :code";
@@ -40,5 +40,12 @@ class CodesModel
         $query->execute(array(':code' => $code));
         return $query->fetch();
     }
-}
+    
+    public function markUsedCode($item_id, $code) {
+        $sql = "UPDATE codes SET status = ".C::D("CODE_STATUS_USED").", used_date = '". date( 'Y-m-d H:i:s')."' WHERE code = :code AND item_id = :item_id";
+        $query = $this->db->prepare($sql);
+        $query->execute(array(':code' => $code, ':item_id' => $item_id));
+        return $query;        
+    }
 
+}

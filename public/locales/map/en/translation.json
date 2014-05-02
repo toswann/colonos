@@ -1,72 +1,72 @@
 {
-	"header": {
-		"title" 			: "Settler's Road"
-	},
-	"results": {
-		"count"				: "result(s) found for your research.",
-		"ratings"			: "ratings",
-		"seesheet"			: "See the complete sheet"
-	},
-	"search": {
-		"all": {
-			"f"				: "All",
-			"m"				: "All"
-		},
-		"category": {
-			"accomodation"	: "Accomodation",
-			"food"			: "Food",
-			"culture"		: "Culture",
-			"nature"		: "Nature",
-			"aventure"		: "Aventure",
-			"entertainment"	: "Entertainment",
-			"owner"			: "Owner",
-			"products"		: "Products"
-		},
-		"zone": {
-			"all"			: "Zone..."	
-		},
-		"type": {
-			"all"			: "Type...",
-			"hotel"			: "Hotel",
-			"hostel"		: "Hostel",
-			"cabins"		: "Cabins",
-			"bb"			: "B&B",
-			"camping"		: "Camping",
-			"lodging"		: "Lodging",
-			"inn"			: "Inn",
-			"motel"			: "Motel",
-			"restaurant"	: "Restaurant",
-			"cafe"			: "Café",
-			"sandwich"		: "Sandwich Shop",
-			"theatre"		: "Theatre",
-			"museum"		: "Museum",
-			"cinema"		: "Cinema",
-			"events"		: "Events",
-			"flora"			: "Flora",
-			"fauna"			: "Fauna",
-			"birds"			: "Birds",
-			"geology"		: "Geology",
-			"beaches"		: "Beaches",
-			"rafting"		: "Rafting",
-			"canopy"		: "Canopy",
-			"horse"			: "Horse Riding",
-			"lodge"			: "Lodge",
-			"guides"		: "Guides",
-			"casino"		: "Casino",
-			"nightclub"		: "Night Club",
-			"rodeo"			: "Rodeo",
-			"eventscentre"	: "Events Centre",
-			"spa"			: "SPA",
-			"terrains"		: "Terrains",
-			"houses"		: "Houses",
-			"premises"		: "Premises",
-			"souvenirs"		: "Souvenirs",
-			"knitwear"		: "Knitwear",
-			"food"			: "Food",
-			"beer"			: "Beer"
-		},
-		"text": {
-			"keywords"		: "keywords..."
-		}
-	}
+    "header": {
+        "title": "Settler's Road"
+    },
+    "results": {
+        "count": "result(s) found for your research.",
+        "ratings": "ratings",
+        "seesheet": "See the complete sheet"
+    },
+    "search": {
+        "all": {
+            "f": "All",
+            "m": "All"
+        },
+        "category": {
+            "accomodation": "Accomodation",
+            "food": "Food",
+            "culture": "Culture",
+            "nature": "Nature",
+            "aventure": "Aventure",
+            "entertainment": "Entertainment",
+            "owner": "Owner",
+            "products": "Products"
+        },
+        "zone": {
+            "all": "Zone..."
+        },
+        "type": {
+            "all": "Type...",
+            "hotel": "Hotel",
+            "hostel": "Hostel",
+            "cabins": "Cabins",
+            "bb": "B&B",
+            "camping": "Camping",
+            "lodging": "Lodging",
+            "inn": "Inn",
+            "motel": "Motel",
+            "restaurant": "Restaurant",
+            "cafe": "Café",
+            "sandwich": "Sandwich Shop",
+            "theatre": "Theatre",
+            "museum": "Museum",
+            "cinema": "Cinema",
+            "events": "Events",
+            "flora": "Flora",
+            "fauna": "Fauna",
+            "birds": "Birds",
+            "geology": "Geology",
+            "beaches": "Beaches",
+            "rafting": "Rafting",
+            "canopy": "Canopy",
+            "horse": "Horse Riding",
+            "lodge": "Lodge",
+            "guides": "Guides",
+            "casino": "Casino",
+            "nightclub": "Night Club",
+            "rodeo": "Rodeo",
+            "eventscentre": "Events Centre",
+            "spa": "SPA",
+            "terrains": "Terrains",
+            "houses": "Houses",
+            "premises": "Premises",
+            "souvenirs": "Souvenirs",
+            "knitwear": "Knitwear",
+            "food": "Food",
+            "beer": "Beer"
+        },
+        "text": {
+            "keywords": "keywords..."
+        }
+    }
 }

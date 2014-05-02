@@ -1,16 +1,14 @@
 define([
-	'backbone'
-], function(Backbone){
+    'backbone'
+], function(Backbone) {
 
-	var ItemModel = Backbone.Model.extend({
+    var ItemModel = Backbone.Model.extend({
+        className: "ItemModel",
+        initialize: function(data) {
+            //cl(this.className+".initialized");
+        }
 
-		className: "ItemModel",
+    });
 
-		initialize: function (data) {
-			//cl(this.className+".initialized");
-		}
-		
-	});
-
-	return ItemModel;
+    return ItemModel;
 });

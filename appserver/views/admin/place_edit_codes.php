@@ -1,12 +1,10 @@
 <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2" id="place-code">
 	<h1 class="page-header">Códigos de opiniones</h1>
-
-
 	<div class="row">
 		<div class="col-xs-6 col-sm-5 col-md-4 col-lg-3">
 			<div class="code-form-container">
 				<form class="form-inline" role="form" method="POST" action="<?php echo URL; ?>admin/generatecode">
-					<input type="hidden" name="item-id" value="<?=$item->id?>">
+					<input type="hidden" name="item-id" value="<?=$item->item_id?>">
 					<button type="submit" class="btn btn-primary">Generar</button>
 					<div class="form-group">
 						<label class="sr-only" for="nb-code">Password</label>
@@ -30,7 +28,7 @@
 		<div class="col-xs-6 col-sm-5 col-md-4 col-lg-3">
 			<div class="code-form-container">
 				<form class="form-inline" role="form" method="POST" action="<?php echo URL; ?>admin/generatecode">
-					<input type="hidden" name="item-id" value="<?=$item->id?>">
+					<input type="hidden" name="item-id" value="<?=$item->item_id?>">
 					<button type="submit" class="btn btn-primary">Imprimir</button>
 					<div class="form-group">
 						<label class="sr-only" for="nb-code">Password</label>

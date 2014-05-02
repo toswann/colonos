@@ -18,7 +18,7 @@
 		<div class="col-xs-4">
 			<div class="thumbs">
 				<?php if (isset($item->image) && $item->image == 1) { ?>
-				<img src="/public/storage/thumbs/<?=$item->id?>.jpg" class="img-thumbnail" />
+				<img src="/public/storage/thumbs/<?=$item->item_id?>.jpg" class="img-thumbnail" />
 				<?php } else { ?>
 				<img src="/public/storage/thumbs/na.jpg" class="img-rounded" />
 				<?php } ?>
@@ -27,7 +27,7 @@
 				<address>
 					<strong><?=$item->name?></strong><br>
 					<?=$item->address?><br>
-					<?=C::CITIES($item->city)?>, zona <?=C::ZONES($item->zone)?>
+					<?=C::CITIES($item->city_id)?>, zona <?=C::ZONES($item->zone_id)?>
 				</address>
 				<address>
 					<strong data-i18n="place.show.contact">Contacto</strong><br>
@@ -52,12 +52,12 @@
 			
 				<div id="slideshow" class="rs-slideshow">
 					<div class="slide-container">
-						<img src="/public/storage/galeries/<?=$item->id."/".$photos[0]?>" alt="" />
+						<img src="/public/storage/galeries/<?=$item->item_id."/".$photos[0]?>" alt="" />
 					</div>
 					<ol class="slides">
 					<?php for ($i = 1; $i < count($photos) ;$i++) { ?>
 						<li>
-							<a href="/public/storage/galeries/<?=$item->id."/".$photos[$i]?>"></a>
+							<a href="/public/storage/galeries/<?=$item->item_id."/".$photos[$i]?>"></a>
 						</li>
 					<?php } ?>
 					</ol>

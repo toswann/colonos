@@ -14,8 +14,34 @@ class ItemsModel {
         }
     }
 
-    public function getAllActiveItems() {
-        $sql = "SELECT * FROM items WHERE state > '0'";
+    public function apiGetAllActiveItems() {
+        $sql = "SELECT * FROM items WHERE state > '0' ";
+        $query = $this->db->prepare($sql);
+        $query->execute();
+
+        // fetchAll() is the PDO method that gets all result rows, here in object-style because we defined this in
+        // libs/controller.php! If you prefer to get an associative array as the result, then do
+        // $query->fetchAll(PDO::FETCH_ASSOC); or change libs/controller.php's PDO options to
+        // $options = array(PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC ...
+        return $query->fetchAll();
+    }
+    
+    public function GetAllActiveItems() {
+        $sql = "SELECT * FROM items WHERE state > '0' ".F::getUserConstraints();
+        $query = $this->db->prepare($sql);
+        $query->execute();
+
+        // fetchAll() is the PDO method that gets all result rows, here in object-style because we defined this in
+        // libs/controller.php! If you prefer to get an associative array as the result, then do
+        // $query->fetchAll(PDO::FETCH_ASSOC); or change libs/controller.php's PDO options to
+        // $options = array(PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC ...
+        return $query->fetchAll();
+    }    
+
+    public function getAdminItems() {
+        //$sql = "SELECT item_id, name, state FROM items WHERE item_id = :item_id".F::getUserConstraints();
+        $sql = "SELECT item_id, name, state, owner_id FROM items WHERE item_id IS NOT NULL ".F::getUserConstraints();
+
         $query = $this->db->prepare($sql);
         $query->execute();
 
@@ -26,29 +52,32 @@ class ItemsModel {
         return $query->fetchAll();
     }
 
-    public function getAdminItems($id) {
-        $sql = "SELECT id, name, state FROM items WHERE id_admin = :id";
-        $query = $this->db->prepare($sql);
-        $query->execute(array(':id' => $id));
+    public function saveEditItem($item_id, $name, $flatname, $category, $type, $city_id, $zone_id, $address, $phone, $email, $website, $description, $image, $lat, $long, $price) {
+        $sql = "UPDATE items SET name=:name, "
+                . "                             flatname=:flatname, "
+                . "                             category=:category, "
+                . "                             type=:type, "
+                . "                             city_id=:city_id, "
+                . "                             zone_id=:zone_id, "
+                . "                             address=:address, "
+                . "                             phone=:phone, "
+                . "                             mail=:email, "
+                . "                             website=:website, "
+                . "                             description=:description, "
+                . "                             image=:image, "
+                . "                             latitude=:lat, "
+                . "                             longitude=:long, "
+                . "                             price=:price "
+                . "WHERE item_id = :item_id";
 
-        // fetchAll() is the PDO method that gets all result rows, here in object-style because we defined this in
-        // libs/controller.php! If you prefer to get an associative array as the result, then do
-        // $query->fetchAll(PDO::FETCH_ASSOC); or change libs/controller.php's PDO options to
-        // $options = array(PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC ...
-        return $query->fetchAll();
-    }
-
-    public function saveEditItem($id, $name, $flatname, $category, $type, $city, $zone, $address, $phone, $email, $website, $description, $image, $lat, $long, $price) {
-        $sql = "UPDATE items SET name=:name, flatname=:flatname, category=:category, type=:type, city=:city, zone=:zone, address=:address, phone=:phone, mail=:email, website=:website, description=:description, image=:image, galery=:galery, latitude=:lat, longitude=:long, price=:price WHERE id = :id";
         $query = $this->db->prepare($sql);
         $query->execute(array(
-            ':id' => $id,
             ':name' => $name,
             ':flatname' => $flatname,
             ':category' => $category,
             ':type' => $type,
-            ':city' => $city,
-            ':zone' => $zone,
+            ':city_id' => $city_id,
+            ':zone_id' => $zone_id,
             ':address' => $address,
             ':phone' => $phone,
             ':email' => $email,
@@ -57,13 +86,14 @@ class ItemsModel {
             ':image' => $image,
             ':lat' => $lat,
             ':long' => $long,
-            ':price' => $price
+            ':price' => $price,
+            ':item_id' => $item_id            
         ));
     }
     
-     public function saveNewItem($id, $name, $flatname, $category, $type, $city, $zone, $address, $phone, $email, $website, $description, $image, $lat, $long, $price) {
-        $sql = "INSERT INTO items (name, flatname, category, type, city, zone, address, phone, mail, website, description, image, latitude, longitude, price) "
-                . "                 VALUES (:name, :flatname, :category, :type, :city, :zone, :address, :phone, :email, :website, :description, :image, :lat, :long, :price);";
+     public function saveNewItem($item_id, $name, $flatname, $category, $type, $city_id, $zone_id, $address, $phone, $email, $website, $description, $image, $lat, $long, $price) {
+        $sql = "INSERT INTO items (name, flatname, category, type, city_id, zone_id, address, phone, mail, website, description, image, latitude, longitude, price) "
+                . "                 VALUES (:name, :flatname, :category, :type, :city_id, :zone_id, :address, :phone, :email, :website, :description, :image, :lat, :long, :price);";
 
         try {
             $query = $this->db->prepare($sql);
@@ -72,8 +102,8 @@ class ItemsModel {
                 ':flatname' => $flatname,
                 ':category' => $category,
                 ':type' => $type,
-                ':city' => $city,
-                ':zone' => $zone,
+                ':city_id' => $city_id,
+                ':zone_id' => $zone_id,
                 ':address' => $address,
                 ':phone' => $phone,
                 ':email' => $email,
@@ -90,25 +120,27 @@ class ItemsModel {
         }
     }
 
-    public function getItem($id) {
-        $sql = "SELECT * FROM items WHERE id = :id";
+    public function getItem($item_id) {
+        
+        $sql = "SELECT * FROM items WHERE item_id = :item_id ".F::getUserConstraints();
+
         $query = $this->db->prepare($sql);
-        $query->execute(array(':id' => $id));
+        $query->execute(array(':item_id' => $item_id));
 
         return $query->fetch();
     }
 
-    public function getItemGalery($id) {
-        $sql = "SELECT galery FROM items WHERE id = :id";
+    public function getItemGalery($item_id) {
+        $sql = "SELECT galery FROM items WHERE item_id = :item_id".F::getUserConstraints();
         $query = $this->db->prepare($sql);
-        $query->execute(array(':id' => $id));
+        $query->execute(array(':item_id' => $item_id));
         return $query->fetch();
     }
 
-    public function updateItemGalery($id, $galery) {
-        $sql = "UPDATE items SET galery=:galery WHERE id = :id";
+    public function updateItemGalery($item_id, $galery) {
+        $sql = "UPDATE items SET galery=:galery WHERE item_id = :item_id";
         $query = $this->db->prepare($sql);
-        return $query->execute(array(':id' => $id, ':galery' => $galery));
+        return $query->execute(array(':item_id' => $item_id, ':galery' => $galery));
     }
 
 }

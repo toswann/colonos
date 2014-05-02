@@ -2,7 +2,7 @@
 	<h1 class="page-header">Add place</h1>
 	<h2 class="page-header">Informationes</h2>
 	<form role="form" class="item-form" action="<?php echo URL; ?>admin/savenewplace" method="POST">
-	<input type="hidden" name="item-id" value="<?=$item->id?>">
+	<input type="hidden" name="item-id" value="<?=$item->item_id?>">
 	<?php require("place_form.php") ?>
 	</form>
 </div>

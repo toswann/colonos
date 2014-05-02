@@ -5,6 +5,7 @@ class C {
     private static $defines = array(
         'DEFAULT_PW' => 'colonos',
         'DEFAULT_PW_SHA1' => 'b84b4726518964c6c7a1084817e84de8a62d63a8',
+
         'PW_MIN_SIZE' => 6,
         'USER_STATE_NEW' => 0,
         'USER_STATE_ACTIVE' => 1,
@@ -12,24 +13,35 @@ class C {
         'TYPE_MODERATOR' => 1,
         'TYPE_ZONE_ADMIN' => 2,
         'TYPE_GENERAL_ADMIN' => 3,
+        'ROLE_OWNER' => 6,
+        'ROLE_ZONE_ADMIN' => 5,
         'ITEM_STATE_OFFLINE' => 0,
         'ITEM_STATE_VALID' => 1,
         'ITEM_STATE_MODIFIED' => 2,
         'CODE_STATUS_NEW' => 0,
         'CODE_STATUS_PRINT' => 1,
         'CODE_STATUS_USED' => 2,
-        'RBAC_TABLE_PREFIX' => "rbac_"
+        'RBAC_TABLE_PREFIX' => "rbac_",
+        'GALLERY_IMAGE_MAX_WIDTH' => 800,
+        'GALLERY_IMAGE_MAX_HEIGHT' => 550,
+        'GALLERY_IMAGE_MIN_WIDTH' => 1,
+        'GALLERY_IMAGE_MIN_HEIGHT' => 1,        
+        'GALLERY_PATH' => '/public/storage/galeries/'
+
     );
+    
     private static $item_state = array(
         array("OFFLINE", "default"),
         array("VALID", "success"),
         array("MODIFIED", "warning")
     );
+    
     private static $code_status = array(
         array("NUEVO", "default"),
         array("IMPRESO", "primary"),
         array("USADO", "success")
-    );
+    )
+            ;
     private static $text = array(
         'SERVER_ERROR_RELOAD' => 'Server Error, please reload the page',
         'LOGIN_NO_PASS' => 'You need to enter a password.',
@@ -39,6 +51,7 @@ class C {
         'NEWPASS_NOT_DEFAULT' => 'Please use an other password.',
         'NEWPASS_SHORT' => 'Your password must be al least 6 caracters.'
     );
+    
     private static $categories = array(
         1 => "Alojamiento",
         2 => "Comida",
@@ -49,6 +62,7 @@ class C {
         7 => "Propiedades",
         8 => "Productos"
     );
+    
     private static $cities = array(
         1 => "Achao",
         2 => "Ancud",
@@ -80,7 +94,9 @@ class C {
         28 => "Quellón",
         29 => "Quemchi"
     );
+    
     private static $zones = array(
+        1000 => "All",
         1 => "Baía Mansa",
         2 => "Calbuco",
         3 => "Carelmapu",
@@ -108,6 +124,7 @@ class C {
         25 => "Quillahua",
         26 => "Rupanco"
     );
+    
     private static $types = array(
         1 => array(
             1 => "Hotel",
@@ -169,11 +186,13 @@ class C {
     }
 
     public static function D($index) {
-        return self::$defines[$index];
+        if ($index != "") return self::$defines[$index];
+        return "";
     }
 
     public static function ITEM_STATE($index, $key = 0) {
-        return self::$item_state[$index][$key];
+        if ($index != "") return self::$item_state[$index][$key];
+        return "";        
     }
 
     public static function CODE_STATUS($index, $key = 0) {
@@ -193,8 +212,15 @@ class C {
     }
 
     public static function ZONES($id = null) {
-        return $id ? self::$zones[$id] : self::$zones;
+        if (is_numeric($id) && $id >0)
+            return $id ? self::$zones[$id] : self::$zones;
+        else
+            return '';
     }
+    
+    public static function ZONES_LIST() {
+            return self::$zones;
+    }    
 
 }
 

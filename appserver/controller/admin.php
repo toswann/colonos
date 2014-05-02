@@ -5,13 +5,13 @@ session_start();
 require APP_FOLDER_NAME . '/utils/GaleryUploadHandler.php';
 
 // Init of PHP RBAC engine
-require APP_FOLDER_NAME . '/utils/phprbac/Rbac.php';
+require_once APP_FOLDER_NAME . '/utils/phprbac/Rbac.php';
 
 class Admin extends Controller {
 
     // reference to RBAC engine
-    private $rbac=null;
-    
+    private $rbac=null;    
+   
     /**
      * ......... 
      * @param type $name Description
@@ -21,7 +21,7 @@ class Admin extends Controller {
      */         
     public function __construct(){
         parent::__construct();
-        $this->rbac = new PhpRbac\Rbac($this->db);
+        $this->rbac = new PhpRbac\Rbac($this->db);        
     }
 
     /**
@@ -31,7 +31,7 @@ class Admin extends Controller {
      * @author Swann
      */         
     public function dashboard() {
-        $this->verfifyAccess("manage_owner_and_place"); 
+        $this->verfifyAccess("edit_place");  
 
         $dashboard = "active";
         require APP_FOLDER_NAME . '/views/admin/_header_in.php';
@@ -52,7 +52,7 @@ class Admin extends Controller {
         $places = "active";
 
         $items_model = $this->loadModel('ItemsModel');
-        $items = $items_model->getAdminItems($_SESSION["user"]->id);
+        $items = $items_model->getAdminItems();
 
         require APP_FOLDER_NAME . '/views/admin/_header_in.php';
         require APP_FOLDER_NAME . '/views/admin/sidenav.php';
@@ -76,12 +76,13 @@ class Admin extends Controller {
         $item = $items_model->getItem($id);
 
         // if the user is the admin of the place		
-        if (isset($item) && $item && $_SESSION["user"]->id == $item->id_admin) {
+        /*if (isset($item) && $item && $_SESSION["user"]->user_id == $item->admin_id) {
             echo "edit";
         } else {
             header('location: ' . URL . 'admin/places');
             exit();
-        }
+        }*/
+        
         require APP_FOLDER_NAME . '/views/admin/_header_in.php';
         require APP_FOLDER_NAME . '/views/admin/sidenav.php';
         require APP_FOLDER_NAME . '/views/admin/place_edit_infos.php';
@@ -103,8 +104,9 @@ class Admin extends Controller {
         $items_model = $this->loadModel('ItemsModel');
         $item = $items_model->getItem($id);
 
+        
         // if the user is the admin of the place		
-        if (isset($item) && $item && $_SESSION["user"]->id == $item->id_admin) {
+        if (isset($item) && $item && $_SESSION["user"]->zone_id == $item->zone_id) {
             echo "edit";
         } else {
             header('location: ' . URL . 'admin/places');
@@ -132,7 +134,7 @@ class Admin extends Controller {
         $item = $items_model->getItem($id);
 
         // if the user is the admin of the place		
-        if (isset($item) && $item && $_SESSION["user"]->id == $item->id_admin) {
+        if (isset($item) && $item && $_SESSION["user"]->user_id == $item->admin_id) {
             $codes_model = $this->loadModel('CodesModel');
             $codes = $codes_model->getItemCodes($item->id);
             $nb_new_code = $this->countCode($codes, C::D("CODE_STATUS_NEW"));
@@ -252,7 +254,7 @@ class Admin extends Controller {
         //$item = $items_model->getItem($id);
 
         // if the user is the admin of the place		
-        /*if (isset($item) && $item && $_SESSION["user"]->id == $item->id_admin) {
+        /*if (isset($item) && $item && $_SESSION["user"]->user_id == $item->admin_id) {
             echo "edit";
         } else {
             header('location: ' . URL . 'admin/places');
@@ -309,9 +311,13 @@ class Admin extends Controller {
 
         $placeowners = "active";
 
+        $owners_model = $this->loadModel('UsersModel');
+        $owners = $owners_model->getOwners(); 
+        $zones = C::ZONES_LIST();        
+        
         require APP_FOLDER_NAME . '/views/admin/_header_in.php';
         require APP_FOLDER_NAME . '/views/admin/sidenav.php';
-        require APP_FOLDER_NAME . '/views/admin/place_new.php';
+        require APP_FOLDER_NAME . '/views/admin/owners.php';
         require APP_FOLDER_NAME . '/views/admin/_footer_in.php';
     }    
     
@@ -327,7 +333,7 @@ class Admin extends Controller {
 
         require APP_FOLDER_NAME . '/views/admin/_header_in.php';
         require APP_FOLDER_NAME . '/views/admin/sidenav.php';
-        require APP_FOLDER_NAME . '/views/admin/place_new.php';
+        require APP_FOLDER_NAME . '/views/admin/owner_new.php';
         require APP_FOLDER_NAME . '/views/admin/_footer_in.php';
     }
     
@@ -340,7 +346,7 @@ class Admin extends Controller {
      public function saveNewOwner() {
         $this->verfifyAccess("manage_owner_and_place", "session_only");   
 
-        $id = '';
+        /*$id = '';
         $name = strip_tags($_POST["item-name"]);
         $flatname = F::slugify($name);
         $category = strip_tags($_POST["item-category"]);
@@ -356,14 +362,18 @@ class Admin extends Controller {
         $lat = strip_tags($_POST["item-lat"]);
         $long = strip_tags($_POST["item-long"]);
         $price = strip_tags($_POST["item-price"]);
-        //echo $id."<br>".$name."<br>".$flatname."<br>".$category."<br>".$type."<br>".$city."<br>".$zone."<br>".$address."<br>".$phone."<br>".$email."<br>".$website."<br>".$description."<br>".$image."<br>".$galery."<br>".$lat."<br>".$long."<br>".$price."<br>";
+        */
+        $id = '';
+        $name = strip_tags($_POST["user-name"]);
+        $email = strip_tags($_POST["user-email"]);
+        $zone = strip_tags($_POST["user-zone"]);
 
-        //$items_model = $this->loadModel('ItemsModel');
-        //$item = $items_model->saveNewItem($id, $name, $flatname, $category, $type, $city, $zone, $address, $phone, $email, $website, $description, $image, $lat, $long, $price);
+        $users_model = $this->loadModel('UsersModel');
+        $user = $users_model->addNewOwner($name, $email, $zone);
 
-
-        header('location: ' . URL . 'admin/places');
-        exit();
+        header('location: ' . URL . 'admin/owners');
+        exit();          
+        
     }    
     
     /**
@@ -372,15 +382,49 @@ class Admin extends Controller {
      * @todo Server-side validation of data, Security (Access possible only after calling newplace()) 
      * @author Patryk
      */    
-     public function editOwner($id) {
+     public function editOwner($id, $error ="") {
         $this->verfifyAccess("manage_owner_and_place");      
+        
+        $users_model = $this->loadModel('UsersModel');
+        $user = $users_model->getOwner($id);        
         
         require APP_FOLDER_NAME . '/views/admin/_header_in.php';
         require APP_FOLDER_NAME . '/views/admin/sidenav.php';
-        require APP_FOLDER_NAME . '/views/admin/dashboard.php';
+        require APP_FOLDER_NAME . '/views/admin/owner_edit_infos.php';
         require APP_FOLDER_NAME . '/views/admin/_footer_in.php';        
         
      }
+  
+     /**
+     * ........
+     * @return void; Redirects user to Places view
+     * @todo Server-side validation of data, Security (Access possible only after calling newplace()) 
+     * @author Patryk
+     */    
+     public function saveEditOwner() {
+        $this->verfifyAccess("manage_owner_and_place");    
+        
+        $id = strip_tags($_POST["user-id"]);
+        $name = strip_tags($_POST["user-name"]);
+        $email = strip_tags($_POST["user-email"]);
+        $zone = strip_tags($_POST["user-zone"]);       
+        $pass = F::preparePass(strip_tags($_POST["user-pass"]));    
+        $new_pass = F::preparePass(strip_tags($_POST["user-pass-2"]));    
+                
+        $users_model = $this->loadModel('UsersModel');
+        $user = $users_model->getOwner($id);
+        
+        // by default we take current password of the user       
+        $passwordChangeOrNot = F::comparePasswords($user->password, $pass, $new_pass);
+
+        if ($passwordChangeOrNot["error"] === ""){
+            $user = $users_model->updateZoneAdmin($id, $name, $email, $zone, $passwordChangeOrNot["password"]);
+            header('location: ' . URL . 'admin/owners');
+        }
+        else
+            header('location: ' . URL . 'admin/editowner/'.$id.'/'.$passwordChangeOrNot["error"] );
+        exit();           
+     }     
      
    /**
      * ........
@@ -435,19 +479,23 @@ class Admin extends Controller {
      
      
    /**
-     * ........
-     * @return void; Redirects user to Places view
-     * @todo Server-side validation of data, Security (Access possible only after calling newplace()) 
+     * Renders view for Management of Zone Admins. 
+    *  Additionally gets data for Zones.
+     * @return void; 
+     * @todo Action menu to manage inline aditing 
      * @author Patryk
      */    
      public function zoneAdmins() {
         $this->verfifyAccess("manage_zone_admins");        
-        $zoneadmins = "active";
+        $zone_admins = "active";
+
+        $zoneadmins_model = $this->loadModel('UsersModel');
+        $zoneadmins = $zoneadmins_model->getZoneAdmins(); 
+        $zones = C::ZONES_LIST();
         require APP_FOLDER_NAME . '/views/admin/_header_in.php';
         require APP_FOLDER_NAME . '/views/admin/sidenav.php';
-        require APP_FOLDER_NAME . '/views/admin/dashboard.php';
+        require APP_FOLDER_NAME . '/views/admin/zoneadmins.php';
         require APP_FOLDER_NAME . '/views/admin/_footer_in.php';        
-        
      }      
      
    /**
@@ -458,10 +506,13 @@ class Admin extends Controller {
      */    
      public function newZoneAdmin() {
         $this->verfifyAccess("manage_zone_admins");                  
-        
+        $zone_admins = "active";
+        $zoneadmins_model = $this->loadModel('UsersModel');
+        $zoneadmins = $zoneadmins_model->getZoneAdmins(); 
+        $zones = C::ZONES_LIST();        
         require APP_FOLDER_NAME . '/views/admin/_header_in.php';
         require APP_FOLDER_NAME . '/views/admin/sidenav.php';
-        require APP_FOLDER_NAME . '/views/admin/dashboard.php';
+        require APP_FOLDER_NAME . '/views/admin/zoneadmin_new.php';
         require APP_FOLDER_NAME . '/views/admin/_footer_in.php';        
         
      }        
@@ -473,7 +524,18 @@ class Admin extends Controller {
      * @author Patryk
      */    
      public function saveNewZoneAdmin() {
-        $this->verfifyAccess("manage_zone_admins", "session_only");            
+        $this->verfifyAccess("manage_zone_admins", "session_only");             
+
+        $id = '';
+        $name = strip_tags($_POST["user-name"]);
+        $email = strip_tags($_POST["user-email"]);
+        $zone = strip_tags($_POST["user-zone"]);
+
+        $users_model = $this->loadModel('UsersModel');
+        $user = $users_model->addNewZoneAdmin($name, $email, $zone);
+
+        header('location: ' . URL . 'admin/zoneadmins');
+        exit();        
         
      }             
           
@@ -484,13 +546,16 @@ class Admin extends Controller {
      * @todo Server-side validation of data, Security (Access possible only after calling newplace()) 
      * @author Patryk
      */    
-     public function editZoneAdmin($id) {
+     public function editZoneAdmin($id, $error="") {
         $this->verfifyAccess("manage_zone_admins");   
         $zoneadmins = "active";
-        
+                
+        $users_model = $this->loadModel('UsersModel');
+        $user = $users_model->getZoneAdmin($id);
+   
         require APP_FOLDER_NAME . '/views/admin/_header_in.php';
         require APP_FOLDER_NAME . '/views/admin/sidenav.php';
-        require APP_FOLDER_NAME . '/views/admin/dashboard.php';
+        require APP_FOLDER_NAME . '/views/admin/zoneadmin_edit_infos.php';
         require APP_FOLDER_NAME . '/views/admin/_footer_in.php';        
         
      }  
@@ -502,8 +567,105 @@ class Admin extends Controller {
      * @author Patryk
      */    
      public function saveEditZoneAdmin() {
-        $this->verfifyAccess("manage_zone_admins");                  
-     }              
+        $this->verfifyAccess("manage_zone_admins");    
+        
+        $id = strip_tags($_POST["user-id"]);
+        $name = strip_tags($_POST["user-name"]);
+        $email = strip_tags($_POST["user-email"]);
+        $zone = strip_tags($_POST["user-zone"]);       
+        $pass = strip_tags($_POST["user-pass"]);    
+        $new_pass = strip_tags($_POST["user-pass-2"]);    
+                
+        $users_model = $this->loadModel('UsersModel');
+        $user = $users_model->getZoneAdmin($id);
+        
+        // by default we take current password of the user       
+        $passwordChangeOrNot = F::comparePasswords($user->password, $pass, $new_pass);
+
+        if ($passwordChangeOrNot["error"] === ""){
+            $user = $users_model->updateZoneAdmin($id, $name, $email, $zone, $passwordChangeOrNot["password"]);
+            header('location: ' . URL . 'admin/zoneadmins');
+        }
+        else
+            header('location: ' . URL . 'admin/editzoneadmin/'.$id.'/'.$passwordChangeOrNot["error"] );
+        exit();            
+     }   
+     
+   /**
+     * ........
+     * @return void; Redirects user to Places view
+     * @todo Server-side validation of data, Security (Access possible only after calling newplace()) 
+     * @author Patryk
+     */    
+     public function activateZoneAdmin($id) {       
+        $this->verfifyAccess("manage_zone_admins");    
+        
+        $users_model = $this->loadModel('UsersModel');
+        $user = $users_model->activateZoneAdmin($id);
+        
+        $roles_model = $this->loadModel('RbacModel');
+        $role= $roles_model->assignPermisions(C::D('ROLE_ZONE_ADMIN'), $id);        
+
+        header('location: ' . URL . 'admin/zoneadmins');
+        exit();               
+     }     
+     
+   /**
+     * ........
+     * @return void; Redirects user to Places view
+     * @todo Server-side validation of data, Security (Access possible only after calling newplace()) 
+     * @author Patryk
+     */    
+     public function deactivateZoneAdmin($id) {
+        $this->verfifyAccess("manage_zone_admins");    
+        
+        $users_model = $this->loadModel('UsersModel'); 
+        $user = $users_model->deactivateZoneAdmin($id);
+
+        $roles_model = $this->loadModel('RbacModel');
+        $role= $roles_model->unassignPermisions(C::D('ROLE_ZONE_ADMIN'), $id);                
+        
+        header('location: ' . URL . 'admin/zoneadmins');
+        exit();            
+     }    
+     
+   /**
+     * ........
+     * @return void; Redirects user to Places view
+     * @todo Server-side validation of data, Security (Access possible only after calling newplace()) 
+     * @author Patryk
+     */    
+     public function activateOwner($id) {       
+        $this->verfifyAccess("manage_zone_admins");    
+        
+        $users_model = $this->loadModel('UsersModel');
+        $user = $users_model->activateOwner($id);
+        
+        $roles_model = $this->loadModel('RbacModel');
+        $role= $roles_model->assignPermisions(C::D('ROLE_OWNER'), $id);  
+
+        header('location: ' . URL . 'admin/owners');
+        exit();               
+     }     
+     
+   /**
+     * ........
+     * @return void; Redirects user to Places view
+     * @todo Server-side validation of data, Security (Access possible only after calling newplace()) 
+     * @author Patryk
+     */    
+     public function deactivateOwner($id) {
+        $this->verfifyAccess("manage_zone_admins");    
+        
+        $users_model = $this->loadModel('UsersModel'); 
+        $user = $users_model->deactivateOwner($id);
+
+        $roles_model = $this->loadModel('RbacModel');
+        $role= $roles_model->unassignPermisions(C::D('ROLE_OWNER'), $id);                
+        
+        header('location: ' . URL . 'admin/owners');
+        exit();            
+     }       
     
    /**
      * ........
@@ -557,6 +719,7 @@ class Admin extends Controller {
                     $user = $users_model->checkAdminAuth($_POST["admin-form-mail"], $_POST["admin-form-password"]);
                     if ($user) {
                         $_SESSION['user'] = $user;
+                        F::setUserConstraints();
                         header('location: ' . URL . 'admin/dashboard');
                         exit();
                     } else {
@@ -570,6 +733,7 @@ class Admin extends Controller {
             require APP_FOLDER_NAME . '/views/admin/login.php';
             require APP_FOLDER_NAME . '/views/admin/_footer.php';
         } else {
+            F::setUserConstraints();
             header('location: ' . URL . 'admin/dashboard');
         }
     }
@@ -618,9 +782,7 @@ class Admin extends Controller {
      * @author Swann
      */    
     public function logout() {
-        session_unset();
-        session_destroy();
-        header('location: ' . URL . 'admin');
+        F::logout();
     }
 
     /**
@@ -631,11 +793,13 @@ class Admin extends Controller {
      */ 
     public function rbac() {
         
-        $roles_model = $this->loadModel('RBACModel');
+        $roles_model = $this->loadModel('RBACModel', $this->rbac);
         $roles = $roles_model->getRoles();
         $permissions = $roles_model->getPermisions();
-               
-        $this->rbac->enforce('manage_zone_admins', $_SESSION['user']->state);
+        //var_dump($_SESSION['user']);
+        //die();
+        
+        $this->rbac->enforce('manage_zone_admins', $_SESSION['user']->user_id);
         
         $rbac = "active";      
 
@@ -689,7 +853,7 @@ class Admin extends Controller {
                     $this->checkState();
                     $this->checkTypeAtLeast(C::D('TYPE_MODERATOR'));                
             }
-            $this->rbac->enforce($permission_name, $_SESSION['user']->id);
+            $this->rbac->enforce($permission_name, $_SESSION['user']->user_id);
             
         } catch (Exception $ex) {
             $this->logout();
@@ -739,8 +903,7 @@ class Admin extends Controller {
             exit();
         }
     }
-
-    
+     
     /**
      * .........
      * @param type $name Description

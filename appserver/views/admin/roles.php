@@ -10,6 +10,7 @@
         <button type="button" class="btn btn-default">Or do this</button>
       </p>
     </div> 
+    <a href="newpassword.php"></a>
     
     <ul class="nav nav-tabs" id="rolesTab">
         <li class="active"><a href="#roles" data-toggle="tab">Roles</a></li>

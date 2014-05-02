@@ -28,6 +28,8 @@
     </script>
     <script type="text/javascript" src="<?php echo URL ?>public/lib/jquery.min.js"></script>
     <script type="text/javascript" src="<?php echo URL ?>public/lib/bootstrap/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="<?php echo URL ?>public/lib/jquery.dataTables.min.js"></script>
+    
     
     <!--<script type="text/javascript" data-main="<?php echo URL.APP_FOLDER_NAME.'/main' ?>" src="<?php echo URL ?>public/lib/require.js"></script>-->
   </head>

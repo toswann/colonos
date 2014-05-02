@@ -1,33 +1,38 @@
 {
-	"vote" : {
-		"code_form" : {
-			"enter" 			:	"Entra el Código :",
-			"submit"			:	"Enviar",
-			"code_used"			:	"Código ya utilizado",
-			"code_unknown"		:	"Este código no existe"		
-		},
-		
-		"vote_form" : {
-			"title"				:	"Tu opinion de :",
-			"code"				:	"Código",
-			"not_show"			:	"(nobody will be able to see this)",
-			"cleanliness"		:	"Limpeza",
-			"confort"			:	"Confort",
-			"location"			:	"Ubicación",
-			"services"			:	"Instalaciones y servicios",
-			"personal"			:	"Personal",
-			"pqratio"			:	"Relación calidad - precio",
-			"nombre"			:	"Nombre",
-			"comment"			:	"Commentario",
-			"newsletter"		:	"Quiero recibir el boletín mensual de rutadeloscolonos.cl.",
-			"submit"			:	"Enviar"
-		}
-	},
-	"place" : {
-		"show" : {
-			"contact"			:	"Contacto",
-			"other_infos"		:	"Otras informaciones :",
-			"galery"			:	"Galeria de fotos :"
-		}
-	}
+    "vote": {
+        "code_form": {
+            "enter": "Entra el Código :",
+            "submit": "Enviar",
+            "code_used": "Código ya utilizado",
+            "code_unknown": "Este código no existe"
+        },
+        "vote_form": {
+            "title": "Tu opinion de :",
+            "code": "Código",
+            "not_show": "(nobody will be able to see this)",
+            "cleanliness": "Limpeza",
+            "confort": "Confort",
+            "location": "Ubicación",
+            "services": "Instalaciones y servicios",
+            "personal": "Personal",
+            "pqratio": "Relación calidad - precio",
+            "nombre": "Nombre",
+            "comment": "Commentario",
+            "newsletter": "Quiero recibir el boletín mensual de rutadeloscolonos.cl.",
+            "submit": "Enviar"
+        },
+        "result": {
+            "title_ok": "Success",
+            "message_ok": "Su opinion esta enviada. Gracias.",
+            "title_error": "Error",
+            "message_error": "Desgraciadamente, su opinion no se ha guadado. Por favor contacte administrador de la pagina."                 
+        }  
+    },
+    "place": {
+        "show": {
+            "contact": "Contacto",
+            "other_infos": "Otras informaciones :",
+            "galery": "Galeria de fotos :"
+        }
+    }
 }

@@ -36,14 +36,14 @@
         <td>
             <span class="preview">
                 {% if (file.thumbnailUrl) { %}
-                    <a href="/public/storage/galeries/{%=file.folder%}/{%=file.name%}" title="{%=file.name%}" download="{%=file.name%}" data-gallery><img src="/public/storage/galeries/{%=file.folder%}/thumbnail/{%=file.name%}"></a>
+                    <a href="<?=C::D('GALLERY_PATH') ?>{%=file.folder%}/{%=file.name%}" title="{%=file.name%}" download="{%=file.name%}" data-gallery><img src="<?=C::D('GALLERY_PATH') ?>{%=file.folder%}/thumbnail/{%=file.name%}"></a>
                 {% } %}
             </span>
         </td>
         <td>
             <p class="name">
                 {% if (file.url) { %}
-                    <a href="/public/storage/galeries/{%=file.folder%}/{%=file.name%}" title="{%=file.name%}">{%=file.name%}</a>
+                    <a href="<?=C::D('GALLERY_PATH') ?>{%=file.folder%}/{%=file.name%}" title="{%=file.name%}">{%=file.name%}</a>
                 {% } else { %}
                     <span>{%=file.name%}</span>
                 {% } %}
@@ -104,7 +104,7 @@
 <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
 	<h1 class="page-header">Edit Galery</h1>
 	<form id="fileupload-galery" method="POST" enctype="multipart/form-data">
-		<input type="hidden" name="item-id" value="<?=$item->id?>" id="item-id-input">
+		<input type="hidden" name="item-id" value="<?=$item->item_id?>" id="item-id-input">
         <!-- The fileupload-buttonbar contains buttons to add/delete files and start/cancel the upload -->
         <div class="row fileupload-buttonbar">
             <div class="col-lg-7">
