@@ -28,7 +28,7 @@ class CodesModel {
     }
 
     public function getItemCodes($item_id) {
-        $sql = "SELECT * FROM codes WHERE item_id = :item_id ORDER BY id ASC";
+        $sql = "SELECT * FROM codes WHERE item_id = :item_id ORDER BY item_id ASC";
         $query = $this->db->prepare($sql);
         $query->execute(array(':item_id' => $item_id));
         return $query->fetchAll();
@@ -47,5 +47,12 @@ class CodesModel {
         $query->execute(array(':code' => $code, ':item_id' => $item_id));
         return $query;        
     }
+    
+    public function markPrintedCodes($item_id) {
+        $sql = "UPDATE codes SET status = ".C::D("CODE_STATUS_PRINT")." WHERE item_id = :item_id AND status = ".C::D("CODE_STATUS_NEW");
+        $query = $this->db->prepare($sql);
+        $query->execute(array(':item_id' => $item_id));
+        return $query;        
+    }    
 
 }

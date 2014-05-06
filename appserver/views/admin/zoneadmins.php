@@ -18,11 +18,11 @@
                     <th>Email</th>
                     <th>State</th>                   
                     <th>Zone</th>
-                    <th></td>
+                    <th>Menu</th>
                 </tr>
             </thead>
+            <tbody>
             <?php for ($i = 0; $i < count($zoneadmins); $i++) { ?>  
-                <form role="form" id="zoneadmin-<?= $zoneadmins[$i]->user_id ?>">
                     <tr>
                         <td class="text"><?= $zoneadmins[$i]->user_id ?><input type="hidden" name="role_id" value="<?= $zoneadmins[$i]->user_id ?>"></td>
                         <td class="text"><?= $zoneadmins[$i]->name ?></td>
@@ -30,13 +30,25 @@
                         <td><span class="label label-<?=C::ITEM_STATE($zoneadmins[$i]->state, 1)?>"><?=C::ITEM_STATE($zoneadmins[$i]->state, 0)?></span></td>         
                         <td><?= C::ZONES($zoneadmins[$i]->zone_id) ?></td>                         
                         <td>
-                            <a class="btn btn-default start" href="<?= URL ?>admin/editZoneAdmin/<?= $zoneadmins[$i]->user_id ?>"><i class="glyphicon glyphicon-floppy-save"></i> <span> Edit </span></a>
-                            <a class="btn btn-default" href="<?= URL ?>admin/activateZoneAdmin/<?= $zoneadmins[$i]->user_id ?>"><i class="glyphicon glyphicon-off"></i><span> Activate </span></a>
-                            <a class="btn btn-default" href="<?= URL ?>admin/deactivateZoneAdmin/<?= $zoneadmins[$i]->user_id ?>"><i class="glyphicon glyphicon-floppy-remove"></i><span> Deactivate</span></a>
+                                <a class="btn btn-default start" href="<?= URL ?>admin/editZoneAdmin/<?= $zoneadmins[$i]->user_id ?>"><i class="glyphicon glyphicon-floppy-save"></i> <span> Edit </span></a>
+                            
+                            <?php
+                            if ($zoneadmins[$i]->state == C::D('USER_STATE_NEW')) {?>
+                                <a class="btn btn-default" href="<?= URL ?>admin/activateZoneAdmin/<?= $zoneadmins[$i]->user_id ?>"><i class="glyphicon glyphicon-off"></i><span> Activate </span></a>
+                            <?php }    ?> 
+                            <?php                                                                         
+                            if ($zoneadmins[$i]->state == C::D('USER_STATE_ACTIVE')){ ?>
+                                <a class="btn btn-default" href="<?= URL ?>admin/deactivateZoneAdmin/<?= $zoneadmins[$i]->user_id ?>"><i class="glyphicon glyphicon-floppy-remove"></i><span> Deactivate</span></a>
+                            <?php }  
+
+                             ?>                            
+                            
+
+
                         </td>
                     </tr>
-                </form>
             <?php } ?>
+        </tbody>
         </table>
     </div>
     

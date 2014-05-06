@@ -13,7 +13,7 @@
 	<div class="row">
 		<div class="col-xs-12 vote-form">
 			<h1 class="page-header"><span data-i18n="vote.vote_form.title">Tu opinion de :</span> <span id="vote-placename"></span></h1>
-			<form role="form" method="POST" action="<?php echo URL ?>vote/rate">
+			<form role="form" method="POST" action="<?= URL ?>vote/rate">
 				<input type="hidden" name="vote_id_item" id="vote-id-item" value="">
 				<div class="form-group">
 

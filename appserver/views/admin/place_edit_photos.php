@@ -102,7 +102,7 @@
 <script src="/public/lib/fileupload/jquery.xdr-transport.js"></script>
 <![endif]-->
 <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-	<h1 class="page-header">Edit Galery</h1>
+        <h1 class="page-header">Edit Galery for <?=$item->name?></h1>
 	<form id="fileupload-galery" method="POST" enctype="multipart/form-data">
 		<input type="hidden" name="item-id" value="<?=$item->item_id?>" id="item-id-input">
         <!-- The fileupload-buttonbar contains buttons to add/delete files and start/cancel the upload -->

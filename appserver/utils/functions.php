@@ -42,6 +42,18 @@ class F {
         }
     }    
     
+    static public function getUserCurrentRole($key = "") {
+        if (isset($_SESSION['currentRole'])){
+            if ($key != "")
+                return $_SESSION['currentRole'][$key];
+            return $_SESSION['currentRole'];
+        }
+    }  
+    
+    static public function getUserCurrentRoleName() {
+        return C::ROLE_NAME(self::getUserCurrentRole("ID"));
+    }     
+    
     /**
      * .........
      * @param type $name Description 
@@ -102,6 +114,13 @@ class F {
         return $pw;
     }
     
+    static public function getCurrentDateTime(){
+        return date( 'Y-m-d H:i:s');
+    }
+    
+    static public function getUserId(){
+        return $_SESSION['user']->user_id;
+    }
 
     static public function comparePasswords($shaCurrentPass, $plainCandidatePass, $plainRetypeCandidatePass ) {
         
@@ -128,6 +147,49 @@ class F {
         return $return;
     }    
     
+    static public function getCustomObj($customObj){
+        //$ = @explode(C::D('CUSTOMOBJ_ROW_DELIMITER'), $customObj);
+        
+        $returnObj = @unserialize($customObj);
+        if (isset($returnObj['objName']) && isset($returnObj['objData']))
+            return $returnObj;
+        else 
+            return 0; 
+    }
+    
+    static public function setCustomObj($objType, $obj){
+        //$ = @explode(C::D('CUSTOMOBJ_ROW_DELIMITER'), $customObj);
+        $customObj = serialize(array('objName' => $objType, 'objData'=>$obj));
+        return $customObj;    
+    }
+    
+    static public function getMessageObj($msg){
+         
+        if ($msg != ""){
+            $message = C::T($msg);
+            if (is_array($message)){
+                $msgObj = array();
+                $msgObj['class'] = C::MESSAGE_TYPE($message[0]);
+                $msgObj['txt'] = $message[1];
+                return $msgObj;
+            }
+        }
+        
+        return 0;
+    }
+    
+    static public function average($arr) {
+       if (!is_array($arr)) return false;
+
+       return round(array_sum($arr)/count($arr),2);
+    } 
+    
+    static public function checkBoxSetOrNot($postKey){
+        if (!isset($_POST[$postKey]))
+            return 0;
+        else
+            return 1;
+    }
 
 }
 

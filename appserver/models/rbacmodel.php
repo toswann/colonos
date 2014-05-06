@@ -48,7 +48,8 @@ class RbacModel {
     }
     
     public function assignPermisions($roleId, $userId)  {
-        $this->rbac->Users->assign($roleId, $userId);        
+        if (!$this->rbac->Users->hasRole($roleId, $userId))
+            $this->rbac->Users->assign($roleId, $userId);        
     }  
     
     public function unassignPermisions($roleId, $userId) {

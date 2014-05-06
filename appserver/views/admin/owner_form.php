@@ -3,7 +3,10 @@
                 <div class="input-group">
                 <?php if (isset($error) && $error != "") { ?>
                         <div class="alert alert-danger"><?php echo C::T($error); ?></div>
-                <?php } ?>
+                <?php } 
+                        else {?>
+                            <div class="alert alert-info input-group">Here you can edit information about Owner.<br>Password will not be changed unless you type the new one.</div>
+                       <?php }?>
                 </div>
         </div>
         <div class="hidden-sm col-md-4  col-lg-6">
@@ -33,27 +36,9 @@
         <div class="hidden-sm col-md-4  col-lg-6">
 
         </div>
-</div>    
-
-<div class="row">
-        <div class="form-group col-sm-12 col-md-8 col-lg-6">
-            <div class="input-group">
-              <span class="input-group-addon" >Zone</span>
-              <select class="form-control" name="user-zone" id="user-zone">
-                  
-                <?php 
-                foreach (C::ZONES_LIST() as $k => $v) { ?>
-                        <option value="<?=$k?>" <?php if (isset($user) && $user->zone == $k) { echo "selected"; } ?>><?=$v?></option>
-                <?php } ?>                  
-                                                       
-              </select>
-            </div>  
-        </div>
-        <div class="hidden-sm col-md-4  col-lg-6">
-
-        </div>
-</div>    
-
+</div>       
+<?php 
+if (!isset($hidePass)) { ?>
 <div class="row">
         <div class="form-group col-sm-12 col-md-8 col-lg-6">
             <div class="input-group">
@@ -77,7 +62,7 @@
 
         </div>
 </div>  
-
+<?php } ?>
 <div class="row">
 	<div class="col-xs-2">
 		<a href="/admin/owners" class="btn btn-danger">Cancel modifications</a>			

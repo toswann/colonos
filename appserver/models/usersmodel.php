@@ -40,7 +40,7 @@ class UsersModel
     
     // POBIERANIE UZYTKOWNIKOW DLA WIDOKU ADMINISTRATORA STREFY MUSI BYC Z WIDOKU???
     private function getUsers($type){
-        $sql = "SELECT user_id, cruser_id, email, name, type, state, zone_id, count(user_id) as places_number FROM v_users_items_ownership WHERE type = :type".F::getUserConstraints(). " GROUP BY user_id";
+        $sql = "SELECT user_id, cruser_id, email, name, type, state, zone_id, owner_task_id as task_id, count(user_id) as places_number FROM v_users_items_ownership WHERE type = :type".F::getUserConstraints(). " GROUP BY user_id";
 
         $query = $this->db->prepare($sql);
         
@@ -64,6 +64,13 @@ class UsersModel
         return $this->getUsers(C::D('TYPE_MODERATOR'));
     }      
     
+    public function searchOwners($phrase="") {
+        $sql = "SELECT user_id, email, name FROM v_users_items_ownership WHERE name LIKE :p AND  type = :type".F::getUserConstraints(). " GROUP BY user_id";
+        $query = $this->db->prepare($sql);
+        $query->execute(array(':p' => "%".$phrase."%", ':type' => C::D('TYPE_MODERATOR')));
+        return $query->fetchAll();            
+    }   
+        
     public function getZoneAdmin($user_id) {
 
         $sql = "SELECT user_id, email, name, type, state, zone_id, password FROM users WHERE user_id = :user_id AND type = :type";
@@ -86,7 +93,7 @@ class UsersModel
     
     public function addNewZoneAdmin($name, $email, $zone_id) {
 
-        $sql = "INSERT INTO users (name, email, password, type, state, admin_id, zone_id) VALUES (:name, :email, :password, :type, :state, :cruser_id, :zone_id);";
+        $sql = "INSERT INTO users (name, email, password, type, state, cruser_id, zone_id) VALUES (:name, :email, :password, :type, :state, :cruser_id, :zone_id);";
 
         try {
             $query = $this->db->prepare($sql);
@@ -96,9 +103,10 @@ class UsersModel
                 ':password' => C::D('DEFAULT_PW_SHA1'),
                 ':type' => C::D('TYPE_ZONE_ADMIN'),
                 ':state' => C::D('USER_STATE_NEW'),
-                ':cruser_id' => $_SESSION['user']->id,
+                ':cruser_id' => $_SESSION['user']->user_id,
                 ':zone_id' => $zone_id
             ));
+         
         } catch (PDOException $pdoE) {
             echo $pdoE->getMessage() . '<br/>';
             var_dump($pdoE);
@@ -126,7 +134,7 @@ class UsersModel
     
     public function activateZoneAdmin($user_id) {
 
-        $sql = "UPDATE users SET state = :state WHERE user_id = :user_id";
+        $sql = "UPDATE users SET state = :state, task_id=0 WHERE user_id = :user_id";
 
         try {
             $query = $this->db->prepare($sql);
@@ -142,7 +150,7 @@ class UsersModel
     
     public function deactivateZoneAdmin($user_id) {
 
-        $sql = "UPDATE users SET state = :state WHERE user_id = :user_id";
+        $sql = "UPDATE users SET state = :state, task_id=0 WHERE user_id = :user_id";
 
         try {
             $query = $this->db->prepare($sql);
@@ -156,9 +164,9 @@ class UsersModel
         }
     }       
     
-    public function addNewOwner($name, $email, $zone_id) {
+    public function addNewOwner($name, $email) {
 
-        $sql = "INSERT INTO users (name, email, password, type, state, cruser_id, zone_id) VALUES (:name, :email, :password, :type, :state, :cruser_id, :zone_id);";
+        $sql = "INSERT INTO users (name, email, password, type, state, cruser_id) VALUES (:name, :email, :password, :type, :state, :cruser_id);";
 
         try {
             $query = $this->db->prepare($sql);
@@ -168,8 +176,7 @@ class UsersModel
                 ':password' => C::D('DEFAULT_PW_SHA1'),
                 ':type' => C::D('TYPE_MODERATOR'),
                 ':state' => C::D('USER_STATE_NEW'),
-                ':cruser_id' => $_SESSION['user']->id,
-                ':zone_id' => $zone_id
+                ':cruser_id' => $_SESSION['user']->user_id
             ));
         } catch (PDOException $pdoE) {
             echo $pdoE->getMessage() . '<br/>';
@@ -202,6 +209,22 @@ class UsersModel
     public function deactivateOwner($user_id) {
         $this->deactivateZoneAdmin($user_id);
     }       
-   
+    
+    public function setTaskId($user_id, $task_id) {
+
+        $sql = "UPDATE users SET task_id=:task_id WHERE user_id = :user_id";
+
+        try {
+            $query = $this->db->prepare($sql);
+            $query->execute(array(
+                ':user_id' => $user_id,                
+                ':task_id' => $task_id
+            ));
+        } catch (PDOException $pdoE) {
+            echo $pdoE->getMessage() . '<br/>';
+            var_dump($pdoE);
+        }
+    }   
+  
 
 }

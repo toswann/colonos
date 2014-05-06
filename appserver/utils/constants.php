@@ -5,7 +5,7 @@ class C {
     private static $defines = array(
         'DEFAULT_PW' => 'colonos',
         'DEFAULT_PW_SHA1' => 'b84b4726518964c6c7a1084817e84de8a62d63a8',
-
+        'SIDENAV_DEFAULT_CLASS' => 'list-group-item-info',
         'PW_MIN_SIZE' => 6,
         'USER_STATE_NEW' => 0,
         'USER_STATE_ACTIVE' => 1,
@@ -14,10 +14,15 @@ class C {
         'TYPE_ZONE_ADMIN' => 2,
         'TYPE_GENERAL_ADMIN' => 3,
         'ROLE_OWNER' => 6,
-        'ROLE_ZONE_ADMIN' => 5,
+        'ROLE_ZONE_ADMIN' => 5,     
+        'ROLE_GENERAL_ADMIN' => 4,             
+        'TASK_STATE_NEW' => 0,
+        'TASK_STATE_REJECTED' => 1,
+        'TASK_STATE_APPROVED' => 2,        
         'ITEM_STATE_OFFLINE' => 0,
         'ITEM_STATE_VALID' => 1,
         'ITEM_STATE_MODIFIED' => 2,
+        'ROWS_PER_VIEW' => 20,        
         'CODE_STATUS_NEW' => 0,
         'CODE_STATUS_PRINT' => 1,
         'CODE_STATUS_USED' => 2,
@@ -26,9 +31,41 @@ class C {
         'GALLERY_IMAGE_MAX_HEIGHT' => 550,
         'GALLERY_IMAGE_MIN_WIDTH' => 1,
         'GALLERY_IMAGE_MIN_HEIGHT' => 1,        
-        'GALLERY_PATH' => '/public/storage/galeries/'
-
+        'GALLERY_PATH' => '/public/storage/galeries/',
+           
+        'TASK_APP_NEW_OWNER' => 1,
+        'TASK_APP_ACTIVATE_OWNER' => 2,
+        'TASK_APP_DEACTIVATE_OWNER' => 3,
+        'TASK_APP_NEW_PLACE' => 4,
+        'TASK_APP_DEACTIVATE_PLACE' => 5,
+        'TASK_APP_RATING' => 6,
+        'TASK_APP_ASSIGNMENT' => 7,
+        'TASK_APP_ACTIVATE_PLACE' => 8        
     );
+
+    private static $task_type = array(
+        array("NONE", "NONE", "NONE"),
+        array("TASK_APP_NEW_OWNER", "New Owner", "activateOwner"),
+        array("TASK_APP_ACTIVATE_OWNER", "Activate Owner", "activateOwner"),        
+        array("TASK_APP_DEACTIVATE_OWNER", "Deactivate Owner", "deactivateOwner"),                
+        array("TASK_APP_NEW_PLACE", "New Place", "activatePlace"),
+        array("TASK_APP_DEACTIVATE_PLACE", "Deactivate Place", "deactivatePlace"),        
+        array("TASK_APP_RATING", "New rating", "approveRating"),        
+        array("TASK_APP_ASSIGNMENT", "Changed assignment", "approveAssignment"),
+        array("TASK_APP_ACTIVATE_PLACE", "Activate Place", "activatePlace")          
+    );    
+    
+    private static $task_status = array(
+        array("NUEVO", "default"),
+        array("USADO", "success")
+    ) ;        
+    
+    private static $role_name = array(
+        4 => "General Admin",
+        5 => 'Zone Admin',             
+        6=> 'Owner'
+    ) ;   
+  
     
     private static $item_state = array(
         array("OFFLINE", "default"),
@@ -36,12 +73,25 @@ class C {
         array("MODIFIED", "warning")
     );
     
+    private static $decision_state = array(
+        array("NO", "default"),
+        array("YES", "success")
+    );    
+    
     private static $code_status = array(
         array("NUEVO", "default"),
         array("IMPRESO", "primary"),
         array("USADO", "success")
-    )
-            ;
+    ) ;
+    
+
+    private static $message_type = array(
+        "SUCCESS"=>"success",
+        "INFO"=>"info",        
+        "WARNING"=>"warning",
+        "ERROR"=> "danger"
+    );    
+    
     private static $text = array(
         'SERVER_ERROR_RELOAD' => 'Server Error, please reload the page',
         'LOGIN_NO_PASS' => 'You need to enter a password.',
@@ -49,7 +99,15 @@ class C {
         'NEWPASS_EMPTY' => 'Please enter the same new password two times.',
         'NEWPASS_NOT_SAME' => 'The two password you entered are different.',
         'NEWPASS_NOT_DEFAULT' => 'Please use an other password.',
-        'NEWPASS_SHORT' => 'Your password must be al least 6 caracters.'
+        'NEWPASS_SHORT' => 'Your password must be al least 6 caracters.',
+        'TASK_CREATED_SUCCESS' => array('SUCCESS', 'Your request has been submited to General Admin for review.'),
+        'TASK_CREATED_ERROR' => array('ERROR', 'Your request was not sent to General Admin. Please try again.'),
+        'TASK_COMMENT_ACCEPTED' => array('SUCCESS','Login or password incorrect.'),
+        'TASK_COMMENT_REJECTED' => array('ERROR','Your request has been rejected.'),
+        'NOT_SAVED' => array('ERROR','There has been a problem with saving your changes. Please try again or contact Administrator.'),     
+        'TASK_ALREADY_PENDING' => array('WARNING',' Your request was NOT sent to General Admin, because there is another task for this object in queue.'),        
+        'TASK_COMMENT_STANDARD_REQUEST' => array('INFO','Please accept my request.')//,     
+        //'TASK_COMMENT_STANDARD_REQUEST' => array('INFO','Please accept my request.'),           
     );
     
     private static $categories = array(
@@ -182,7 +240,7 @@ class C {
     );
 
     public static function T($index) {
-        return self::$text[$index];
+        return @ self::$text[$index];
     }
 
     public static function D($index) {
@@ -190,14 +248,36 @@ class C {
         return "";
     }
 
+    public static function TASK_TYPE($index, $key = 0) {
+        if ($index != "") return self::$task_type[$index][$key];
+        return "";        
+    }    
+    
+   public static function TASK_TYPES() {
+        return self::$task_type;
+    }      
+    
     public static function ITEM_STATE($index, $key = 0) {
         if ($index != "") return self::$item_state[$index][$key];
         return "";        
     }
+    
+    public static function DECISION_STATE($index, $key = 0) {
+        if ($index != "") return self::$decision_state[$index][$key];
+        return "";        
+    }    
 
     public static function CODE_STATUS($index, $key = 0) {
         return self::$code_status[$index][$key];
     }
+    
+    public static function MESSAGE_TYPE($index, $key = 0) {
+        return self::$message_type[$index];
+    }   
+    
+    public static function ROLE_NAME($index, $key = 0) {
+        return self::$role_name[$index];
+    }      
 
     public static function CATEGORIES($id = null) {
         return $id ? self::$categories[$id] : self::$categories;

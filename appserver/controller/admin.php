@@ -7,11 +7,14 @@ require APP_FOLDER_NAME . '/utils/GaleryUploadHandler.php';
 // Init of PHP RBAC engine
 require_once APP_FOLDER_NAME . '/utils/phprbac/Rbac.php';
 
+// Init of PHP RBAC engine
+require_once APP_FOLDER_NAME . '/controller/Task.php';
+
 class Admin extends Controller {
 
     // reference to RBAC engine
     private $rbac=null;    
-   
+    private $_taskController = null;
     /**
      * ......... 
      * @param type $name Description
@@ -22,8 +25,16 @@ class Admin extends Controller {
     public function __construct(){
         parent::__construct();
         $this->rbac = new PhpRbac\Rbac($this->db);        
+        $this->_taskController = new Task();
     }
 
+    public function tasks($param1, $param2=""){
+        $this->verfifyAccess("approve_owner_and_place");    
+        $this->_taskController->handle($param1, $param2);
+        header('location: ' . URL . 'admin/');
+        exit();        
+    }
+    
     /**
      * ......... 
      * @return ......... 
@@ -33,10 +44,18 @@ class Admin extends Controller {
     public function dashboard() {
         $this->verfifyAccess("edit_place");  
 
-        $dashboard = "active";
+        $dashboard = C::D('SIDENAV_DEFAULT_CLASS');
         require APP_FOLDER_NAME . '/views/admin/_header_in.php';
         require APP_FOLDER_NAME . '/views/admin/sidenav.php';
         require APP_FOLDER_NAME . '/views/admin/dashboard.php';
+        
+        if ($this->rbac->check('approve_owner_and_place', F::getUserId())){
+            $this->_taskController->handle('taskDashboard');
+        }
+
+        require APP_FOLDER_NAME . '/views/admin/owner_place_assignment_light.php';
+        
+        echo "</div></div>";
         require APP_FOLDER_NAME . '/views/admin/_footer_in.php';
     }
      
@@ -46,14 +65,17 @@ class Admin extends Controller {
      * @todo Documentation
      * @author Swann
      */         
-    public function places() {
+    public function places($owner_id="") {
         $this->verfifyAccess("list_places");   
 
-        $places = "active";
+        $places = C::D('SIDENAV_DEFAULT_CLASS');
 
         $items_model = $this->loadModel('ItemsModel');
-        $items = $items_model->getAdminItems();
-
+        $items = $items_model->getAdminItems($owner_id);
+        
+        if (!is_numeric($owner_id))
+            $messageObj = F::getMessageObj($owner_id);
+        
         require APP_FOLDER_NAME . '/views/admin/_header_in.php';
         require APP_FOLDER_NAME . '/views/admin/sidenav.php';
         require APP_FOLDER_NAME . '/views/admin/places.php';
@@ -70,7 +92,7 @@ class Admin extends Controller {
     public function editInfos($id) {
         $this->verfifyAccess("edit_place");   
 
-        $places = "active";
+        $places = C::D('SIDENAV_DEFAULT_CLASS');
         
         $items_model = $this->loadModel('ItemsModel');
         $item = $items_model->getItem($id);
@@ -99,19 +121,20 @@ class Admin extends Controller {
     public function editphotos($id) {
         $this->verfifyAccess("edit_place");   
 
-        $places = "active";
+        $places = C::D('SIDENAV_DEFAULT_CLASS');
 
         $items_model = $this->loadModel('ItemsModel');
         $item = $items_model->getItem($id);
 
         
         // if the user is the admin of the place		
+        /*
         if (isset($item) && $item && $_SESSION["user"]->zone_id == $item->zone_id) {
             echo "edit";
         } else {
             header('location: ' . URL . 'admin/places');
             exit();
-        }
+        }*/
         require APP_FOLDER_NAME . '/views/admin/_header_in.php';
         require APP_FOLDER_NAME . '/views/admin/sidenav.php';
         require APP_FOLDER_NAME . '/views/admin/place_edit_photos.php';
@@ -128,28 +151,49 @@ class Admin extends Controller {
     public function editcodes($id) {
         $this->verfifyAccess("edit_place");   
 
-        $places = "active";
+        $places = C::D('SIDENAV_DEFAULT_CLASS');
 
         $items_model = $this->loadModel('ItemsModel');
         $item = $items_model->getItem($id);
 
         // if the user is the admin of the place		
-        if (isset($item) && $item && $_SESSION["user"]->user_id == $item->admin_id) {
-            $codes_model = $this->loadModel('CodesModel');
-            $codes = $codes_model->getItemCodes($item->id);
-            $nb_new_code = $this->countCode($codes, C::D("CODE_STATUS_NEW"));
-            $nb_print_code = $this->countCode($codes, C::D("CODE_STATUS_PRINT"));
-            $nb_used_code = $this->countCode($codes, C::D("CODE_STATUS_USED"));
-        } else {
-            header('location: ' . URL . 'admin/places');
-            exit();
-        }
+        //if (isset($item) && $item && $_SESSION["user"]->user_id == $item->admin_id) {
+        $codes_model = $this->loadModel('CodesModel');
+        $codes = $codes_model->getItemCodes($item->item_id);
+        $nb_new_code = $this->countCode($codes, C::D("CODE_STATUS_NEW"));
+        $nb_print_code = $this->countCode($codes, C::D("CODE_STATUS_PRINT"));
+        $nb_used_code = $this->countCode($codes, C::D("CODE_STATUS_USED"));
+        //} else {
+         //   header('location: ' . URL . 'admin/places');
+          //  exit();
+        //}
         require APP_FOLDER_NAME . '/views/admin/_header_in.php';
         require APP_FOLDER_NAME . '/views/admin/sidenav.php';
         require APP_FOLDER_NAME . '/views/admin/place_edit_codes.php';
         require APP_FOLDER_NAME . '/views/admin/_footer_in.php';
     }
 
+    public function printCodes($id){
+
+        $this->verfifyAccess("edit_place");   
+
+        $places = C::D('SIDENAV_DEFAULT_CLASS');
+
+        $items_model = $this->loadModel('ItemsModel');
+        $item = $items_model->getItem($id);
+
+        $codes_model = $this->loadModel('CodesModel');
+        $codes = $codes_model->getItemCodes($item->item_id);
+        
+        $nb_new_code = $this->countCode($codes, C::D("CODE_STATUS_NEW"));
+        $nb_print_code = $this->countCode($codes, C::D("CODE_STATUS_PRINT"));
+        $nb_used_code = $this->countCode($codes, C::D("CODE_STATUS_USED"));
+        require APP_FOLDER_NAME . '/views/admin/place_print_codes.php';
+        require APP_FOLDER_NAME . '/views/admin/_footer_in.php';        
+        $codes_model->markPrintedCodes($item->item_id);
+        
+    }
+    
     /**
      * ......... 
      * @return ......... 
@@ -186,22 +230,23 @@ class Admin extends Controller {
     public function saveeditplace() {
         $this->verfifyAccess("edit_place", "session_only");            
 
-        $id = strip_tags($_POST["item-id"]);
-        $name = strip_tags($_POST["item-name"]);
-        $flatname = F::slugify($name);
-        $category = strip_tags($_POST["item-category"]);
-        $type = strip_tags($_POST["item-type"]);
-        $city = strip_tags($_POST["item-city"]);
-        $zone = strip_tags($_POST["item-zone"]);
-        $address = strip_tags($_POST["item-address"]);
-        $phone = strip_tags($_POST["item-phone"]);
-        $email = strip_tags($_POST["item-email"]);
-        $website = strip_tags($_POST["item-website"]);
-        $description = strip_tags($_POST["item-description"]);
-        $image = strip_tags($_POST["item-image"]);
-        $lat = strip_tags($_POST["item-lat"]);
-        $long = strip_tags($_POST["item-long"]);
-        $price = strip_tags($_POST["item-price"]);
+        @$id = strip_tags($_POST["item-id"]);
+        @$name = strip_tags($_POST["item-name"]);
+        @$flatname = F::slugify($name);
+        @$category = strip_tags($_POST["item-category"]);
+        @$type = strip_tags($_POST["item-type"]);
+        @$city = strip_tags($_POST["item-city"]);
+        @$zone = strip_tags($_POST["item-zone"]);
+        @$address = strip_tags($_POST["item-address"]);
+        @$phone = strip_tags($_POST["item-phone"]);
+        @$email = strip_tags($_POST["item-email"]);
+        @$website = strip_tags($_POST["item-website"]);
+        @$description = strip_tags($_POST["item-description"]);
+        @$image = strip_tags($_POST["item-image"]);
+        @$lat = strip_tags($_POST["item-lat"]);
+        @$long = strip_tags($_POST["item-long"]);
+        @$price = strip_tags($_POST["item-price"]);
+
         //echo $id."<br>".$name."<br>".$flatname."<br>".$category."<br>".$type."<br>".$city."<br>".$zone."<br>".$address."<br>".$phone."<br>".$email."<br>".$website."<br>".$description."<br>".$image."<br>".$galery."<br>".$lat."<br>".$long."<br>".$price."<br>";
 
         $items_model = $this->loadModel('ItemsModel');
@@ -248,7 +293,7 @@ class Admin extends Controller {
     public function newplace() {
         $this->verfifyAccess("manage_owner_and_place");   
 
-        $newplace = "active";
+        $newplace = C::D('SIDENAV_DEFAULT_CLASS');
 
         //$items_model = $this->loadModel('ItemsModel');
         //$item = $items_model->getItem($id);
@@ -306,10 +351,11 @@ class Admin extends Controller {
      * @return void; Simple HTML generation for Client App
      * @author Patryk
      */      
-    public function owners() {
+    public function owners($msg="") {
         $this->verfifyAccess("manage_owner_and_place");   
-
-        $placeowners = "active";
+        
+        $messageObj = F::getMessageObj($msg);
+        $placeowners = C::D('SIDENAV_DEFAULT_CLASS');
 
         $owners_model = $this->loadModel('UsersModel');
         $owners = $owners_model->getOwners(); 
@@ -318,7 +364,8 @@ class Admin extends Controller {
         require APP_FOLDER_NAME . '/views/admin/_header_in.php';
         require APP_FOLDER_NAME . '/views/admin/sidenav.php';
         require APP_FOLDER_NAME . '/views/admin/owners.php';
-        require APP_FOLDER_NAME . '/views/admin/_footer_in.php';
+        require APP_FOLDER_NAME . '/views/admin/_footer_in.php';    
+
     }    
     
     /**
@@ -329,8 +376,9 @@ class Admin extends Controller {
     public function newOwner() {
         $this->verfifyAccess("manage_owner_and_place");   
 
-        $newowner = "active";
-
+        $newowner = C::D('SIDENAV_DEFAULT_CLASS');
+        $hidePass = true;
+        
         require APP_FOLDER_NAME . '/views/admin/_header_in.php';
         require APP_FOLDER_NAME . '/views/admin/sidenav.php';
         require APP_FOLDER_NAME . '/views/admin/owner_new.php';
@@ -366,10 +414,9 @@ class Admin extends Controller {
         $id = '';
         $name = strip_tags($_POST["user-name"]);
         $email = strip_tags($_POST["user-email"]);
-        $zone = strip_tags($_POST["user-zone"]);
-
+        
         $users_model = $this->loadModel('UsersModel');
-        $user = $users_model->addNewOwner($name, $email, $zone);
+        $user = $users_model->addNewOwner($name, $email);
 
         header('location: ' . URL . 'admin/owners');
         exit();          
@@ -433,9 +480,37 @@ class Admin extends Controller {
      * @author Patryk
      */    
      public function assignOwnerToPlace() {
-        $this->verfifyAccess("manage_owner_and_place");          
+        $this->verfifyAccess("manage_owner_and_place");   
+
+        $dataObj['owner_id'] = @strip_tags($_POST["owneridHolder"]);
+        $dataObj['place_id'] = @strip_tags($_POST["itemidHolder"]);
+        
+        $this->_taskController->newTask(C::D('TASK_APP_ASSIGNMENT'), $dataObj);
+        header('location: ' . URL . 'admin/TASK_CREATED_SUCCESS');
      }        
         
+   /**
+     * ........
+     * @return void; Redirects user to Places view
+     * @todo Server-side validation of data, Security (Access possible only after calling newplace()) 
+     * @author Patryk
+     */    
+     public function assignOwner($item_id="", $owner_id="") {
+        $this->verfifyAccess("manage_owner_and_place");   
+
+        $place = C::D('SIDENAV_DEFAULT_CLASS');
+        
+        if (is_numeric($item_id)){
+            $items_model = $this->loadModel('ItemsModel');
+            $item = $items_model->getItem($item_id);
+            $item_name = $item->name;
+        }
+        require APP_FOLDER_NAME . '/views/admin/_header_in.php';
+        require APP_FOLDER_NAME . '/views/admin/sidenav.php';
+        require APP_FOLDER_NAME . '/views/admin/owner_place_assignment.php';
+        require APP_FOLDER_NAME . '/views/admin/_footer_in.php';
+     }     
+     
      
    /**
      * ........
@@ -443,13 +518,45 @@ class Admin extends Controller {
      * @todo Server-side validation of data, Security (Access possible only after calling newplace()) 
      * @author Patryk
      */    
-     public function votes() {
+     public function votes($msg="") {
         $this->verfifyAccess("manage_votes");            
-        $votes = "active";
+        $votes = C::D('SIDENAV_DEFAULT_CLASS');
+        
+        $messageObj = F::getMessageObj($msg);
+
+        $votes_model = $this->loadModel('VotesModel');
+        $votes = $votes_model->getVotes(); 
+
         require APP_FOLDER_NAME . '/views/admin/_header_in.php';
         require APP_FOLDER_NAME . '/views/admin/sidenav.php';
-        require APP_FOLDER_NAME . '/views/admin/dashboard.php';
+        require APP_FOLDER_NAME . '/views/admin/votes.php';
         require APP_FOLDER_NAME . '/views/admin/_footer_in.php';           
+     }      
+     
+     public function activateVote($vote_id) {
+        $this->verfifyAccess("manage_votes");            
+        $votes = C::D('SIDENAV_DEFAULT_CLASS');
+
+        $votes_model = $this->loadModel('VotesModel');
+        $vote = $votes_model->getVote($vote_id); 
+        $votes = $votes_model->activateVote($vote_id, $vote->item_id); 
+
+        header('location: ' . URL . 'admin/votes/');
+        exit();          
+        
+     }       
+     
+    public function deactivateVote($vote_id) {
+        $this->verfifyAccess("manage_votes");            
+        $votes = C::D('SIDENAV_DEFAULT_CLASS');
+
+        $votes_model = $this->loadModel('VotesModel');
+        $vote = $votes_model->getVote($vote_id);         
+        $votes = $votes_model->deactivateVote($vote_id, $vote->item_id); 
+      
+        header('location: ' . URL . 'admin/votes/');
+        exit();          
+        
      }      
      
    /**
@@ -460,7 +567,7 @@ class Admin extends Controller {
      */    
      public function editVote($id) {
         $this->verfifyAccess("manage_votes");  
-        $votes = "active";
+        $votes = C::D('SIDENAV_DEFAULT_CLASS');
         require APP_FOLDER_NAME . '/views/admin/_header_in.php';
         require APP_FOLDER_NAME . '/views/admin/sidenav.php';
         require APP_FOLDER_NAME . '/views/admin/dashboard.php';
@@ -487,7 +594,7 @@ class Admin extends Controller {
      */    
      public function zoneAdmins() {
         $this->verfifyAccess("manage_zone_admins");        
-        $zone_admins = "active";
+        $zone_admins = C::D('SIDENAV_DEFAULT_CLASS');
 
         $zoneadmins_model = $this->loadModel('UsersModel');
         $zoneadmins = $zoneadmins_model->getZoneAdmins(); 
@@ -506,13 +613,32 @@ class Admin extends Controller {
      */    
      public function newZoneAdmin() {
         $this->verfifyAccess("manage_zone_admins");                  
-        $zone_admins = "active";
+        $zone_admins = C::D('SIDENAV_DEFAULT_CLASS');
         $zoneadmins_model = $this->loadModel('UsersModel');
         $zoneadmins = $zoneadmins_model->getZoneAdmins(); 
-        $zones = C::ZONES_LIST();        
+        $zones = C::ZONES_LIST();       
+        $hidePass = true;
         require APP_FOLDER_NAME . '/views/admin/_header_in.php';
         require APP_FOLDER_NAME . '/views/admin/sidenav.php';
         require APP_FOLDER_NAME . '/views/admin/zoneadmin_new.php';
+        require APP_FOLDER_NAME . '/views/admin/_footer_in.php';        
+        
+     }        
+     
+   /**
+     * ........
+     * @return void; Redirects user to Places view
+     * @todo Server-side validation of data, Security (Access possible only after calling newplace()) 
+     * @author Patryk
+     */    
+     public function error($msg, $method="") {
+        $this->verfifyAccess("list_places");                  
+
+        $messageObj = F::getMessageObj($msg);
+        
+        require APP_FOLDER_NAME . '/views/admin/_header_in.php';
+        require APP_FOLDER_NAME . '/views/admin/sidenav.php';
+        require APP_FOLDER_NAME . '/views/admin/error.php';
         require APP_FOLDER_NAME . '/views/admin/_footer_in.php';        
         
      }        
@@ -533,8 +659,15 @@ class Admin extends Controller {
 
         $users_model = $this->loadModel('UsersModel');
         $user = $users_model->addNewZoneAdmin($name, $email, $zone);
-
-        header('location: ' . URL . 'admin/zoneadmins');
+        $zone_admin_id = $this->db->lastInsertId();
+        
+        if (is_numeric($zone_admin_id) && $zone_admin_id > 0){
+            $this->activateZoneAdmin($zone_admin_id);        
+            header('location: ' . URL . 'admin/zoneadmins');
+        }  else {
+            header('location: ' . URL . 'admin/error/NOT_SAVED/saveNewZoneAdmin');
+        }
+        
         exit();        
         
      }             
@@ -548,7 +681,7 @@ class Admin extends Controller {
      */    
      public function editZoneAdmin($id, $error="") {
         $this->verfifyAccess("manage_zone_admins");   
-        $zoneadmins = "active";
+        $zoneadmins = C::D('SIDENAV_DEFAULT_CLASS');
                 
         $users_model = $this->loadModel('UsersModel');
         $user = $users_model->getZoneAdmin($id);
@@ -636,15 +769,14 @@ class Admin extends Controller {
      * @author Patryk
      */    
      public function activateOwner($id) {       
-        $this->verfifyAccess("manage_zone_admins");    
+        $this->verfifyAccess("manage_owner_and_place");    
+        $dataObj['owner_id'] = @strip_tags($id);
+        $task_id = $this->_taskController->newTask(C::D('TASK_APP_ACTIVATE_OWNER'),  $dataObj);
         
-        $users_model = $this->loadModel('UsersModel');
-        $user = $users_model->activateOwner($id);
+        $users_model = $this->loadModel('UsersModel'); 
+        $user = $users_model->setTaskId($dataObj['owner_id'] , $task_id);
         
-        $roles_model = $this->loadModel('RbacModel');
-        $role= $roles_model->assignPermisions(C::D('ROLE_OWNER'), $id);  
-
-        header('location: ' . URL . 'admin/owners');
+        header('location: ' . URL . 'admin/owners/TASK_CREATED_SUCCESS');
         exit();               
      }     
      
@@ -655,56 +787,53 @@ class Admin extends Controller {
      * @author Patryk
      */    
      public function deactivateOwner($id) {
-        $this->verfifyAccess("manage_zone_admins");    
+        $this->verfifyAccess("manage_owner_and_place");    
+        $dataObj['owner_id'] = @strip_tags($id);  
         
+        $task_id = $this->_taskController->newTask(C::D('TASK_APP_DEACTIVATE_OWNER'),  $dataObj);          
         $users_model = $this->loadModel('UsersModel'); 
-        $user = $users_model->deactivateOwner($id);
+        $user = $users_model->setTaskId($dataObj['owner_id'] , $task_id);
 
-        $roles_model = $this->loadModel('RbacModel');
-        $role= $roles_model->unassignPermisions(C::D('ROLE_OWNER'), $id);                
+        header('location: ' . URL . 'admin/owners/TASK_CREATED_SUCCESS');
+        exit();            
+     }       
+     
+   /**
+     * ........
+     * @return void; Redirects user to Places view
+     * @todo Server-side validation of data, Security (Access possible only after calling newplace()) 
+     * @author Patryk
+     */    
+     public function activatePlace($id) {       
+        $this->verfifyAccess("manage_owner_and_place");    
+        $dataObj['place_id'] = @strip_tags($id);
+        $task_id = $this->_taskController->newTask(C::D('TASK_APP_ACTIVATE_PLACE'),  $dataObj);
         
-        header('location: ' . URL . 'admin/owners');
+        $items_model = $this->loadModel('ItemsModel'); 
+        $item = $items_model->setTaskId($dataObj['place_id'] , $task_id);
+        
+        header('location: ' . URL . 'admin/places/TASK_CREATED_SUCCESS');
+        exit();               
+     }     
+     
+   /**
+     * ........
+     * @return void; Redirects user to Places view
+     * @todo Server-side validation of data, Security (Access possible only after calling newplace()) 
+     * @author Patrykhttp://colonos.sample/admin/deactivatePlace/1
+     */    
+     public function deactivatePlace($id) {
+        $this->verfifyAccess("manage_owner_and_place");    
+        $dataObj['place_id'] = @strip_tags($id);  
+        
+        $task_id = $this->_taskController->newTask(C::D('TASK_APP_DEACTIVATE_PLACE'),  $dataObj);          
+        $items_model = $this->loadModel('ItemsModel'); 
+        $item = $items_model->setTaskId($dataObj['place_id'] , $task_id);
+
+        header('location: ' . URL . 'admin/places/TASK_CREATED_SUCCESS');
         exit();            
      }       
     
-   /**
-     * ........
-     * @return void; Redirects user to Places view
-     * @todo Server-side validation of data, Security (Access possible only after calling newplace()) 
-     * @author Patryk
-     */    
-     public function approve() {
-        $this->verfifyAccess("approve_place_and_user");       
-        
-        require APP_FOLDER_NAME . '/views/admin/_header_in.php';
-        require APP_FOLDER_NAME . '/views/admin/sidenav.php';
-        require APP_FOLDER_NAME . '/views/admin/dashboard.php';
-        require APP_FOLDER_NAME . '/views/admin/_footer_in.php';        
-        
-     }       
-
-   /**
-     * ........
-     * @return void; Redirects user to Places view
-     * @todo Server-side validation of data, Security (Access possible only after calling newplace()) 
-     * @author Patryk
-     */    
-     public function approvePlace($id) {
-        $this->verfifyAccess("approve_owner_and_place", "session_only");       
-        
-     }   
-     
-   /**
-     * ........
-     * @return void; Redirects user to Places view
-     * @todo Server-side validation of data, Security (Access possible only after calling newplace()) 
-     * @author Patryk
-     */    
-     public function approveOwner($id) {
-        $this->verfifyAccess("approve_owner_and_place", "session_only");       
-        
-     }            
-     
     /**
      * ......... 
      * @return ......... 
@@ -719,6 +848,9 @@ class Admin extends Controller {
                     $user = $users_model->checkAdminAuth($_POST["admin-form-mail"], $_POST["admin-form-password"]);
                     if ($user) {
                         $_SESSION['user'] = $user;
+                        $userRoles = $this->rbac->Users->allRoles(F::getUserId());
+                        $activeRole = $userRoles[0];
+                        $_SESSION['currentRole'] = $activeRole;
                         F::setUserConstraints();
                         header('location: ' . URL . 'admin/dashboard');
                         exit();
@@ -801,7 +933,7 @@ class Admin extends Controller {
         
         $this->rbac->enforce('manage_zone_admins', $_SESSION['user']->user_id);
         
-        $rbac = "active";      
+        $rbac = C::D('SIDENAV_DEFAULT_CLASS');      
 
        // $this->rbac->Roles->addPath('/general_admin/zone_admin/place_owner', $role_descriptions);
            
@@ -922,7 +1054,16 @@ class Admin extends Controller {
         return $count;
     }
     
+    private function renderTemplates($mainFile){
 
+        require APP_FOLDER_NAME . '/views/admin/_header_in.php';
+        require APP_FOLDER_NAME . '/views/admin/sidenav.php';
+                
+        require APP_FOLDER_NAME . '/views/admin/'.$mainFile.'.php';
+        
+        require APP_FOLDER_NAME . '/views/admin/_footer_in.php';        
+        
+    }
 
 }
 

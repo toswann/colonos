@@ -54,6 +54,9 @@
         </div>
 </div>    
 
+<?php 
+if (!isset($hidePass)) { ?>
+
 <div class="row">
         <div class="form-group col-sm-12 col-md-8 col-lg-6">
             <div class="input-group">
@@ -77,7 +80,7 @@
 
         </div>
 </div>  
-
+<?php } ?>
 <div class="row">
 	<div class="col-xs-2">
 		<a href="/admin/zoneadmins" class="btn btn-danger">Cancel modifications</a>			

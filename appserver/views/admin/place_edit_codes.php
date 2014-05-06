@@ -47,45 +47,14 @@
 			</div>
 		</div>
 	</div>
+                <div class="row">
 	<?php if ($nb_new_code > 0) { ?>
-	<div class="row">
+	
 		<div class="col-xs-3 col-sm-3 col-md-3">
-			<table class="table table-striped table-bordered">
-				<thead>
-					<tr>
-						<th colspan="2"><?=$nb_new_code ?> nuevos códigos</th>
-					</tr>
-				</thead>
-				<tbody id="test">
-				<?php for($i = 0; $i < count($codes) ; $i++) {
-						if ($codes[$i]->status == C::D("CODE_STATUS_NEW")) { ?>
-					<tr>
-						<td><strong><?=$codes[$i]->code?></strong></td>
-						<td><span class="label label-<?=C::CODE_STATUS($codes[$i]->status, 1)?>"><?=C::CODE_STATUS($codes[$i]->status, 0)?></span></td>
-					</tr>				
-				<?php } } ?>
-				</tbody>
-			</table>
+                                        <a href="<?=URL?>admin/printCodes/<?=$item->item_id?>" > <span class="glyphicon glyphicon-print"></span> Impresa Códigos de opiniones (<?=$nb_new_code?>)</a>
 		</div>
 		<?php } if ($nb_print_code > 0) { ?>
-		<div class="col-xs-3 col-sm-3 col-md-3">
-			<table class="table table-striped table-bordered">
-				<thead>
-					<tr>
-						<th colspan="2"><?=$nb_print_code ?> códigos impresos</th>
-					</tr>
-				</thead>
-				<tbody>
-				<?php for($i = 0; $i < count($codes) ; $i++) {
-						if ($codes[$i]->status == C::D("CODE_STATUS_PRINT")) { ?>
-					<tr>
-						<td><strong><?=$codes[$i]->code?></strong></td>
-						<td class="center-container"><span class="label label-<?=C::CODE_STATUS($codes[$i]->status, 1)?>"><?=C::CODE_STATUS($codes[$i]->status, 0)?></span></td>
-					</tr>				
-				<?php } } ?>
-				</tbody>
-			</table>
-		</div>
+
 		<?php } if ($nb_used_code > 0) { ?>
 		<div class="col-xs-6 col-sm-6 col-md-6">
 			<table class="table table-striped table-bordered">
