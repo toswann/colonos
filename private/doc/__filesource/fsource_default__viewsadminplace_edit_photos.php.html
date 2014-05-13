@@ -1,0 +1,192 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+	<title>File Source for place_edit_photos.php</title>
+	<link rel="stylesheet" type="text/css" id="layout" href="../media/layout.css" media="screen">
+	<link rel="stylesheet" type="text/css" href="../media/style.css" media="all">
+	<link rel="stylesheet" type="text/css" href="../media/print.css" media="print">
+</head>
+
+<body>
+<div id="header">
+	<div id="navLinks">
+        
+                                    
+                                                                    	        [ <a href="../classtrees_default.html">Class Tree: default</a> ]
+            [ <a href="../elementindex_default.html">Index: default</a> ]
+        		[ <a href="../elementindex.html">All elements</a> ]		
+	</div>
+	<div id="packagePosition">
+		<div id="packageTitle2">default</div>
+		<div id="packageTitle">default</div>
+		<div id="elementPath"> &middot; </div>
+	</div>
+</div>
+
+<div id="nav" class="small">
+	<div id="todolist">
+			<p><a href="../todolist.html">Todo List</a></p>
+	</div>
+	<div id="packages">
+		Packages:
+					<p><a href="../li_default.html">default</a></p>
+					<p><a href="../li_AdminModule.html">AdminModule</a></p>
+					<p><a href="../li_API.html">API</a></p>
+			</div>
+
+				<div id="index">
+			<div id="files">
+							</div>
+			<div id="interfaces">
+							</div>
+			<div id="classes">
+							</div>
+		</div>
+	</div>
+
+<div id="body">
+	    	<h1 align="center">Source for file place_edit_photos.php</h1>
+<p>Documentation is available at <a href="../default/_views---admin---place_edit_photos.php.html">place_edit_photos.php</a></p>
+<div class="php-src">
+<ol><li><div class="src-line"><a name="a1"></a>&lt;script&nbsp;id=&quot;template-upload&quot;&nbsp;type=&quot;text/x-tmpl&quot;&gt;</div></li>
+<li><div class="src-line"><a name="a2"></a>{%&nbsp;for&nbsp;(var&nbsp;i=0,&nbsp;file;&nbsp;file=o.files[i];&nbsp;i++)&nbsp;{&nbsp;%}</div></li>
+<li><div class="src-line"><a name="a3"></a>&nbsp;&nbsp;&nbsp;&nbsp;&lt;tr&nbsp;class=&quot;template-upload&nbsp;fade&quot;&gt;</div></li>
+<li><div class="src-line"><a name="a4"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;td&gt;</div></li>
+<li><div class="src-line"><a name="a5"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;span&nbsp;class=&quot;preview&quot;&gt;&lt;/span&gt;</div></li>
+<li><div class="src-line"><a name="a6"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/td&gt;</div></li>
+<li><div class="src-line"><a name="a7"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;td&gt;</div></li>
+<li><div class="src-line"><a name="a8"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;p&nbsp;class=&quot;name&quot;&gt;{%=file.name%}&lt;/p&gt;</div></li>
+<li><div class="src-line"><a name="a9"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;strong&nbsp;class=&quot;error&nbsp;text-danger&quot;&gt;&lt;/strong&gt;</div></li>
+<li><div class="src-line"><a name="a10"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/td&gt;</div></li>
+<li><div class="src-line"><a name="a11"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;td&gt;</div></li>
+<li><div class="src-line"><a name="a12"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;p&nbsp;class=&quot;size&quot;&gt;Processing...&lt;/p&gt;</div></li>
+<li><div class="src-line"><a name="a13"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div&nbsp;class=&quot;progress&nbsp;progress-striped&nbsp;active&quot;&nbsp;role=&quot;progressbar&quot;&nbsp;aria-valuemin=&quot;0&quot;&nbsp;aria-valuemax=&quot;100&quot;&nbsp;aria-valuenow=&quot;0&quot;&gt;&lt;div&nbsp;class=&quot;progress-bar&nbsp;progress-bar-success&quot;&nbsp;style=&quot;width:0%;&quot;&gt;&lt;/div&gt;&lt;/div&gt;</div></li>
+<li><div class="src-line"><a name="a14"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/td&gt;</div></li>
+<li><div class="src-line"><a name="a15"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;td&gt;</div></li>
+<li><div class="src-line"><a name="a16"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{%&nbsp;if&nbsp;(!i&nbsp;&amp;&amp;&nbsp;!o.options.autoUpload)&nbsp;{&nbsp;%}</div></li>
+<li><div class="src-line"><a name="a17"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;button&nbsp;class=&quot;btn&nbsp;btn-primary&nbsp;start&quot;&nbsp;disabled&gt;</div></li>
+<li><div class="src-line"><a name="a18"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;i&nbsp;class=&quot;glyphicon&nbsp;glyphicon-upload&quot;&gt;&lt;/i&gt;</div></li>
+<li><div class="src-line"><a name="a19"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;span&gt;Start&lt;/span&gt;</div></li>
+<li><div class="src-line"><a name="a20"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/button&gt;</div></li>
+<li><div class="src-line"><a name="a21"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{%&nbsp;}&nbsp;%}</div></li>
+<li><div class="src-line"><a name="a22"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{%&nbsp;if&nbsp;(!i)&nbsp;{&nbsp;%}</div></li>
+<li><div class="src-line"><a name="a23"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;button&nbsp;class=&quot;btn&nbsp;btn-warning&nbsp;cancel&quot;&gt;</div></li>
+<li><div class="src-line"><a name="a24"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;i&nbsp;class=&quot;glyphicon&nbsp;glyphicon-ban-circle&quot;&gt;&lt;/i&gt;</div></li>
+<li><div class="src-line"><a name="a25"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;span&gt;Cancel&lt;/span&gt;</div></li>
+<li><div class="src-line"><a name="a26"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/button&gt;</div></li>
+<li><div class="src-line"><a name="a27"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{%&nbsp;}&nbsp;%}</div></li>
+<li><div class="src-line"><a name="a28"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/td&gt;</div></li>
+<li><div class="src-line"><a name="a29"></a>&nbsp;&nbsp;&nbsp;&nbsp;&lt;/tr&gt;</div></li>
+<li><div class="src-line"><a name="a30"></a>{%&nbsp;}&nbsp;%}</div></li>
+<li><div class="src-line"><a name="a31"></a>&lt;/script&gt;</div></li>
+<li><div class="src-line"><a name="a32"></a>&lt;!--&nbsp;The&nbsp;template&nbsp;to&nbsp;display&nbsp;files&nbsp;available&nbsp;for&nbsp;download&nbsp;--&gt;</div></li>
+<li><div class="src-line"><a name="a33"></a>&lt;script&nbsp;id=&quot;template-download&quot;&nbsp;type=&quot;text/x-tmpl&quot;&gt;</div></li>
+<li><div class="src-line"><a name="a34"></a>{%&nbsp;for&nbsp;(var&nbsp;i=0,&nbsp;file;&nbsp;file=o.files[i];&nbsp;i++)&nbsp;{&nbsp;%}</div></li>
+<li><div class="src-line"><a name="a35"></a>&nbsp;&nbsp;&nbsp;&nbsp;&lt;tr&nbsp;class=&quot;template-download&nbsp;fade&quot;&gt;</div></li>
+<li><div class="src-line"><a name="a36"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;td&gt;</div></li>
+<li><div class="src-line"><a name="a37"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;span&nbsp;class=&quot;preview&quot;&gt;</div></li>
+<li><div class="src-line"><a name="a38"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{%&nbsp;if&nbsp;(file.thumbnailUrl)&nbsp;{&nbsp;%}</div></li>
+<li><div class="src-line"><a name="a39"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;a&nbsp;href=&quot;<span class="src-php">&lt;?=</span><span class="src-id">C</span><span class="src-sym">::</span><span class="src-id">D</span><span class="src-sym">(</span><span class="src-str">'GALLERY_PATH'</span><span class="src-sym">)&nbsp;</span><span class="src-php">?&gt;</span>{%=file.folder%}/{%=file.name%}&quot;&nbsp;title=&quot;{%=file.name%}&quot;&nbsp;download=&quot;{%=file.name%}&quot;&nbsp;data-gallery&gt;&lt;img&nbsp;src=&quot;<span class="src-php">&lt;?=</span><span class="src-id">C</span><span class="src-sym">::</span><span class="src-id">D</span><span class="src-sym">(</span><span class="src-str">'GALLERY_PATH'</span><span class="src-sym">)&nbsp;</span><span class="src-php">?&gt;</span>{%=file.folder%}/thumbnail/{%=file.name%}&quot;&gt;&lt;/a&gt;</div></li>
+<li><div class="src-line"><a name="a40"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{%&nbsp;}&nbsp;%}</div></li>
+<li><div class="src-line"><a name="a41"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/span&gt;</div></li>
+<li><div class="src-line"><a name="a42"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/td&gt;</div></li>
+<li><div class="src-line"><a name="a43"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;td&gt;</div></li>
+<li><div class="src-line"><a name="a44"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;p&nbsp;class=&quot;name&quot;&gt;</div></li>
+<li><div class="src-line"><a name="a45"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{%&nbsp;if&nbsp;(file.url)&nbsp;{&nbsp;%}</div></li>
+<li><div class="src-line"><a name="a46"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;a&nbsp;href=&quot;<span class="src-php">&lt;?=</span><span class="src-id">C</span><span class="src-sym">::</span><span class="src-id">D</span><span class="src-sym">(</span><span class="src-str">'GALLERY_PATH'</span><span class="src-sym">)&nbsp;</span><span class="src-php">?&gt;</span>{%=file.folder%}/{%=file.name%}&quot;&nbsp;title=&quot;{%=file.name%}&quot;&gt;{%=file.name%}&lt;/a&gt;</div></li>
+<li><div class="src-line"><a name="a47"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{%&nbsp;}&nbsp;else&nbsp;{&nbsp;%}</div></li>
+<li><div class="src-line"><a name="a48"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;span&gt;{%=file.name%}&lt;/span&gt;</div></li>
+<li><div class="src-line"><a name="a49"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{%&nbsp;}&nbsp;%}</div></li>
+<li><div class="src-line"><a name="a50"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/p&gt;</div></li>
+<li><div class="src-line"><a name="a51"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{%&nbsp;if&nbsp;(file.error)&nbsp;{&nbsp;%}</div></li>
+<li><div class="src-line"><a name="a52"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div&gt;&lt;span&nbsp;class=&quot;label&nbsp;label-danger&quot;&gt;Error&lt;/span&gt;&nbsp;{%=file.error%}&lt;/div&gt;</div></li>
+<li><div class="src-line"><a name="a53"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{%&nbsp;}&nbsp;%}</div></li>
+<li><div class="src-line"><a name="a54"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/td&gt;</div></li>
+<li><div class="src-line"><a name="a55"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;td&gt;</div></li>
+<li><div class="src-line"><a name="a56"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;span&nbsp;class=&quot;size&quot;&gt;{%=o.formatFileSize(file.size)%}&lt;/span&gt;</div></li>
+<li><div class="src-line"><a name="a57"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/td&gt;</div></li>
+<li><div class="src-line"><a name="a58"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;td&gt;</div></li>
+<li><div class="src-line"><a name="a59"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{%&nbsp;if&nbsp;(file.deleteUrl)&nbsp;{&nbsp;%}</div></li>
+<li><div class="src-line"><a name="a60"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;button&nbsp;class=&quot;btn&nbsp;btn-danger&nbsp;delete&quot;&nbsp;data-type=&quot;POST&quot;&nbsp;data-url=&quot;/admin/galeryupload/{%=file.folder%}/{%=file.name%}/delete&quot;&nbsp;{%&nbsp;if&nbsp;(file.deleteWithCredentials)&nbsp;{&nbsp;%}&nbsp;data-xhr-fields='{&quot;withCredentials&quot;:true}'{%&nbsp;}&nbsp;%}&gt;</div></li>
+<li><div class="src-line"><a name="a61"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;i&nbsp;class=&quot;glyphicon&nbsp;glyphicon-trash&quot;&gt;&lt;/i&gt;</div></li>
+<li><div class="src-line"><a name="a62"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;span&gt;Delete&lt;/span&gt;</div></li>
+<li><div class="src-line"><a name="a63"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/button&gt;</div></li>
+<li><div class="src-line"><a name="a64"></a>&lt;!--&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;input&nbsp;type=&quot;checkbox&quot;&nbsp;name=&quot;delete&quot;&nbsp;value=&quot;1&quot;&nbsp;class=&quot;toggle&quot;&gt;&nbsp;--&gt;</div></li>
+<li><div class="src-line"><a name="a65"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{%&nbsp;}&nbsp;else&nbsp;{&nbsp;%}</div></li>
+<li><div class="src-line"><a name="a66"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;button&nbsp;class=&quot;btn&nbsp;btn-warning&nbsp;cancel&quot;&gt;</div></li>
+<li><div class="src-line"><a name="a67"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;i&nbsp;class=&quot;glyphicon&nbsp;glyphicon-ban-circle&quot;&gt;&lt;/i&gt;</div></li>
+<li><div class="src-line"><a name="a68"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;span&gt;Cancel&lt;/span&gt;</div></li>
+<li><div class="src-line"><a name="a69"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/button&gt;</div></li>
+<li><div class="src-line"><a name="a70"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{%&nbsp;}&nbsp;%}</div></li>
+<li><div class="src-line"><a name="a71"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/td&gt;</div></li>
+<li><div class="src-line"><a name="a72"></a>&nbsp;&nbsp;&nbsp;&nbsp;&lt;/tr&gt;</div></li>
+<li><div class="src-line"><a name="a73"></a>{%&nbsp;}&nbsp;%}</div></li>
+<li><div class="src-line"><a name="a74"></a>&lt;/script&gt;</div></li>
+<li><div class="src-line"><a name="a75"></a>&lt;!--&nbsp;The&nbsp;jQuery&nbsp;UI&nbsp;widget&nbsp;factory,&nbsp;can&nbsp;be&nbsp;omitted&nbsp;if&nbsp;jQuery&nbsp;UI&nbsp;is&nbsp;already&nbsp;included&nbsp;--&gt;</div></li>
+<li><div class="src-line"><a name="a76"></a>&lt;script&nbsp;src=&quot;/public/lib/fileupload/jquery-ui.custom.min.js&quot;&gt;&lt;/script&gt;</div></li>
+<li><div class="src-line"><a name="a77"></a>&lt;!--&nbsp;The&nbsp;Templates&nbsp;plugin&nbsp;is&nbsp;included&nbsp;to&nbsp;render&nbsp;the&nbsp;upload/download&nbsp;listings&nbsp;--&gt;</div></li>
+<li><div class="src-line"><a name="a78"></a>&lt;script&nbsp;src=&quot;/public/lib/fileupload/tmpl.min.js&quot;&gt;&lt;/script&gt;</div></li>
+<li><div class="src-line"><a name="a79"></a>&lt;!--&nbsp;The&nbsp;Load&nbsp;Image&nbsp;plugin&nbsp;is&nbsp;included&nbsp;for&nbsp;the&nbsp;preview&nbsp;images&nbsp;and&nbsp;image&nbsp;resizing&nbsp;functionality&nbsp;--&gt;</div></li>
+<li><div class="src-line"><a name="a80"></a>&lt;script&nbsp;src=&quot;/public/lib/fileupload/load-image.min.js&quot;&gt;&lt;/script&gt;</div></li>
+<li><div class="src-line"><a name="a81"></a>&lt;!--&nbsp;The&nbsp;Canvas&nbsp;to&nbsp;Blob&nbsp;plugin&nbsp;is&nbsp;included&nbsp;for&nbsp;image&nbsp;resizing&nbsp;functionality&nbsp;--&gt;</div></li>
+<li><div class="src-line"><a name="a82"></a>&lt;script&nbsp;src=&quot;/public/lib/fileupload/canvas-to-blob.min.js&quot;&gt;&lt;/script&gt;</div></li>
+<li><div class="src-line"><a name="a83"></a>&lt;!--&nbsp;blueimp&nbsp;Gallery&nbsp;script&nbsp;--&gt;</div></li>
+<li><div class="src-line"><a name="a84"></a>&lt;script&nbsp;src=&quot;/public/lib/fileupload/jquery.blueimp-gallery.min.js&quot;&gt;&lt;/script&gt;</div></li>
+<li><div class="src-line"><a name="a85"></a>&lt;!--&nbsp;The&nbsp;Iframe&nbsp;Transport&nbsp;is&nbsp;required&nbsp;for&nbsp;browsers&nbsp;without&nbsp;support&nbsp;for&nbsp;XHR&nbsp;file&nbsp;uploads&nbsp;--&gt;</div></li>
+<li><div class="src-line"><a name="a86"></a>&lt;script&nbsp;src=&quot;/public/lib/fileupload/jquery.iframe-transport.js&quot;&gt;&lt;/script&gt;</div></li>
+<li><div class="src-line"><a name="a87"></a>&lt;!--&nbsp;The&nbsp;basic&nbsp;File&nbsp;Upload&nbsp;plugin&nbsp;--&gt;</div></li>
+<li><div class="src-line"><a name="a88"></a>&lt;script&nbsp;src=&quot;/public/lib/fileupload/jquery.fileupload.js&quot;&gt;&lt;/script&gt;</div></li>
+<li><div class="src-line"><a name="a89"></a>&lt;!--&nbsp;The&nbsp;File&nbsp;Upload&nbsp;processing&nbsp;plugin&nbsp;--&gt;</div></li>
+<li><div class="src-line"><a name="a90"></a>&lt;script&nbsp;src=&quot;/public/lib/fileupload/jquery.fileupload-process.js&quot;&gt;&lt;/script&gt;</div></li>
+<li><div class="src-line"><a name="a91"></a>&lt;!--&nbsp;The&nbsp;File&nbsp;Upload&nbsp;image&nbsp;preview&nbsp;&amp;&nbsp;resize&nbsp;plugin&nbsp;--&gt;</div></li>
+<li><div class="src-line"><a name="a92"></a>&lt;script&nbsp;src=&quot;/public/lib/fileupload/jquery.fileupload-image.js&quot;&gt;&lt;/script&gt;</div></li>
+<li><div class="src-line"><a name="a93"></a>&lt;!--&nbsp;The&nbsp;File&nbsp;Upload&nbsp;validation&nbsp;plugin&nbsp;--&gt;</div></li>
+<li><div class="src-line"><a name="a94"></a>&lt;script&nbsp;src=&quot;/public/lib/fileupload/jquery.fileupload-validate.js&quot;&gt;&lt;/script&gt;</div></li>
+<li><div class="src-line"><a name="a95"></a>&lt;!--&nbsp;The&nbsp;File&nbsp;Upload&nbsp;user&nbsp;interface&nbsp;plugin&nbsp;--&gt;</div></li>
+<li><div class="src-line"><a name="a96"></a>&lt;script&nbsp;src=&quot;/public/lib/fileupload/jquery.fileupload-ui.js&quot;&gt;&lt;/script&gt;</div></li>
+<li><div class="src-line"><a name="a97"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a98"></a>&lt;!--&nbsp;The&nbsp;main&nbsp;application&nbsp;script&nbsp;--&gt;</div></li>
+<li><div class="src-line"><a name="a99"></a>&lt;script&nbsp;src=&quot;/public/js/admin.edit.photos.js&quot;&gt;&lt;/script&gt;</div></li>
+<li><div class="src-line"><a name="a100"></a>&lt;!--&nbsp;The&nbsp;XDomainRequest&nbsp;Transport&nbsp;is&nbsp;included&nbsp;for&nbsp;cross-domain&nbsp;file&nbsp;deletion&nbsp;for&nbsp;IE&nbsp;8&nbsp;and&nbsp;IE&nbsp;9&nbsp;--&gt;</div></li>
+<li><div class="src-line"><a name="a101"></a>&lt;!--[if&nbsp;(gte&nbsp;IE&nbsp;8)&amp;(lt&nbsp;IE&nbsp;10)]&gt;</div></li>
+<li><div class="src-line"><a name="a102"></a>&lt;script&nbsp;src=&quot;/public/lib/fileupload/jquery.xdr-transport.js&quot;&gt;&lt;/script&gt;</div></li>
+<li><div class="src-line"><a name="a103"></a>&lt;![endif]--&gt;</div></li>
+<li><div class="src-line"><a name="a104"></a>&lt;div&nbsp;class=&quot;col-sm-9&nbsp;col-sm-offset-3&nbsp;col-md-10&nbsp;col-md-offset-2&nbsp;main&quot;&gt;</div></li>
+<li><div class="src-line"><a name="a105"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;h1&nbsp;class=&quot;page-header&quot;&gt;Edit&nbsp;Galery&nbsp;for&nbsp;<span class="src-php">&lt;?=</span><span class="src-var">$item</span><span class="src-sym">-&gt;</span><span class="src-id">name</span><span class="src-php">?&gt;</span>&lt;/h1&gt;</div></li>
+<li><div class="src-line"><a name="a106"></a>&nbsp;&nbsp;&nbsp;&nbsp;&lt;form&nbsp;id=&quot;fileupload-galery&quot;&nbsp;method=&quot;POST&quot;&nbsp;enctype=&quot;multipart/form-data&quot;&gt;</div></li>
+<li><div class="src-line"><a name="a107"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;input&nbsp;type=&quot;hidden&quot;&nbsp;name=&quot;item-id&quot;&nbsp;value=&quot;<span class="src-php">&lt;?=</span><span class="src-var">$item</span><span class="src-sym">-&gt;</span><span class="src-id">item_id</span><span class="src-php">?&gt;</span>&quot;&nbsp;id=&quot;item-id-input&quot;&gt;</div></li>
+<li><div class="src-line"><a name="a108"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;!--&nbsp;The&nbsp;fileupload-buttonbar&nbsp;contains&nbsp;buttons&nbsp;to&nbsp;add/delete&nbsp;files&nbsp;and&nbsp;start/cancel&nbsp;the&nbsp;upload&nbsp;--&gt;</div></li>
+<li><div class="src-line"><a name="a109"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div&nbsp;class=&quot;row&nbsp;fileupload-buttonbar&quot;&gt;</div></li>
+<li><div class="src-line"><a name="a110"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div&nbsp;class=&quot;col-lg-7&quot;&gt;</div></li>
+<li><div class="src-line"><a name="a111"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;!--&nbsp;The&nbsp;fileinput-button&nbsp;span&nbsp;is&nbsp;used&nbsp;to&nbsp;style&nbsp;the&nbsp;file&nbsp;input&nbsp;field&nbsp;as&nbsp;button&nbsp;--&gt;</div></li>
+<li><div class="src-line"><a name="a112"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;span&nbsp;class=&quot;btn&nbsp;btn-success&nbsp;fileinput-button&quot;&gt;</div></li>
+<li><div class="src-line"><a name="a113"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;i&nbsp;class=&quot;glyphicon&nbsp;glyphicon-plus&quot;&gt;&lt;/i&gt;</div></li>
+<li><div class="src-line"><a name="a114"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;span&gt;Add&nbsp;files...&lt;/span&gt;</div></li>
+<li><div class="src-line"><a name="a115"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;input&nbsp;type=&quot;file&quot;&nbsp;name=&quot;files[]&quot;&nbsp;multiple&gt;</div></li>
+<li><div class="src-line"><a name="a116"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/span&gt;</div></li>
+<li><div class="src-line"><a name="a117"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;!--&nbsp;The&nbsp;global&nbsp;file&nbsp;processing&nbsp;state&nbsp;--&gt;</div></li>
+<li><div class="src-line"><a name="a118"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;span&nbsp;class=&quot;fileupload-process&quot;&gt;&lt;/span&gt;</div></li>
+<li><div class="src-line"><a name="a119"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;</div></li>
+<li><div class="src-line"><a name="a120"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;!--&nbsp;The&nbsp;global&nbsp;progress&nbsp;state&nbsp;--&gt;</div></li>
+<li><div class="src-line"><a name="a121"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div&nbsp;class=&quot;col-lg-5&nbsp;fileupload-progress&nbsp;fade&quot;&gt;</div></li>
+<li><div class="src-line"><a name="a122"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;!--&nbsp;The&nbsp;global&nbsp;progress&nbsp;bar&nbsp;--&gt;</div></li>
+<li><div class="src-line"><a name="a123"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div&nbsp;class=&quot;progress&nbsp;progress-striped&nbsp;active&quot;&nbsp;role=&quot;progressbar&quot;&nbsp;aria-valuemin=&quot;0&quot;&nbsp;aria-valuemax=&quot;100&quot;&gt;</div></li>
+<li><div class="src-line"><a name="a124"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div&nbsp;class=&quot;progress-bar&nbsp;progress-bar-success&quot;&nbsp;style=&quot;width:0%;&quot;&gt;&lt;/div&gt;</div></li>
+<li><div class="src-line"><a name="a125"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;</div></li>
+<li><div class="src-line"><a name="a126"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;!--&nbsp;The&nbsp;extended&nbsp;global&nbsp;progress&nbsp;state&nbsp;--&gt;</div></li>
+<li><div class="src-line"><a name="a127"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div&nbsp;class=&quot;progress-extended&quot;&gt;&amp;nbsp;&lt;/div&gt;</div></li>
+<li><div class="src-line"><a name="a128"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;</div></li>
+<li><div class="src-line"><a name="a129"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;</div></li>
+<li><div class="src-line"><a name="a130"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;!--&nbsp;The&nbsp;table&nbsp;listing&nbsp;the&nbsp;files&nbsp;available&nbsp;for&nbsp;upload/download&nbsp;--&gt;</div></li>
+<li><div class="src-line"><a name="a131"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;table&nbsp;role=&quot;presentation&quot;&nbsp;class=&quot;table&nbsp;table-striped&quot;&gt;&lt;tbody&nbsp;class=&quot;files&quot;&gt;&lt;/tbody&gt;&lt;/table&gt;</div></li>
+<li><div class="src-line"><a name="a132"></a>&nbsp;&nbsp;&nbsp;&nbsp;&lt;/form&gt;</div></li>
+<li><div class="src-line"><a name="a133"></a>&lt;/div&gt;</div></li>
+</ol>
+</div>
+	<div id="credit">
+		<hr>
+		Documentation generated on Mon, 12 May 2014 14:29:49 +0200 by <a href="http://www.phpdoc.org">phpDocumentor 1.4.4</a>
+	</div>
+</div>
+</body>
+</html>

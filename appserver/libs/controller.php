@@ -1,7 +1,13 @@
 <?php
-
 /**
  * This is the "base controller class". All other "real" controllers extend this class.
+ * @package Core
+ * @category Controller     
+ * @license http://opensource.org/licenses/gpl-license.php GNU Public License
+ * @author Swann
+ */
+/**
+ * 
  */
 class Controller
 {

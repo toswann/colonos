@@ -115,7 +115,7 @@ define([
             if (params.category != "0")
                 req.category = params.category;
             if (params.zone != "0")
-                req.zone = params.zone;
+                req.zone_id = params.zone_id;
             if (params.type != "0")
                 req.type = params.type;
             if (params.text != "")
@@ -126,7 +126,7 @@ define([
             var items = this.items.filter(function(item) {
                 if (this.category && (this.category != item.get("category")))
                     return false;
-                if (this.zone && (this.zone != item.get("zone")))
+                if (this.zone_id && (this.zone_id != item.get("zone_id")))
                     return false;
                 if (this.type && (this.type != item.get("type")))
                     return false;

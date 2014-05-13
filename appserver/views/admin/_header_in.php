@@ -7,7 +7,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Administración - La Ruta de los Colonos</title>
+    <title>DEV. Administración - La Ruta de los Colonos</title>
 
     <link href="/public/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
@@ -53,7 +53,7 @@
         </div>
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav navbar-right">
-              <li><a href="/"><span class="glyphicon glyphicon-user"></span> (<?php echo $_SESSION['user']->name.', '.F::getUserCurrentRoleName().': '.C::ZONES($_SESSION['user']->zone_id); ?>)</a></li>  
+              <li><a href="#"><span class="glyphicon glyphicon-user"></span> (<abbr title="<?=F::getUserCurrentRole('Description')?>"><?=F::getUserData('name').', '.F::getUserCurrentRoleName().'</abbr>: '.C::ZONES(F::getUserData('zone_id')); ?>)</a></li>  
             <li><a href="/admin" class="glyphicon glyphicon-home"></a></li>
             <li><a href="/admin/logout" class="glyphicon glyphicon-off"></a></li>
           </ul>

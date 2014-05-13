@@ -18,9 +18,9 @@
 		<div class="col-xs-4">
 			<div class="thumbs">
 				<?php if (isset($item->image) && $item->image == 1) { ?>
-				<img src="/public/storage/thumbs/<?=$item->item_id?>.jpg" class="img-thumbnail" />
+				<img src="<?=C::D('LOGO_PATH').$item->logo;?>" class="img-thumbnail" />
 				<?php } else { ?>
-				<img src="/public/storage/thumbs/na.jpg" class="img-rounded" />
+				<img src="<?=C::D('LOGO_DEFAULT');?>" class="img-rounded" />
 				<?php } ?>
 			</div>
 			<div class="address">
@@ -52,12 +52,12 @@
 			
 				<div id="slideshow" class="rs-slideshow">
 					<div class="slide-container">
-						<img src="/public/storage/galeries/<?=$item->item_id."/".$photos[0]?>" alt="" />
+						<img src="<?=C::D('GALLERY_PATH').$item->item_id."/".$photos[0]?>" alt="" />
 					</div>
 					<ol class="slides">
 					<?php for ($i = 1; $i < count($photos) ;$i++) { ?>
 						<li>
-							<a href="/public/storage/galeries/<?=$item->item_id."/".$photos[$i]?>"></a>
+							<a href="<?=C::D('GALLERY_PATH').$item->item_id."/".$photos[$i]?>"></a>
 						</li>
 					<?php } ?>
 					</ol>

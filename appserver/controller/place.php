@@ -1,7 +1,21 @@
 <?php
+/**
+ * Place Controller for all operations from Users perspective.
+ * @package Front End Module
+ * @category Place Controller      
+ * @license http://opensource.org/licenses/gpl-license.php GNU Public License
+ * @author Swann
+ */
 
 class Place extends Controller {
 
+    /**
+     * Entry point for /place/show action called by Application. 
+     * @param int $id ID of place to show
+     * @param text $name Additional URL-friendly name of place
+     * @return void
+     * @author Swann
+     */        
     public function show($id = "", $name = "") {
         if ($id) {
             $items_model = $this->loadModel('ItemsModel');

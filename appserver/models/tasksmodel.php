@@ -1,5 +1,11 @@
 <?php
-
+/**
+ * Model Class for handling data operations on Tasks.
+ * @package Data Layer
+ * @category Tasks  
+ * @license http://opensource.org/licenses/gpl-license.php GNU Public License
+ * @author Patryk
+ */
 class TasksModel {
 
     /**
@@ -32,13 +38,24 @@ class TasksModel {
         return $this->db->lastInsertId();
     }
 
-    public function getTasks($page = 1) {
+    public function getTasks($page = 1, $user_id=0) {
         $sql = "SELECT t.*, u.name FROM tasks t, users u WHERE t.admin_id = u.user_id AND t.state = ".C::D('TASK_STATE_NEW')." ORDER BY task_id ASC";
+        $params = array();
+        
+        if ($user_id > 0){
+            $sql = str_replace("WHERE ", "WHERE t.admin_id=:admin_id AND ", $sql);
+            $params[':admin_id'] = $user_id;
+        }
+        
         $query = $this->db->prepare($sql);
-        $query->execute();
+        $query->execute($params);
         return $query->fetchAll();
     }
 
+    public function getTasksCount() {
+        return count($this->getTasks('', F::getUserId()));
+    }    
+    
     public function getTaskDetails($task_id) {
         $sql = "SELECT * FROM tasks WHERE task_id = :task_id";
         $query = $this->db->prepare($sql);

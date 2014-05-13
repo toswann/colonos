@@ -1,5 +1,11 @@
 <?php
-
+/**
+ * Model Class for handling data operations on Roles.
+ * @package Data Layer
+ * @category Roles
+ * @license http://opensource.org/licenses/gpl-license.php GNU Public License
+ * @author Patryk, Swann
+ */
 // Init of PHP RBAC engine
 require_once APP_FOLDER_NAME . '/utils/phprbac/Rbac.php';
 

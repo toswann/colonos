@@ -1,0 +1,134 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+	<title>File Source for owner_place_assignment_light.php</title>
+	<link rel="stylesheet" type="text/css" id="layout" href="../media/layout.css" media="screen">
+	<link rel="stylesheet" type="text/css" href="../media/style.css" media="all">
+	<link rel="stylesheet" type="text/css" href="../media/print.css" media="print">
+</head>
+
+<body>
+<div id="header">
+	<div id="navLinks">
+        
+                                    
+                                                                    	        [ <a href="../classtrees_default.html">Class Tree: default</a> ]
+            [ <a href="../elementindex_default.html">Index: default</a> ]
+        		[ <a href="../elementindex.html">All elements</a> ]		
+	</div>
+	<div id="packagePosition">
+		<div id="packageTitle2">default</div>
+		<div id="packageTitle">default</div>
+		<div id="elementPath"> &middot; </div>
+	</div>
+</div>
+
+<div id="nav" class="small">
+	<div id="todolist">
+			<p><a href="../todolist.html">Todo List</a></p>
+	</div>
+	<div id="packages">
+		Packages:
+					<p><a href="../li_default.html">default</a></p>
+					<p><a href="../li_AdminModule.html">AdminModule</a></p>
+					<p><a href="../li_API.html">API</a></p>
+			</div>
+
+				<div id="index">
+			<div id="files">
+							</div>
+			<div id="interfaces">
+							</div>
+			<div id="classes">
+							</div>
+		</div>
+	</div>
+
+<div id="body">
+	    	<h1 align="center">Source for file owner_place_assignment_light.php</h1>
+<p>Documentation is available at <a href="../default/_views---admin---owner_place_assignment_light.php.html">owner_place_assignment_light.php</a></p>
+<div class="php-src">
+<ol><li><div class="src-line"><a name="a1"></a>&lt;div&nbsp;class=&quot;panel&nbsp;panel-default&nbsp;col-md-5&nbsp;placeholder&nbsp;dashboard-panel&quot;&gt;</div></li>
+<li><div class="src-line"><a name="a2"></a>&nbsp;&nbsp;&nbsp;&nbsp;&lt;div&nbsp;class=&quot;panel-heading&quot;&gt;&lt;h4&gt;&lt;span&nbsp;class=&quot;text&nbsp;text-warning&quot;&gt;Assignment&nbsp;Place&nbsp;to&nbsp;Owner&nbsp;&lt;span&nbsp;class=&quot;badge&quot;&gt;<span class="src-php">&lt;?php&nbsp;</span><span class="src-key">if&nbsp;</span><span class="src-sym">(</span>isset<span class="src-sym">(</span><span class="src-var">$assignmentsNo</span><span class="src-sym">))&nbsp;</span>echo&nbsp;<span class="src-var">$assignmentsNo</span><span class="src-sym">;&nbsp;</span><span class="src-php">?&gt;</span>&lt;/span&gt;&lt;/span&gt;&lt;/h4&gt;&lt;/div&gt;&nbsp;&nbsp;&nbsp;&nbsp;</div></li>
+<li><div class="src-line"><a name="a3"></a>&nbsp;&nbsp;&nbsp;&nbsp;&lt;div&nbsp;class=&quot;panel-body&quot;&nbsp;&gt;</div></li>
+<li><div class="src-line"><a name="a4"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div&nbsp;class=&quot;alert&nbsp;alert-warning&quot;&gt;Here&nbsp;you&nbsp;can&nbsp;select&nbsp;Owner&nbsp;and&nbsp;assign&nbsp;existing&nbsp;Place&nbsp;for&nbsp;management.&lt;br&gt;Your&nbsp;request&nbsp;will&nbsp;be&nbsp;sent&nbsp;for&nbsp;approval.&lt;/div&gt;</div></li>
+<li><div class="src-line"><a name="a5"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div&nbsp;class=&quot;well&quot;&gt;</div></li>
+<li><div class="src-line"><a name="a6"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;form&nbsp;role=&quot;form&quot;&nbsp;action=&quot;<span class="src-php">&lt;?=</span><span class="src-id"><a href="../default/_config---config-dev-patrik.php.html#defineURL">URL</a>&nbsp;</span><span class="src-php">?&gt;</span>admin/assignOwnerToPlace&quot;&nbsp;method=&quot;POST&quot;&gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div></li>
+<li><div class="src-line"><a name="a7"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div&nbsp;class=&quot;row&quot;&gt;</div></li>
+<li><div class="src-line"><a name="a8"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div&nbsp;class=&quot;form-group&nbsp;&nbsp;col-lg-12&quot;&gt;</div></li>
+<li><div class="src-line"><a name="a9"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;input&nbsp;class=&quot;form-control&quot;&nbsp;&nbsp;name=&quot;ownerSelector&quot;&nbsp;id=&quot;ownerSelector&quot;&nbsp;type=&quot;text&quot;&nbsp;placeholder=&quot;Search&nbsp;owners...&quot;&nbsp;autocomplete=&quot;off&quot;&nbsp;/&gt;</div></li>
+<li><div class="src-line"><a name="a10"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div></li>
+<li><div class="src-line"><a name="a11"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;input&nbsp;class=&quot;form-control&nbsp;&quot;&nbsp;name=&quot;owneridHolder&quot;&nbsp;id=&quot;owneridHolder&quot;&nbsp;type=&quot;hidden&quot;&nbsp;/&gt;&lt;/p&gt;</div></li>
+<li><div class="src-line"><a name="a12"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;</div></li>
+<li><div class="src-line"><a name="a13"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div&nbsp;class=&quot;row&quot;&gt;</div></li>
+<li><div class="src-line"><a name="a14"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div&nbsp;class=&quot;form-group&nbsp;&nbsp;col-lg-12&quot;&gt;</div></li>
+<li><div class="src-line"><a name="a15"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;input&nbsp;class=&quot;form-control&quot;&nbsp;name=&quot;itemSelector&quot;&nbsp;&nbsp;id=&quot;itemSelector&quot;&nbsp;type=&quot;text&quot;&nbsp;placeholder=&quot;Search&nbsp;places...&quot;&nbsp;value=&quot;<span class="src-php">&lt;?php&nbsp;</span><span class="src-key">if&nbsp;</span><span class="src-sym">(</span>isset<span class="src-sym">(</span><span class="src-var">$item_name</span><span class="src-sym">))&nbsp;</span>echo&nbsp;<span class="src-var">$item_name</span><span class="src-sym">;&nbsp;</span><span class="src-php">?&gt;</span>&quot;&nbsp;autocomplete=&quot;off&quot;&nbsp;/&gt;</div></li>
+<li><div class="src-line"><a name="a16"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;input&nbsp;class=&quot;form-control&quot;&nbsp;name=&quot;itemidHolder&quot;&nbsp;id=&quot;itemidHolder&quot;&nbsp;type=&quot;hidden&quot;&nbsp;value=&quot;<span class="src-php">&lt;?php&nbsp;</span><span class="src-key">if&nbsp;</span><span class="src-sym">(</span>isset<span class="src-sym">(</span><span class="src-var">$item_id</span><span class="src-sym">))&nbsp;</span>echo&nbsp;<span class="src-var">$item_id</span><span class="src-sym">;&nbsp;</span><span class="src-php">?&gt;</span>&quot;&nbsp;/&gt;&lt;/p&gt;&nbsp;&nbsp;&nbsp;</div></li>
+<li><div class="src-line"><a name="a17"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;</div></li>
+<li><div class="src-line"><a name="a18"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;</div></li>
+<li><div class="src-line"><a name="a19"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;button&nbsp;type=&quot;submit&quot;&nbsp;class=&quot;btn&nbsp;btn-warning&quot;&gt;Assign&lt;/button&gt;</div></li>
+<li><div class="src-line"><a name="a20"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a21"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/form&gt;</div></li>
+<li><div class="src-line"><a name="a22"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;&lt;/div&gt;</div></li>
+<li><div class="src-line"><a name="a23"></a>&nbsp;&nbsp;&nbsp;&nbsp;&lt;div&nbsp;class=&quot;panel-footer&quot;&gt;&lt;/div&gt;</div></li>
+<li><div class="src-line"><a name="a24"></a>&lt;/div&gt;&nbsp;</div></li>
+<li><div class="src-line"><a name="a25"></a>&lt;script&nbsp;type=&quot;text/javascript&quot;&gt;</div></li>
+<li><div class="src-line"><a name="a26"></a>&nbsp;&nbsp;&nbsp;&nbsp;</div></li>
+<li><div class="src-line"><a name="a27"></a>&nbsp;$(&nbsp;document&nbsp;).ready(function()&nbsp;{</div></li>
+<li><div class="src-line"><a name="a28"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div></li>
+<li><div class="src-line"><a name="a29"></a>var&nbsp;owners&nbsp;=&nbsp;new&nbsp;Bloodhound({</div></li>
+<li><div class="src-line"><a name="a30"></a>&nbsp;&nbsp;datumTokenizer:&nbsp;Bloodhound.tokenizers.obj.whitespace('name'),</div></li>
+<li><div class="src-line"><a name="a31"></a>&nbsp;&nbsp;queryTokenizer:&nbsp;Bloodhound.tokenizers.whitespace,</div></li>
+<li><div class="src-line"><a name="a32"></a>&nbsp;&nbsp;remote:&nbsp;'<span class="src-php">&lt;?=</span><span class="src-id"><a href="../default/_config---config-dev-patrik.php.html#defineURL">URL</a>&nbsp;</span><span class="src-php">?&gt;</span>api/searchowners/%QUERY'</div></li>
+<li><div class="src-line"><a name="a33"></a>});</div></li>
+<li><div class="src-line"><a name="a34"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a35"></a>var&nbsp;items&nbsp;=&nbsp;new&nbsp;Bloodhound({</div></li>
+<li><div class="src-line"><a name="a36"></a>&nbsp;&nbsp;datumTokenizer:&nbsp;Bloodhound.tokenizers.obj.whitespace('name'),</div></li>
+<li><div class="src-line"><a name="a37"></a>&nbsp;&nbsp;queryTokenizer:&nbsp;Bloodhound.tokenizers.whitespace,</div></li>
+<li><div class="src-line"><a name="a38"></a>&nbsp;&nbsp;remote:&nbsp;'<span class="src-php">&lt;?=</span><span class="src-id"><a href="../default/_config---config-dev-patrik.php.html#defineURL">URL</a>&nbsp;</span><span class="src-php">?&gt;</span>api/searchitems/%QUERY'</div></li>
+<li><div class="src-line"><a name="a39"></a>});</div></li>
+<li><div class="src-line"><a name="a40"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a41"></a>//&nbsp;kicks&nbsp;off&nbsp;the&nbsp;loading/processing&nbsp;of&nbsp;`local`&nbsp;and&nbsp;`prefetch`</div></li>
+<li><div class="src-line"><a name="a42"></a>owners.initialize();&nbsp;</div></li>
+<li><div class="src-line"><a name="a43"></a>items.initialize();&nbsp;</div></li>
+<li><div class="src-line"><a name="a44"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a45"></a>$('#ownerSelector').typeahead(null,&nbsp;{</div></li>
+<li><div class="src-line"><a name="a46"></a>&nbsp;&nbsp;name:&nbsp;'owners',</div></li>
+<li><div class="src-line"><a name="a47"></a>&nbsp;&nbsp;displayKey:&nbsp;'name',</div></li>
+<li><div class="src-line"><a name="a48"></a>&nbsp;&nbsp;//&nbsp;`ttAdapter`&nbsp;wraps&nbsp;the&nbsp;suggestion&nbsp;engine&nbsp;in&nbsp;an&nbsp;adapter&nbsp;that</div></li>
+<li><div class="src-line"><a name="a49"></a>&nbsp;&nbsp;//&nbsp;is&nbsp;compatible&nbsp;with&nbsp;the&nbsp;typeahead&nbsp;jQuery&nbsp;plugin</div></li>
+<li><div class="src-line"><a name="a50"></a>&nbsp;&nbsp;source:&nbsp;owners.ttAdapter(),</div></li>
+<li><div class="src-line"><a name="a51"></a>&nbsp;&nbsp;templates:&nbsp;{</div></li>
+<li><div class="src-line"><a name="a52"></a>&nbsp;&nbsp;&nbsp;&nbsp;empty:&nbsp;'&lt;p&nbsp;class=&quot;text-center&quot;&gt;&nbsp;&lt;b&nbsp;class=&quot;text-primary&nbsp;&quot;&gt;There&nbsp;are&nbsp;no&nbsp;OWNERS&nbsp;with&nbsp;this&nbsp;name&nbsp;&lt;/b&gt;&lt;/p&gt;',&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div></li>
+<li><div class="src-line"><a name="a53"></a>&nbsp;&nbsp;&nbsp;&nbsp;suggestion:&nbsp;Handlebars.compile('&lt;span&nbsp;class=&quot;glyphicon&nbsp;glyphicon-user&quot;&gt;&lt;/span&gt;&lt;b&nbsp;class=&quot;text-primary&quot;&gt;&nbsp;{{name}}&nbsp;&lt;/b&gt;&lt;br&gt;&lt;em&nbsp;class=&quot;text-muted&quot;&gt;&lt;small&gt;&nbsp;(id:&nbsp;{{user_id}},&nbsp;email:&nbsp;{{email}})&lt;/small&gt;&lt;/em&gt;')</div></li>
+<li><div class="src-line"><a name="a54"></a>&nbsp;&nbsp;}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div></li>
+<li><div class="src-line"><a name="a55"></a>}).on('typeahead:selected',&nbsp;function(event,&nbsp;datum)&nbsp;{</div></li>
+<li><div class="src-line"><a name="a56"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$('#owneridHolder').val(datum.user_id);</div></li>
+<li><div class="src-line"><a name="a57"></a>&nbsp;&nbsp;&nbsp;&nbsp;});&nbsp;&nbsp;</div></li>
+<li><div class="src-line"><a name="a58"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a59"></a>$('#itemSelector').typeahead(null,&nbsp;{</div></li>
+<li><div class="src-line"><a name="a60"></a>&nbsp;&nbsp;name:&nbsp;'items',</div></li>
+<li><div class="src-line"><a name="a61"></a>&nbsp;&nbsp;displayKey:&nbsp;'name',</div></li>
+<li><div class="src-line"><a name="a62"></a>&nbsp;&nbsp;//&nbsp;`ttAdapter`&nbsp;wraps&nbsp;the&nbsp;suggestion&nbsp;engine&nbsp;in&nbsp;an&nbsp;adapter&nbsp;that</div></li>
+<li><div class="src-line"><a name="a63"></a>&nbsp;&nbsp;//&nbsp;is&nbsp;compatible&nbsp;with&nbsp;the&nbsp;typeahead&nbsp;jQuery&nbsp;plugin</div></li>
+<li><div class="src-line"><a name="a64"></a>&nbsp;&nbsp;source:&nbsp;items.ttAdapter(),</div></li>
+<li><div class="src-line"><a name="a65"></a>&nbsp;&nbsp;templates:&nbsp;{</div></li>
+<li><div class="src-line"><a name="a66"></a>&nbsp;&nbsp;&nbsp;&nbsp;empty:&nbsp;'&lt;p&nbsp;class=&quot;text-center&quot;&gt;&nbsp;&lt;b&nbsp;class=&quot;text-primary&nbsp;&quot;&gt;There&nbsp;are&nbsp;no&nbsp;PLACES&nbsp;with&nbsp;this&nbsp;name&nbsp;&lt;/b&gt;&lt;/p&gt;',&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div></li>
+<li><div class="src-line"><a name="a67"></a>&nbsp;&nbsp;&nbsp;&nbsp;suggestion:&nbsp;Handlebars.compile('&lt;span&nbsp;class=&quot;glyphicon&nbsp;glyphicon-home&quot;&gt;&lt;/span&gt;&lt;b&nbsp;class=&quot;text-primary&quot;&gt;&nbsp;{{name}}&nbsp;&lt;/b&gt;&lt;br&gt;&lt;em&nbsp;class=&quot;text-muted&quot;&gt;&lt;small&gt;&nbsp;(id:&nbsp;{{item_id}},&nbsp;owner&nbsp;ID:&nbsp;{{owner_id}})&lt;/small&gt;&lt;/em&gt;')</div></li>
+<li><div class="src-line"><a name="a68"></a>&nbsp;&nbsp;}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div></li>
+<li><div class="src-line"><a name="a69"></a>}).on('typeahead:selected',&nbsp;function(event,&nbsp;datum)&nbsp;{</div></li>
+<li><div class="src-line"><a name="a70"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$('#itemidHolder').val(datum.item_id);</div></li>
+<li><div class="src-line"><a name="a71"></a>&nbsp;&nbsp;&nbsp;&nbsp;});&nbsp;&nbsp;</div></li>
+<li><div class="src-line"><a name="a72"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a73"></a>});&nbsp;</div></li>
+<li><div class="src-line"><a name="a74"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a75"></a>&lt;/script&gt;</div></li>
+</ol>
+</div>
+	<div id="credit">
+		<hr>
+		Documentation generated on Mon, 12 May 2014 14:29:48 +0200 by <a href="http://www.phpdoc.org">phpDocumentor 1.4.4</a>
+	</div>
+</div>
+</body>
+</html>

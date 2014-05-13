@@ -1,5 +1,11 @@
 <?php
-
+/**
+ * Model Class for handling data operations on Votes.
+ * @package Data Layer
+ * @category Votes  
+ * @license http://opensource.org/licenses/gpl-license.php GNU Public License
+ * @author Patryk, Swann
+ */
 class VotesModel {
 
     /**
@@ -50,7 +56,6 @@ class VotesModel {
 
                 $query = $this->db->prepare($sql);
                 $query->execute($data);
-                die(F::average($rating_array));
                 return $query;      
                 
         } catch (PDOException $pdoE) {
@@ -93,15 +98,27 @@ class VotesModel {
 
     }    
     
-    public function getVotes($item_id=""){
-        $sql = "SELECT * FROM  v_ratings_places WHERE rating_id > 0 ";
+    public function getVotes($item_id="", $active=false){
+        $sql = "SELECT * FROM  v_ratings_places WHERE rating_id > 0 ".F::getUserConstraints();
+        $params = array();
+        
+        if ($active){
+            $sql = str_replace("WHERE ", "WHERE state = :state AND ", $sql);
+            $params[':state'] = C::D('ITEM_STATE_VALID');
+        }
+        
+        
         $query = $this->db->prepare($sql);
-        $query->execute();
+        $query->execute($params);
         return $query->fetchAll();       
     }
     
+    public function getVotesCount($active=false){
+        return count($this->getVotes('', $active));
+    }
+    
     public function getVote($vote_id){
-        $sql = "SELECT * FROM  v_ratings_places WHERE rating_id = :vote_id ";
+        $sql = "SELECT * FROM  v_ratings_places WHERE rating_id = :vote_id ".F::getUserConstraints();
         $query = $this->db->prepare($sql);
         $query->execute(array(
             ':vote_id' => $vote_id
@@ -110,12 +127,24 @@ class VotesModel {
     }    
 
     private function updateAverage($item_id){       
-        $sql = "UPDATE items SET averagegrade = (SELECT ROUND(AVG(grade_average),2) FROM ratings WHERE item_id = :item_id AND state = :state) WHERE item_id = :item_id";        
-        $query = $this->db->prepare($sql);
+        
+        $countersSql =  "SELECT ROUND(AVG(grade_average),2) as average, COUNT(rating_id) as nbvoters  FROM ratings WHERE item_id = :item_id AND state = :state";
+        $query = $this->db->prepare($countersSql);
         $query->execute(array(
             ':item_id' => $item_id,                
             ':state' => C::D('ITEM_STATE_VALID')
-        ));        
+        ));         
+        $counters = $query->fetch();
+        
+        if ($counters != "") {       
+            $sql = "UPDATE items SET averagegrade = :average, nbvoters = :nbvoters WHERE item_id = :item_id";        
+            $query = $this->db->prepare($sql);
+            $query->execute(array(
+                ':item_id' => $item_id,                
+                ':average' => $counters->average,
+                ':nbvoters' => $counters->nbvoters
+            )); 
+        }
     }
     
 }

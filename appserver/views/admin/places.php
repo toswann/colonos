@@ -18,7 +18,7 @@
         <table class="table table-striped" id="places-table">
             <thead>
                     <tr>
-                            <th>#</th>
+                            <th>ID</th>
                             <th>Name</th>
                             <th>Zone</th>
                             <th>Owner</th>                            
@@ -31,7 +31,7 @@
             <?php for($i = 0; $i < count($items) ; $i++) { ?>
                     <tr>
                             <td class="text"><?=$items[$i]->item_id ?></td>
-                            <td class="text"><?=$items[$i]->name ?></td>
+                            <td class="text"><a href="<?=URL?>admin/editplace/<?=$items[$i]->item_id ?>"><?=$items[$i]->name ?></a></td>
                             <td class="text"><?=C::ZONES($items[$i]->zone_id) ?></td>
                             <td class="text">
                                     <?php  

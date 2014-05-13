@@ -1,5 +1,11 @@
 <?php
-
+/**
+ * Main Controller for all operations in BackEnd area.
+ * @package Core
+ * @category Router      
+ * @license http://opensource.org/licenses/gpl-license.php GNU Public License
+ * @author Swann
+ */
 class Application
 {
     /** @var null The controller */
@@ -84,12 +90,6 @@ class Application
             $this->url_parameter_2 = (isset($url[3]) ? $url[3] : null);
             $this->url_parameter_3 = (isset($url[4]) ? $url[4] : null);
 
-            // for debugging. uncomment this if you have problems with the URL
-            // echo 'Controller: ' . $this->url_controller . '<br />';
-            // echo 'Action: ' . $this->url_action . '<br />';
-            // echo 'Parameter 1: ' . $this->url_parameter_1 . '<br />';
-            // echo 'Parameter 2: ' . $this->url_parameter_2 . '<br />';
-            // echo 'Parameter 3: ' . $this->url_parameter_3 . '<br />';
         }
     }
 }

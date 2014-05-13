@@ -1,6 +1,12 @@
 <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
     <h1 class="page-header">Zone Admins</h1>           
-        
+
+<div class="row">
+<?php if (isset($messageObj) && $messageObj != "") { ?>
+        <div class="alert alert-<?= $messageObj['class'] ?>"><?= $messageObj['txt'] ?></div>
+<?php } ?>
+</div>     
+    
     <ul class="nav nav-tabs" id="main-tabs-list">
         <li class="active"><a href="#zone-admins-tab" data-toggle="tab">Zone admins</a></li>
         <li><a href="#zones-tab" data-toggle="tab">Zones</a></li>
@@ -13,7 +19,7 @@
         <table class="table table-striped" id="zone-admins-table">
             <thead>
                 <tr>
-                    <th>#</th>
+                    <th>ID</th>
                     <th>Name</th>
                     <th>Email</th>
                     <th>State</th>                   
@@ -25,7 +31,7 @@
             <?php for ($i = 0; $i < count($zoneadmins); $i++) { ?>  
                     <tr>
                         <td class="text"><?= $zoneadmins[$i]->user_id ?><input type="hidden" name="role_id" value="<?= $zoneadmins[$i]->user_id ?>"></td>
-                        <td class="text"><?= $zoneadmins[$i]->name ?></td>
+                        <td class="text"><a href="<?=URL?>admin/editzoneadmin/<?=$zoneadmins[$i]->user_id ?>"><?= $zoneadmins[$i]->name ?></a></td>
                         <td class="text"><?= $zoneadmins[$i]->email ?></td>
                         <td><span class="label label-<?=C::ITEM_STATE($zoneadmins[$i]->state, 1)?>"><?=C::ITEM_STATE($zoneadmins[$i]->state, 0)?></span></td>         
                         <td><?= C::ZONES($zoneadmins[$i]->zone_id) ?></td>                         

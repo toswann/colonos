@@ -1,4 +1,7 @@
 {
+    "header": {
+        "title": "DEV"
+        },
     "vote": {
         "code_form": {
             "enter": "Entra el Código :",

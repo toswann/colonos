@@ -1,16 +1,15 @@
 <div class="panel panel-default col-md-6 placeholder dashboard-panel">
     
-    <div class="panel-heading"><h4 class="hidetasks"><label class="label label-success">Requests from Zone Admins</label></h4></div>    
+    <div class="panel-heading"><h4 class="hidetasks"><span class="text text-success">Requests from Zone Admins <span class="badge"><?= count($tasks) ?></span></span></h4></div>    
     <div class="panel-body">
-        <div class="alert alert-info">Below, you'll find all request from your Zone Admins that hasn't been answered yet. <br>Your decision is required. Click on item to view more details.</div>
-        <table class="table table-condensed">
-          <?php for ($i = 0; $i < count($tasks); $i++) { ?>  
-            <tr><td>
-          <div class="row item item-<?= $tasks[$i]->task_id ?>" id="item-<?= $tasks[$i]->task_id ?>" data-ref="<?= $tasks[$i]->task_id ?>">      
+        <div class="alert alert-success">Below, you'll find all request from your Zone Admins that hasn't been answered yet. <br>Your decision is required. Click on item to view more details.</div>
+        <div class="well">
+          <?php for ($i = 0; $i < count($tasks); $i++) { ?> 
+          <div class="row item2 item-<?= $tasks[$i]->task_id ?>" id="item-<?= $tasks[$i]->task_id ?>" data-ref="<?= $tasks[$i]->task_id ?>">      
               <div class="col-md-12">
                   <div class="row">      
                       <p>
-                          <span class="text small"><?= ($i+1).'. '.C::TASK_TYPE($tasks[$i]->type, 1) ?> (task id: <?= $tasks[$i]->task_id ?>) </span><span class="glyphicon glyphicon-chevron-right small"></span><span class="text small"> <?= $tasks[$i]->name ?></span><span class="glyphicon glyphicon-chevron-right small"></span><span class="text small"> <?= $tasks[$i]->create_date ?></span>
+                      <h5> <label class="label label-info">NEW</label> <span class="caret"></span> (t.<?= $tasks[$i]->task_id ?>) <?= C::TASK_TYPE($tasks[$i]->type, 1) ?>  <small><span class="glyphicon glyphicon-chevron-right"></span><span class="text"> <?= $tasks[$i]->name ?></span><span class="glyphicon glyphicon-chevron-right small"></span><span class="text"> <?= $tasks[$i]->create_date ?></span></small></h5>
                       </p>
                   </div>
                   <div class="row second-infos">
@@ -25,10 +24,8 @@
                   </div>                
               </div>
           </div>
-                </td></tr>
           <?php } ?>      
-
-        </table>
+    </div>            
     </div>
     
 
@@ -59,7 +56,7 @@
                 $(selectedItem).find(".second-infos").hide();
         });
      
-        $(".item").click(function() {
+        $(".item2").click(function() {
             if (selectedItem != "none") {
                 $(selectedItem).removeClass("selected");
                 $(selectedItem).find(".second-infos").hide();
@@ -70,7 +67,7 @@
         });
 
         // Prepare stage and hide them all
-        $(".item").find(".second-infos").hide();
+        $(".item2").find(".second-infos").hide();
 
 });    
     

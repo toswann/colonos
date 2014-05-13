@@ -1,5 +1,11 @@
 <?php
-
+/**
+ * Model Class for handling data operations on Codes.
+ * @package Data Layer
+ * @category Codes      
+ * @license http://opensource.org/licenses/gpl-license.php GNU Public License
+ * @author Patryk, Swann
+ */
 class CodesModel {
 
     /**

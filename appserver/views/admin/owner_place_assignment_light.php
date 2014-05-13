@@ -1,22 +1,25 @@
 <div class="panel panel-default col-md-5 placeholder dashboard-panel">
-    <div class="panel-heading"><h4><span class="label label-warning">Assignment Place to Owner</span></h4></div>    
-    <div class="panel-body" style="width:350px">
-        <div class="alert alert-info">Here you can select Owner and assign existing Place for management.<br>Your request will be sent for approval.</div>
+    <div class="panel-heading"><h4><span class="text text-warning">Assignment Place to Owner <span class="badge"><?php if (isset($assignmentsNo)) echo $assignmentsNo; ?></span></span></h4></div>    
+    <div class="panel-body" >
+        <div class="alert alert-warning">Here you can select Owner and assign existing Place for management.<br>Your request will be sent for approval.</div>
+        <div class="well">
         <form role="form" action="<?=URL ?>admin/assignOwnerToPlace" method="POST">      
-            <div class="row col-lg-12">
-                    <input class="form-control"  style="width:350px" name="ownerSelector" id="ownerSelector" type="text" placeholder="Search owners..." autocomplete="off" />
-                    <input class="form-control " name="owneridHolder" id="owneridHolder" type="hidden" /></p>
+            <div class="row">
+                <div class="form-group  col-lg-12">
+                        <input class="form-control"  name="ownerSelector" id="ownerSelector" type="text" placeholder="Search owners..." autocomplete="off" />
+                </div>            
+                <input class="form-control " name="owneridHolder" id="owneridHolder" type="hidden" /></p>
             </div>
             <div class="row">
                 <div class="form-group  col-lg-12">
-                    <input class="form-control" name="itemSelector"  style="width:350px" id="itemSelector" type="text" placeholder="Search places..." value="<?php if (isset($item_name)) echo $item_name; ?>" autocomplete="off" />
+                    <input class="form-control" name="itemSelector"  id="itemSelector" type="text" placeholder="Search places..." value="<?php if (isset($item_name)) echo $item_name; ?>" autocomplete="off" />
                     <input class="form-control" name="itemidHolder" id="itemidHolder" type="hidden" value="<?php if (isset($item_id)) echo $item_id; ?>" /></p>   
                 </div>
             </div>
-            <button type="submit" class="btn btn-default">Assign</button>
+            <button type="submit" class="btn btn-warning">Assign</button>
 
         </form>
-    </div>
+        </div></div>
     <div class="panel-footer"></div>
 </div> 
 <script type="text/javascript">

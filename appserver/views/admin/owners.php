@@ -19,7 +19,7 @@
         <table class="table table-striped" id="zone-admins-table">
             <thead>
                 <tr>
-                    <th>#</th>
+                    <th>ID</th>
                     <th>Name</th>
                     <th>Email</th>
                     <th>State</th>                    
@@ -32,7 +32,7 @@
 
                     <tr>
                         <td class="text"><?= $owners[$i]->user_id ?><input type="hidden" name="role_id" value="<?= $owners[$i]->user_id ?>"></td>
-                        <td class="text"><?= $owners[$i]->name ?></td>
+                        <td class="text"><a href="<?=URL?>admin/editowner/<?=$owners[$i]->user_id ?>"><?= $owners[$i]->name ?></a></td>
                         <td class="text"><?= $owners[$i]->email ?></td>
                         <td>
                             <?php 

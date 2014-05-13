@@ -1,0 +1,75 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+	<title>File Source for sidenav.php</title>
+	<link rel="stylesheet" type="text/css" id="layout" href="../media/layout.css" media="screen">
+	<link rel="stylesheet" type="text/css" href="../media/style.css" media="all">
+	<link rel="stylesheet" type="text/css" href="../media/print.css" media="print">
+</head>
+
+<body>
+<div id="header">
+	<div id="navLinks">
+        
+                                    
+                                                                    	        [ <a href="../classtrees_default.html">Class Tree: default</a> ]
+            [ <a href="../elementindex_default.html">Index: default</a> ]
+        		[ <a href="../elementindex.html">All elements</a> ]		
+	</div>
+	<div id="packagePosition">
+		<div id="packageTitle2">default</div>
+		<div id="packageTitle">default</div>
+		<div id="elementPath"> &middot; </div>
+	</div>
+</div>
+
+<div id="nav" class="small">
+	<div id="todolist">
+			<p><a href="../todolist.html">Todo List</a></p>
+	</div>
+	<div id="packages">
+		Packages:
+					<p><a href="../li_default.html">default</a></p>
+					<p><a href="../li_AdminModule.html">AdminModule</a></p>
+					<p><a href="../li_API.html">API</a></p>
+			</div>
+
+				<div id="index">
+			<div id="files">
+							</div>
+			<div id="interfaces">
+							</div>
+			<div id="classes">
+							</div>
+		</div>
+	</div>
+
+<div id="body">
+	    	<h1 align="center">Source for file sidenav.php</h1>
+<p>Documentation is available at <a href="../default/_views---admin---sidenav.php.html">sidenav.php</a></p>
+<div class="php-src">
+<ol><li><div class="src-line"><a name="a1"></a>&lt;div&nbsp;class=&quot;col-sm-3&nbsp;col-md-2&nbsp;sidebar&quot;&gt;</div></li>
+<li><div class="src-line"><a name="a2"></a>&nbsp;&nbsp;&nbsp;&nbsp;&lt;ul&nbsp;class=&quot;nav&nbsp;nav-sidebar&quot;&gt;</div></li>
+<li><div class="src-line"><a name="a3"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;li&nbsp;class=&quot;<span class="src-php">&lt;?=</span><span class="src-sym">@</span><span class="src-var">$dashboard</span><span class="src-php">?&gt;</span>&quot;&gt;&lt;a&nbsp;href=&quot;/admin/dashboard&quot;&gt;Dashboard&lt;/a&gt;&lt;/li&gt;</div></li>
+<li><div class="src-line"><a name="a4"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-php">&lt;?php&nbsp;</span><span class="src-key">if</span><span class="src-sym">(</span><span class="src-var">$_SESSION</span><span class="src-sym">[</span><span class="src-str">&quot;user&quot;</span><span class="src-sym">]</span><span class="src-sym">-&gt;</span><span class="src-id">type&nbsp;</span>==&nbsp;<span class="src-id"><a href="../default/C.html">C</a></span><span class="src-sym">::</span><a href="../default/C.html#methodD">D</a><span class="src-sym">(</span><span class="src-str">'TYPE_GENERAL_ADMIN'</span><span class="src-sym">))&nbsp;</span><span class="src-sym">{&nbsp;</span><span class="src-php">?&gt;&nbsp;&nbsp;&nbsp;&nbsp;</span></div></li>
+<li><div class="src-line"><a name="a5"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;li&nbsp;class=&quot;<span class="src-php">&lt;?=</span><span class="src-sym">@</span><span class="src-var">$votes</span><span class="src-php">?&gt;</span>&quot;&gt;&lt;a&nbsp;href=&quot;/admin/votes&quot;&gt;Manage&nbsp;Votes&lt;/a&gt;&lt;/li&gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div></li>
+<li><div class="src-line"><a name="a6"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;li&nbsp;class=&quot;<span class="src-php">&lt;?=</span><span class="src-sym">@</span><span class="src-var">$zone_admins</span><span class="src-php">?&gt;</span>&quot;&gt;&lt;a&nbsp;href=&quot;/admin/zoneadmins&quot;&gt;Manage&nbsp;Zone&nbsp;Admins&lt;/a&gt;&lt;/li&gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div></li>
+<li><div class="src-line"><a name="a7"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-php">&lt;?php&nbsp;</span><span class="src-sym">}&nbsp;</span><span class="src-php">?&gt;</span></div></li>
+<li><div class="src-line"><a name="a8"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-php">&lt;?php&nbsp;</span><span class="src-key">if</span><span class="src-sym">(</span><span class="src-var">$_SESSION</span><span class="src-sym">[</span><span class="src-str">&quot;user&quot;</span><span class="src-sym">]</span><span class="src-sym">-&gt;</span><span class="src-id">type&nbsp;</span>&gt;=&nbsp;<span class="src-id"><a href="../default/C.html">C</a></span><span class="src-sym">::</span><a href="../default/C.html#methodD">D</a><span class="src-sym">(</span><span class="src-str">'TYPE_ZONE_ADMIN'</span><span class="src-sym">))&nbsp;</span><span class="src-sym">{&nbsp;</span><span class="src-php">?&gt;</span></div></li>
+<li><div class="src-line"><a name="a9"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;li&nbsp;class=&quot;<span class="src-php">&lt;?=</span><span class="src-sym">@</span><span class="src-var">$placeowners</span><span class="src-php">?&gt;</span>&quot;&gt;&lt;a&nbsp;href=&quot;/admin/owners&quot;&gt;Manage&nbsp;my&nbsp;Owners&lt;/a&gt;&lt;/li&gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div></li>
+<li><div class="src-line"><a name="a10"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-php">&lt;?php&nbsp;</span><span class="src-sym">}&nbsp;</span><span class="src-php">?&gt;</span></div></li>
+<li><div class="src-line"><a name="a11"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-php">&lt;?php&nbsp;</span><span class="src-key">if</span><span class="src-sym">(</span><span class="src-var">$_SESSION</span><span class="src-sym">[</span><span class="src-str">&quot;user&quot;</span><span class="src-sym">]</span><span class="src-sym">-&gt;</span><span class="src-id">type&nbsp;</span>&gt;=&nbsp;<span class="src-id"><a href="../default/C.html">C</a></span><span class="src-sym">::</span><a href="../default/C.html#methodD">D</a><span class="src-sym">(</span><span class="src-str">'TYPE_MODERATOR'</span><span class="src-sym">))&nbsp;</span><span class="src-sym">{&nbsp;</span><span class="src-php">?&gt;</span></div></li>
+<li><div class="src-line"><a name="a12"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;li&nbsp;class=&quot;<span class="src-php">&lt;?=</span><span class="src-sym">@</span><span class="src-var">$places</span><span class="src-php">?&gt;</span>&quot;&gt;&lt;a&nbsp;href=&quot;/admin/places&quot;&gt;Manage&nbsp;my&nbsp;Places&lt;/a&gt;&lt;/li&gt;</div></li>
+<li><div class="src-line"><a name="a13"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a14"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-php">&lt;?php&nbsp;</span><span class="src-sym">}&nbsp;</span><span class="src-php">?&gt;</span></div></li>
+<li><div class="src-line"><a name="a15"></a>&nbsp;&nbsp;&nbsp;&nbsp;&lt;/ul&gt;</div></li>
+<li><div class="src-line"><a name="a16"></a>&lt;/div&gt;</div></li>
+</ol>
+</div>
+	<div id="credit">
+		<hr>
+		Documentation generated on Mon, 12 May 2014 14:30:02 +0200 by <a href="http://www.phpdoc.org">phpDocumentor 1.4.4</a>
+	</div>
+</div>
+</body>
+</html>

@@ -17,7 +17,7 @@ class GaleryUploadHandler {
     // PHP File Upload error message codes:
     // http://php.net/manual/en/features.file-upload.errors.php
     protected $error_messages = array(
-        1 => 'The uploaded file exceeds the upload_max_filesize directive in php.ini',
+        1 => '',
         2 => 'The uploaded file exceeds the MAX_FILE_SIZE directive that was specified in the HTML form',
         3 => 'The uploaded file was only partially uploaded',
         4 => 'No file was uploaded',
@@ -40,6 +40,29 @@ class GaleryUploadHandler {
     protected $image_objects = array();
 
     function __construct($options = null, $initialize = true, $error_messages = null) {
+
+        $this->error_messages = array(
+                    1 => C::T(1),
+                    2 => C::T(2),
+                    3 => C::T(3),
+                    4 => C::T(4),
+                    6 => C::T(6),
+                    7 => C::T(7),
+                    8 => C::T(8),
+                    'validation_failed' => C::T('IMAGE_VALIDATION_FAILED'),
+                    'post_max_size' => C::T('IMAGE_POST_MAX_SIZE' ),
+                    'max_file_size' => C::T('IMAGE_MAX_FILE_SIZE' ),
+                    'min_file_size' => C::T('IMAGE_MIN_FILE_SIZE' ),
+                    'accept_file_types' => C::T('IMAGE_ACCEPT_FILE_TYPES'),
+                    'max_number_of_files' => C::T('IMAGE_MAX_NUMBER_OF_FILES'),
+                    'max_width' => C::T('IMAGE_MAX_WIDTH'),
+                    'min_width' => C::T('IMAGE_MIN_WIDTH'),
+                    'max_height' => C::T('IMAGE_MAX_HEIGHT'),
+                    'min_height' => C::T('IMAGE_MIN_HEIGHT'),
+                    'abort' => C::T('IMAGE_ABORT'),
+                    'image_resize' => C::T('IMAGE_IMAGE_RESIZE'),
+                );            
+    
         $this->options = array(
             'script_url' => $this->get_full_url() . '/',
             'upload_dir' => dirname($this->get_server_var('SCRIPT_FILENAME')) . C::D('GALLERY_PATH'),
@@ -1067,6 +1090,7 @@ class GaleryUploadHandler {
     }
 
     protected function generate_response($content, $print_response = true) {
+        
         if ($print_response) {
             $json = json_encode($content);
             $redirect = isset($_REQUEST['redirect']) ?
@@ -1127,6 +1151,7 @@ class GaleryUploadHandler {
     }
 
     protected function download() {
+
         switch ($this->options['download_via_php']) {
             case 1:
                 $redirect_header = null;
@@ -1215,6 +1240,7 @@ class GaleryUploadHandler {
     }
 
     public function post($print_response = true) {
+
         if ($this->options['delete'] == true) {
             return $this->delete($print_response);
         }

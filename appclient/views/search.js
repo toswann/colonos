@@ -18,7 +18,7 @@ define([
             this.searchParams = {
                 category: "0",
                 type: "0",
-                zone: "0",
+                zone_id: "0",
                 text: ""
             }
         },
@@ -49,7 +49,7 @@ define([
             }
         },
         zoneChange: function() {
-            this.searchParams.zone = $(".zone-select").val();
+            this.searchParams.zone_id = $(".zone-select").val();
             this.trigger("newsearch", this.searchParams);
 
         },

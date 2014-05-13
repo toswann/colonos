@@ -64,17 +64,17 @@ class F {
      */      
     static public function setUserConstraints() {
         
-        if (isset($_SESSION['user']->type)) {
-            switch ($_SESSION['user']->type){
-                case C::D('TYPE_MODERATOR') :
+        if (self::getUserCurrentRole("ID") > 0) {
+            switch (self::getUserCurrentRole("ID")){
+                case C::D('ROLE_OWNER') :
                     $_SESSION['user_constraint'] = " AND owner_id= ".$_SESSION['user']->user_id;    
                     break;
                 
-                case C::D('TYPE_ZONE_ADMIN'):
+                case C::D('ROLE_ZONE_ADMIN'):
                     $_SESSION['user_constraint'] = " AND ( zone_id IS NULL OR zone_id= ".$_SESSION['user']->zone_id.') ';
                     break;
                 
-                case C::D('TYPE_GENERAL_ADMIN'):
+                case C::D('ROLE_GENERAL_ADMIN'):
                     $_SESSION['user_constraint'] = " AND 1";
                     break;
                 
@@ -122,6 +122,43 @@ class F {
         return $_SESSION['user']->user_id;
     }
 
+    static public function getUserData($key){
+        return $_SESSION['user']->{$key};
+    }    
+    
+    static public function clearPendings(){
+        $_SESSION['pending'] = "";
+    }
+    
+    static public function setPendingUploadedFile($action, $item_id, $fileName){
+        $fullpath = explode("/", $action);
+        $operation = "";
+        if (isset($fullpath[1])){
+            $operation = $fullpath[1];
+        }
+        $_SESSION['pending'][$fullpath[0]] = array('operation'=> $operation, 'item_id' => $item_id, 'filename'=> $fileName);
+    }
+    
+    static public function setTempId($value){
+        $_SESSION['temp_id'] = $value;
+    }
+    
+    static public function getTempId(){
+        if (isset($_SESSION['temp_id']))
+           return $_SESSION['temp_id'];
+        else
+           return 0;
+    }    
+    
+    static public function getPendingUploadedFile($action){
+        if (isset($_SESSION['pending'][$action])){
+            $pending = $_SESSION['pending'][$action];
+            unset($_SESSION['pending'][$action]);
+            return $pending;
+        }
+        return 0;
+    }    
+    
     static public function comparePasswords($shaCurrentPass, $plainCandidatePass, $plainRetypeCandidatePass ) {
         
         $return = array("error" => "", "password"=>$shaCurrentPass);
@@ -177,7 +214,7 @@ class F {
         
         return 0;
     }
-    
+       
     static public function average($arr) {
        if (!is_array($arr)) return false;
 

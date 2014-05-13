@@ -1,0 +1,128 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+	<title>File Source for setup.php</title>
+	<link rel="stylesheet" type="text/css" id="layout" href="../media/layout.css" media="screen">
+	<link rel="stylesheet" type="text/css" href="../media/style.css" media="all">
+	<link rel="stylesheet" type="text/css" href="../media/print.css" media="print">
+</head>
+
+<body>
+<div id="header">
+	<div id="navLinks">
+        
+                                    
+                                                                    	        [ <a href="../classtrees_default.html">Class Tree: default</a> ]
+            [ <a href="../elementindex_default.html">Index: default</a> ]
+        		[ <a href="../elementindex.html">All elements</a> ]		
+	</div>
+	<div id="packagePosition">
+		<div id="packageTitle2">default</div>
+		<div id="packageTitle">default</div>
+		<div id="elementPath"> &middot; </div>
+	</div>
+</div>
+
+<div id="nav" class="small">
+	<div id="todolist">
+			<p><a href="../todolist.html">Todo List</a></p>
+	</div>
+	<div id="packages">
+		Packages:
+					<p><a href="../li_default.html">default</a></p>
+					<p><a href="../li_AdminModule.html">AdminModule</a></p>
+					<p><a href="../li_API.html">API</a></p>
+			</div>
+
+				<div id="index">
+			<div id="files">
+							</div>
+			<div id="interfaces">
+							</div>
+			<div id="classes">
+							</div>
+		</div>
+	</div>
+
+<div id="body">
+	    	<h1 align="center">Source for file setup.php</h1>
+<p>Documentation is available at <a href="../default/_utils---phprbac---core---setup.php.html">setup.php</a></p>
+<div class="php-src">
+<ol><li><div class="src-line"><a name="a1"></a><span class="src-php">&lt;?php</span></div></li>
+<li><div class="src-line"><a name="a2"></a><span class="src-comm">#TODO:&nbsp;test&nbsp;on&nbsp;sqlite</span></div></li>
+<li><div class="src-line"><a name="a3"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a4"></a><span class="src-key">if&nbsp;</span><span class="src-sym">(</span><span class="src-var">$adapter</span>==<span class="src-str">&quot;pdo_mysql&quot;</span><span class="src-sym">)</span></div></li>
+<li><div class="src-line"><a name="a5"></a><span class="src-sym">{</span></div></li>
+<li><div class="src-line"><a name="a6"></a>&nbsp;&nbsp;&nbsp;&nbsp;try&nbsp;<span class="src-sym">{</span></div></li>
+<li><div class="src-line"><a name="a7"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-id"><a href="../default/Jf.html">Jf</a></span><span class="src-sym">::</span><span class="src-var">$Db</span>=<span class="src-key">new&nbsp;</span><span class="src-id">PDO</span><span class="src-sym">(</span><span class="src-str">&quot;</span><span class="src-str">mysql:host={<span class="src-var">$host</span><span class="src-sym">}</span>;dbname={<span class="src-var">$dbname</span><span class="src-sym">}</span></span><span class="src-str">&quot;</span><span class="src-sym">,</span><span class="src-var">$user</span><span class="src-sym">,</span><span class="src-var">$pass</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a8"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">}</span></div></li>
+<li><div class="src-line"><a name="a9"></a>&nbsp;&nbsp;&nbsp;&nbsp;catch&nbsp;<span class="src-sym">(</span><span class="src-id">PDOException&nbsp;</span><span class="src-var">$e</span><span class="src-sym">)</span></div></li>
+<li><div class="src-line"><a name="a10"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">{</span></div></li>
+<li><div class="src-line"><a name="a11"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">if&nbsp;</span><span class="src-sym">(</span><span class="src-var">$e</span><span class="src-sym">-&gt;</span><span class="src-id">getCode</span><span class="src-sym">(</span><span class="src-sym">)</span>==<span class="src-num">1049</span><span class="src-sym">)&nbsp;</span><span class="src-comm">//database&nbsp;not&nbsp;found</span></div></li>
+<li><div class="src-line"><a name="a12"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="../default/_utils---phprbac---core---setup.php.html#functioninstallPdoMysql">installPdoMysql</a><span class="src-sym">(</span><span class="src-var">$host</span><span class="src-sym">,</span><span class="src-var">$user</span><span class="src-sym">,</span><span class="src-var">$pass</span><span class="src-sym">,</span><span class="src-var">$dbname</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a13"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">else</span></div></li>
+<li><div class="src-line"><a name="a14"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;throw&nbsp;<span class="src-var">$e</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a15"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">}</span></div></li>
+<li><div class="src-line"><a name="a16"></a><span class="src-sym">}</span></div></li>
+<li><div class="src-line"><a name="a17"></a><span class="src-key">elseif&nbsp;</span><span class="src-sym">(</span><span class="src-var">$adapter</span>==<span class="src-str">&quot;pdo_sqlite&quot;</span><span class="src-sym">)</span></div></li>
+<li><div class="src-line"><a name="a18"></a><span class="src-sym">{</span></div></li>
+<li><div class="src-line"><a name="a19"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">if&nbsp;</span><span class="src-sym">(</span><span class="src-sym">!</span><a href="http://www.php.net/file_exists">file_exists</a><span class="src-sym">(</span><span class="src-var">$dbname</span><span class="src-sym">))</span></div></li>
+<li><div class="src-line"><a name="a20"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="../default/_utils---phprbac---core---setup.php.html#functioninstallPdoSqlite">installPdoSqlite</a><span class="src-sym">(</span><span class="src-var">$host</span><span class="src-sym">,</span><span class="src-var">$user</span><span class="src-sym">,</span><span class="src-var">$pass</span><span class="src-sym">,</span><span class="src-var">$dbname</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a21"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">else</span></div></li>
+<li><div class="src-line"><a name="a22"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-id"><a href="../default/Jf.html">Jf</a></span><span class="src-sym">::</span><span class="src-var">$Db</span>=<span class="src-key">new&nbsp;</span><span class="src-id">PDO</span><span class="src-sym">(</span><span class="src-str">&quot;</span><span class="src-str">sqlite:{<span class="src-var">$dbname</span><span class="src-sym">}</span></span><span class="src-str">&quot;</span><span class="src-sym">,</span><span class="src-var">$user</span><span class="src-sym">,</span><span class="src-var">$pass</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a23"></a><span class="src-comm">//&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Jf::$Db=new&nbsp;PDO(&quot;sqlite::memory:&quot;,$user,$pass);</span></div></li>
+<li><div class="src-line"><a name="a24"></a><span class="src-sym">}</span></div></li>
+<li><div class="src-line"><a name="a25"></a><span class="src-key">else&nbsp;</span><span class="src-comm">#&nbsp;default&nbsp;to&nbsp;mysqli</span></div></li>
+<li><div class="src-line"><a name="a26"></a><span class="src-sym">{</span></div></li>
+<li><div class="src-line"><a name="a27"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">@</span><span class="src-id"><a href="../default/Jf.html">Jf</a></span><span class="src-sym">::</span><span class="src-var">$Db</span>=<span class="src-key">new&nbsp;</span><span class="src-id">mysqli</span><span class="src-sym">(</span><span class="src-var">$host</span><span class="src-sym">,</span><span class="src-var">$user</span><span class="src-sym">,</span><span class="src-var">$pass</span><span class="src-sym">,</span><span class="src-var">$dbname</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a28"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">if</span><span class="src-sym">(</span><span class="src-id">jf</span><span class="src-sym">::</span><span class="src-var">$Db</span><span class="src-sym">-&gt;</span><span class="src-id">connect_errno</span>==<span class="src-num">1049</span><span class="src-sym">)</span></div></li>
+<li><div class="src-line"><a name="a29"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="../default/_utils---phprbac---core---setup.php.html#functioninstallMysqli">installMysqli</a><span class="src-sym">(</span><span class="src-var">$host</span><span class="src-sym">,</span><span class="src-var">$user</span><span class="src-sym">,</span><span class="src-var">$pass</span><span class="src-sym">,</span><span class="src-var">$dbname</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a30"></a><span class="src-sym">}</span></div></li>
+<li><div class="src-line"><a name="a31"></a><span class="src-key">function&nbsp;</span><a href="../default/_utils---phprbac---core---setup.php.html#functiongetSqls">getSqls</a><span class="src-sym">(</span><span class="src-var">$dbms</span><span class="src-sym">)</span></div></li>
+<li><div class="src-line"><a name="a32"></a><span class="src-sym">{</span></div></li>
+<li><div class="src-line"><a name="a33"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$sql</span>=<a href="http://www.php.net/file_get_contents">file_get_contents</a><span class="src-sym">(</span><a href="http://www.php.net/dirname">dirname</a><span class="src-sym">(</span><a href="http://www.php.net/dirname">dirname</a><span class="src-sym">(</span><a href="http://www.php.net/dirname">dirname</a><span class="src-sym">(</span>__DIR__<span class="src-sym">)))&nbsp;</span>.&nbsp;<span class="src-str">&quot;</span><span class="src-str">/database/{<span class="src-var">$dbms</span><span class="src-sym">}</span>.sql</span><span class="src-str">&quot;</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a34"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$sql</span>=<a href="http://www.php.net/str_replace">str_replace</a><span class="src-sym">(</span><span class="src-str">&quot;PREFIX_&quot;</span><span class="src-sym">,</span><span class="src-id"><a href="../default/Jf.html">Jf</a></span><span class="src-sym">::</span><a href="../default/Jf.html#methodtablePrefix">tablePrefix</a><span class="src-sym">(</span><span class="src-sym">)</span><span class="src-sym">,</span><span class="src-var">$sql</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a35"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">return&nbsp;</span><a href="http://www.php.net/explode">explode</a><span class="src-sym">(</span><span class="src-str">&quot;;&quot;</span><span class="src-sym">,</span><span class="src-var">$sql</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a36"></a><span class="src-sym">}</span></div></li>
+<li><div class="src-line"><a name="a37"></a><span class="src-key">function&nbsp;</span><a href="../default/_utils---phprbac---core---setup.php.html#functioninstallPdoMysql">installPdoMysql</a><span class="src-sym">(</span><span class="src-var">$host</span><span class="src-sym">,</span><span class="src-var">$user</span><span class="src-sym">,</span><span class="src-var">$pass</span><span class="src-sym">,</span><span class="src-var">$dbname</span><span class="src-sym">)</span></div></li>
+<li><div class="src-line"><a name="a38"></a><span class="src-sym">{</span></div></li>
+<li><div class="src-line"><a name="a39"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$sqls</span>=<a href="../default/_utils---phprbac---core---setup.php.html#functiongetSqls">getSqls</a><span class="src-sym">(</span><span class="src-str">&quot;mysql&quot;</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a40"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$db</span>=<span class="src-key">new&nbsp;</span><span class="src-id">PDO</span><span class="src-sym">(</span><span class="src-str">&quot;</span><span class="src-str">mysql:host={<span class="src-var">$host</span><span class="src-sym">}</span>;</span><span class="src-str">&quot;</span><span class="src-sym">,</span><span class="src-var">$user</span><span class="src-sym">,</span><span class="src-var">$pass</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a41"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$db</span><span class="src-sym">-&gt;</span><span class="src-id">query</span><span class="src-sym">(</span><span class="src-str">&quot;</span><span class="src-str">CREATE&nbsp;DATABASE&nbsp;{<span class="src-var">$dbname</span><span class="src-sym">}</span></span><span class="src-str">&quot;</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a42"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$db</span><span class="src-sym">-&gt;</span><span class="src-id">query</span><span class="src-sym">(</span><span class="src-str">&quot;</span><span class="src-str">USE&nbsp;{<span class="src-var">$dbname</span><span class="src-sym">}</span></span><span class="src-str">&quot;</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a43"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">if&nbsp;</span><span class="src-sym">(</span><a href="http://www.php.net/is_array">is_array</a><span class="src-sym">(</span><span class="src-var">$sqls</span><span class="src-sym">))</span></div></li>
+<li><div class="src-line"><a name="a44"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">foreach&nbsp;</span><span class="src-sym">(</span><span class="src-var">$sqls&nbsp;</span><span class="src-key">as&nbsp;</span><span class="src-var">$query</span><span class="src-sym">)</span></div></li>
+<li><div class="src-line"><a name="a45"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$db</span><span class="src-sym">-&gt;</span><span class="src-id">query</span><span class="src-sym">(</span><span class="src-var">$query</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a46"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-id"><a href="../default/Jf.html">Jf</a></span><span class="src-sym">::</span><span class="src-var">$Db</span>=<span class="src-key">new&nbsp;</span><span class="src-id">PDO</span><span class="src-sym">(</span><span class="src-str">&quot;</span><span class="src-str">mysql:host={<span class="src-var">$host</span><span class="src-sym">}</span>;dbname={<span class="src-var">$dbname</span><span class="src-sym">}</span></span><span class="src-str">&quot;</span><span class="src-sym">,</span><span class="src-var">$user</span><span class="src-sym">,</span><span class="src-var">$pass</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a47"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-id"><a href="../default/Jf.html">Jf</a></span><span class="src-sym">::</span><span class="src-var">$Rbac</span><span class="src-sym">-&gt;</span><span class="src-id">reset</span><span class="src-sym">(</span><span class="src-id">true</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a48"></a><span class="src-sym">}</span></div></li>
+<li><div class="src-line"><a name="a49"></a><span class="src-key">function&nbsp;</span><a href="../default/_utils---phprbac---core---setup.php.html#functioninstallPdoSqlite">installPdoSqlite</a><span class="src-sym">(</span><span class="src-var">$host</span><span class="src-sym">,</span><span class="src-var">$user</span><span class="src-sym">,</span><span class="src-var">$pass</span><span class="src-sym">,</span><span class="src-var">$dbname</span><span class="src-sym">)</span></div></li>
+<li><div class="src-line"><a name="a50"></a><span class="src-sym">{</span></div></li>
+<li><div class="src-line"><a name="a51"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-id"><a href="../default/Jf.html">Jf</a></span><span class="src-sym">::</span><span class="src-var">$Db</span>=<span class="src-key">new&nbsp;</span><span class="src-id">PDO</span><span class="src-sym">(</span><span class="src-str">&quot;</span><span class="src-str">sqlite:{<span class="src-var">$dbname</span><span class="src-sym">}</span></span><span class="src-str">&quot;</span><span class="src-sym">,</span><span class="src-var">$user</span><span class="src-sym">,</span><span class="src-var">$pass</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a52"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$sqls</span>=<a href="../default/_utils---phprbac---core---setup.php.html#functiongetSqls">getSqls</a><span class="src-sym">(</span><span class="src-str">&quot;sqlite&quot;</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a53"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">if&nbsp;</span><span class="src-sym">(</span><a href="http://www.php.net/is_array">is_array</a><span class="src-sym">(</span><span class="src-var">$sqls</span><span class="src-sym">))</span></div></li>
+<li><div class="src-line"><a name="a54"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">foreach&nbsp;</span><span class="src-sym">(</span><span class="src-var">$sqls&nbsp;</span><span class="src-key">as&nbsp;</span><span class="src-var">$query</span><span class="src-sym">)</span></div></li>
+<li><div class="src-line"><a name="a55"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-id"><a href="../default/Jf.html">Jf</a></span><span class="src-sym">::</span><span class="src-var">$Db</span><span class="src-sym">-&gt;</span><span class="src-id">query</span><span class="src-sym">(</span><span class="src-var">$query</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a56"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-id"><a href="../default/Jf.html">Jf</a></span><span class="src-sym">::</span><span class="src-var">$Rbac</span><span class="src-sym">-&gt;</span><span class="src-id">reset</span><span class="src-sym">(</span><span class="src-id">true</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a57"></a><span class="src-sym">}</span></div></li>
+<li><div class="src-line"><a name="a58"></a><span class="src-key">function&nbsp;</span><a href="../default/_utils---phprbac---core---setup.php.html#functioninstallMysqli">installMysqli</a><span class="src-sym">(</span><span class="src-var">$host</span><span class="src-sym">,</span><span class="src-var">$user</span><span class="src-sym">,</span><span class="src-var">$pass</span><span class="src-sym">,</span><span class="src-var">$dbname</span><span class="src-sym">)</span></div></li>
+<li><div class="src-line"><a name="a59"></a><span class="src-sym">{</span></div></li>
+<li><div class="src-line"><a name="a60"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$sqls</span>=<a href="../default/_utils---phprbac---core---setup.php.html#functiongetSqls">getSqls</a><span class="src-sym">(</span><span class="src-str">&quot;mysql&quot;</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a61"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$db</span>=<span class="src-key">new&nbsp;</span><span class="src-id">mysqli</span><span class="src-sym">(</span><span class="src-var">$host</span><span class="src-sym">,</span><span class="src-var">$user</span><span class="src-sym">,</span><span class="src-var">$pass</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a62"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$db</span><span class="src-sym">-&gt;</span><span class="src-id">query</span><span class="src-sym">(</span><span class="src-str">&quot;</span><span class="src-str">CREATE&nbsp;DATABASE&nbsp;{<span class="src-var">$dbname</span><span class="src-sym">}</span></span><span class="src-str">&quot;</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a63"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$db</span><span class="src-sym">-&gt;</span><span class="src-id">select_db</span><span class="src-sym">(</span><span class="src-var">$dbname</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a64"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">if&nbsp;</span><span class="src-sym">(</span><a href="http://www.php.net/is_array">is_array</a><span class="src-sym">(</span><span class="src-var">$sqls</span><span class="src-sym">))</span></div></li>
+<li><div class="src-line"><a name="a65"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">foreach&nbsp;</span><span class="src-sym">(</span><span class="src-var">$sqls&nbsp;</span><span class="src-key">as&nbsp;</span><span class="src-var">$query</span><span class="src-sym">)</span></div></li>
+<li><div class="src-line"><a name="a66"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$db</span><span class="src-sym">-&gt;</span><span class="src-id">query</span><span class="src-sym">(</span><span class="src-var">$query</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a67"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-id"><a href="../default/Jf.html">Jf</a></span><span class="src-sym">::</span><span class="src-var">$Db</span>=<span class="src-key">new&nbsp;</span><span class="src-id">mysqli</span><span class="src-sym">(</span><span class="src-var">$host</span><span class="src-sym">,</span><span class="src-var">$user</span><span class="src-sym">,</span><span class="src-var">$pass</span><span class="src-sym">,</span><span class="src-var">$dbname</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a68"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-id"><a href="../default/Jf.html">Jf</a></span><span class="src-sym">::</span><span class="src-var">$Rbac</span><span class="src-sym">-&gt;</span><span class="src-id">reset</span><span class="src-sym">(</span><span class="src-id">true</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a69"></a><span class="src-sym">}</span></div></li>
+</ol>
+</div>
+	<div id="credit">
+		<hr>
+		Documentation generated on Mon, 12 May 2014 14:30:01 +0200 by <a href="http://www.phpdoc.org">phpDocumentor 1.4.4</a>
+	</div>
+</div>
+</body>
+</html>

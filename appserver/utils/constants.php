@@ -3,6 +3,10 @@
 class C {
 
     private static $defines = array(
+        'CONTACT_EMAIL_FROM' => 'Mediawiki@arbol.dev',
+        'CONTACT_EMAIL_ADDRESS' => 'patryk@arbol.dev',        
+        'CONTACT_EMAIL_TITLE' => 'Contacto de rutadeloscolonos.cl',
+        'CONTACT_EMAIL_TEMPLATE' => 'Hola, ###br###Usuario: ###user_name###, ###br### ha escrito un mensaje: ###br######br###"###message###" ###br######br###Rutadeloscolonos.cl',
         'DEFAULT_PW' => 'colonos',
         'DEFAULT_PW_SHA1' => 'b84b4726518964c6c7a1084817e84de8a62d63a8',
         'SIDENAV_DEFAULT_CLASS' => 'list-group-item-info',
@@ -32,7 +36,13 @@ class C {
         'GALLERY_IMAGE_MIN_WIDTH' => 1,
         'GALLERY_IMAGE_MIN_HEIGHT' => 1,        
         'GALLERY_PATH' => '/public/storage/galeries/',
-           
+        'LOGO_IMAGE_MAX_WIDTH' => 90,
+        'LOGO_IMAGE_MAX_HEIGHT' => 90,
+        'LOGO_IMAGE_MIN_WIDTH' => 1,
+        'LOGO_IMAGE_MIN_HEIGHT' => 1,        
+        'LOGO_PATH' => '/public/storage/thumbs/',    
+        'LOGO_DEFAULT' => '/public/storage/thumbs/na.jpg',         
+        'LOGO_TEMPNAME_PREFIX' => 'templogo_',             
         'TASK_APP_NEW_OWNER' => 1,
         'TASK_APP_ACTIVATE_OWNER' => 2,
         'TASK_APP_DEACTIVATE_OWNER' => 3,
@@ -102,12 +112,37 @@ class C {
         'NEWPASS_SHORT' => 'Your password must be al least 6 caracters.',
         'TASK_CREATED_SUCCESS' => array('SUCCESS', 'Your request has been submited to General Admin for review.'),
         'TASK_CREATED_ERROR' => array('ERROR', 'Your request was not sent to General Admin. Please try again.'),
+        'MAIL_SENT' => array('SUCCESS','Su mensaje se ha enviado.Gracias.'),
+        'MAIL_NOTSENT' => array('WARNING','NO se ha enviado su mensaje. Por favor, pruebe una vez mas.'),
+        'MAIL_ERROR' => array('ERROR','Se ocurrio un error. Por favor cantactese con Administrador.'),        
         'TASK_COMMENT_ACCEPTED' => array('SUCCESS','Login or password incorrect.'),
         'TASK_COMMENT_REJECTED' => array('ERROR','Your request has been rejected.'),
         'NOT_SAVED' => array('ERROR','There has been a problem with saving your changes. Please try again or contact Administrator.'),     
         'TASK_ALREADY_PENDING' => array('WARNING',' Your request was NOT sent to General Admin, because there is another task for this object in queue.'),        
-        'TASK_COMMENT_STANDARD_REQUEST' => array('INFO','Please accept my request.')//,     
-        //'TASK_COMMENT_STANDARD_REQUEST' => array('INFO','Please accept my request.'),           
+        'TASK_COMMENT_STANDARD_REQUEST' => array('INFO','Please accept my request.'),
+        'USER_NOT_UNIQUE' => array('ERROR','Email already exist, therefore your request has not been sucessfully processed.'), 
+        /* IMAGE HANDLERS  */
+        1 => 'The uploaded file exceeds the upload_max_filesize directive in php.ini',
+        2 => 'The uploaded file exceeds the MAX_FILE_SIZE directive that was specified in the HTML form',
+        3 => 'The uploaded file was only partially uploaded',
+        4 => 'No file was uploaded',
+        6 => 'Missing a temporary folder',
+        7 => 'Failed to write file to disk',
+        8 => 'A PHP extension stopped the file upload',
+        'IMAGE_AVLIDATION_FAILED' => 'File was not validated correctly due to previous errors.',
+        'IMAGE_POST_MAX_SIZE' => 'The uploaded file exceeds the post_max_size directive in php.ini',
+        'IMAGE_MAX_FILE_SIZE' => 'File is too big',
+        'IMAGE_MIN_FILE_SIZE' => 'File is too small',
+        'IMAGE_ACCEPT_FILE_TYPES' => 'Filetype not allowed',
+        'IMAGE_MAX_NUMBER_OF_FILES' => 'Maximum number of files exceeded',
+        'IMAGE_MAX_WIDTH' => 'Image exceeds maximum width',
+        'IMAGE_MIN_WIDTH' => 'Image requires a minimum width',
+        'IMAGE_MAX_HEIGHT' => 'Image exceeds maximum height',
+        'IMAGE_MIN_HEIGHT' => 'Image requires a minimum height',
+        'IMAGE_ABORT' => 'File upload aborted',
+        'IMAGE_IMAGE_RESIZE' => 'Failed to resize image' 
+        /* IMAGE HANDLERS  */    
+        
     );
     
     private static $categories = array(
@@ -184,6 +219,9 @@ class C {
     );
     
     private static $types = array(
+        0 => array(
+            0 => "Typos...",
+        ),
         1 => array(
             1 => "Hotel",
             2 => "Hostal",
@@ -195,17 +233,20 @@ class C {
             8 => "Motel"
         ),
         2 => array(
+            0 => "Typos...",            
             9 => "Restaurante",
             10 => "Café",
             11 => "Sandwicheria"
         ),
         3 => array(
+            0 => "Typos...",            
             12 => "Teatro",
             13 => "Museo",
             14 => "Cine",
             15 => "Eventos"
         ),
         4 => array(
+            0 => "Typos...",            
             16 => "Flora",
             17 => "Fauna",
             18 => "Aves",
@@ -213,6 +254,7 @@ class C {
             20 => "Playas"
         ),
         5 => array(
+            0 => "Typos...",            
             21 => "Rafting",
             22 => "Canopy",
             23 => "Cabalgatas",
@@ -220,6 +262,7 @@ class C {
             25 => "Guías"
         ),
         6 => array(
+            0 => "Typos...",            
             26 => "Casino",
             27 => "Discoteque",
             28 => "Rodeo",
@@ -227,11 +270,13 @@ class C {
             30 => "SPA"
         ),
         7 => array(
+            0 => "Typos...",            
             31 => "Terrenos",
             32 => "Casas",
             33 => "Locales"
         ),
         8 => array(
+            0 => "Typos...",            
             34 => "Souvenirs",
             35 => "Tejidos",
             36 => "Alimentos",
@@ -284,7 +329,13 @@ class C {
     }
 
     public static function TYPES($category, $id = null) {
-        return $id ? self::$types[$category][$id] : self::$types[$category];
+        if ($id == null && isset(self::$types[$category]))
+            return self::$types[$category];
+        else {
+            if (isset(self::$types[$category][$id]))
+                return self::$types[$category][$id];
+        }
+        return self::$types[0];         
     }
 
     public static function CITIES($id = null) {

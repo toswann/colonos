@@ -1,26 +1,26 @@
 <?php
-
 /**
- * Class Home
- *
- * Please note:
- * Don't use the same name for class and method, as this might trigger an (unintended) __construct of the class.
- * This is really weird behaviour, but documented here: http://php.net/manual/en/language.oop5.decon.php
- *
+ * Home Controller for all operations from Users perspective.
+ * @package Front End Module
+ * @category Home Controller      
+ * @license http://opensource.org/licenses/gpl-license.php GNU Public License
+ * @author Swann, Patryk, Agnieszka
  */
-class Home extends Controller
-{
-    /**
-     * PAGE: index
-     * This method handles what happens when you move to http://yourproject/home/index (which is the default page btw)
-     */
-    public function index() {
-		header('location: ' . URL . 'map');
-        exit();
-//        require 'application/views/home/index.php';
-        
-    }
 
+class Home extends Controller {
+
+    /**
+     * Default entry point for /home action called by Application. 
+     * @return void
+     * @author Swann
+     */    
+    public function index() {
+        /* Setting true/false for variable used for sidenav rendering and marking active links */
+        $home = C::D('SIDENAV_DEFAULT_CLASS');        
+        require_once APP_FOLDER_NAME.'/views/_templates/_mainpage_header.php';
+        require_once APP_FOLDER_NAME.'/views/home/index.php';
+        require_once APP_FOLDER_NAME.'/views/_templates/_mainpage_footer.php';
+    }
 
 }
 

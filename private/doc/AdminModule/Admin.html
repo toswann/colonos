@@ -1,0 +1,1442 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+	<title>Docs For Class Admin</title>
+	<link rel="stylesheet" type="text/css" id="layout" href="../media/layout.css" media="screen">
+	<link rel="stylesheet" type="text/css" href="../media/style.css" media="all">
+	<link rel="stylesheet" type="text/css" href="../media/print.css" media="print">
+</head>
+
+<body>
+<div id="header">
+	<div id="navLinks">
+        
+                                                        
+                                                	        [ <a href="../classtrees_AdminModule.html">Class Tree: AdminModule</a> ]
+            [ <a href="../elementindex_AdminModule.html">Index: AdminModule</a> ]
+        		[ <a href="../elementindex.html">All elements</a> ]		
+	</div>
+	<div id="packagePosition">
+		<div id="packageTitle2">AdminModule</div>
+		<div id="packageTitle">AdminModule</div>
+		<div id="elementPath"> &middot; </div>
+	</div>
+</div>
+
+<div id="nav" class="small">
+	<div id="todolist">
+			<p><a href="../todolist.html">Todo List</a></p>
+	</div>
+	<div id="packages">
+		Packages:
+					<p><a href="../li_default.html">default</a></p>
+					<p><a href="../li_AdminModule.html">AdminModule</a></p>
+					<p><a href="../li_API.html">API</a></p>
+			</div>
+
+				<div id="index">
+			<div id="files">
+								Files:<br>
+								<a href="../AdminModule/_controller---admin.php.html">		admin.php
+		</a><br>
+			<a href="../AdminModule/_controller---task.php.html">		task.php
+		</a><br>
+				</div>
+			<div id="interfaces">
+							</div>
+			<div id="classes">
+				Classes:<br>
+								<a href="../AdminModule/Admin.html">		Admin
+		</a><br>
+			<a href="../AdminModule/Task.html">		Task
+		</a><br>
+				</div>
+		</div>
+	</div>
+
+<div id="body">
+	    		<h1>Class: Admin</h1>
+	<p style="margin: 0px;">Source Location: /controller/admin.php</p>
+	
+
+<div class="leftcol">
+	<h3><a href="#class_details">Class Overview</a> <span class="smalllinenumber">[line 21]</span></h3>
+	<div id="classTree"><pre><a href="../default/Controller.html">Controller</a>
+   |
+   --Admin</pre>
+</div>
+	<div class="small">
+	<p>This is the &quot;base controller class&quot;.</p>
+		<h4>Author(s):</h4>
+	<ul>
+			</ul>
+	<h4>Version:</h4>
+	<ul>
+			</ul>
+
+	<h4>Copyright:</h4>
+	<ul>
+			</li>
+	</div>
+</div>
+
+<div class="middlecol">
+	<h3><a href="#class_vars">Variables</a></h3>
+	<ul class="small">
+			</ul>
+	<h3><a href="#class_consts">Constants</a></h3>
+	<ul class="small">
+			</ul>
+</div>
+<div class="rightcol">
+	<h3><a href="#class_methods">Methods</a></h3>
+	<ul class="small">
+				<li><a href="../AdminModule/Admin.html#method__construct">__construct</a></li>
+				<li><a href="../AdminModule/Admin.html#methodactivateOwner">activateOwner</a></li>
+				<li><a href="../AdminModule/Admin.html#methodactivatePlace">activatePlace</a></li>
+				<li><a href="../AdminModule/Admin.html#methodactivateVote">activateVote</a></li>
+				<li><a href="../AdminModule/Admin.html#methodactivateZoneAdmin">activateZoneAdmin</a></li>
+				<li><a href="../AdminModule/Admin.html#methodassignOwner">assignOwner</a></li>
+				<li><a href="../AdminModule/Admin.html#methodassignOwnerToPlace">assignOwnerToPlace</a></li>
+				<li><a href="../AdminModule/Admin.html#methoddashboard">dashboard</a></li>
+				<li><a href="../AdminModule/Admin.html#methoddeactivateOwner">deactivateOwner</a></li>
+				<li><a href="../AdminModule/Admin.html#methoddeactivatePlace">deactivatePlace</a></li>
+				<li><a href="../AdminModule/Admin.html#methoddeactivateVote">deactivateVote</a></li>
+				<li><a href="../AdminModule/Admin.html#methoddeactivateZoneAdmin">deactivateZoneAdmin</a></li>
+				<li><a href="../AdminModule/Admin.html#methodeditcodes">editcodes</a></li>
+				<li><a href="../AdminModule/Admin.html#methodeditInfos">editInfos</a></li>
+				<li><a href="../AdminModule/Admin.html#methodeditOwner">editOwner</a></li>
+				<li><a href="../AdminModule/Admin.html#methodeditphotos">editphotos</a></li>
+				<li><a href="../AdminModule/Admin.html#methodeditZoneAdmin">editZoneAdmin</a></li>
+				<li><a href="../AdminModule/Admin.html#methoderror">error</a></li>
+				<li><a href="../AdminModule/Admin.html#methodgaleryUpload">galeryUpload</a></li>
+				<li><a href="../AdminModule/Admin.html#methodgeneratecode">generatecode</a></li>
+				<li><a href="../AdminModule/Admin.html#methodindex">index</a></li>
+				<li><a href="../AdminModule/Admin.html#methodlogoUpload">logoUpload</a></li>
+				<li><a href="../AdminModule/Admin.html#methodlogout">logout</a></li>
+				<li><a href="../AdminModule/Admin.html#methodnewOwner">newOwner</a></li>
+				<li><a href="../AdminModule/Admin.html#methodnewpassword">newpassword</a></li>
+				<li><a href="../AdminModule/Admin.html#methodnewplace">newplace</a></li>
+				<li><a href="../AdminModule/Admin.html#methodnewZoneAdmin">newZoneAdmin</a></li>
+				<li><a href="../AdminModule/Admin.html#methodowners">owners</a></li>
+				<li><a href="../AdminModule/Admin.html#methodplaces">places</a></li>
+				<li><a href="../AdminModule/Admin.html#methodprintCodes">printCodes</a></li>
+				<li><a href="../AdminModule/Admin.html#methodsaveEditOwner">saveEditOwner</a></li>
+				<li><a href="../AdminModule/Admin.html#methodsaveeditplace">saveeditplace</a></li>
+				<li><a href="../AdminModule/Admin.html#methodsaveEditZoneAdmin">saveEditZoneAdmin</a></li>
+				<li><a href="../AdminModule/Admin.html#methodsaveNewOwner">saveNewOwner</a></li>
+				<li><a href="../AdminModule/Admin.html#methodsavenewplace">savenewplace</a></li>
+				<li><a href="../AdminModule/Admin.html#methodsaveNewZoneAdmin">saveNewZoneAdmin</a></li>
+				<li><a href="../AdminModule/Admin.html#methodtasks">tasks</a></li>
+				<li><a href="../AdminModule/Admin.html#methodTODO_editVote">TODO_editVote</a></li>
+				<li><a href="../AdminModule/Admin.html#methodTODO_saveEditVote">TODO_saveEditVote</a></li>
+				<li><a href="../AdminModule/Admin.html#methodvotes">votes</a></li>
+				<li><a href="../AdminModule/Admin.html#methodzoneAdmins">zoneAdmins</a></li>
+			</ul>
+</div>
+
+<div id="content">
+<hr>
+	<div class="contents">
+	</div>
+
+	<div class="leftCol">
+    	<h2>Inherited Variables</h2>
+			<div class="indent">
+		<h3>Class: <a href="../default/Controller.html">Controller</a></h3>
+		<div class="small">
+			<dl>
+						<dt>
+				<a href="../default/Controller.html#var$db">Controller::$db</a>
+			</dt>
+			<dd>
+				 
+			</dd>
+						</dl>
+		</div>
+		</div>
+		<h2>Inherited Constants</h2>
+		</div>
+
+	<div class="rightCol">
+	<h2>Inherited Methods</h2>
+			<div class="indent">
+		<h3>Class: <a href="../default/Controller.html">Controller</a></h3>
+		<dl class="small">
+						<dt>
+				<a href="../default/Controller.html#method__construct">Controller::__construct()</a>
+			</dt>
+			<dd>
+				Whenever a controller is created, open a database connection too. that can be used by multiple models (there are frameworks that open one connection per model).
+			</dd>
+					<dt>
+				<a href="../default/Controller.html#methodloadModel">Controller::loadModel()</a>
+			</dt>
+			<dd>
+				Load the model with the given name.
+			</dd>
+				</dl>
+		</div>
+		</div>
+	<br clear="all">
+	<hr>
+
+	<a name="class_details"></a>
+	<h2>Class Details</h2>
+	<p align="center"><strong>This is the &quot;base controller class&quot;.
+</strong></p>
+<p>This is the &quot;base controller class&quot;. All other &quot;real&quot; controllers extend this class.</p>	<p class="small" style="color: #334B66;">[ <a href="#top">Top</a> ]</p>
+
+	<hr>
+	<a name="class_vars"></a>
+	<h2>Class Variables</h2>
+	
+	<hr>
+	<a name="class_methods"></a>
+	<h2>Class Methods</h2>
+	
+	<a name="method__construct"></a>
+	<p></p>
+	<h3>__construct</h3>
+	<div class="indent">
+		<p>
+		<code>Void __construct(
+)</code>
+		</p>
+	
+		<p class="linenumber">[line 33]</p>
+		<p align="center"><strong>Custom constructor method. Role-Based Access Control &amp; Task mini modules.
+</strong></p>
+<p>Custom constructor method. Besides calling parent function, this controller initializes Role-Based Access Control &amp; Task mini modules.</p><h4>Tags:</h4>
+<ul>
+	<li><b>author</b> - Patryk</li>
+	<li><b>access</b> - public</li>
+</ul>
+		
+<p>Overrides <a href="../default/Controller.html#method__construct">Controller::__construct()</a> (Whenever a controller is created, open a database connection too. that can be used by multiple models (there are frameworks that open one connection per model).)</p>	
+	<h4>Parameters:</h4>
+	<ul>
+		</ul>
+	</div>
+	<p class="top">[ <a href="#top">Top</a> ]</p>
+	<a name="methodactivateOwner"></a>
+	<p></p>
+	<h3>activateOwner</h3>
+	<div class="indent">
+		<p>
+		<code>void; activateOwner(
+int
+$id)</code>
+		</p>
+	
+		<p class="linenumber">[line 967]</p>
+		<p align="center"><strong>Handles activation request and puts it as a task to be accepted by General Admin.
+</strong></p>
+<p>Handles activation request and puts it as a task to be accepted by General Admin.</p><h4>Tags:</h4>
+<ul>
+	<li><b>return</b> - Redirects user to Places view</li>
+	<li><b>author</b> - Patryk</li>
+	<li><b>todo</b> - Server-side validation of data, Autoactivation for General Admin</li>
+	<li><b>access</b> - public</li>
+</ul>
+		
+	
+	<h4>Parameters:</h4>
+	<ul>
+			<li>
+		<span class="type">int</span>
+		<b>$id</b> 
+		- 
+		ID of object</li>
+		</ul>
+	</div>
+	<p class="top">[ <a href="#top">Top</a> ]</p>
+	<a name="methodactivatePlace"></a>
+	<p></p>
+	<h3>activatePlace</h3>
+	<div class="indent">
+		<p>
+		<code>void; activatePlace(
+int
+$id)</code>
+		</p>
+	
+		<p class="linenumber">[line 1021]</p>
+		<p align="center"><strong>Handles activation request and puts it as a task to be accepted by General Admin.
+</strong></p>
+<p>Handles activation request and puts it as a task to be accepted by General Admin.</p><h4>Tags:</h4>
+<ul>
+	<li><b>return</b> - Redirects user to Places view</li>
+	<li><b>author</b> - Patryk</li>
+	<li><b>todo</b> - Server-side validation of data, Autoactivation for General Admin</li>
+	<li><b>access</b> - public</li>
+</ul>
+		
+	
+	<h4>Parameters:</h4>
+	<ul>
+			<li>
+		<span class="type">int</span>
+		<b>$id</b> 
+		- 
+		ID of object</li>
+		</ul>
+	</div>
+	<p class="top">[ <a href="#top">Top</a> ]</p>
+	<a name="methodactivateVote"></a>
+	<p></p>
+	<h3>activateVote</h3>
+	<div class="indent">
+		<p>
+		<code>void; activateVote(
+int
+$vote_id)</code>
+		</p>
+	
+		<p class="linenumber">[line 673]</p>
+		<p align="center"><strong>Handles activation of Vote for specific Item ID.
+</strong></p>
+<p>Handles activation of Vote for specific Item ID. Average rating is recalculated respectively.</p><h4>Tags:</h4>
+<ul>
+	<li><b>author</b> - Patryk</li>
+	<li><b>todo</b> - Server-side validation of data</li>
+	<li><b>access</b> - public</li>
+</ul>
+		
+	
+	<h4>Parameters:</h4>
+	<ul>
+			<li>
+		<span class="type">int</span>
+		<b>$vote_id</b> 
+		- 
+		Id of Vote</li>
+		</ul>
+	</div>
+	<p class="top">[ <a href="#top">Top</a> ]</p>
+	<a name="methodactivateZoneAdmin"></a>
+	<p></p>
+	<h3>activateZoneAdmin</h3>
+	<div class="indent">
+		<p>
+		<code>void; activateZoneAdmin(
+int
+$id)</code>
+		</p>
+	
+		<p class="linenumber">[line 920]</p>
+		<p align="center"><strong>Handles activation of Zone Admin by General Admin.
+</strong></p>
+<p>Handles activation of Zone Admin by General Admin.</p><h4>Tags:</h4>
+<ul>
+	<li><b>return</b> - Redirects user to Places view</li>
+	<li><b>author</b> - Patryk</li>
+	<li><b>todo</b> - Server-side validation of data, Security (Access possible only after calling newplace())</li>
+	<li><b>access</b> - public</li>
+</ul>
+		
+	
+	<h4>Parameters:</h4>
+	<ul>
+			<li>
+		<span class="type">int</span>
+		<b>$id</b> 
+		- 
+		ID of object</li>
+		</ul>
+	</div>
+	<p class="top">[ <a href="#top">Top</a> ]</p>
+	<a name="methodassignOwner"></a>
+	<p></p>
+	<h3>assignOwner</h3>
+	<div class="indent">
+		<p>
+		<code>void; assignOwner(
+[int
+$item_id = &quot;&quot;], [int
+$owner_id = &quot;&quot;])</code>
+		</p>
+	
+		<p class="linenumber">[line 620]</p>
+		<p align="center"><strong>Renders form for assignment Owner to Place.
+</strong></p>
+<p>Renders form for assignment Owner to Place. If ID's are passed it prefills specific field.</p><h4>Tags:</h4>
+<ul>
+	<li><b>author</b> - Patryk</li>
+	<li><b>todo</b> - Prefill of Owner. Now only Item is active</li>
+	<li><b>access</b> - public</li>
+</ul>
+		
+	
+	<h4>Parameters:</h4>
+	<ul>
+			<li>
+		<span class="type">int</span>
+		<b>$item_id</b> 
+		- 
+		Id of Place</li>
+			<li>
+		<span class="type">int</span>
+		<b>$owner_id</b> 
+		- 
+		Id Of owner</li>
+		</ul>
+	</div>
+	<p class="top">[ <a href="#top">Top</a> ]</p>
+	<a name="methodassignOwnerToPlace"></a>
+	<p></p>
+	<h3>assignOwnerToPlace</h3>
+	<div class="indent">
+		<p>
+		<code>void; assignOwnerToPlace(
+)</code>
+		</p>
+	
+		<p class="linenumber">[line 593]</p>
+		<p align="center"><strong>Assigns Owner to Place
+</strong></p>
+<p>Assigns Owner to Place</p><h4>Tags:</h4>
+<ul>
+	<li><b>return</b> - Redirects user to Places view</li>
+	<li><b>author</b> - Patryk</li>
+	<li><b>todo</b> - Server-side validation of data</li>
+	<li><b>access</b> - public</li>
+</ul>
+		
+	
+	<h4>Parameters:</h4>
+	<ul>
+		</ul>
+	</div>
+	<p class="top">[ <a href="#top">Top</a> ]</p>
+	<a name="methoddashboard"></a>
+	<p></p>
+	<h3>dashboard</h3>
+	<div class="indent">
+		<p>
+		<code>void. dashboard(
+)</code>
+		</p>
+	
+		<p class="linenumber">[line 58]</p>
+		<p align="center"><strong>Rendering of front-page in BackEnd Panel with statistics depending on Role / Zone / Places assignments.
+</strong></p>
+<p>Rendering of front-page in BackEnd Panel with statistics depending on Role / Zone / Places assignments.</p><h4>Tags:</h4>
+<ul>
+	<li><b>author</b> - Swann, Patryk</li>
+	<li><b>access</b> - public</li>
+</ul>
+		
+	
+	<h4>Parameters:</h4>
+	<ul>
+		</ul>
+	</div>
+	<p class="top">[ <a href="#top">Top</a> ]</p>
+	<a name="methoddeactivateOwner"></a>
+	<p></p>
+	<h3>deactivateOwner</h3>
+	<div class="indent">
+		<p>
+		<code>void; deactivateOwner(
+int
+$id)</code>
+		</p>
+	
+		<p class="linenumber">[line 994]</p>
+		<p align="center"><strong>Handles deactivation request and puts it as a task to be accepted by General Admin.
+</strong></p>
+<p>Handles deactivation request and puts it as a task to be accepted by General Admin.</p><h4>Tags:</h4>
+<ul>
+	<li><b>author</b> - Patryk</li>
+	<li><b>todo</b> - Server-side validation of data, Message codes via Exception handling, Autoactivation for General Admin</li>
+	<li><b>access</b> - public</li>
+</ul>
+		
+	
+	<h4>Parameters:</h4>
+	<ul>
+			<li>
+		<span class="type">int</span>
+		<b>$id</b> 
+		- 
+		ID of object</li>
+		</ul>
+	</div>
+	<p class="top">[ <a href="#top">Top</a> ]</p>
+	<a name="methoddeactivatePlace"></a>
+	<p></p>
+	<h3>deactivatePlace</h3>
+	<div class="indent">
+		<p>
+		<code>void; deactivatePlace(
+int
+$id)</code>
+		</p>
+	
+		<p class="linenumber">[line 1048]</p>
+		<p align="center"><strong>Handles deactivation request and puts it as a task to be accepted by General Admin.
+</strong></p>
+<p>Handles deactivation request and puts it as a task to be accepted by General Admin.</p><h4>Tags:</h4>
+<ul>
+	<li><b>return</b> - Redirects user to Places view</li>
+	<li><b>author</b> - Patryk</li>
+	<li><b>todo</b> - Server-side validation of data, Message codes via Exception handling, Autoactivation for General Admin</li>
+	<li><b>access</b> - public</li>
+</ul>
+		
+	
+	<h4>Parameters:</h4>
+	<ul>
+			<li>
+		<span class="type">int</span>
+		<b>$id</b> 
+		- 
+		Id of place to be deactivated</li>
+		</ul>
+	</div>
+	<p class="top">[ <a href="#top">Top</a> ]</p>
+	<a name="methoddeactivateVote"></a>
+	<p></p>
+	<h3>deactivateVote</h3>
+	<div class="indent">
+		<p>
+		<code>void; deactivateVote(
+int
+$vote_id)</code>
+		</p>
+	
+		<p class="linenumber">[line 697]</p>
+		<p align="center"><strong>Handles deactivation of Vote for specific Item ID.
+</strong></p>
+<p>Handles deactivation of Vote for specific Item ID. Average rating is recalculated respectively.</p><h4>Tags:</h4>
+<ul>
+	<li><b>author</b> - Patryk</li>
+	<li><b>todo</b> - Server-side validation of data</li>
+	<li><b>access</b> - public</li>
+</ul>
+		
+	
+	<h4>Parameters:</h4>
+	<ul>
+			<li>
+		<span class="type">int</span>
+		<b>$vote_id</b> 
+		- 
+		Id of Vote</li>
+		</ul>
+	</div>
+	<p class="top">[ <a href="#top">Top</a> ]</p>
+	<a name="methoddeactivateZoneAdmin"></a>
+	<p></p>
+	<h3>deactivateZoneAdmin</h3>
+	<div class="indent">
+		<p>
+		<code>void; deactivateZoneAdmin(
+int
+$id)</code>
+		</p>
+	
+		<p class="linenumber">[line 944]</p>
+		<p align="center"><strong>Handles deactivation of Zone Admin by General Admin.
+</strong></p>
+<p>Handles deactivation of Zone Admin by General Admin.</p><h4>Tags:</h4>
+<ul>
+	<li><b>return</b> - Redirects user to Places view</li>
+	<li><b>author</b> - Patryk</li>
+	<li><b>todo</b> - Server-side validation of data, Security (Access possible only after calling newplace())</li>
+	<li><b>access</b> - public</li>
+</ul>
+		
+	
+	<h4>Parameters:</h4>
+	<ul>
+			<li>
+		<span class="type">int</span>
+		<b>$id</b> 
+		- 
+		ID of object</li>
+		</ul>
+	</div>
+	<p class="top">[ <a href="#top">Top</a> ]</p>
+	<a name="methodeditcodes"></a>
+	<p></p>
+	<h3>editcodes</h3>
+	<div class="indent">
+		<p>
+		<code>void; editcodes(
+int
+$id)</code>
+		</p>
+	
+		<p class="linenumber">[line 189]</p>
+		<p align="center"><strong>Renders Codes management view for specific Place.
+</strong></p>
+<p>Renders Codes management view for specific Place.</p><h4>Tags:</h4>
+<ul>
+	<li><b>author</b> - Swann, Patryk</li>
+	<li><b>access</b> - public</li>
+</ul>
+		
+	
+	<h4>Parameters:</h4>
+	<ul>
+			<li>
+		<span class="type">int</span>
+		<b>$id</b> 
+		- 
+		ID of Place.</li>
+		</ul>
+	</div>
+	<p class="top">[ <a href="#top">Top</a> ]</p>
+	<a name="methodeditInfos"></a>
+	<p></p>
+	<h3>editInfos</h3>
+	<div class="indent">
+		<p>
+		<code>void; editInfos(
+int
+$id)</code>
+		</p>
+	
+		<p class="linenumber">[line 137]</p>
+		<p align="center"><strong>Renders Edit View for specific Place selected from List.
+</strong></p>
+<p>Renders Edit View for specific Place selected from List.</p><h4>Tags:</h4>
+<ul>
+	<li><b>author</b> - Swann, Patryk</li>
+	<li><b>todo</b> - Verification of access rights to single object not to group only.</li>
+	<li><b>access</b> - public</li>
+</ul>
+		
+	
+	<h4>Parameters:</h4>
+	<ul>
+			<li>
+		<span class="type">int</span>
+		<b>$id</b> 
+		- 
+		ID of Place.</li>
+		</ul>
+	</div>
+	<p class="top">[ <a href="#top">Top</a> ]</p>
+	<a name="methodeditOwner"></a>
+	<p></p>
+	<h3>editOwner</h3>
+	<div class="indent">
+		<p>
+		<code>void; editOwner(
+
+$id, [
+$error = &quot;&quot;])</code>
+		</p>
+	
+		<p class="linenumber">[line 540]</p>
+		<p align="center"><strong>.
+</strong></p>
+<p>........</p><h4>Tags:</h4>
+<ul>
+	<li><b>return</b> - Redirects user to Places view</li>
+	<li><b>author</b> - Patryk</li>
+	<li><b>todo</b> - Server-side validation of data, Security (Access possible only after calling newplace())</li>
+	<li><b>access</b> - public</li>
+</ul>
+		
+	
+	<h4>Parameters:</h4>
+	<ul>
+			<li>
+		<span class="type"></span>
+		<b>$id</b> 
+		- 
+		</li>
+			<li>
+		<span class="type"></span>
+		<b>$error</b> 
+		- 
+		</li>
+		</ul>
+	</div>
+	<p class="top">[ <a href="#top">Top</a> ]</p>
+	<a name="methodeditphotos"></a>
+	<p></p>
+	<h3>editphotos</h3>
+	<div class="indent">
+		<p>
+		<code>void; editphotos(
+int
+$id)</code>
+		</p>
+	
+		<p class="linenumber">[line 167]</p>
+		<p align="center"><strong>Renders Gallery management view for specific Place.
+</strong></p>
+<p>Renders Gallery management view for specific Place.</p><h4>Tags:</h4>
+<ul>
+	<li><b>author</b> - Swann</li>
+	<li><b>access</b> - public</li>
+</ul>
+		
+	
+	<h4>Parameters:</h4>
+	<ul>
+			<li>
+		<span class="type">int</span>
+		<b>$id</b> 
+		- 
+		ID of Place.</li>
+		</ul>
+	</div>
+	<p class="top">[ <a href="#top">Top</a> ]</p>
+	<a name="methodeditZoneAdmin"></a>
+	<p></p>
+	<h3>editZoneAdmin</h3>
+	<div class="indent">
+		<p>
+		<code>void; editZoneAdmin(
+int
+$id, [text
+$error = &quot;&quot;])</code>
+		</p>
+	
+		<p class="linenumber">[line 864]</p>
+		<p align="center"><strong>Displays information about Zone Admin
+</strong></p>
+<p>Displays information about Zone Admin</p><h4>Tags:</h4>
+<ul>
+	<li><b>author</b> - Patryk</li>
+	<li><b>todo</b> - Server-side validation of data</li>
+	<li><b>access</b> - public</li>
+</ul>
+		
+	
+	<h4>Parameters:</h4>
+	<ul>
+			<li>
+		<span class="type">int</span>
+		<b>$id</b> 
+		- 
+		Id of zone admin</li>
+			<li>
+		<span class="type">text</span>
+		<b>$error</b> 
+		- 
+		Message code</li>
+		</ul>
+	</div>
+	<p class="top">[ <a href="#top">Top</a> ]</p>
+	<a name="methoderror"></a>
+	<p></p>
+	<h3>error</h3>
+	<div class="indent">
+		<p>
+		<code>void; error(
+text
+$msg, [text
+$method = &quot;&quot;])</code>
+		</p>
+	
+		<p class="linenumber">[line 804]</p>
+		<p align="center"><strong>Renders view for Error Screen
+</strong></p>
+<p>Renders view for Error Screen</p><h4>Tags:</h4>
+<ul>
+	<li><b>author</b> - Patryk</li>
+	<li><b>access</b> - public</li>
+</ul>
+		
+	
+	<h4>Parameters:</h4>
+	<ul>
+			<li>
+		<span class="type">text</span>
+		<b>$msg</b> 
+		- 
+		Message code</li>
+			<li>
+		<span class="type">text</span>
+		<b>$method</b> 
+		- 
+		Name of Method causing this error</li>
+		</ul>
+	</div>
+	<p class="top">[ <a href="#top">Top</a> ]</p>
+	<a name="methodgaleryUpload"></a>
+	<p></p>
+	<h3>galeryUpload</h3>
+	<div class="indent">
+		<p>
+		<code>Ajax galeryUpload(
+[int
+$id = null], [text
+$name = null], [bool
+$delete = false])</code>
+		</p>
+	
+		<p class="linenumber">[line 322]</p>
+		<p align="center"><strong>Handler method called by AJAX component after upload of each photo.
+</strong></p>
+<p>Handler method called by AJAX component after upload of each photo.</p><h4>Tags:</h4>
+<ul>
+	<li><b>return</b> - response</li>
+	<li><b>author</b> - Swann</li>
+	<li><b>access</b> - public</li>
+</ul>
+		
+	
+	<h4>Parameters:</h4>
+	<ul>
+			<li>
+		<span class="type">int</span>
+		<b>$id</b> 
+		- 
+		Id of place</li>
+			<li>
+		<span class="type">text</span>
+		<b>$name</b> 
+		- 
+		Name of file</li>
+			<li>
+		<span class="type">bool</span>
+		<b>$delete</b> 
+		- 
+		Flag used to mark delete command</li>
+		</ul>
+	</div>
+	<p class="top">[ <a href="#top">Top</a> ]</p>
+	<a name="methodgeneratecode"></a>
+	<p></p>
+	<h3>generatecode</h3>
+	<div class="indent">
+		<p>
+		<code>void; generatecode(
+)</code>
+		</p>
+	
+		<p class="linenumber">[line 255]</p>
+		<p align="center"><strong>Codes generator.
+</strong></p>
+<p>Codes generator. Basing on POST vars it generates and assignes specified amount of codes to a Place.</p><h4>Tags:</h4>
+<ul>
+	<li><b>author</b> - Swann</li>
+	<li><b>access</b> - public</li>
+</ul>
+		
+	
+	<h4>Parameters:</h4>
+	<ul>
+		</ul>
+	</div>
+	<p class="top">[ <a href="#top">Top</a> ]</p>
+	<a name="methodindex"></a>
+	<p></p>
+	<h3>index</h3>
+	<div class="indent">
+		<p>
+		<code>void; index(
+)</code>
+		</p>
+	
+		<p class="linenumber">[line 1074]</p>
+		<p align="center"><strong>Entry point for Admin Module called by Application.
+</strong></p>
+<p>Entry point for Admin Module called by Application. Handles authentication process.</p><h4>Tags:</h4>
+<ul>
+	<li><b>return</b> - Redirects user to Login or Dashboard View.</li>
+	<li><b>author</b> - Swann, Patryk</li>
+	<li><b>access</b> - public</li>
+</ul>
+		
+	
+	<h4>Parameters:</h4>
+	<ul>
+		</ul>
+	</div>
+	<p class="top">[ <a href="#top">Top</a> ]</p>
+	<a name="methodlogoUpload"></a>
+	<p></p>
+	<h3>logoUpload</h3>
+	<div class="indent">
+		<p>
+		<code>Ajax logoUpload(
+[int
+$id = null], [text
+$name = null], [bool
+$delete = false])</code>
+		</p>
+	
+		<p class="linenumber">[line 357]</p>
+		<p align="center"><strong>Handler method called by AJAX component after upload of LOGO.
+</strong></p>
+<p>Handler method called by AJAX component after upload of LOGO.</p><h4>Tags:</h4>
+<ul>
+	<li><b>return</b> - response</li>
+	<li><b>author</b> - Patryk</li>
+	<li><b>access</b> - public</li>
+</ul>
+		
+	
+	<h4>Parameters:</h4>
+	<ul>
+			<li>
+		<span class="type">int</span>
+		<b>$id</b> 
+		- 
+		Id of place</li>
+			<li>
+		<span class="type">text</span>
+		<b>$name</b> 
+		- 
+		Name of file</li>
+			<li>
+		<span class="type">bool</span>
+		<b>$delete</b> 
+		- 
+		Flag used to mark delete command</li>
+		</ul>
+	</div>
+	<p class="top">[ <a href="#top">Top</a> ]</p>
+	<a name="methodlogout"></a>
+	<p></p>
+	<h3>logout</h3>
+	<div class="indent">
+		<p>
+		<code>void, logout(
+)</code>
+		</p>
+	
+		<p class="linenumber">[line 1162]</p>
+		<p align="center"><strong>Logout method.
+</strong></p>
+<p>Logout method.</p><h4>Tags:</h4>
+<ul>
+	<li><b>return</b> - redirects user to login screen.</li>
+	<li><b>author</b> - Swann</li>
+	<li><b>see</b> - http://www.php.net/session_unset, http://www.php.net/session_destroy</li>
+	<li><b>access</b> - public</li>
+</ul>
+		
+	
+	<h4>Parameters:</h4>
+	<ul>
+		</ul>
+	</div>
+	<p class="top">[ <a href="#top">Top</a> ]</p>
+	<a name="methodnewOwner"></a>
+	<p></p>
+	<h3>newOwner</h3>
+	<div class="indent">
+		<p>
+		<code>void; newOwner(
+)</code>
+		</p>
+	
+		<p class="linenumber">[line 488]</p>
+		<p align="center"><strong>Renders view for adding new Owner in DB.
+</strong></p>
+<p>Renders view for adding new Owner in DB.</p><h4>Tags:</h4>
+<ul>
+	<li><b>author</b> - Patryk</li>
+	<li><b>access</b> - public</li>
+</ul>
+		
+	
+	<h4>Parameters:</h4>
+	<ul>
+		</ul>
+	</div>
+	<p class="top">[ <a href="#top">Top</a> ]</p>
+	<a name="methodnewpassword"></a>
+	<p></p>
+	<h3>newpassword</h3>
+	<div class="indent">
+		<p>
+		<code>void; newpassword(
+)</code>
+		</p>
+	
+		<p class="linenumber">[line 1118]</p>
+		<p align="center"><strong>Method used to render / process password change for user created with default one.
+</strong></p>
+<p>Method used to render / process password change for user created with default one.</p><h4>Tags:</h4>
+<ul>
+	<li><b>author</b> - Swann</li>
+	<li><b>todo</b> - Documentation</li>
+	<li><b>access</b> - public</li>
+</ul>
+		
+	
+	<h4>Parameters:</h4>
+	<ul>
+		</ul>
+	</div>
+	<p class="top">[ <a href="#top">Top</a> ]</p>
+	<a name="methodnewplace"></a>
+	<p></p>
+	<h3>newplace</h3>
+	<div class="indent">
+		<p>
+		<code>void; newplace(
+)</code>
+		</p>
+	
+		<p class="linenumber">[line 397]</p>
+		<p align="center"><strong>Renders view for adding new Place in DB.
+</strong></p>
+<p>Renders view for adding new Place in DB.</p><h4>Tags:</h4>
+<ul>
+	<li><b>return</b> - Simple HTML generation for Client App</li>
+	<li><b>author</b> - Patryk</li>
+	<li><b>access</b> - public</li>
+</ul>
+		
+	
+	<h4>Parameters:</h4>
+	<ul>
+		</ul>
+	</div>
+	<p class="top">[ <a href="#top">Top</a> ]</p>
+	<a name="methodnewZoneAdmin"></a>
+	<p></p>
+	<h3>newZoneAdmin</h3>
+	<div class="indent">
+		<p>
+		<code>void; newZoneAdmin(
+)</code>
+		</p>
+	
+		<p class="linenumber">[line 776]</p>
+		<p align="center"><strong>Renders view for New Zone Admin
+</strong></p>
+<p>Renders view for New Zone Admin</p><h4>Tags:</h4>
+<ul>
+	<li><b>return</b> - Redirects user to Places view</li>
+	<li><b>author</b> - Patryk</li>
+	<li><b>todo</b> - Server-side validation of data, Security (Access possible only after calling newplace())</li>
+	<li><b>access</b> - public</li>
+</ul>
+		
+	
+	<h4>Parameters:</h4>
+	<ul>
+		</ul>
+	</div>
+	<p class="top">[ <a href="#top">Top</a> ]</p>
+	<a name="methodowners"></a>
+	<p></p>
+	<h3>owners</h3>
+	<div class="indent">
+		<p>
+		<code>void; owners(
+[text
+$msg = &quot;&quot;])</code>
+		</p>
+	
+		<p class="linenumber">[line 462]</p>
+		<p align="center"><strong>Renders view for adding new Place in DB.
+</strong></p>
+<p>Renders view for adding new Place in DB.</p><h4>Tags:</h4>
+<ul>
+	<li><b>author</b> - Patryk</li>
+	<li><b>todo</b> - Sorting, Ordering &amp; Paging</li>
+	<li><b>access</b> - public</li>
+</ul>
+		
+	
+	<h4>Parameters:</h4>
+	<ul>
+			<li>
+		<span class="type">text</span>
+		<b>$msg</b> 
+		- 
+		Messsage code</li>
+		</ul>
+	</div>
+	<p class="top">[ <a href="#top">Top</a> ]</p>
+	<a name="methodplaces"></a>
+	<p></p>
+	<h3>places</h3>
+	<div class="indent">
+		<p>
+		<code>void places(
+[text
+$owner_id = &quot;&quot;])</code>
+		</p>
+	
+		<p class="linenumber">[line 108]</p>
+		<p align="center"><strong>Rendering of view: List of Places.
+</strong></p>
+<p>Rendering of view: List of Places. Depending on state, role additional options are revealed to user.</p><h4>Tags:</h4>
+<ul>
+	<li><b>author</b> - Swann, Patryk</li>
+	<li><b>todo</b> - Sorting, Ordering &amp; Paging options, Naming of parameters</li>
+	<li><b>access</b> - public</li>
+</ul>
+		
+	
+	<h4>Parameters:</h4>
+	<ul>
+			<li>
+		<span class="type">text</span>
+		<b>$owner_id</b> 
+		- 
+		ID of owner to select places belonging to specific owner OR                                      message Code of message to display in alert section</li>
+		</ul>
+	</div>
+	<p class="top">[ <a href="#top">Top</a> ]</p>
+	<a name="methodprintCodes"></a>
+	<p></p>
+	<h3>printCodes</h3>
+	<div class="indent">
+		<p>
+		<code>void; printCodes(
+int
+$id, [int
+$codesNumber = 0])</code>
+		</p>
+	
+		<p class="linenumber">[line 223]</p>
+		<p align="center"><strong>Renders printable page of generated codes.
+</strong></p>
+<p>Renders printable page of generated codes.</p><h4>Tags:</h4>
+<ul>
+	<li><b>author</b> - Patryk</li>
+	<li><b>todo</b> - Print specified amount of codes</li>
+	<li><b>access</b> - public</li>
+</ul>
+		
+	
+	<h4>Parameters:</h4>
+	<ul>
+			<li>
+		<span class="type">int</span>
+		<b>$id</b> 
+		- 
+		ID of Place.</li>
+			<li>
+		<span class="type">int</span>
+		<b>$codesNumber</b> 
+		- 
+		Number of codes to print. All by default</li>
+		</ul>
+	</div>
+	<p class="top">[ <a href="#top">Top</a> ]</p>
+	<a name="methodsaveEditOwner"></a>
+	<p></p>
+	<h3>saveEditOwner</h3>
+	<div class="indent">
+		<p>
+		<code>void; saveEditOwner(
+)</code>
+		</p>
+	
+		<p class="linenumber">[line 561]</p>
+		<p align="center"><strong>Update method for Owner
+</strong></p>
+<p>Update method for Owner</p><h4>Tags:</h4>
+<ul>
+	<li><b>author</b> - Patryk</li>
+	<li><b>todo</b> - Server-side validation of data</li>
+	<li><b>access</b> - public</li>
+</ul>
+		
+	
+	<h4>Parameters:</h4>
+	<ul>
+		</ul>
+	</div>
+	<p class="top">[ <a href="#top">Top</a> ]</p>
+	<a name="methodsaveeditplace"></a>
+	<p></p>
+	<h3>saveeditplace</h3>
+	<div class="indent">
+		<p>
+		<code>void; saveeditplace(
+)</code>
+		</p>
+	
+		<p class="linenumber">[line 284]</p>
+		<p align="center"><strong>Update of information about existing Place.
+</strong></p>
+<p>Update of information about existing Place. Called from Edit View.</p><h4>Tags:</h4>
+<ul>
+	<li><b>return</b> - Redirects to List of Places View.</li>
+	<li><b>author</b> - Swann, Patryk</li>
+	<li><b>access</b> - public</li>
+</ul>
+		
+	
+	<h4>Parameters:</h4>
+	<ul>
+		</ul>
+	</div>
+	<p class="top">[ <a href="#top">Top</a> ]</p>
+	<a name="methodsaveEditZoneAdmin"></a>
+	<p></p>
+	<h3>saveEditZoneAdmin</h3>
+	<div class="indent">
+		<p>
+		<code>void; saveEditZoneAdmin(
+)</code>
+		</p>
+	
+		<p class="linenumber">[line 886]</p>
+		<p align="center"><strong>Updates information about Zone Admin
+</strong></p>
+<p>Updates information about Zone Admin</p><h4>Tags:</h4>
+<ul>
+	<li><b>author</b> - Patryk</li>
+	<li><b>todo</b> - Server-side validation of data</li>
+	<li><b>access</b> - public</li>
+</ul>
+		
+	
+	<h4>Parameters:</h4>
+	<ul>
+		</ul>
+	</div>
+	<p class="top">[ <a href="#top">Top</a> ]</p>
+	<a name="methodsaveNewOwner"></a>
+	<p></p>
+	<h3>saveNewOwner</h3>
+	<div class="indent">
+		<p>
+		<code>void; saveNewOwner(
+)</code>
+		</p>
+	
+		<p class="linenumber">[line 510]</p>
+		<p align="center"><strong>The purpose of this method is to insert new Place in DB.
+</strong></p>
+<p>The purpose of this method is to insert new Place in DB. Called after user submits filled form.</p><h4>Tags:</h4>
+<ul>
+	<li><b>return</b> - Redirects user to Places view</li>
+	<li><b>author</b> - Patryk</li>
+	<li><b>todo</b> - Server-side validation of data</li>
+	<li><b>access</b> - public</li>
+</ul>
+		
+	
+	<h4>Parameters:</h4>
+	<ul>
+		</ul>
+	</div>
+	<p class="top">[ <a href="#top">Top</a> ]</p>
+	<a name="methodsavenewplace"></a>
+	<p></p>
+	<h3>savenewplace</h3>
+	<div class="indent">
+		<p>
+		<code>void; savenewplace(
+)</code>
+		</p>
+	
+		<p class="linenumber">[line 425]</p>
+		<p align="center"><strong>The purpose of this method is to insert new Place in DB.
+</strong></p>
+<p>The purpose of this method is to insert new Place in DB. Called after user submits filled form</p><h4>Tags:</h4>
+<ul>
+	<li><b>return</b> - Redirects user to Places view</li>
+	<li><b>author</b> - Patryk</li>
+	<li><b>todo</b> - Server-side validation of data, Security (Access possible only after calling newplace())</li>
+	<li><b>access</b> - public</li>
+</ul>
+		
+	
+	<h4>Parameters:</h4>
+	<ul>
+		</ul>
+	</div>
+	<p class="top">[ <a href="#top">Top</a> ]</p>
+	<a name="methodsaveNewZoneAdmin"></a>
+	<p></p>
+	<h3>saveNewZoneAdmin</h3>
+	<div class="indent">
+		<p>
+		<code>void; saveNewZoneAdmin(
+)</code>
+		</p>
+	
+		<p class="linenumber">[line 822]</p>
+		<p align="center"><strong>Creation of new Zone Admin
+</strong></p>
+<p>Creation of new Zone Admin</p><h4>Tags:</h4>
+<ul>
+	<li><b>author</b> - Patryk</li>
+	<li><b>access</b> - public</li>
+</ul>
+		
+	
+	<h4>Parameters:</h4>
+	<ul>
+		</ul>
+	</div>
+	<p class="top">[ <a href="#top">Top</a> ]</p>
+	<a name="methodtasks"></a>
+	<p></p>
+	<h3>tasks</h3>
+	<div class="indent">
+		<p>
+		<code>void; tasks(
+text
+$param1, [text
+$param2 = &quot;&quot;])</code>
+		</p>
+	
+		<p class="linenumber">[line 46]</p>
+		<p align="center"><strong>Action method, delegating any call such as admin/task/blabla to Task module.
+</strong></p>
+<p>Action method, delegating any call such as admin/task/blabla to Task module.</p><h4>Tags:</h4>
+<ul>
+	<li><b>return</b> - redirects user to Admin front-page.*</li>
+	<li><b>author</b> - Patryk</li>
+	<li><b>access</b> - public</li>
+</ul>
+		
+	
+	<h4>Parameters:</h4>
+	<ul>
+			<li>
+		<span class="type">text</span>
+		<b>$param1</b> 
+		- 
+		Action name [accept|reject]. Obligatory</li>
+			<li>
+		<span class="type">text</span>
+		<b>$param2</b> 
+		- 
+		Additional request parameters. Not obligatory.</li>
+		</ul>
+	</div>
+	<p class="top">[ <a href="#top">Top</a> ]</p>
+	<a name="methodTODO_editVote"></a>
+	<p></p>
+	<h3>TODO_editVote</h3>
+	<div class="indent">
+		<p>
+		<code>void; TODO_editVote(
+
+$id)</code>
+		</p>
+	
+		<p class="linenumber">[line 720]</p>
+		<p align="center"><strong>EDIT OF VOTE.
+</strong></p>
+<p>EDIT OF VOTE. To be decided</p><h4>Tags:</h4>
+<ul>
+	<li><b>return</b> - Redirects user to Places view</li>
+	<li><b>author</b> - Patryk</li>
+	<li><b>todo</b> - Decision</li>
+	<li><b>access</b> - public</li>
+</ul>
+		
+	
+	<h4>Parameters:</h4>
+	<ul>
+			<li>
+		<span class="type"></span>
+		<b>$id</b> 
+		- 
+		</li>
+		</ul>
+	</div>
+	<p class="top">[ <a href="#top">Top</a> ]</p>
+	<a name="methodTODO_saveEditVote"></a>
+	<p></p>
+	<h3>TODO_saveEditVote</h3>
+	<div class="indent">
+		<p>
+		<code>void; TODO_saveEditVote(
+)</code>
+		</p>
+	
+		<p class="linenumber">[line 737]</p>
+		<p align="center"><strong>EDIT OF VOTE.
+</strong></p>
+<p>EDIT OF VOTE. To be decided</p><h4>Tags:</h4>
+<ul>
+	<li><b>return</b> - Redirects user to Places view</li>
+	<li><b>author</b> - Patryk</li>
+	<li><b>todo</b> - Decision</li>
+	<li><b>access</b> - public</li>
+</ul>
+		
+	
+	<h4>Parameters:</h4>
+	<ul>
+		</ul>
+	</div>
+	<p class="top">[ <a href="#top">Top</a> ]</p>
+	<a name="methodvotes"></a>
+	<p></p>
+	<h3>votes</h3>
+	<div class="indent">
+		<p>
+		<code>void; votes(
+[text
+$msg = &quot;&quot;])</code>
+		</p>
+	
+		<p class="linenumber">[line 646]</p>
+		<p align="center"><strong>Renders list of Votes with menu according to Role/Zone assignments
+</strong></p>
+<p>Renders list of Votes with menu according to Role/Zone assignments</p><h4>Tags:</h4>
+<ul>
+	<li><b>author</b> - Patryk</li>
+	<li><b>access</b> - public</li>
+</ul>
+		
+	
+	<h4>Parameters:</h4>
+	<ul>
+			<li>
+		<span class="type">text</span>
+		<b>$msg</b> 
+		- 
+		Message code</li>
+		</ul>
+	</div>
+	<p class="top">[ <a href="#top">Top</a> ]</p>
+	<a name="methodzoneAdmins"></a>
+	<p></p>
+	<h3>zoneAdmins</h3>
+	<div class="indent">
+		<p>
+		<code>void; zoneAdmins(
+[text
+$msg = &quot;&quot;])</code>
+		</p>
+	
+		<p class="linenumber">[line 749]</p>
+		<p align="center"><strong>Renders view for Management of Zone Admins.
+</strong></p>
+<p>Renders view for Management of Zone Admins. Additionally renders List View of Zones Zones.</p><h4>Tags:</h4>
+<ul>
+	<li><b>author</b> - Patryk</li>
+	<li><b>todo</b> - Sorting, Ordering, Filtering &amp; Paging</li>
+	<li><b>access</b> - public</li>
+</ul>
+		
+	
+	<h4>Parameters:</h4>
+	<ul>
+			<li>
+		<span class="type">text</span>
+		<b>$msg</b> 
+		- 
+		Message Code</li>
+		</ul>
+	</div>
+	<p class="top">[ <a href="#top">Top</a> ]</p>
+
+	<hr>
+	<a name="class_consts"></a>
+	<h2>Class Constants</h2>
+	</div>
+	<div id="credit">
+		<hr>
+		Documentation generated on Mon, 12 May 2014 14:29:15 +0200 by <a href="http://www.phpdoc.org">phpDocumentor 1.4.4</a>
+	</div>
+</div>
+</body>
+</html>

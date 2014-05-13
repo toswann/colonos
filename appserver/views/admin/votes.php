@@ -23,8 +23,7 @@
         <table class="table table-striped" id="zone-admins-table">
             <thead>
                 <tr>
-                    <th>#</th>
-                    <th>Voter's Email</th>
+                    <th>ID</th>
                     <th>Place</th>
                     <th class="text text-center">AVG</th>                    
                     <th class="text text-center">Comments</th>
@@ -39,33 +38,28 @@
 
                     <tr>
                         <td class="text"><?= $votes[$i]->rating_id ?></td>
-                        <td class="text"><?= $votes[$i]->email ?></td>
-                        <td class="text"><a href="<?=URL?>admin/editplace/<?=$votes[$i]->item_id ?>"><?= $votes[$i]->name ?></a></td>
+                        <td class="text"><div class="well"><a href="<?=URL?>admin/editplace/<?=$votes[$i]->item_id ?>"><?= $votes[$i]->name ?></a></div></td>
                         <td class="text text-center">
-                            <button type="button" class="btn avg-popover" data-container="body" data-html="true" data-toggle="popover" data-placement="top" data-content="                                    Cleanliness: <?= $votes[$i]->grade_cleanliness ?><br>
+                            <div class="well bg-success"><a class="avg-popover" data-container="body" data-html="true" data-toggle="popover" data-placement="top" data-content="                                    Cleanliness: <?= $votes[$i]->grade_cleanliness ?><br>
                                     Confort: <?= $votes[$i]->grade_confort ?><br>
                                     Location: <?= $votes[$i]->grade_location ?><br>
                                     Services: <?= $votes[$i]->grade_services ?><br>
                                     Personal: <?= $votes[$i]->grade_personal ?><br>
                                     Pqratio: <?= $votes[$i]->grade_pqratio ?>
-                                    "><span class="badge"><?= $votes[$i]->grade_average ?></span></button>
+                                    "><b><?= $votes[$i]->grade_average ?></b></span></a></div>
                         </td>      
-                        <td class="text"><small><?= $votes[$i]->text ?></small></td>                        
-                        <td class="text"><small><?= $votes[$i]->date ?></small></td>
-                        <td  class="text text-center">
-                            <?php
-                                  echo '<small>'.C::DECISION_STATE($votes[$i]->newsletter, 0).'</small>'
-                             ?>
-                        </td>
+                        <td class="text"><div class="well bg-success"><small><?= $votes[$i]->email ?></small>:<br><em><?= $votes[$i]->text ?></em></div></td>                        
+                        <td class="text"><div class="well"><small><?= $votes[$i]->date ?></small></div></td>
+                        <td  class="text text-center"><div class="well col-md-10"><?= '<small>'.C::DECISION_STATE($votes[$i]->newsletter, 0).'</small>'?></div></td>
                         <td><?= '<span class="label label-'.C::ITEM_STATE($votes[$i]->state, 1).'">'.C::ITEM_STATE($votes[$i]->state, 0).'</span>'; ?></td>
                         <td  class="text text-center">
                             <?php
                             if ($votes[$i]->state == C::D('ITEM_STATE_OFFLINE')) {?>
-                                <a class="btn btn-default" href="<?= URL ?>admin/activateVote/<?= $votes[$i]->rating_id ?>"><i class="glyphicon glyphicon-ok"></i><span> Activate </span></a>
+                                <a class="btn btn-default" href="<?= URL ?>admin/activateVote/<?= $votes[$i]->rating_id ?>"><i class="glyphicon glyphicon-ok"></i><span> Publish </span></a>
                             <?php }    ?> 
                             <?php                                                                         
                             if ($votes[$i]->state == C::D('ITEM_STATE_VALID')){ ?>
-                                <a class="btn btn-default" href="<?= URL ?>admin/deactivateVote/<?= $votes[$i]->rating_id ?>"><i class="glyphicon glyphicon-remove"></i><span> Deactivate</span></a>
+                                <a class="btn btn-default" href="<?= URL ?>admin/deactivateVote/<?= $votes[$i]->rating_id ?>"><i class="glyphicon glyphicon-remove"></i><span> Hide </span></a>
                             <?php }   ?>                        
                         </td>
                     </tr>
